@@ -32,6 +32,7 @@ There are three levels, from a minute on any laptop to a week on an Apple Silico
 | --- | --- | --- | --- |
 | **1. Re-score** | The exact published tables, from the published per-call model outputs | macOS or Linux, Python 3.10+ | 1 minute |
 | **2. Rebuild the data** | Every dataset, the fixed sets and the knowledge base, from the public source tables | Apple Silicon Mac, about 6 GB of disk | A few hours |
+| **2b. Rerun the trained models** | The SFT and RL test reads, from the published adapters, without retraining | Level 2 done | About 7 hours |
 | **3. Rerun a stage** | Every read, training run, agent run and score | Apple Silicon Mac with 18 GB+, Node 22.19+ | About 1 day (mini) or 6 days (week) |
 
 **Level 1**
@@ -47,6 +48,7 @@ bash reproduce/rescore.sh          # prints OK for results.csv, findings.csv and
 bash reproduce/setup.sh            # Python env, pinned 9B model, pi agent
 bash reproduce/download_data.sh    # 2.9 GB of source tables from Hugging Face, checked against our hashes
 bash reproduce/build_data.sh       # datasets + knowledge base; reports whether the sets match ours
+bash reproduce/rerun_trained_reads.sh   # optional: SFT and RL test reads with the published adapters
 bash reproduce/run_stage.sh week   # or: mini
 ```
 
@@ -66,6 +68,7 @@ configs/paper/              the step list, per-stage commands and the frozen-set
 tools/pi/                   the pi agent's search tools, sandbox profile and pinned package
 data/                       source tables small enough to share, and everything we built from them
 runs/paper/{mini,week}/     every model output, training curve and log from the two runs
+adapters/paper/week/        LoRA weights of the SFT and RL models scored on the test
 ```
 
 ## Data and models
@@ -79,7 +82,7 @@ runs/paper/{mini,week}/     every model output, training curve and log from the 
 Everything we created is included: the call sets and their hashes, features, outcomes, Opus labels, the analyst handbook, every per-call model output, the training curves and the logs. Four things are left out:
 
 - **Transcript text** and anything holding it: the knowledge base, and the retrieved passages in the agent logs. It isn't ours to redistribute, and the scripts rebuild it from the source.
-- **The trained adapters** (1.5 GB). `run_stage.sh` retrains them.
+- **Most trained adapters.** Only the two scored on the test are here: `adapters/paper/week/sft_grown` (SFT) and `adapters/paper/week/trade` (RL), 43 MB of LoRA weights each. The other arms and the optimizer states (about 3 GB) are left out, and `run_stage.sh` retrains them.
 - **The sealed final test part** (Test-F, 1,757 calls). Its outcomes, and every row of it in the run outputs, stay out until a full run scores it.
 - **One limit on exactness:** the source dataset changes daily, and its history was compacted on 2026-11-13, so the exact snapshot used here can't be downloaded any more. `reproduce/check_sources.py` and `build_data.sh` show whether your copy still rebuilds the same sets.
 

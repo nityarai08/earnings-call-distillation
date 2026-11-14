@@ -22,7 +22,7 @@ download_data.sh ──► small_call_check.py build ──► build_data.py par
                       docs)   vs 9B)         for SFT)      tune)        loop)  test)   findings.csv)
 ```
 
-The four `reproduce/` scripts wrap these steps. See the [README](../README.md) for the three levels of reproduction.
+The `reproduce/` scripts wrap these steps, and `reproduce/rerun_trained_reads.sh` reruns the trained models' test reads from the published adapters. See the [README](../README.md) for the three levels of reproduction.
 
 ## Building the data
 

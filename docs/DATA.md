@@ -151,6 +151,17 @@ There is one folder per stage, `mini` and `week`; the paper's numbers come from 
 
 `runs/paper/spend.csv` is the API spending ledger: `at`, `dollars`, `what`.
 
+### Trained adapters (`adapters/paper/week/`)
+
+These are the LoRA weights of the two trained models scored on Test-W. Each folder holds `adapters.safetensors` (43 MB) and `adapter_config.json` (LoRA rank 16, scale 20, top 8 layers). They load with `mlx_lm.load("mlx-community/Qwen3.5-9B-4bit", adapter_path=...)`, which is what `read.py --adapter` does.
+
+| Folder | Model |
+| --- | --- |
+| `sft_grown` | SFT: fine-tuned on Opus's labels for 800 calls (`read_eps` on 400, then 400 more at a lower learning rate) |
+| `trade` | RL: 100 updates with the trade reward over 400 calls, starting from `sft_grown` (picked in `best_rl.txt`) |
+
+Rerunning the first test calls with these files gives the published probabilities exactly (`reproduce/rerun_trained_reads.sh`).
+
 **`reads/<arm>.csv` columns**
 
 | Column | Meaning |
@@ -175,5 +186,5 @@ Arm names: `raw`, `rag`, `pi`, `memory` (no transcript), `rag_random` and `rag_s
 | `data/features/small_call_text.parquet`, `data/paper/text_new.parquet` | Masked transcript text | `reproduce/build_data.sh` |
 | `data/paper/kb.sqlite` (1.1 GB) | The knowledge base: masked transcript passages | `reproduce/build_data.sh` |
 | `data/paper/sealed/test_f.parquet` | Outcomes of the sealed final test part | Withheld until a full run scores it; `build_data.sh` rebuilds it locally |
-| `adapters/paper/<stage>/` (1.5 GB) | The trained LoRA adapters | `reproduce/run_stage.sh` retrains them |
+| The other trained adapters and all optimizer states (about 3 GB) | Size | `reproduce/run_stage.sh` retrains them |
 | Test-F rows in run outputs | Same reason as the sealed outcomes | Removed from every published file by `scripts/paper/export_repo.py` |

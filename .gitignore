@@ -2,7 +2,16 @@
 .venv/
 __pycache__/
 logs/
-adapters/
+# Trained adapters: only the weights of the two scored on Test-W are published
+adapters/*
+!adapters/paper/
+adapters/paper/*
+!adapters/paper/week/
+adapters/paper/week/*
+!adapters/paper/week/sft_grown/
+!adapters/paper/week/trade/
+adapters/**/optimizer.safetensors
+adapters/**/state.json
 tools/pi/node_modules/
 tools/pi/agent/auth.json
 tools/pi/agent/models-store.json

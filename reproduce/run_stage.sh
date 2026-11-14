@@ -18,9 +18,9 @@ stage="${1:?usage: run_stage.sh mini|week}"
 [[ "$(uname -s)-$(uname -m)" == "Darwin-arm64" ]] || { echo "Needs an Apple Silicon Mac"; exit 1; }
 [[ -f data/paper/kb.sqlite ]] || { echo "Build the knowledge base first: bash reproduce/build_data.sh"; exit 1; }
 
-if [[ -d "runs/paper/$stage" && ! -d "runs/paper/${stage}_published" ]]; then
-  mv "runs/paper/$stage" "runs/paper/${stage}_published"
-fi
+for d in runs/paper adapters/paper; do  # the published run and adapters, kept beside the new ones
+  if [[ -d "$d/$stage" && ! -d "$d/${stage}_published" ]]; then mv "$d/$stage" "$d/${stage}_published"; fi
+done
 mkdir -p logs
 
 # Keep the EPS table that is in the repo instead of downloading today's (the test step refreshes it otherwise)
