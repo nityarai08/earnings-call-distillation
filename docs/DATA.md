@@ -115,10 +115,11 @@ The three test parts are split at random within each month. Within a set, `rank`
 
 ### Teacher labels (`data/paper/teacher/`)
 
-`labels_v2.jsonl` has one JSON object per line, one per (call, lens, model): 2,200 in all.
+`labels_v2.jsonl` has one JSON object per line, one per (call, lens, model): 3,000 in all.
 
 - 800 `sft` calls read by Opus with a `neutral` lens and again with a `skeptic` lens.
 - 300 `student_check` calls read by Opus (`neutral`), and the same 300 read by Sonnet (`neutral`).
+- 800 `test_w` calls read by Opus (`neutral`), with the same prompt and RAG block as the RAG setup (step `opus_test`, added 2026-11-14). They compare Opus with the small model in blog section 8. They were never used for training.
 
 | Field | Meaning |
 | --- | --- |

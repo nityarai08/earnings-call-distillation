@@ -1,20 +1,24 @@
-# It Sounds Like the Teacher but Doesn't Trade Like It
+# Teaching a Laptop Model to Read Earnings Calls: What Held Up and What Did Not
 
 *Nityanand Rai · November 13, 2026*
 
-*I tried to teach a small AI model to read company earnings calls like a large model. The small model runs on my laptop. The large model is Claude Opus. After training, the small model wrote answers that looked more like Opus's answers. But it did not pick better stocks.*
+*I tried to teach a small AI model to read company earnings calls like a large model. The small model runs on my laptop. The large model is Claude Opus. After training, the small model's answers looked more like Opus's answers. Some signals held up in two separate periods, and some did not. This post shows both.*
 
 *This post shows what the small model read, what it wrote, how I trained it, and how I calculated each number. Each section links to the real files in the [repo](https://github.com/nityarai08/earnings-call-distillation). All examples in this post are real calls. The folder [examples](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/README.md) has real inputs and outputs for every experiment and test.*
 
 ## The short version
 
 - I compared six setups of one small model, Qwen3.5-9B, on 800 earnings calls that it had never seen.
-- All six setups ranked stocks a little better than chance. Their IC values (a measure of ranking quality) were all close to 0.10.
-- No setup was better than the others by more than chance can explain.
-- Training on Opus's answers made the small model agree with Opus more often: 66% for Call only, 71% after RL.
-- About half of that gain came from one habit. The small model learned to call management "direct" almost every time, as Opus does.
-- The training did not improve stock picking by more than chance. On validation calls, a control model that I trained on shuffled Opus answers ranked stocks about as well.
-- The small model's BUY decision follows its own read lines. So the weak part is the quality of the read lines.
+- **Held up:** every setup forecast the next EPS change better than chance, in 2026 and again in 2025. But a simple rule that uses only the last EPS change did almost as well.
+- **Held up:** the small model's BUY decision follows its own read lines. Opus reads the same calls better (next bullet). So better read lines are the most direct way to improve the model.
+- **Held up:** on the same 800 test calls, Opus ranked stocks better than the trained small model (IC 0.170 against 0.113 for RL). Its BUY calls also earned more after costs (+2.09% against +1.06%). After Opus's knowledge date (July and August), the IC gap is not distinguishable, but the return gap remains.
+- **A lead:** the model and two simple rules pick partly different stocks. Their mix ranked stocks a little better than the rules alone, in both periods. The gain is not yet larger than chance can explain.
+- **Did not hold up:** on the 2026 test calls, the setups ranked stocks better than chance (IC values of approximately 0.10). On the 2025 validation calls, the same setups did not.
+- **Did not hold up:** RL had the highest return after costs on the test calls, +1.06%. On the 2025 validation calls, the same RL model had −2.08%.
+- Training on Opus's answers made the small model agree with Opus more often: 66% for Call only, 71% after RL. About half of that gain came from one habit. The small model learned to call management "direct" almost every time, as Opus does.
+- No training step improved stock ranking by more than chance can explain. A control model that I trained on shuffled Opus answers ranked stocks about as well.
+
+Section 8 lists each signal, with its values in both periods.
 
 ---
 
@@ -564,11 +568,11 @@ All four 95% ranges include zero. The RL range is the narrowest. But it also inc
 | Numbers only | 0.069 | — | — | — | 397 | +0.58% |
 | BUY on every call | — | — | — | — | 796 | −0.68% |
 
-The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
+Section 8 compares Opus with these setups on the same 800 calls. The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
 
 ## 7. What I learned
 
-### 1. The small model learned to sound like Opus, but not to trade like Opus
+### 1. Training made the answers more like Opus's answers, but did not improve the stock ranking
 
 After training, the small model agreed with Opus more often: 66% for Call only, 71% for RL. Its EPS IC also increased, from 0.236 to 0.278. But each step changed the stock IC by less than chance can explain (section 6).
 
@@ -617,11 +621,94 @@ With RAG's documents, the EPS IC of the tool loop increased from 0.14 to 0.22. T
 
 ### 4. No setup made more money than chance can explain
 
-The returns after costs were between −0.68% and +1.42% over 60 trading days. The highest return came from the word list, which uses no AI. Differences this small can come from chance.
+The returns after costs were between −0.68% and +1.42% over 60 trading days. The highest return came from the word list, which uses no AI. Differences this small can come from chance. Section 8 examines the RL return of +1.06% in more detail.
 
-## 8. Conclusions
+## 8. Signals: what held up and what did not
 
-**Training the small model on Opus's answers made its answers more similar to Opus's answers. It did not make the small model a better stock picker.**
+I looked for every positive signal in the results. Then I checked each signal again on the 500 validation calls from 2025. A real signal should appear in both periods. I chose these checks after I saw the test results. Thus a signal that appears only on the test calls is a lead, not a finding.
+
+The script [signals.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/signals.py) does all the checks. All values and ranges are in [signals.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/signals.csv). Each 95% range comes from the same bootstrap of whole weeks as in section 5.
+
+| Signal | Test calls (2026) | Validation calls (2025) | Status |
+| --- | --- | --- | --- |
+| The setups forecast the next EPS change | EPS IC 0.18 to 0.28. All ranges are above zero | EPS IC 0.16 to 0.26. All ranges are above zero | **Holds.** But the facts line gives most of it |
+| The action follows the read lines | — | p(BUY) 0.31 with Demand "down", 0.54 with "up" (SFT, 200 calls) | **Holds** |
+| Opus ranks stocks better than the trained small model | All 800 calls: Opus minus RL +0.057 (+0.007 to +0.111). July and August: +0.026 (−0.037 to +0.211) | Check calls (2023 to 2024): IC 0.151 for Opus, 0.056 or less for the small model | **Holds** on the check calls and on all 800 test calls. Not distinguishable after Opus's knowledge date |
+| The model plus two simple rules ranks better than the rules alone | IC gain +0.025 (−0.016 to +0.056) | IC gain +0.026 (−0.036 to +0.097) | **Lead.** Same direction in both periods, but both ranges include zero |
+| The setups rank stocks better than chance | IC 0.096 to 0.113. Four of five ranges are above zero | IC −0.012 to +0.007 | **Did not repeat** |
+| Training improves the EPS forecast | SFT minus RAG: +0.033 (−0.004 to +0.076) | SFT minus RAG: −0.001 (−0.044 to +0.037) | **Did not repeat** |
+| RL earns more after costs than SFT | +0.56% (+0.04% to +1.15%) | −0.15% (−1.30% to +0.87%) | **Did not repeat** |
+| RL earns money after costs | +1.06% (−2.28% to +3.93%) | −2.08% (−6.29% to +1.80%) | **Not a signal** |
+| Opus's BUY calls earn more than RL's | +1.06% (+0.27% to +2.19%). July and August: +0.80% (+0.07% to +1.46%) | — | **Holds** in both test periods |
+
+### Signals that held up
+
+**1. The setups forecast the next EPS change.** All six setups forecast the direction of the next EPS change better than chance, in both periods. But the No call setup (EPS IC 0.25 on the test calls) and the Known-EPS rule (0.24) did almost as well. Both use only the facts line. Thus most of this signal comes from the last EPS change, not from the call text. The call text did not add a clear gain. Call only minus No call was −0.017 on the test calls and +0.028 on the validation calls. Both ranges include zero.
+
+*For training:* a reward for the EPS line should pay only for what the call adds. One way is to reward the model for the part of the EPS change that the Known-EPS rule does not forecast.
+
+**2. The action follows the read lines.** When I forced the Demand line from "down" to "up", p(BUY) increased for all 200 calls (section 7). Thus the model uses its own read lines to choose BUY or AVOID.
+
+**3. Opus ranks stocks better than the trained small model.** On the same 300 check calls, Opus had an IC of 0.151. The small model had 0.056 or less (section 7). On all 800 test calls, Opus had an IC of 0.170, and RL had 0.113. Opus's BUY calls also earned more (see "Opus on the same test calls" below). Together with signal 2, this shows where to work. The small model already acts on its read lines. Its read lines are the weak part.
+
+*For training:* give the small model Opus's read lines and let it choose only the action. If its IC moves toward 0.15, then the read lines are the part to train. I did not run this test yet.
+
+### Opus on the same test calls
+
+To compare the small model with its teacher, I gave Opus the same 800 test calls. Opus read the same prompt and knowledge block as the RAG setup, with the neutral instruction. Its stock score is its rating divided by 100, as in section 7. The answers are in [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) (step `opus_test`). This run cost $9.91.
+
+**A limit of this comparison.** Opus's knowledge runs to approximately June 2026. Thus Opus can know what happened after some calls from March to May. The prompt tells Opus not to use what it remembers, but I cannot check that. The 224 calls from July and August came after that date. For these calls, the comparison is fair.
+
+| Setup or rule | IC, all 800 calls | Return after costs, all 800 calls | IC, July and August | Return after costs, July and August |
+| --- | --- | --- | --- | --- |
+| **Opus** | **0.170** | **+2.09%** | **0.165** | **+1.81%** |
+| No call | 0.075 | −0.17% | 0.181 | +3.09% |
+| Call only | 0.104 | +0.36% | 0.193 | +3.49% |
+| RAG | 0.096 | −0.38% | 0.119 | +1.91% |
+| Pi | 0.104 | +0.72% | 0.144 | +2.83% |
+| SFT | 0.105 | +0.50% | 0.137 | +0.75% |
+| RL | 0.113 | +1.06% | 0.139 | +1.09% |
+| Known-EPS rule | 0.085 | +0.94% | 0.127 | +3.50% |
+| Word list | 0.063 | +1.42% | 0.108 | +2.95% |
+| BUY on every call | — | −0.68% | — | +0.65% |
+
+The paired gains of Opus over the trained small model, on the same calls:
+
+| Comparison | IC gain, all 800 calls | IC gain, July and August | Return gain, all 800 calls | Return gain, July and August |
+| --- | --- | --- | --- | --- |
+| Opus minus SFT | +0.065 (+0.004 to +0.120) | +0.029 (−0.049 to +0.131) | +1.62% (+0.52% to +3.11%) | +1.15% (+0.57% to +1.88%) |
+| Opus minus RL | +0.057 (+0.007 to +0.111) | +0.026 (−0.037 to +0.211) | +1.06% (+0.27% to +2.19%) | +0.80% (+0.07% to +1.46%) |
+
+What these values show:
+
+- **On all 800 calls, Opus ranked stocks better than SFT and RL.** Both IC ranges are above zero. Opus also had the highest IC of all setups and rules.
+- **Opus's BUY calls earned more than the trained small model's BUY calls, in both periods.** All four return ranges are above zero.
+- **After Opus's knowledge date, the IC gap is not distinguishable.** In July and August, every setup and rule had a higher IC, also the No call setup. Thus these two months were easier to rank. Opus's IC stayed approximately the same: 0.170 for all calls and 0.165 for July and August. So what Opus remembers does not seem to explain its IC.
+
+Thus the trained small model agrees more with Opus's words (section 7), but it does not yet pick stocks as well as Opus. The gap is clearest in the return of the BUY calls.
+
+### A lead to test on the second test set
+
+**4. The model and the simple rules pick partly different stocks.** In each month, I ranked the calls by RL's p(BUY), by the word list and by the Known-EPS rule. RL's ranks had a correlation of only 0.24 with the word list and 0.37 with the Known-EPS rule. The mean of the three ranks had a higher IC than the mean of the two rule ranks:
+
+- Test calls: 0.117 against 0.092, a gain of +0.025 (−0.016 to +0.056).
+- Validation calls (300): 0.085 against 0.058, a gain of +0.026 (−0.036 to +0.097).
+
+The gain had the same size in both periods. But both ranges include zero, so chance can explain it. The second test set has 1,757 calls. It can show whether this gain is real.
+
+### Signals that did not hold up
+
+**5. Stock ranking better than chance.** On the test calls, four setups had an IC range above zero: Call only, Pi, SFT and RL. The top third of calls by p(BUY) beat the bottom third by 4% to 6% over 60 sessions. On the 500 validation calls, the five setups had ICs between −0.012 and +0.007. RL had 0.109 on its 300 validation calls, but its range includes zero. The placebo had 0.099 on the same calls. Thus the ranking signal depends on the period.
+
+**6. Training improves the EPS forecast.** On the test calls, the EPS IC increased at each training step: 0.229 for RAG, 0.262 for SFT and 0.278 for RL. On the validation calls, the same steps gave −0.001 and +0.006. Both ranges include zero.
+
+**7. RL earns more than SFT.** On the test calls, RL earned 0.56% more than SFT after costs, and the range was just above zero. RL dropped 49 of SFT's BUY calls. These calls did 3.5% worse than their sectors, on average. On the validation calls, RL earned 0.15% less than SFT. This check is one of many that I ran after I saw the results. Thus one range above zero is not enough.
+
+**8. RL earns money after costs.** RL earned +1.06% on the test calls. The range was −2.28% to +3.93%. Most of the gain came from one month: in April 2026, its 51 BUY calls earned +7.25%. In March and May, its BUY calls lost money after costs. On the validation calls, the same RL model earned −2.08%. The word list, which uses no AI, earned +1.42% on the test calls.
+
+## 9. Conclusions
+
+**Training the small model on Opus's answers made its answers more similar to Opus's answers. It did not yet make the small model a better stock picker. On the same test calls, Opus still picked better stocks. The signals that held up show that the read lines are the part to improve.**
 
 What I recommend:
 
@@ -647,8 +734,9 @@ The file [FIXES.md](https://github.com/nityarai08/earnings-call-distillation/blo
 
 **Next steps for the paper:**
 
-1. Score the trained models on the second test set (1,757 calls). More calls give narrower 95% ranges.
-2. Give the small model Opus's read lines, and let it choose only the action. If its IC then moves toward Opus's 0.15, the read lines are the weak part.
+1. Give the small model Opus's read lines, and let it choose only the action. If its IC moves toward Opus's 0.15, train the read lines more.
+2. Reward the EPS line only for what the call adds to the facts line.
+3. Write down the checks for the second test set (1,757 calls) before I open it. The checks are the model-and-rules mix, RL against SFT on return, Opus against RL, and the IC of each setup. Then run each check one time only. More calls give narrower 95% ranges.
 
 ## Files
 
@@ -662,6 +750,7 @@ All files below are in the [repo](https://github.com/nityarai08/earnings-call-di
 | All Opus answers used for training | [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) |
 | All answers of the small model, one file for each setup | [runs/paper/week/reads](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/reads) |
 | Test outcomes, opened at the final step | [test_w.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet) |
+| Signal checks on the test and validation calls (section 8) | [signals.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/signals.csv), made by [signals.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/signals.py) |
 | Training curves | [runs/paper/week/train](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/train) |
 | Trained adapters | [adapters/paper/week](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week) |
 | Code for the prompt, the training and the scores | [prompt.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/prompt.py), [train_soft.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/train_soft.py), [score.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/score.py) |

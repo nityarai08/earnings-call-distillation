@@ -160,6 +160,10 @@ week:
   - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm rl_best_check --set student_check --n 300 --block rag --adapter adapters/paper/week/$(sed s/rl_// runs/paper/week/best_rl.txt) --no-react
   report:
   - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py final --stage week --open test_w
+  # added 2026-11-14: Opus on the same 800 test calls (prompt and RAG block as the RAG setup), then the signal checks
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_test --model claude-opus-5-5 --set test_w --n 800 --lenses neutral
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage week --step opus_test
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/signals.py
 full:
   baselines:
   - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py selftest

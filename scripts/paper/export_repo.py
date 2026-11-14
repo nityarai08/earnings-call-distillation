@@ -22,7 +22,7 @@ OUT = Path(sys.argv[1]).resolve()
 
 CODE = ["scripts/paper/" + f for f in ("common.py", "build_data.py", "build_kb.py", "kb.py", "kb_service.py", "blocks.py", "prompt.py", "read.py",
                                          "agent_run.py", "teacher.py", "score.py", "train_soft.py", "run_step.py", "make_commands.py", "tracker.py",
-                                         "interim.py", "export_repo.py", "examples.py")] + \
+                                         "interim.py", "export_repo.py", "examples.py", "signals.py")] + \
        ["scripts/" + f for f in ("small_call_check.py", "call_qa_check.py", "filing_change_check.py", "raw_text_check.py", "small_call_read.py", "llm_locked.py")] + \
        ["src/tagent/" + f for f in ("__init__.py", "data.py", "evaluate.py", "risk_agent.py", "earnings_text.py", "edgar.py", "edgar_features.py",
                                      "filing_changes.py", "train_lora.py")] + \

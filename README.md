@@ -9,7 +9,7 @@ This repo holds the code, data and results of a week-long experiment that tested
 - **Calls:** smaller US companies.
 - **Test:** 800 calls from March to August 2026, after the model's release, sealed until the final scoring step.
 
-**Read the write-up:** [It Sounds Like the Teacher but Doesn't Trade Like It](blog/2026-11-small-model-earnings-calls/README.md). It walks through one real call from prompt to outcome, the training data and how every number is calculated.
+**Read the write-up:** [Teaching a Laptop Model to Read Earnings Calls: What Held Up and What Did Not](blog/2026-11-small-model-earnings-calls/README.md). It walks through one real call from prompt to outcome, the training data and how every number is calculated.
 
 **See the real inputs and outputs:** [`examples/README.md`](examples/README.md) lists every experiment and test, each with 10 real calls: the exact prompts, the answers, the training targets or rewards, and the outcomes. [`data/paper/training/`](data/paper/training) has the full training data.
 
@@ -25,6 +25,8 @@ This repo holds the code, data and results of a week-long experiment that tested
 - Training made the student read calls more like Opus (66% → 71% agreement) and forecast earnings slightly better, but it didn't rank stocks better. Controls trained on shuffled labels and shuffled rewards did as well as the real thing.
 - The model's BUY decision does follow its stated read: forcing "Demand: up" instead of "down" raised it on 199–200 of 200 calls.
 - When the 9B chose its own documents, its earnings forecasts got worse. The same agent loop given RAG's documents was fine.
+- Opus, given the same 800 test calls and prompt, ranked stocks better than the trained 9B (IC 0.170 vs 0.113 for RL) and its BUY calls earned more after costs. On the July–August calls after Opus's knowledge date, the IC gap was not distinguishable, but the return gap held.
+- Rechecked on 500 validation calls from 2025: the EPS forecast signal held (but mostly comes from the facts line); the ~0.10 stock-ranking IC and RL's +1.06% return did not repeat. Blog section 8 lists every signal and whether it held up.
 
 ## Reproduce it
 
