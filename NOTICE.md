@@ -4,7 +4,7 @@
 - Source: https://huggingface.co/datasets/defeatbeta/yahoo-finance-data
 - License: Open Data Commons Attribution License (ODC-BY) 1.0.
 - What's here: several small tables from its 2026-11-06 snapshot, in `data/raw/defeatbeta/`. Every file under `data/paper/`, `data/features/` and `reports/diagnostics/` is derived from that dataset.
-- Not included: the earnings-call transcripts, except the three example calls in `examples/`, whose full prompts are shown as illustrations. Short quotes in `data/paper/teacher/*.jsonl` were selected by Claude from those transcripts.
+- Not included: the earnings-call transcripts, except the example calls in `examples/prompts/`, whose full prompts are shown so that readers can see the real inputs. Short quotes in `data/paper/teacher/*.jsonl` were selected by Claude from those transcripts.
 
 **SEC company tickers**
 - Source: https://www.sec.gov/files/company_tickers.json, as included in the dataset above.

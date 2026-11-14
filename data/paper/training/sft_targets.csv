@@ -1,0 +1,1001 @@
+part,row,month,position,actions,demand,pricing,margins,guidance,candor,next_eps_target,opus_rating_neutral,opus_rating_skeptic,mean_rating,calls_in_month,first_action_target
+first 400 (read_eps),60332,2024-05,flat,BUY or AVOID,up,flat,up,none,direct,up,61.0,58.0,59.5,40,0.8375
+first 400 (read_eps),36055,2024-04,long,HOLD or SELL,flat,flat,down,held,direct,down,41.0,38.0,39.5,11,0.2273
+first 400 (read_eps),98340,2024-05,flat,BUY or AVOID,up,flat,flat,held,direct,down,56.0,53.0,54.5,40,0.5625
+first 400 (read_eps),64438,2022-11,flat,BUY or AVOID,up,up,up,none,direct,up,62.0,61.0,61.5,38,0.9211
+first 400 (read_eps),4974,2023-05,flat,BUY or AVOID,down,up,down,cut,direct,up,36.0,34.0,35.0,31,0.129
+first 400 (read_eps),32467,2022-05,long,HOLD or SELL,flat,up,up,none,direct,down,58.0,46.0,52.0,43,0.5465
+first 400 (read_eps),50400,2022-05,flat,BUY or AVOID,up,flat,down,none,direct,up,34.0,36.0,35.0,43,0.093
+first 400 (read_eps),83894,2023-11,flat,BUY or AVOID,flat,up,up,cut,direct,up,56.0,47.0,51.5,41,0.5366
+first 400 (read_eps),19678,2022-11,flat,BUY or AVOID,up,up,flat,none,direct,down,57.0,54.0,55.5,38,0.6711
+first 400 (read_eps),13037,2022-05,long,HOLD or SELL,flat,flat,down,none,evasive,,56.0,46.0,51.0,43,0.5
+first 400 (read_eps),96423,2023-10,long,HOLD or SELL,flat,flat,flat,none,direct,up,36.0,33.0,34.5,12,0.125
+first 400 (read_eps),31242,2021-11,flat,BUY or AVOID,up,down,flat,held,direct,down,44.0,36.0,40.0,45,0.3667
+first 400 (read_eps),11541,2023-10,long,HOLD or SELL,flat,down,flat,held,direct,down,44.0,44.0,44.0,12,0.5
+first 400 (read_eps),55811,2022-11,long,HOLD or SELL,up,flat,down,none,evasive,down,56.0,44.0,50.0,38,0.5395
+first 400 (read_eps),23686,2021-05,flat,BUY or AVOID,flat,flat,flat,none,evasive,up,54.0,41.0,47.5,48,0.2604
+first 400 (read_eps),14415,2022-10,long,HOLD or SELL,up,up,flat,none,direct,up,62.0,61.0,61.5,22,0.8409
+first 400 (read_eps),99154,2023-11,flat,BUY or AVOID,up,up,up,held,direct,down,57.0,61.0,59.0,41,0.8171
+first 400 (read_eps),26331,2021-05,long,HOLD or SELL,up,flat,down,none,direct,down,44.0,40.0,42.0,48,0.1979
+first 400 (read_eps),49320,2021-11,flat,BUY or AVOID,flat,flat,down,held,direct,down,36.0,34.0,35.0,45,0.1889
+first 400 (read_eps),32011,2022-12,long,HOLD or SELL,down,up,down,none,direct,down,33.0,30.0,31.5,3,0.1667
+first 400 (read_eps),61474,2021-11,flat,BUY or AVOID,up,up,up,held,direct,,63.0,57.0,60.0,45,0.8778
+first 400 (read_eps),92316,2024-05,flat,BUY or AVOID,up,up,up,raised,direct,up,62.0,58.0,60.0,40,0.8875
+first 400 (read_eps),440,2021-04,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,57.0,57.5,11,0.4091
+first 400 (read_eps),19188,2021-05,flat,BUY or AVOID,up,flat,down,raised,direct,up,61.0,61.0,61.0,48,0.6979
+first 400 (read_eps),44404,2023-11,flat,BUY or AVOID,up,down,up,none,direct,up,56.0,53.0,54.5,41,0.6463
+first 400 (read_eps),11537,2022-10,long,HOLD or SELL,flat,flat,up,held,direct,up,56.0,56.0,56.0,22,0.5455
+first 400 (read_eps),48910,2022-05,flat,BUY or AVOID,up,down,up,raised,evasive,down,64.0,61.0,62.5,43,0.8953
+first 400 (read_eps),98820,2023-11,flat,BUY or AVOID,up,flat,up,held,direct,down,62.0,58.0,60.0,41,0.878
+first 400 (read_eps),34655,2022-05,long,HOLD or SELL,down,up,down,cut,direct,down,34.0,36.0,35.0,43,0.093
+first 400 (read_eps),87728,2024-05,flat,BUY or AVOID,up,up,up,raised,direct,down,58.0,44.0,51.0,40,0.5
+first 400 (read_eps),9731,2024-06,long,HOLD or SELL,up,up,up,none,direct,up,56.0,44.0,50.0,3,0.8333
+first 400 (read_eps),81870,2021-11,flat,BUY or AVOID,down,down,down,none,direct,up,44.0,42.0,43.0,45,0.5333
+first 400 (read_eps),52096,2022-06,flat,BUY or AVOID,up,flat,up,held,direct,down,47.0,38.0,42.5,5,0.3
+first 400 (read_eps),38225,2021-10,long,HOLD or SELL,up,up,up,raised,direct,up,64.0,62.0,63.0,14,0.9643
+first 400 (read_eps),72270,2022-11,flat,BUY or AVOID,up,up,up,held,direct,up,61.0,62.0,61.5,38,0.9211
+first 400 (read_eps),30710,2023-11,flat,BUY or AVOID,flat,up,down,cut,direct,up,42.0,42.0,42.0,41,0.1829
+first 400 (read_eps),17415,2022-05,long,HOLD or SELL,up,up,up,held,direct,up,58.0,61.0,59.5,43,0.7791
+first 400 (read_eps),46901,2022-05,long,HOLD or SELL,up,up,flat,raised,direct,up,66.0,63.0,64.5,43,0.9651
+first 400 (read_eps),50890,2022-11,flat,BUY or AVOID,up,up,down,cut,direct,,36.0,34.0,35.0,38,0.1447
+first 400 (read_eps),59998,2022-05,flat,BUY or AVOID,up,up,flat,cut,direct,,44.0,38.0,41.0,43,0.2907
+first 400 (read_eps),58228,2021-05,flat,BUY or AVOID,up,up,up,raised,direct,up,62.0,62.0,62.0,48,0.7604
+first 400 (read_eps),83688,2022-11,flat,BUY or AVOID,down,flat,flat,cut,direct,down,43.0,42.0,42.5,38,0.3684
+first 400 (read_eps),72764,2021-04,flat,BUY or AVOID,up,flat,down,none,evasive,down,46.0,44.0,45.0,11,0.0909
+first 400 (read_eps),25985,2021-05,long,HOLD or SELL,up,down,down,none,evasive,up,30.0,27.0,28.5,48,0.0312
+first 400 (read_eps),65604,2024-05,flat,BUY or AVOID,up,flat,flat,none,evasive,up,52.0,38.0,45.0,40,0.3625
+first 400 (read_eps),21309,2021-05,long,HOLD or SELL,up,up,flat,held,direct,down,63.0,63.0,63.0,48,0.875
+first 400 (read_eps),27207,2022-05,long,HOLD or SELL,up,flat,up,held,direct,down,57.0,54.0,55.5,43,0.6628
+first 400 (read_eps),28125,2024-05,long,HOLD or SELL,up,up,up,held,evasive,down,56.0,46.0,51.0,40,0.5
+first 400 (read_eps),74231,2023-10,long,HOLD or SELL,up,up,up,none,direct,up,63.0,56.0,59.5,12,0.875
+first 400 (read_eps),28993,2021-11,long,HOLD or SELL,up,up,up,none,direct,up,61.0,57.0,59.0,45,0.8444
+first 400 (read_eps),94573,2022-05,long,HOLD or SELL,up,up,up,raised,direct,up,62.0,62.0,62.0,43,0.8605
+first 400 (read_eps),1126,2021-05,flat,BUY or AVOID,up,flat,flat,raised,direct,up,64.0,63.0,63.5,48,0.9167
+first 400 (read_eps),72618,2022-04,flat,BUY or AVOID,up,flat,flat,held,direct,up,47.0,44.0,45.5,14,0.5
+first 400 (read_eps),92034,2021-06,flat,BUY or AVOID,up,flat,down,none,direct,up,62.0,58.0,60.0,5,0.7
+first 400 (read_eps),87440,2023-05,flat,BUY or AVOID,down,up,down,held,direct,up,47.0,44.0,45.5,31,0.5645
+first 400 (read_eps),88398,2022-05,flat,BUY or AVOID,up,flat,up,held,direct,down,46.0,56.0,51.0,43,0.5
+first 400 (read_eps),94944,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,66.0,67.0,66.5,45,0.9889
+first 400 (read_eps),72354,2024-06,flat,BUY or AVOID,down,up,flat,none,evasive,up,32.0,30.0,31.0,3,0.5
+first 400 (read_eps),12037,2022-11,long,HOLD or SELL,up,flat,flat,held,evasive,down,44.0,38.0,41.0,38,0.2895
+first 400 (read_eps),1096,2022-11,flat,BUY or AVOID,up,up,down,cut,direct,down,44.0,38.0,41.0,38,0.2895
+first 400 (read_eps),41548,2023-11,flat,BUY or AVOID,up,flat,flat,held,direct,down,56.0,54.0,55.0,41,0.6707
+first 400 (read_eps),91991,2021-11,long,HOLD or SELL,down,flat,down,cut,direct,down,33.0,31.0,32.0,45,0.0778
+first 400 (read_eps),60496,2021-05,flat,BUY or AVOID,up,flat,down,held,direct,up,44.0,47.0,45.5,48,0.2396
+first 400 (read_eps),53927,2023-11,long,HOLD or SELL,up,up,up,none,direct,up,62.0,58.0,60.0,41,0.878
+first 400 (read_eps),54288,2022-11,flat,BUY or AVOID,flat,flat,flat,none,evasive,down,54.0,47.0,50.5,38,0.5658
+first 400 (read_eps),85013,2023-11,long,HOLD or SELL,up,down,up,none,direct,down,62.0,57.0,59.5,41,0.8415
+first 400 (read_eps),91273,2021-05,long,HOLD or SELL,up,up,flat,held,direct,up,56.0,56.0,56.0,48,0.5208
+first 400 (read_eps),44090,2022-11,flat,BUY or AVOID,down,up,down,cut,direct,down,36.0,33.0,34.5,38,0.0789
+first 400 (read_eps),83616,2022-05,flat,BUY or AVOID,up,flat,flat,cut,evasive,down,38.0,36.0,37.0,43,0.2209
+first 400 (read_eps),49890,2023-05,flat,BUY or AVOID,up,up,down,held,direct,up,57.0,57.0,57.0,31,0.9194
+first 400 (read_eps),72394,2023-04,flat,BUY or AVOID,down,down,down,none,direct,up,44.0,44.0,44.0,9,0.4545
+first 400 (read_eps),36923,2021-11,long,HOLD or SELL,up,up,down,none,direct,down,43.0,38.0,40.5,45,0.4111
+first 400 (read_eps),18553,2022-05,long,HOLD or SELL,up,flat,down,none,direct,,37.0,36.0,36.5,43,0.1977
+first 400 (read_eps),93457,2021-11,long,HOLD or SELL,up,flat,flat,none,direct,up,58.0,57.0,57.5,45,0.7778
+first 400 (read_eps),49063,2023-11,long,HOLD or SELL,down,flat,flat,none,direct,down,52.0,53.0,52.5,41,0.5732
+first 400 (read_eps),28788,2023-12,flat,BUY or AVOID,flat,down,flat,cut,direct,up,47.0,42.0,44.5,2,0.25
+first 400 (read_eps),82934,2022-04,flat,BUY or AVOID,up,up,up,none,direct,up,63.0,61.0,62.0,14,0.9286
+first 400 (read_eps),83133,2023-11,long,HOLD or SELL,up,flat,up,held,direct,up,44.0,47.0,45.5,41,0.2439
+first 400 (read_eps),93571,2023-05,long,HOLD or SELL,up,up,down,raised,direct,up,36.0,34.0,35.0,31,0.129
+first 400 (read_eps),7056,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,64.0,61.0,62.5,48,0.8125
+first 400 (read_eps),95543,2021-05,long,HOLD or SELL,up,up,flat,none,direct,up,62.0,61.0,61.5,48,0.7292
+first 400 (read_eps),36316,2021-11,flat,BUY or AVOID,flat,down,down,none,direct,up,36.0,33.0,34.5,45,0.1667
+first 400 (read_eps),7787,2023-10,long,HOLD or SELL,down,flat,down,cut,evasive,down,36.0,34.0,35.0,12,0.25
+first 400 (read_eps),43329,2022-11,long,HOLD or SELL,down,down,flat,none,evasive,up,47.0,38.0,42.5,38,0.3684
+first 400 (read_eps),86889,2022-10,long,HOLD or SELL,up,flat,flat,held,direct,up,57.0,54.0,55.5,22,0.4773
+first 400 (read_eps),47747,2024-05,long,HOLD or SELL,up,flat,up,held,direct,up,62.0,62.0,62.0,40,0.95
+first 400 (read_eps),73312,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,66.0,63.0,64.5,48,0.9688
+first 400 (read_eps),49478,2023-05,flat,BUY or AVOID,up,down,flat,none,direct,down,47.0,44.0,45.5,31,0.5645
+first 400 (read_eps),59568,2024-05,flat,BUY or AVOID,up,down,up,none,direct,up,56.0,56.0,56.0,40,0.6125
+first 400 (read_eps),63874,2021-05,flat,BUY or AVOID,up,down,down,held,direct,down,56.0,44.0,50.0,48,0.3542
+first 400 (read_eps),33234,2022-11,flat,BUY or AVOID,down,flat,flat,none,evasive,up,38.0,38.0,38.0,38,0.2105
+first 400 (read_eps),76624,2021-11,flat,BUY or AVOID,up,flat,up,held,direct,down,61.0,61.0,61.0,45,0.9333
+first 400 (read_eps),77550,2021-11,flat,BUY or AVOID,flat,flat,down,none,evasive,down,24.0,22.0,23.0,45,0.0111
+first 400 (read_eps),5528,2023-05,flat,BUY or AVOID,up,up,up,none,direct,up,57.0,56.0,56.5,31,0.8548
+first 400 (read_eps),92172,2022-10,flat,BUY or AVOID,down,down,down,none,direct,up,38.0,38.0,38.0,22,0.1364
+first 400 (read_eps),75789,2022-11,long,HOLD or SELL,flat,down,flat,held,direct,down,46.0,42.0,44.0,38,0.4737
+first 400 (read_eps),70914,2021-10,flat,BUY or AVOID,up,up,down,none,direct,up,56.0,56.0,56.0,14,0.5357
+first 400 (read_eps),29655,2021-04,long,HOLD or SELL,up,flat,up,none,direct,down,46.0,44.0,45.0,11,0.0909
+first 400 (read_eps),79458,2023-05,flat,BUY or AVOID,up,down,up,held,direct,up,56.0,57.0,56.5,31,0.8548
+first 400 (read_eps),87830,2022-11,flat,BUY or AVOID,down,flat,down,cut,evasive,up,36.0,33.0,34.5,38,0.0789
+first 400 (read_eps),23875,2021-11,long,HOLD or SELL,up,flat,down,cut,evasive,down,38.0,34.0,36.0,45,0.2222
+first 400 (read_eps),90107,2022-10,long,HOLD or SELL,flat,up,flat,raised,evasive,up,38.0,38.0,38.0,22,0.1364
+first 400 (read_eps),11501,2022-12,long,HOLD or SELL,up,up,up,none,direct,down,61.0,58.0,59.5,3,0.8333
+first 400 (read_eps),67544,2022-05,flat,BUY or AVOID,up,up,up,held,direct,down,58.0,56.0,57.0,43,0.7093
+first 400 (read_eps),64366,2022-11,flat,BUY or AVOID,flat,flat,down,none,direct,down,44.0,41.0,42.5,38,0.3684
+first 400 (read_eps),67978,2021-06,flat,BUY or AVOID,up,flat,flat,held,direct,up,41.0,38.0,39.5,5,0.3
+first 400 (read_eps),30357,2021-11,long,HOLD or SELL,up,up,down,none,direct,up,61.0,56.0,58.5,45,0.8111
+first 400 (read_eps),67474,2022-11,flat,BUY or AVOID,up,up,up,held,direct,up,63.0,61.0,62.0,38,0.9605
+first 400 (read_eps),68888,2023-05,flat,BUY or AVOID,flat,down,down,held,direct,down,36.0,34.0,35.0,31,0.129
+first 400 (read_eps),31322,2022-10,flat,BUY or AVOID,flat,up,flat,held,direct,down,56.0,54.0,55.0,22,0.4318
+first 400 (read_eps),70827,2021-05,long,HOLD or SELL,up,flat,up,none,direct,up,58.0,58.0,58.0,48,0.6042
+first 400 (read_eps),58667,2022-11,long,HOLD or SELL,up,up,flat,raised,direct,up,58.0,58.0,58.0,38,0.8026
+first 400 (read_eps),55391,2021-11,long,HOLD or SELL,up,up,up,none,evasive,down,46.0,44.0,45.0,45,0.5667
+first 400 (read_eps),28681,2023-05,long,HOLD or SELL,up,up,up,none,direct,up,56.0,44.0,50.0,31,0.6613
+first 400 (read_eps),5933,2021-05,long,HOLD or SELL,up,up,up,none,direct,up,64.0,64.0,64.0,48,0.9479
+first 400 (read_eps),63394,2022-06,flat,BUY or AVOID,up,flat,up,held,direct,down,58.0,57.0,57.5,5,0.5
+first 400 (read_eps),101694,2023-05,flat,BUY or AVOID,up,flat,down,held,direct,up,56.0,54.0,55.0,31,0.7581
+first 400 (read_eps),88302,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,63.0,61.0,62.0,45,0.9667
+first 400 (read_eps),86226,2022-05,flat,BUY or AVOID,down,down,down,none,direct,down,36.0,33.0,34.5,43,0.0349
+first 400 (read_eps),78271,2023-10,long,HOLD or SELL,down,flat,down,none,evasive,down,36.0,30.0,33.0,12,0.0417
+first 400 (read_eps),69307,2024-04,long,HOLD or SELL,up,up,flat,held,direct,up,57.0,46.0,51.5,11,0.5
+first 400 (read_eps),41790,2022-05,flat,BUY or AVOID,up,flat,down,none,evasive,up,47.0,41.0,44.0,43,0.3721
+first 400 (read_eps),42895,2021-05,long,HOLD or SELL,up,up,up,none,direct,up,63.0,63.0,63.0,48,0.875
+first 400 (read_eps),14140,2022-11,flat,BUY or AVOID,flat,up,up,held,direct,down,61.0,58.0,59.5,38,0.8421
+first 400 (read_eps),103977,2021-04,long,HOLD or SELL,up,flat,up,none,direct,down,56.0,52.0,54.0,11,0.2273
+first 400 (read_eps),93261,2022-11,long,HOLD or SELL,up,up,flat,none,direct,down,44.0,41.0,42.5,38,0.3684
+first 400 (read_eps),13933,2024-05,long,HOLD or SELL,up,flat,up,raised,direct,down,56.0,56.0,56.0,40,0.6125
+first 400 (read_eps),14409,2021-04,long,HOLD or SELL,up,up,flat,none,direct,up,61.0,57.0,59.0,11,0.5
+first 400 (read_eps),35887,2022-04,long,HOLD or SELL,flat,up,flat,none,direct,up,56.0,46.0,51.0,14,0.6071
+first 400 (read_eps),27036,2023-05,flat,BUY or AVOID,up,up,up,held,evasive,up,54.0,47.0,50.5,31,0.6935
+first 400 (read_eps),67197,2022-10,long,HOLD or SELL,flat,up,flat,held,direct,down,58.0,56.0,57.0,22,0.7273
+first 400 (read_eps),56542,2021-10,flat,BUY or AVOID,up,down,flat,none,direct,down,56.0,56.0,56.0,14,0.5357
+first 400 (read_eps),35160,2022-05,flat,BUY or AVOID,down,up,flat,none,direct,down,56.0,53.0,54.5,43,0.6163
+first 400 (read_eps),45763,2022-04,long,HOLD or SELL,up,up,up,none,evasive,down,46.0,44.0,45.0,14,0.3929
+first 400 (read_eps),44071,2021-11,long,HOLD or SELL,flat,flat,flat,held,evasive,up,47.0,44.0,45.5,45,0.5889
+first 400 (read_eps),20535,2022-11,long,HOLD or SELL,down,flat,down,none,direct,up,44.0,44.0,44.0,38,0.4737
+first 400 (read_eps),56735,2024-05,long,HOLD or SELL,up,flat,down,none,evasive,down,57.0,44.0,50.5,40,0.45
+first 400 (read_eps),33746,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,62.0,58.0,60.0,48,0.6667
+first 400 (read_eps),42109,2022-04,long,HOLD or SELL,up,down,down,held,direct,down,47.0,44.0,45.5,14,0.5
+first 400 (read_eps),57231,2024-05,long,HOLD or SELL,up,flat,up,cut,direct,down,57.0,56.0,56.5,40,0.6625
+first 400 (read_eps),8939,2022-05,long,HOLD or SELL,up,up,down,held,direct,up,48.0,47.0,47.5,43,0.4535
+first 400 (read_eps),29659,2022-04,long,HOLD or SELL,up,up,up,none,direct,up,62.0,58.0,60.0,14,0.8214
+first 400 (read_eps),44850,2022-10,flat,BUY or AVOID,up,flat,up,held,direct,down,62.0,62.0,62.0,22,0.9091
+first 400 (read_eps),58068,2021-11,flat,BUY or AVOID,up,up,down,none,direct,down,34.0,34.0,34.0,45,0.1444
+first 400 (read_eps),7888,2022-10,flat,BUY or AVOID,flat,flat,down,held,direct,down,41.0,38.0,39.5,22,0.2045
+first 400 (read_eps),86362,2021-05,flat,BUY or AVOID,up,flat,down,held,direct,up,56.0,44.0,50.0,48,0.3542
+first 400 (read_eps),9679,2023-05,long,HOLD or SELL,down,flat,flat,held,direct,down,42.0,38.0,40.0,31,0.3387
+first 400 (read_eps),42642,2023-04,flat,BUY or AVOID,flat,down,down,none,direct,up,44.0,44.0,44.0,9,0.4545
+first 400 (read_eps),98560,2023-05,flat,BUY or AVOID,flat,flat,down,held,direct,down,42.0,38.0,40.0,31,0.3387
+first 400 (read_eps),6257,2021-05,long,HOLD or SELL,up,up,up,raised,direct,up,64.0,63.0,63.5,48,0.9167
+first 400 (read_eps),82353,2021-05,long,HOLD or SELL,up,flat,up,none,direct,up,56.0,44.0,50.0,48,0.3542
+first 400 (read_eps),442,2021-10,flat,BUY or AVOID,up,up,up,none,direct,up,56.0,56.0,56.0,14,0.5357
+first 400 (read_eps),45432,2021-10,flat,BUY or AVOID,up,down,down,none,direct,down,36.0,34.0,35.0,14,0.1071
+first 400 (read_eps),19192,2022-05,flat,BUY or AVOID,up,flat,up,raised,direct,up,62.0,61.0,61.5,43,0.8256
+first 400 (read_eps),9636,2021-05,flat,BUY or AVOID,up,flat,up,held,direct,up,42.0,38.0,40.0,48,0.1562
+first 400 (read_eps),36362,2021-05,flat,BUY or AVOID,up,down,down,held,direct,up,57.0,57.0,57.0,48,0.5729
+first 400 (read_eps),67234,2023-11,flat,BUY or AVOID,down,flat,down,cut,evasive,down,34.0,32.0,33.0,41,0.0122
+first 400 (read_eps),103079,2023-05,long,HOLD or SELL,down,flat,up,held,direct,down,42.0,34.0,38.0,31,0.2581
+first 400 (read_eps),26559,2022-05,long,HOLD or SELL,flat,up,flat,held,direct,up,56.0,46.0,51.0,43,0.5
+first 400 (read_eps),39281,2022-11,long,HOLD or SELL,flat,flat,down,none,evasive,up,29.0,31.0,30.0,38,0.0132
+first 400 (read_eps),54995,2022-04,long,HOLD or SELL,up,up,up,held,direct,down,44.0,36.0,40.0,14,0.25
+first 400 (read_eps),38668,2022-05,flat,BUY or AVOID,down,up,up,held,direct,down,54.0,52.0,53.0,43,0.5814
+first 400 (read_eps),94577,2023-05,long,HOLD or SELL,down,flat,flat,none,direct,down,41.0,41.0,41.0,31,0.4355
+first 400 (read_eps),5057,2023-05,long,HOLD or SELL,up,flat,up,held,direct,down,46.0,41.0,43.5,31,0.5
+first 400 (read_eps),79053,2021-05,long,HOLD or SELL,up,up,up,held,direct,up,44.0,41.0,42.5,48,0.2188
+first 400 (read_eps),95149,2021-11,long,HOLD or SELL,down,up,down,cut,direct,down,34.0,31.0,32.5,45,0.1222
+first 400 (read_eps),5520,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,64.0,61.0,62.5,48,0.8125
+first 400 (read_eps),49704,2021-11,flat,BUY or AVOID,up,down,down,none,evasive,down,38.0,38.0,38.0,45,0.3
+first 400 (read_eps),58385,2022-04,long,HOLD or SELL,up,up,flat,held,direct,,41.0,46.0,43.5,14,0.3214
+first 400 (read_eps),51498,2022-05,flat,BUY or AVOID,up,down,flat,none,evasive,down,38.0,38.0,38.0,43,0.2442
+first 400 (read_eps),521,2021-12,long,HOLD or SELL,up,up,down,none,direct,up,42.0,38.0,40.0,1,0.5
+first 400 (read_eps),8007,2024-05,long,HOLD or SELL,flat,up,up,none,direct,up,42.0,38.0,40.0,40,0.2
+first 400 (read_eps),84627,2022-10,long,HOLD or SELL,up,flat,up,cut,direct,down,58.0,55.0,56.5,22,0.6364
+first 400 (read_eps),92001,2024-05,long,HOLD or SELL,flat,flat,down,held,direct,up,38.0,36.0,37.0,40,0.1
+first 400 (read_eps),66112,2024-05,flat,BUY or AVOID,down,down,down,cut,direct,down,31.0,27.0,29.0,40,0.0375
+first 400 (read_eps),51347,2022-11,long,HOLD or SELL,down,up,flat,cut,direct,down,36.0,33.0,34.5,38,0.0789
+first 400 (read_eps),70096,2021-05,flat,BUY or AVOID,up,flat,down,held,evasive,up,27.0,27.0,27.0,48,0.0104
+first 400 (read_eps),91639,2022-11,long,HOLD or SELL,up,flat,up,held,direct,down,56.0,52.0,54.0,38,0.6184
+first 400 (read_eps),10079,2022-05,long,HOLD or SELL,flat,flat,down,held,evasive,down,47.0,41.0,44.0,43,0.3721
+first 400 (read_eps),8516,2021-11,flat,BUY or AVOID,up,flat,down,none,direct,up,38.0,34.0,36.0,45,0.2222
+first 400 (read_eps),58008,2023-11,flat,BUY or AVOID,down,up,flat,none,direct,down,40.0,38.0,39.0,41,0.1585
+first 400 (read_eps),75674,2023-05,flat,BUY or AVOID,flat,flat,down,none,direct,down,42.0,38.0,40.0,31,0.3387
+first 400 (read_eps),57223,2022-05,long,HOLD or SELL,up,flat,up,none,evasive,up,62.0,56.0,59.0,43,0.7558
+first 400 (read_eps),71455,2021-10,long,HOLD or SELL,up,up,up,none,direct,up,62.0,58.0,60.0,14,0.8214
+first 400 (read_eps),39452,2024-05,flat,BUY or AVOID,flat,up,up,held,direct,up,61.0,63.0,62.0,40,0.95
+first 400 (read_eps),19859,2023-11,long,HOLD or SELL,flat,down,flat,cut,evasive,down,41.0,36.0,38.5,41,0.1341
+first 400 (read_eps),14071,2023-04,long,HOLD or SELL,down,down,down,held,direct,down,36.0,34.0,35.0,9,0.0909
+first 400 (read_eps),38490,2022-05,flat,BUY or AVOID,up,up,up,none,direct,up,63.0,63.0,63.0,43,0.9186
+first 400 (read_eps),9301,2021-05,long,HOLD or SELL,up,flat,up,held,evasive,down,38.0,36.0,37.0,48,0.1354
+first 400 (read_eps),1917,2023-11,long,HOLD or SELL,up,flat,flat,held,direct,,57.0,56.0,56.5,41,0.7561
+first 400 (read_eps),9378,2021-05,flat,BUY or AVOID,flat,flat,flat,none,direct,down,52.0,47.0,49.5,48,0.3021
+first 400 (read_eps),85180,2021-05,flat,BUY or AVOID,up,flat,down,raised,direct,down,36.0,33.0,34.5,48,0.0729
+first 400 (read_eps),103719,2023-11,long,HOLD or SELL,up,down,flat,cut,direct,down,47.0,44.0,45.5,41,0.2439
+first 400 (read_eps),28146,2021-05,flat,BUY or AVOID,up,flat,up,held,direct,down,57.0,54.0,55.5,48,0.4896
+first 400 (read_eps),7162,2023-05,flat,BUY or AVOID,up,flat,down,none,evasive,down,38.0,38.0,38.0,31,0.2581
+first 400 (read_eps),73703,2023-11,long,HOLD or SELL,flat,up,up,none,direct,up,56.0,56.0,56.0,41,0.7195
+first 400 (read_eps),1748,2021-05,flat,BUY or AVOID,up,up,flat,none,direct,up,57.0,56.0,56.5,48,0.5521
+first 400 (read_eps),22030,2021-04,flat,BUY or AVOID,up,flat,up,held,direct,up,62.0,61.0,61.5,11,0.7727
+first 400 (read_eps),25715,2021-06,long,HOLD or SELL,flat,up,down,none,direct,up,34.0,34.0,34.0,5,0.1
+first 400 (read_eps),9313,2024-05,long,HOLD or SELL,up,up,flat,held,direct,up,56.0,56.0,56.0,40,0.6125
+first 400 (read_eps),80830,2023-04,flat,BUY or AVOID,up,up,flat,none,direct,down,57.0,56.0,56.5,9,0.7273
+first 400 (read_eps),52670,2021-10,flat,BUY or AVOID,down,up,down,none,direct,down,34.0,32.0,33.0,14,0.0357
+first 400 (read_eps),47467,2023-10,long,HOLD or SELL,down,flat,down,cut,direct,down,37.0,33.0,35.0,12,0.25
+first 400 (read_eps),71730,2021-05,flat,BUY or AVOID,up,flat,flat,held,direct,up,34.0,28.0,31.0,48,0.0521
+first 400 (read_eps),58663,2021-11,long,HOLD or SELL,flat,up,down,held,evasive,down,44.0,38.0,41.0,45,0.4444
+first 400 (read_eps),27560,2022-05,flat,BUY or AVOID,down,up,down,cut,evasive,up,36.0,34.0,35.0,43,0.093
+first 400 (read_eps),15029,2022-11,long,HOLD or SELL,up,up,up,none,direct,up,57.0,52.0,54.5,38,0.6447
+first 400 (read_eps),52579,2024-05,long,HOLD or SELL,up,flat,up,held,evasive,down,38.0,36.0,37.0,40,0.1
+first 400 (read_eps),48146,2021-11,flat,BUY or AVOID,down,up,down,none,direct,down,41.0,42.0,41.5,45,0.4889
+first 400 (read_eps),43464,2024-05,flat,BUY or AVOID,flat,flat,flat,held,direct,down,44.0,42.0,43.0,40,0.2875
+first 400 (read_eps),38423,2023-04,long,HOLD or SELL,flat,down,down,cut,direct,up,44.0,38.0,41.0,9,0.2273
+first 400 (read_eps),57673,2021-11,long,HOLD or SELL,down,up,up,none,direct,down,38.0,38.0,38.0,45,0.3
+first 400 (read_eps),19751,2023-10,long,HOLD or SELL,up,up,up,raised,direct,up,63.0,63.0,63.0,12,0.9583
+first 400 (read_eps),57516,2023-11,flat,BUY or AVOID,up,up,up,none,direct,down,54.0,44.0,49.0,41,0.3902
+first 400 (read_eps),56972,2022-11,flat,BUY or AVOID,down,down,flat,none,evasive,down,36.0,33.0,34.5,38,0.0789
+first 400 (read_eps),40153,2022-04,long,HOLD or SELL,up,up,up,held,evasive,down,58.0,56.0,57.0,14,0.75
+first 400 (read_eps),54911,2024-05,long,HOLD or SELL,flat,flat,flat,held,direct,up,47.0,45.0,46.0,40,0.4125
+first 400 (read_eps),47628,2023-05,flat,BUY or AVOID,flat,flat,flat,none,direct,up,62.0,57.0,59.5,31,0.9516
+first 400 (read_eps),338,2024-04,flat,BUY or AVOID,up,flat,flat,held,direct,up,57.0,54.0,55.5,11,0.7273
+first 400 (read_eps),48912,2022-11,flat,BUY or AVOID,up,flat,up,held,direct,up,62.0,58.0,60.0,38,0.8816
+first 400 (read_eps),53822,2023-10,flat,BUY or AVOID,flat,down,down,held,direct,down,40.0,42.0,41.0,12,0.375
+first 400 (read_eps),26162,2023-11,flat,BUY or AVOID,up,up,up,held,direct,down,58.0,57.0,57.5,41,0.7927
+first 400 (read_eps),38934,2024-04,flat,BUY or AVOID,flat,flat,down,held,direct,down,38.0,38.0,38.0,11,0.1364
+first 400 (read_eps),48370,2023-05,flat,BUY or AVOID,flat,up,flat,held,direct,down,38.0,36.0,37.0,31,0.2097
+first 400 (read_eps),6456,2024-05,flat,BUY or AVOID,up,up,up,held,direct,up,62.0,61.0,61.5,40,0.9125
+first 400 (read_eps),85124,2022-05,flat,BUY or AVOID,up,up,up,held,direct,up,46.0,44.0,45.0,43,0.407
+first 400 (read_eps),82126,2023-11,flat,BUY or AVOID,down,flat,flat,held,direct,up,54.0,54.0,54.0,41,0.622
+first 400 (read_eps),57246,2023-10,flat,BUY or AVOID,up,flat,flat,raised,direct,up,58.0,56.0,57.0,12,0.7083
+first 400 (read_eps),64336,2024-05,flat,BUY or AVOID,flat,up,up,held,evasive,down,46.0,41.0,43.5,40,0.3125
+first 400 (read_eps),85071,2021-05,long,HOLD or SELL,up,up,flat,none,direct,up,58.0,58.0,58.0,48,0.6042
+first 400 (read_eps),49273,2022-11,long,HOLD or SELL,up,up,flat,none,direct,up,61.0,58.0,59.5,38,0.8421
+first 400 (read_eps),69357,2023-11,long,HOLD or SELL,up,flat,up,held,evasive,down,57.0,56.0,56.5,41,0.7561
+first 400 (read_eps),94244,2023-11,flat,BUY or AVOID,up,flat,up,none,direct,up,61.0,61.0,61.0,41,0.9268
+first 400 (read_eps),40589,2021-11,long,HOLD or SELL,up,up,down,raised,evasive,down,33.0,31.0,32.0,45,0.0778
+first 400 (read_eps),44956,2022-05,flat,BUY or AVOID,up,up,flat,held,evasive,up,47.0,47.0,47.0,43,0.4302
+first 400 (read_eps),64104,2023-11,flat,BUY or AVOID,up,up,flat,held,direct,down,53.0,48.0,50.5,41,0.4878
+first 400 (read_eps),48777,2021-11,long,HOLD or SELL,flat,flat,down,none,evasive,down,42.0,38.0,40.0,45,0.3667
+first 400 (read_eps),22057,2021-05,long,HOLD or SELL,flat,flat,flat,none,evasive,down,36.0,34.0,35.0,48,0.1042
+first 400 (read_eps),21998,2022-06,flat,BUY or AVOID,up,up,down,raised,direct,up,63.0,63.0,63.0,5,0.9
+first 400 (read_eps),32968,2021-11,flat,BUY or AVOID,up,flat,flat,none,direct,up,58.0,56.0,57.0,45,0.7333
+first 400 (read_eps),32740,2022-05,flat,BUY or AVOID,flat,up,down,held,direct,down,46.0,41.0,43.5,43,0.3372
+first 400 (read_eps),46968,2022-05,flat,BUY or AVOID,flat,flat,flat,held,direct,up,36.0,34.0,35.0,43,0.093
+first 400 (read_eps),25431,2021-11,long,HOLD or SELL,up,flat,up,held,evasive,up,44.0,38.0,41.0,45,0.4444
+first 400 (read_eps),23391,2023-10,long,HOLD or SELL,flat,up,flat,held,direct,down,61.0,56.0,58.5,12,0.7917
+first 400 (read_eps),72079,2021-11,long,HOLD or SELL,up,up,down,none,direct,up,57.0,56.0,56.5,45,0.7
+first 400 (read_eps),18250,2023-05,flat,BUY or AVOID,up,flat,up,held,direct,down,56.0,57.0,56.5,31,0.8548
+first 400 (read_eps),21684,2022-11,flat,BUY or AVOID,flat,up,flat,none,direct,down,44.0,42.0,43.0,38,0.4342
+first 400 (read_eps),72226,2021-04,flat,BUY or AVOID,up,up,up,raised,direct,down,63.0,61.0,62.0,11,0.8636
+first 400 (read_eps),26718,2022-04,flat,BUY or AVOID,up,up,down,raised,evasive,down,38.0,36.0,37.0,14,0.1071
+first 400 (read_eps),103640,2024-05,flat,BUY or AVOID,up,up,up,raised,direct,up,62.0,63.0,62.5,40,0.9875
+first 400 (read_eps),66471,2021-05,long,HOLD or SELL,up,flat,flat,raised,direct,up,63.0,57.0,60.0,48,0.6667
+first 400 (read_eps),103490,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,41.0,40.0,40.5,48,0.1771
+first 400 (read_eps),44544,2022-10,flat,BUY or AVOID,flat,up,up,held,direct,up,44.0,41.0,42.5,22,0.3409
+first 400 (read_eps),102045,2021-11,long,HOLD or SELL,down,flat,down,cut,evasive,up,30.0,29.0,29.5,45,0.0333
+first 400 (read_eps),102226,2021-06,flat,BUY or AVOID,up,flat,up,held,direct,up,54.0,44.0,49.0,5,0.5
+first 400 (read_eps),10518,2021-10,flat,BUY or AVOID,up,up,flat,none,direct,up,58.0,57.0,57.5,14,0.6786
+first 400 (read_eps),53995,2023-05,long,HOLD or SELL,flat,flat,down,none,evasive,up,36.0,34.0,35.0,31,0.129
+first 400 (read_eps),71426,2022-11,flat,BUY or AVOID,up,down,down,raised,direct,up,57.0,56.0,56.5,38,0.7368
+first 400 (read_eps),62571,2021-11,long,HOLD or SELL,up,up,flat,none,direct,up,42.0,41.0,41.5,45,0.4889
+first 400 (read_eps),60110,2024-05,flat,BUY or AVOID,up,up,up,none,direct,down,57.0,57.0,57.0,40,0.6875
+first 400 (read_eps),47345,2021-10,long,HOLD or SELL,flat,up,down,held,evasive,up,58.0,52.0,55.0,14,0.3929
+first 400 (read_eps),42640,2022-10,flat,BUY or AVOID,flat,down,down,none,direct,up,56.0,56.0,56.0,22,0.5455
+first 400 (read_eps),58743,2024-05,long,HOLD or SELL,up,down,flat,held,direct,up,61.0,58.0,59.5,40,0.8375
+first 400 (read_eps),56512,2021-11,flat,BUY or AVOID,up,up,up,none,direct,down,58.0,47.0,52.5,45,0.6333
+first 400 (read_eps),84150,2022-05,flat,BUY or AVOID,up,up,flat,held,direct,up,66.0,61.0,63.5,43,0.9419
+first 400 (read_eps),99677,2021-10,long,HOLD or SELL,up,flat,flat,held,direct,up,60.0,57.0,58.5,14,0.75
+first 400 (read_eps),39381,2021-05,long,HOLD or SELL,up,up,up,held,direct,up,62.0,61.0,61.5,48,0.7292
+first 400 (read_eps),67538,2024-05,flat,BUY or AVOID,up,down,down,none,direct,down,46.0,42.0,44.0,40,0.3375
+first 400 (read_eps),69355,2023-05,long,HOLD or SELL,up,flat,down,held,evasive,down,44.0,38.0,41.0,31,0.4355
+first 400 (read_eps),54876,2022-05,flat,BUY or AVOID,flat,up,flat,held,direct,down,54.0,52.0,53.0,43,0.5814
+first 400 (read_eps),58739,2023-05,long,HOLD or SELL,up,flat,up,held,direct,up,62.0,58.0,60.0,31,0.9839
+first 400 (read_eps),68530,2022-11,flat,BUY or AVOID,flat,flat,up,raised,direct,up,56.0,47.0,51.5,38,0.5921
+first 400 (read_eps),20380,2021-05,flat,BUY or AVOID,flat,up,up,held,direct,up,60.0,57.0,58.5,48,0.6354
+first 400 (read_eps),39121,2021-05,long,HOLD or SELL,up,flat,up,none,evasive,down,38.0,32.0,35.0,48,0.1042
+first 400 (read_eps),70297,2023-11,long,HOLD or SELL,flat,flat,flat,none,direct,,47.0,46.0,46.5,41,0.2805
+first 400 (read_eps),79118,2022-05,flat,BUY or AVOID,up,flat,flat,held,direct,up,62.0,58.0,60.0,43,0.8023
+first 400 (read_eps),35194,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,62.0,60.0,61.0,45,0.9333
+first 400 (read_eps),34476,2022-11,flat,BUY or AVOID,flat,down,down,held,direct,up,38.0,36.0,37.0,38,0.1711
+first 400 (read_eps),8578,2021-11,flat,BUY or AVOID,up,flat,down,cut,evasive,down,38.0,38.0,38.0,45,0.3
+first 400 (read_eps),80231,2024-05,long,HOLD or SELL,flat,flat,down,held,direct,up,47.0,44.0,45.5,40,0.3875
+first 400 (read_eps),88306,2022-11,flat,BUY or AVOID,up,up,up,none,direct,up,66.0,66.0,66.0,38,0.9868
+first 400 (read_eps),85865,2021-06,long,HOLD or SELL,up,up,up,none,direct,down,62.0,62.0,62.0,5,0.9
+first 400 (read_eps),15826,2022-11,flat,BUY or AVOID,up,flat,flat,held,direct,up,57.0,56.0,56.5,38,0.7368
+first 400 (read_eps),94101,2023-05,long,HOLD or SELL,flat,flat,up,held,evasive,down,44.0,38.0,41.0,31,0.4355
+first 400 (read_eps),70834,2023-04,flat,BUY or AVOID,up,flat,flat,held,direct,up,55.0,54.0,54.5,9,0.5909
+first 400 (read_eps),47463,2022-10,long,HOLD or SELL,up,up,flat,raised,direct,up,61.0,58.0,59.5,22,0.7955
+first 400 (read_eps),56384,2024-05,flat,BUY or AVOID,up,down,down,held,direct,up,56.0,47.0,51.5,40,0.5375
+first 400 (read_eps),68024,2023-10,flat,BUY or AVOID,up,flat,down,held,direct,up,44.0,44.0,44.0,12,0.5
+first 400 (read_eps),72014,2024-04,flat,BUY or AVOID,up,flat,flat,held,direct,down,56.0,56.0,56.0,11,0.8636
+first 400 (read_eps),78302,2023-11,flat,BUY or AVOID,flat,down,down,none,direct,down,38.0,36.0,37.0,41,0.0854
+first 400 (read_eps),79301,2024-05,long,HOLD or SELL,flat,flat,up,held,direct,down,42.0,38.0,40.0,40,0.2
+first 400 (read_eps),10994,2024-04,flat,BUY or AVOID,flat,up,down,held,direct,up,46.0,44.0,45.0,11,0.3182
+first 400 (read_eps),2046,2022-11,flat,BUY or AVOID,flat,flat,flat,none,direct,up,58.0,56.0,57.0,38,0.7763
+first 400 (read_eps),58268,2022-04,flat,BUY or AVOID,up,up,up,held,direct,down,56.0,53.0,54.5,14,0.6786
+first 400 (read_eps),84539,2023-11,long,HOLD or SELL,up,flat,flat,held,direct,down,62.0,61.0,61.5,41,0.9756
+first 400 (read_eps),94452,2024-04,flat,BUY or AVOID,flat,up,up,held,direct,down,56.0,54.0,55.0,11,0.5909
+first 400 (read_eps),84379,2023-11,long,HOLD or SELL,up,flat,up,held,direct,down,54.0,44.0,49.0,41,0.3902
+first 400 (read_eps),4443,2023-11,long,HOLD or SELL,flat,flat,flat,held,evasive,up,56.0,44.0,50.0,41,0.4512
+first 400 (read_eps),88402,2023-04,flat,BUY or AVOID,up,flat,up,held,direct,down,57.0,58.0,57.5,9,0.8636
+first 400 (read_eps),60788,2021-10,flat,BUY or AVOID,up,up,up,none,evasive,up,64.0,61.0,62.5,14,0.8929
+first 400 (read_eps),58778,2021-11,flat,BUY or AVOID,up,up,up,none,direct,down,56.0,47.0,51.5,45,0.6111
+first 400 (read_eps),91626,2021-11,flat,BUY or AVOID,up,up,down,none,direct,up,58.0,56.0,57.0,45,0.7333
+first 400 (read_eps),7345,2024-05,long,HOLD or SELL,down,up,up,held,evasive,up,41.0,36.0,38.5,40,0.1625
+first 400 (read_eps),77974,2024-05,flat,BUY or AVOID,flat,flat,flat,none,direct,up,54.0,47.0,50.5,40,0.45
+first 400 (read_eps),91712,2022-12,flat,BUY or AVOID,up,up,up,raised,direct,down,62.0,56.0,59.0,3,0.5
+first 400 (read_eps),50267,2024-05,long,HOLD or SELL,up,flat,flat,held,direct,up,61.0,54.0,57.5,40,0.725
+first 400 (read_eps),58010,2024-05,flat,BUY or AVOID,flat,flat,down,none,direct,down,39.0,36.0,37.5,40,0.1375
+first 400 (read_eps),10466,2024-05,flat,BUY or AVOID,flat,down,up,cut,direct,down,38.0,34.0,36.0,40,0.0625
+first 400 (read_eps),57131,2023-04,long,HOLD or SELL,up,up,up,raised,direct,up,62.0,62.0,62.0,9,0.9545
+first 400 (read_eps),4221,2021-05,long,HOLD or SELL,flat,up,flat,held,direct,up,54.0,44.0,49.0,48,0.2812
+first 400 (read_eps),48796,2021-05,flat,BUY or AVOID,up,flat,down,held,direct,up,63.0,62.0,62.5,48,0.8125
+first 400 (read_eps),82608,2023-05,flat,BUY or AVOID,flat,flat,down,held,evasive,down,36.0,33.0,34.5,31,0.0484
+first 400 (read_eps),9675,2022-04,long,HOLD or SELL,flat,up,flat,cut,direct,up,38.0,38.0,38.0,14,0.1786
+first 400 (read_eps),57762,2021-04,flat,BUY or AVOID,up,up,up,none,direct,up,64.0,63.0,63.5,11,0.9545
+first 400 (read_eps),67908,2022-05,flat,BUY or AVOID,up,up,flat,none,evasive,up,56.0,54.0,55.0,43,0.6395
+first 400 (read_eps),19465,2021-05,long,HOLD or SELL,flat,flat,flat,held,direct,down,54.0,53.0,53.5,48,0.4271
+first 400 (read_eps),83886,2021-11,flat,BUY or AVOID,up,up,down,raised,direct,down,57.0,61.0,59.0,45,0.8444
+first 400 (read_eps),81878,2023-11,flat,BUY or AVOID,up,up,flat,none,direct,down,53.0,48.0,50.5,41,0.4878
+first 400 (read_eps),55089,2023-05,long,HOLD or SELL,down,flat,flat,held,direct,down,47.0,47.0,47.0,31,0.629
+first 400 (read_eps),57473,2021-11,long,HOLD or SELL,flat,flat,down,held,direct,down,38.0,36.0,37.0,45,0.2556
+first 400 (read_eps),31070,2021-04,flat,BUY or AVOID,flat,down,flat,held,direct,up,56.0,53.0,54.5,11,0.3182
+first 400 (read_eps),797,2023-11,long,HOLD or SELL,flat,flat,flat,none,direct,up,51.0,46.0,48.5,41,0.3293
+first 400 (read_eps),27090,2022-05,flat,BUY or AVOID,flat,flat,up,held,evasive,up,44.0,40.0,42.0,43,0.314
+first 400 (read_eps),60958,2023-11,flat,BUY or AVOID,down,flat,up,cut,evasive,down,36.0,34.0,35.0,41,0.0366
+first 400 (read_eps),65787,2021-05,long,HOLD or SELL,up,up,up,raised,direct,up,66.0,66.0,66.0,48,0.9896
+first 400 (read_eps),47834,2023-11,flat,BUY or AVOID,up,flat,up,none,direct,down,54.0,44.0,49.0,41,0.3902
+first 400 (read_eps),67013,2022-10,long,HOLD or SELL,flat,up,down,cut,direct,up,42.0,42.0,42.0,22,0.2955
+first 400 (read_eps),17148,2023-11,flat,BUY or AVOID,flat,down,down,none,evasive,up,56.0,38.0,47.0,41,0.3049
+first 400 (read_eps),53715,2022-05,long,HOLD or SELL,flat,flat,down,held,direct,down,33.0,31.0,32.0,43,0.0116
+first 400 (read_eps),32504,2022-05,flat,BUY or AVOID,up,up,flat,held,direct,up,57.0,56.0,56.5,43,0.686
+first 400 (read_eps),51400,2021-04,flat,BUY or AVOID,up,up,up,none,evasive,up,62.0,58.0,60.0,11,0.6818
+first 400 (read_eps),46676,2022-04,flat,BUY or AVOID,down,down,down,cut,direct,down,36.0,34.0,35.0,14,0.0357
+first 400 (read_eps),87897,2021-10,long,HOLD or SELL,up,down,down,held,direct,down,52.0,47.0,49.5,14,0.1786
+first 400 (read_eps),53326,2024-05,flat,BUY or AVOID,flat,flat,flat,held,evasive,up,44.0,38.0,41.0,40,0.25
+first 400 (read_eps),43828,2023-06,flat,BUY or AVOID,flat,flat,up,cut,direct,up,44.0,40.0,42.0,2,0.3182
+first 400 (read_eps),93177,2022-04,long,HOLD or SELL,up,up,up,raised,direct,down,63.0,61.0,62.0,14,0.9286
+first 400 (read_eps),5045,2023-11,long,HOLD or SELL,flat,flat,down,none,evasive,down,58.0,53.0,55.5,41,0.6951
+first 400 (read_eps),5412,2023-11,flat,BUY or AVOID,up,up,up,none,direct,down,38.0,34.0,36.0,41,0.061
+first 400 (read_eps),35509,2023-05,long,HOLD or SELL,up,up,flat,none,direct,down,56.0,52.0,54.0,31,0.7258
+first 400 (read_eps),79625,2022-05,long,HOLD or SELL,up,up,down,held,direct,down,38.0,34.0,36.0,43,0.1628
+first 400 (read_eps),97865,2022-10,long,HOLD or SELL,flat,flat,down,none,direct,down,44.0,44.0,44.0,22,0.3864
+first 400 (read_eps),41786,2021-05,flat,BUY or AVOID,up,down,down,held,evasive,down,56.0,48.0,52.0,48,0.4062
+first 400 (read_eps),9713,2023-11,long,HOLD or SELL,up,flat,up,held,direct,down,61.0,61.0,61.0,41,0.9268
+first 400 (read_eps),43830,2023-12,flat,BUY or AVOID,up,flat,up,none,direct,up,62.0,58.0,60.0,2,0.75
+first 400 (read_eps),25527,2023-10,long,HOLD or SELL,flat,flat,flat,none,direct,down,46.0,44.0,45.0,12,0.625
+first 400 (read_eps),33505,2022-10,long,HOLD or SELL,down,up,down,held,direct,up,42.0,41.0,41.5,22,0.25
+first 400 (read_eps),87240,2021-11,flat,BUY or AVOID,down,flat,down,cut,evasive,down,34.0,30.0,32.0,45,0.0778
+first 400 (read_eps),99462,2022-10,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,61.0,62.0,22,0.9091
+first 400 (read_eps),86912,2023-11,flat,BUY or AVOID,up,flat,up,none,direct,down,62.0,61.0,61.5,41,0.9756
+first 400 (read_eps),12130,2022-05,flat,BUY or AVOID,up,up,up,raised,direct,up,68.0,66.0,67.0,43,0.9884
+first 400 (read_eps),49482,2024-05,flat,BUY or AVOID,up,flat,flat,held,direct,down,57.0,58.0,57.5,40,0.725
+first 400 (read_eps),97088,2024-04,flat,BUY or AVOID,up,flat,up,held,direct,up,56.0,57.0,56.5,11,0.9545
+first 400 (read_eps),50343,2022-05,long,HOLD or SELL,up,up,up,raised,direct,down,61.0,63.0,62.0,43,0.8605
+first 400 (read_eps),24200,2024-05,flat,BUY or AVOID,flat,flat,flat,none,direct,up,44.0,38.0,41.0,40,0.25
+first 400 (read_eps),77063,2024-04,long,HOLD or SELL,up,flat,up,held,direct,up,57.0,54.0,55.5,11,0.7273
+first 400 (read_eps),66106,2022-10,flat,BUY or AVOID,down,flat,down,none,direct,down,34.0,30.0,32.0,22,0.0682
+first 400 (read_eps),48312,2022-10,flat,BUY or AVOID,up,up,flat,held,direct,,58.0,56.0,57.0,22,0.7273
+first 400 (read_eps),1919,2024-05,long,HOLD or SELL,up,flat,flat,held,direct,,60.0,58.0,59.0,40,0.775
+first 400 (read_eps),46168,2023-11,flat,BUY or AVOID,up,up,flat,none,direct,down,54.0,53.0,53.5,41,0.5976
+first 400 (read_eps),6599,2022-06,long,HOLD or SELL,up,up,up,held,direct,up,63.0,62.0,62.5,5,0.7
+first 400 (read_eps),97114,2021-11,flat,BUY or AVOID,up,flat,flat,cut,direct,down,44.0,42.0,43.0,45,0.5333
+first 400 (read_eps),39285,2023-11,long,HOLD or SELL,flat,flat,flat,held,direct,up,54.0,44.0,49.0,41,0.3902
+first 400 (read_eps),20769,2021-11,long,HOLD or SELL,up,up,down,none,evasive,down,58.0,48.0,53.0,45,0.6556
+first 400 (read_eps),40977,2021-10,long,HOLD or SELL,up,up,down,none,direct,up,53.0,52.0,52.5,14,0.25
+first 400 (read_eps),89051,2021-11,long,HOLD or SELL,up,up,flat,none,direct,down,58.0,57.0,57.5,45,0.7778
+first 400 (read_eps),64184,2021-11,flat,BUY or AVOID,up,up,up,raised,direct,,61.0,60.0,60.5,45,0.9
+first 400 (read_eps),102356,2022-11,flat,BUY or AVOID,flat,flat,down,none,evasive,down,41.0,38.0,39.5,38,0.25
+first 400 (read_eps),59197,2021-05,long,HOLD or SELL,up,flat,down,none,direct,down,56.0,53.0,54.5,48,0.4583
+first 400 (read_eps),22623,2021-04,long,HOLD or SELL,up,flat,flat,held,direct,up,61.0,58.0,59.5,11,0.5909
+first 400 (read_eps),70532,2023-06,flat,BUY or AVOID,down,flat,down,cut,direct,down,36.0,34.0,35.0,2,0.0909
+first 400 (read_eps),91248,2023-11,flat,BUY or AVOID,up,flat,down,cut,direct,down,40.0,36.0,38.0,41,0.1098
+first 400 (read_eps),67805,2022-05,long,HOLD or SELL,up,flat,flat,held,direct,up,38.0,34.0,36.0,43,0.1628
+first 400 (read_eps),90879,2022-10,long,HOLD or SELL,up,up,up,raised,direct,down,66.0,62.0,64.0,22,0.9773
+first 400 (read_eps),44631,2022-05,long,HOLD or SELL,up,up,down,raised,direct,up,58.0,58.0,58.0,43,0.7326
+first 400 (read_eps),103914,2024-04,flat,BUY or AVOID,flat,down,down,none,evasive,down,30.0,27.0,28.5,11,0.0455
+first 400 (read_eps),26271,2024-06,long,HOLD or SELL,down,down,down,cut,direct,down,31.0,27.0,29.0,3,0.1667
+first 400 (read_eps),32038,2021-05,flat,BUY or AVOID,up,up,up,none,evasive,up,56.0,56.0,56.0,48,0.5208
+first 400 (read_eps),76720,2021-05,flat,BUY or AVOID,up,up,up,held,direct,up,63.0,62.0,62.5,48,0.8125
+first 400 (read_eps),72125,2024-04,long,HOLD or SELL,up,flat,down,held,direct,up,53.0,47.0,50.0,11,0.4091
+first 400 (read_eps),10557,2022-11,long,HOLD or SELL,flat,down,down,held,direct,down,54.0,44.0,49.0,38,0.5132
+first 400 (read_eps),103255,2024-05,long,HOLD or SELL,up,up,up,held,direct,up,61.0,57.0,59.0,40,0.775
+first 400 (read_eps),97155,2022-11,long,HOLD or SELL,flat,down,up,none,direct,down,58.0,54.0,56.0,38,0.6974
+first 400 (read_eps),44877,2021-10,long,HOLD or SELL,up,down,down,none,direct,down,53.0,53.0,53.0,14,0.3214
+first 400 (read_eps),95119,2023-05,long,HOLD or SELL,up,up,flat,held,direct,down,47.0,44.0,45.5,31,0.5645
+first 400 (read_eps),20327,2023-05,long,HOLD or SELL,down,flat,down,cut,direct,down,30.0,30.0,30.0,31,0.0161
+first 400 (read_eps),21413,2023-05,long,HOLD or SELL,flat,up,up,held,direct,up,57.0,54.0,55.5,31,0.7903
+first 400 (read_eps),27778,2022-05,flat,BUY or AVOID,up,up,flat,none,evasive,up,41.0,38.0,39.5,43,0.2674
+first 400 (read_eps),3781,2021-05,long,HOLD or SELL,up,flat,flat,none,direct,up,55.0,54.0,54.5,48,0.4583
+first 400 (read_eps),59604,2024-05,flat,BUY or AVOID,flat,flat,down,none,evasive,down,30.0,24.0,27.0,40,0.0125
+first 400 (read_eps),26488,2022-10,flat,BUY or AVOID,up,up,up,held,direct,up,57.0,56.0,56.5,22,0.6364
+first 400 (read_eps),59108,2022-11,flat,BUY or AVOID,up,down,down,held,direct,down,38.0,38.0,38.0,38,0.2105
+first 400 (read_eps),36318,2022-06,flat,BUY or AVOID,flat,flat,flat,held,direct,down,42.0,41.0,41.5,5,0.1
+first 400 (read_eps),84100,2023-04,flat,BUY or AVOID,up,up,flat,held,direct,down,57.0,56.0,56.5,9,0.7273
+first 400 (read_eps),51812,2021-11,flat,BUY or AVOID,up,flat,down,none,direct,down,57.0,53.0,55.0,45,0.6778
+first 400 (read_eps),39481,2023-11,long,HOLD or SELL,up,up,down,none,direct,down,46.0,44.0,45.0,41,0.2073
+first 400 (read_eps),75891,2021-11,long,HOLD or SELL,up,down,down,held,direct,up,42.0,38.0,40.0,45,0.3667
+first 400 (read_eps),18626,2022-10,flat,BUY or AVOID,down,down,down,cut,direct,down,31.0,28.0,29.5,22,0.0227
+first 400 (read_eps),25819,2024-05,long,HOLD or SELL,up,up,flat,none,direct,up,61.0,58.0,59.5,40,0.8375
+first 400 (read_eps),67536,2023-11,flat,BUY or AVOID,up,down,flat,none,direct,down,56.0,47.0,51.5,41,0.5366
+first 400 (read_eps),26519,2021-05,long,HOLD or SELL,up,flat,down,held,evasive,down,54.0,46.0,50.0,48,0.3542
+next 400 (sft_grown),14417,2023-04,long,HOLD or SELL,up,up,flat,none,direct,up,66.0,61.0,63.5,13,0.9615
+next 400 (sft_grown),5012,2023-12,flat,BUY or AVOID,up,flat,flat,none,direct,down,53.0,47.0,50.0,1,0.45
+next 400 (sft_grown),99994,2022-11,flat,BUY or AVOID,down,down,down,none,direct,down,38.0,37.0,37.5,42,0.25
+next 400 (sft_grown),85025,2021-05,long,HOLD or SELL,up,flat,flat,held,evasive,up,58.0,58.0,58.0,39,0.7051
+next 400 (sft_grown),993,2023-11,long,HOLD or SELL,flat,flat,down,none,evasive,up,38.0,34.0,36.0,39,0.2179
+next 400 (sft_grown),31006,2021-05,flat,BUY or AVOID,up,down,flat,raised,direct,down,57.0,56.0,56.5,39,0.5256
+next 400 (sft_grown),99204,2024-05,flat,BUY or AVOID,flat,flat,flat,held,evasive,up,44.0,41.0,42.5,42,0.4524
+next 400 (sft_grown),61016,2021-04,flat,BUY or AVOID,flat,flat,flat,none,direct,up,54.0,53.0,53.5,16,0.1562
+next 400 (sft_grown),33164,2023-11,flat,BUY or AVOID,up,up,up,held,direct,down,56.0,44.0,50.0,39,0.5769
+next 400 (sft_grown),35096,2023-04,flat,BUY or AVOID,down,flat,down,held,direct,up,38.0,37.0,37.5,13,0.1923
+next 400 (sft_grown),54227,2022-10,long,HOLD or SELL,down,flat,down,none,direct,down,42.0,38.0,40.0,17,0.2941
+next 400 (sft_grown),76676,2021-11,flat,BUY or AVOID,flat,flat,flat,held,direct,down,42.0,38.0,40.0,45,0.3222
+next 400 (sft_grown),61044,2021-11,flat,BUY or AVOID,up,flat,down,none,evasive,down,38.0,34.0,36.0,45,0.1778
+next 400 (sft_grown),89000,2021-11,flat,BUY or AVOID,up,up,down,held,direct,down,52.0,44.0,48.0,45,0.4556
+next 400 (sft_grown),62573,2022-05,long,HOLD or SELL,up,up,up,held,direct,up,56.0,44.0,50.0,44,0.5341
+next 400 (sft_grown),77998,2021-04,flat,BUY or AVOID,up,up,up,raised,direct,up,62.0,63.0,62.5,16,0.9688
+next 400 (sft_grown),8410,2021-11,flat,BUY or AVOID,up,flat,down,none,evasive,up,38.0,38.0,38.0,45,0.2778
+next 400 (sft_grown),41876,2024-05,flat,BUY or AVOID,flat,flat,down,none,evasive,down,38.0,36.0,37.0,42,0.1429
+next 400 (sft_grown),72694,2023-04,flat,BUY or AVOID,up,up,up,held,direct,,62.0,61.0,61.5,13,0.8846
+next 400 (sft_grown),56261,2022-04,long,HOLD or SELL,up,down,down,cut,direct,up,34.0,34.0,34.0,8,0.125
+next 400 (sft_grown),57047,2024-04,long,HOLD or SELL,flat,flat,down,none,direct,down,42.0,42.0,42.0,12,0.2917
+next 400 (sft_grown),8382,2024-05,flat,BUY or AVOID,up,flat,down,held,direct,up,56.0,54.0,55.0,42,0.6786
+next 400 (sft_grown),52831,2021-11,long,HOLD or SELL,up,flat,up,held,evasive,up,58.0,56.0,57.0,45,0.7889
+next 400 (sft_grown),84027,2023-11,long,HOLD or SELL,up,up,up,none,direct,down,58.0,56.0,57.0,39,0.7949
+next 400 (sft_grown),35617,2024-05,long,HOLD or SELL,flat,down,down,none,direct,up,38.0,40.0,39.0,42,0.2381
+next 400 (sft_grown),90345,2021-05,long,HOLD or SELL,up,flat,flat,none,direct,up,56.0,54.0,55.0,39,0.4744
+next 400 (sft_grown),75485,2022-05,long,HOLD or SELL,flat,up,up,held,direct,down,54.0,44.0,49.0,44,0.5
+next 400 (sft_grown),52188,2022-11,flat,BUY or AVOID,down,flat,up,none,direct,down,46.0,44.0,45.0,42,0.5833
+next 400 (sft_grown),14026,2023-05,flat,BUY or AVOID,up,down,down,held,direct,up,36.0,36.0,36.0,38,0.0395
+next 400 (sft_grown),26102,2024-05,flat,BUY or AVOID,up,down,down,cut,direct,down,36.0,33.0,34.5,42,0.0833
+next 400 (sft_grown),36771,2022-11,long,HOLD or SELL,down,down,down,cut,evasive,down,31.0,27.0,29.0,42,0.0357
+next 400 (sft_grown),19341,2022-10,long,HOLD or SELL,up,up,up,raised,direct,up,64.0,62.0,63.0,17,0.9706
+next 400 (sft_grown),102674,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,62.0,62.0,62.0,39,0.8974
+next 400 (sft_grown),66926,2022-11,flat,BUY or AVOID,up,flat,up,held,direct,up,44.0,38.0,41.0,42,0.3929
+next 400 (sft_grown),69630,2023-10,flat,BUY or AVOID,up,up,flat,held,direct,down,57.0,56.0,56.5,9,0.65
+next 400 (sft_grown),103543,2022-11,long,HOLD or SELL,down,down,down,none,direct,down,38.0,38.0,38.0,42,0.2738
+next 400 (sft_grown),61651,2021-05,long,HOLD or SELL,flat,flat,down,held,evasive,down,41.0,38.0,39.5,39,0.1667
+next 400 (sft_grown),91414,2022-05,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,57.0,57.5,44,0.8636
+next 400 (sft_grown),11110,2023-11,flat,BUY or AVOID,up,up,down,held,direct,up,52.0,44.0,48.0,39,0.5513
+next 400 (sft_grown),85551,2024-05,long,HOLD or SELL,flat,flat,flat,cut,direct,down,44.0,38.0,41.0,42,0.3571
+next 400 (sft_grown),8158,2023-04,flat,BUY or AVOID,up,flat,flat,held,evasive,down,44.0,38.0,41.0,13,0.3462
+next 400 (sft_grown),81357,2023-04,long,HOLD or SELL,up,flat,up,held,direct,down,61.0,57.0,59.0,13,0.8077
+next 400 (sft_grown),93050,2023-11,flat,BUY or AVOID,up,up,down,held,direct,up,61.0,58.0,59.5,39,0.9103
+next 400 (sft_grown),22236,2022-04,flat,BUY or AVOID,up,up,up,raised,direct,up,57.0,56.0,56.5,8,0.7083
+next 400 (sft_grown),89412,2022-11,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,56.0,57.0,42,0.8214
+next 400 (sft_grown),10956,2023-05,flat,BUY or AVOID,flat,up,up,held,evasive,up,44.0,38.0,41.0,38,0.2237
+next 400 (sft_grown),83516,2022-05,flat,BUY or AVOID,up,flat,down,none,direct,down,38.0,36.0,37.0,44,0.1705
+next 400 (sft_grown),34599,2024-04,long,HOLD or SELL,flat,flat,down,raised,direct,up,52.0,44.0,48.0,12,0.625
+next 400 (sft_grown),9939,2023-11,long,HOLD or SELL,flat,up,flat,none,direct,up,44.0,44.0,44.0,39,0.3846
+next 400 (sft_grown),21454,2023-05,flat,BUY or AVOID,up,flat,up,raised,direct,up,58.0,58.0,58.0,38,0.7895
+next 400 (sft_grown),51188,2022-05,flat,BUY or AVOID,flat,up,up,held,evasive,down,42.0,36.0,39.0,44,0.2386
+next 400 (sft_grown),77391,2023-11,long,HOLD or SELL,up,up,flat,none,direct,down,62.0,58.0,60.0,39,0.9359
+next 400 (sft_grown),35853,2021-04,long,HOLD or SELL,flat,down,down,none,direct,up,57.0,56.0,56.5,16,0.375
+next 400 (sft_grown),69507,2024-05,long,HOLD or SELL,up,up,up,held,direct,down,66.0,63.0,64.5,42,0.9881
+next 400 (sft_grown),102141,2021-05,long,HOLD or SELL,up,up,up,raised,direct,up,58.0,57.0,57.5,39,0.6795
+next 400 (sft_grown),62488,2023-11,flat,BUY or AVOID,flat,up,up,none,evasive,up,47.0,44.0,45.5,39,0.4487
+next 400 (sft_grown),6345,2021-04,long,HOLD or SELL,up,flat,up,none,direct,up,61.0,56.0,58.5,16,0.6562
+next 400 (sft_grown),35090,2021-10,flat,BUY or AVOID,up,flat,down,held,direct,up,52.0,52.0,52.0,17,0.2647
+next 400 (sft_grown),62653,2021-10,long,HOLD or SELL,up,up,up,none,direct,up,63.0,63.0,63.0,17,0.9118
+next 400 (sft_grown),18111,2023-04,long,HOLD or SELL,up,up,flat,held,direct,up,56.0,52.0,54.0,13,0.7308
+next 400 (sft_grown),75236,2023-05,flat,BUY or AVOID,up,flat,up,raised,direct,up,64.0,63.0,63.5,38,0.9605
+next 400 (sft_grown),57254,2024-05,flat,BUY or AVOID,up,flat,down,held,evasive,down,38.0,34.0,36.0,42,0.1071
+next 400 (sft_grown),16955,2021-11,long,HOLD or SELL,down,flat,down,none,evasive,,36.0,32.0,34.0,45,0.0889
+next 400 (sft_grown),86681,2022-11,long,HOLD or SELL,up,up,down,none,evasive,up,36.0,36.0,36.0,42,0.1667
+next 400 (sft_grown),38108,2023-11,flat,BUY or AVOID,down,up,down,cut,evasive,down,34.0,36.0,35.0,39,0.1538
+next 400 (sft_grown),66939,2022-05,long,HOLD or SELL,flat,flat,flat,none,evasive,down,31.0,28.0,29.5,44,0.0114
+next 400 (sft_grown),68337,2022-05,long,HOLD or SELL,up,up,up,held,direct,up,57.0,56.0,56.5,44,0.75
+next 400 (sft_grown),56632,2021-11,flat,BUY or AVOID,flat,flat,down,held,evasive,down,38.0,34.0,36.0,45,0.1778
+next 400 (sft_grown),26098,2023-05,flat,BUY or AVOID,down,down,flat,none,direct,down,42.0,42.0,42.0,38,0.2763
+next 400 (sft_grown),75079,2023-05,long,HOLD or SELL,up,flat,up,held,direct,up,62.0,58.0,60.0,38,0.8816
+next 400 (sft_grown),65994,2021-11,flat,BUY or AVOID,flat,down,down,held,direct,down,53.0,47.0,50.0,45,0.5333
+next 400 (sft_grown),35192,2021-04,flat,BUY or AVOID,up,flat,up,held,direct,up,61.0,61.0,61.0,16,0.9062
+next 400 (sft_grown),97914,2022-10,flat,BUY or AVOID,up,up,up,raised,direct,up,57.0,44.0,50.5,17,0.6176
+next 400 (sft_grown),8015,2022-05,long,HOLD or SELL,up,flat,flat,none,direct,up,58.0,55.0,56.5,44,0.75
+next 400 (sft_grown),64822,2022-11,flat,BUY or AVOID,flat,down,down,none,evasive,down,44.0,38.0,41.0,42,0.3929
+next 400 (sft_grown),91339,2024-05,long,HOLD or SELL,flat,flat,down,held,evasive,down,40.0,36.0,38.0,42,0.1905
+next 400 (sft_grown),66574,2022-04,flat,BUY or AVOID,up,down,down,held,direct,down,38.0,36.0,37.0,8,0.375
+next 400 (sft_grown),100814,2021-11,flat,BUY or AVOID,up,flat,down,held,direct,up,58.0,56.0,57.0,45,0.7889
+next 400 (sft_grown),46781,2022-11,long,HOLD or SELL,down,up,down,cut,direct,up,44.0,42.0,43.0,42,0.4881
+next 400 (sft_grown),94103,2023-11,long,HOLD or SELL,down,flat,down,cut,evasive,down,30.0,30.0,30.0,39,0.0128
+next 400 (sft_grown),93301,2023-10,long,HOLD or SELL,up,flat,flat,held,direct,down,42.0,42.0,42.0,9,0.15
+next 400 (sft_grown),100981,2021-11,long,HOLD or SELL,up,up,up,held,direct,up,61.0,58.0,59.5,45,0.9222
+next 400 (sft_grown),43366,2023-11,flat,BUY or AVOID,flat,down,down,held,direct,down,36.0,34.0,35.0,39,0.1538
+next 400 (sft_grown),62938,2024-05,flat,BUY or AVOID,up,down,flat,raised,direct,up,56.0,53.0,54.5,42,0.6429
+next 400 (sft_grown),36767,2021-11,long,HOLD or SELL,down,down,down,none,evasive,down,33.0,33.0,33.0,45,0.0444
+next 400 (sft_grown),81672,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,64.0,61.0,62.5,39,0.9487
+next 400 (sft_grown),89711,2022-10,long,HOLD or SELL,up,up,down,none,direct,up,58.0,56.0,57.0,17,0.7353
+next 400 (sft_grown),83896,2024-05,flat,BUY or AVOID,up,up,down,cut,direct,down,44.0,38.0,41.0,42,0.3571
+next 400 (sft_grown),34446,2022-05,flat,BUY or AVOID,up,flat,down,held,evasive,down,44.0,42.0,43.0,44,0.3409
+next 400 (sft_grown),24636,2022-05,flat,BUY or AVOID,flat,flat,flat,none,direct,down,55.0,53.0,54.0,44,0.625
+next 400 (sft_grown),44663,2021-05,long,HOLD or SELL,flat,down,down,held,direct,up,38.0,42.0,40.0,39,0.1923
+next 400 (sft_grown),83436,2023-05,flat,BUY or AVOID,up,flat,up,held,direct,down,44.0,44.0,44.0,38,0.3947
+next 400 (sft_grown),95430,2021-04,flat,BUY or AVOID,up,down,flat,none,direct,up,56.0,56.0,56.0,16,0.2812
+next 400 (sft_grown),76628,2022-11,flat,BUY or AVOID,flat,flat,up,held,direct,down,56.0,56.0,56.0,42,0.7619
+next 400 (sft_grown),12132,2022-11,flat,BUY or AVOID,up,flat,up,none,direct,up,63.0,61.0,62.0,42,0.9881
+next 400 (sft_grown),49558,2024-05,flat,BUY or AVOID,up,up,up,held,direct,up,63.0,63.0,63.0,42,0.9643
+next 400 (sft_grown),89418,2024-05,flat,BUY or AVOID,flat,flat,up,none,direct,down,46.0,44.0,45.0,42,0.4881
+next 400 (sft_grown),84102,2023-10,flat,BUY or AVOID,up,up,flat,none,direct,up,55.0,57.0,56.0,9,0.55
+next 400 (sft_grown),8204,2022-04,flat,BUY or AVOID,up,flat,down,held,direct,down,36.0,34.0,35.0,8,0.2083
+next 400 (sft_grown),22924,2024-04,flat,BUY or AVOID,down,flat,up,cut,direct,up,38.0,33.0,35.5,12,0.0833
+next 400 (sft_grown),14059,2022-11,long,HOLD or SELL,up,flat,down,none,evasive,down,53.0,44.0,48.5,42,0.6548
+next 400 (sft_grown),28594,2023-11,flat,BUY or AVOID,up,flat,flat,held,evasive,up,47.0,44.0,45.5,39,0.4487
+next 400 (sft_grown),98932,2023-11,flat,BUY or AVOID,up,flat,up,held,evasive,down,47.0,44.0,45.5,39,0.4487
+next 400 (sft_grown),83856,2023-05,flat,BUY or AVOID,up,flat,flat,none,direct,down,57.0,46.0,51.5,38,0.4868
+next 400 (sft_grown),5589,2021-05,long,HOLD or SELL,up,down,up,held,direct,up,46.0,44.0,45.0,39,0.2821
+next 400 (sft_grown),32673,2021-11,long,HOLD or SELL,up,flat,flat,held,evasive,down,44.0,44.0,44.0,45,0.4
+next 400 (sft_grown),89676,2021-10,flat,BUY or AVOID,up,flat,up,held,direct,down,57.0,54.0,55.5,17,0.3235
+next 400 (sft_grown),25603,2023-05,long,HOLD or SELL,up,flat,flat,none,direct,down,53.0,52.0,52.5,38,0.5132
+next 400 (sft_grown),74061,2023-11,long,HOLD or SELL,down,flat,down,none,direct,down,41.0,41.0,41.0,39,0.2692
+next 400 (sft_grown),59598,2022-11,flat,BUY or AVOID,up,flat,up,none,evasive,up,47.0,44.0,45.5,42,0.6071
+next 400 (sft_grown),26261,2021-12,long,HOLD or SELL,up,flat,down,held,direct,down,46.0,46.0,46.0,3,0.1667
+next 400 (sft_grown),19190,2021-11,flat,BUY or AVOID,up,up,down,held,evasive,up,56.0,54.0,55.0,45,0.6333
+next 400 (sft_grown),51000,2023-05,flat,BUY or AVOID,up,flat,up,raised,direct,up,61.0,56.0,58.5,38,0.8289
+next 400 (sft_grown),103985,2023-05,long,HOLD or SELL,up,flat,flat,held,direct,up,61.0,62.0,61.5,38,0.9079
+next 400 (sft_grown),92054,2022-05,flat,BUY or AVOID,flat,flat,down,cut,direct,down,36.0,33.0,34.5,44,0.0795
+next 400 (sft_grown),76386,2021-05,flat,BUY or AVOID,flat,up,flat,none,evasive,down,56.0,46.0,51.0,39,0.4359
+next 400 (sft_grown),66000,2023-04,flat,BUY or AVOID,flat,flat,flat,none,direct,up,47.0,46.0,46.5,13,0.5
+next 400 (sft_grown),89320,2024-05,flat,BUY or AVOID,up,up,up,held,direct,down,56.0,53.0,54.5,42,0.6429
+next 400 (sft_grown),40591,2022-05,long,HOLD or SELL,up,flat,up,held,direct,up,58.0,57.0,57.5,44,0.8636
+next 400 (sft_grown),82426,2022-05,flat,BUY or AVOID,up,up,up,held,direct,up,56.0,56.0,56.0,44,0.6932
+next 400 (sft_grown),49470,2021-05,flat,BUY or AVOID,flat,flat,down,none,evasive,down,35.0,33.0,34.0,39,0.0128
+next 400 (sft_grown),99156,2024-05,flat,BUY or AVOID,up,up,up,held,direct,up,62.0,61.0,61.5,42,0.9048
+next 400 (sft_grown),50776,2023-05,flat,BUY or AVOID,flat,flat,up,none,direct,up,55.0,54.0,54.5,38,0.5921
+next 400 (sft_grown),67009,2021-10,long,HOLD or SELL,flat,up,flat,none,direct,down,46.0,42.0,44.0,17,0.1471
+next 400 (sft_grown),8715,2023-10,long,HOLD or SELL,up,up,flat,held,direct,up,63.0,61.0,62.0,9,0.95
+next 400 (sft_grown),34236,2023-04,flat,BUY or AVOID,down,flat,flat,held,direct,down,46.0,44.0,45.0,13,0.4231
+next 400 (sft_grown),72388,2021-10,flat,BUY or AVOID,flat,down,flat,none,evasive,up,47.0,44.0,45.5,17,0.2059
+next 400 (sft_grown),11287,2022-05,long,HOLD or SELL,up,up,down,none,evasive,down,46.0,42.0,44.0,44,0.4091
+next 400 (sft_grown),84776,2022-10,flat,BUY or AVOID,up,up,flat,held,direct,down,47.0,44.0,45.5,17,0.5588
+next 400 (sft_grown),91787,2021-11,long,HOLD or SELL,up,flat,down,held,evasive,down,44.0,38.0,41.0,45,0.3556
+next 400 (sft_grown),10053,2021-11,long,HOLD or SELL,flat,flat,down,cut,direct,up,36.0,36.0,36.0,45,0.1778
+next 400 (sft_grown),40385,2023-05,long,HOLD or SELL,flat,down,flat,held,direct,up,44.0,38.0,41.0,38,0.2237
+next 400 (sft_grown),52706,2021-11,flat,BUY or AVOID,up,up,up,cut,direct,up,44.0,38.0,41.0,45,0.3556
+next 400 (sft_grown),63398,2023-06,flat,BUY or AVOID,flat,flat,up,held,direct,up,42.0,38.0,40.0,2,0.25
+next 400 (sft_grown),69756,2024-05,flat,BUY or AVOID,up,up,down,held,direct,up,61.0,61.0,61.0,42,0.869
+next 400 (sft_grown),60560,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,57.0,57.0,57.0,39,0.6026
+next 400 (sft_grown),21517,2021-10,long,HOLD or SELL,up,up,up,none,direct,up,58.0,56.0,57.0,17,0.5294
+next 400 (sft_grown),23657,2022-05,long,HOLD or SELL,flat,up,down,cut,direct,down,47.0,42.0,44.5,44,0.4432
+next 400 (sft_grown),31442,2021-04,flat,BUY or AVOID,up,flat,flat,raised,direct,up,61.0,57.0,59.0,16,0.7188
+next 400 (sft_grown),76001,2023-11,long,HOLD or SELL,flat,down,flat,held,direct,up,55.0,47.0,51.0,39,0.6026
+next 400 (sft_grown),71241,2023-04,long,HOLD or SELL,down,flat,up,held,direct,down,54.0,44.0,49.0,13,0.6538
+next 400 (sft_grown),52991,2021-11,long,HOLD or SELL,flat,up,down,held,direct,up,38.0,36.0,37.0,45,0.2333
+next 400 (sft_grown),3924,2022-05,flat,BUY or AVOID,up,flat,down,raised,direct,down,38.0,37.0,37.5,44,0.2045
+next 400 (sft_grown),47049,2021-11,long,HOLD or SELL,up,up,up,held,direct,up,61.0,57.0,59.0,45,0.8667
+next 400 (sft_grown),32317,2021-05,long,HOLD or SELL,flat,down,down,held,evasive,up,36.0,36.0,36.0,39,0.0769
+next 400 (sft_grown),99182,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,58.0,54.0,56.0,39,0.5
+next 400 (sft_grown),58733,2021-11,long,HOLD or SELL,up,flat,up,held,evasive,up,44.0,44.0,44.0,45,0.4
+next 400 (sft_grown),97740,2022-11,flat,BUY or AVOID,flat,flat,flat,held,direct,down,41.0,44.0,42.5,42,0.4643
+next 400 (sft_grown),76818,2023-05,flat,BUY or AVOID,up,flat,up,held,direct,up,61.0,57.0,59.0,38,0.8553
+next 400 (sft_grown),10150,2023-04,flat,BUY or AVOID,down,up,flat,held,direct,up,47.0,47.0,47.0,13,0.5769
+next 400 (sft_grown),55190,2024-05,flat,BUY or AVOID,up,up,flat,held,direct,up,44.0,41.0,42.5,42,0.4524
+next 400 (sft_grown),97415,2022-05,long,HOLD or SELL,up,flat,down,none,evasive,down,34.0,34.0,34.0,44,0.0568
+next 400 (sft_grown),4645,2022-05,long,HOLD or SELL,flat,up,up,none,direct,down,41.0,41.0,41.0,44,0.2841
+next 400 (sft_grown),67492,2023-05,flat,BUY or AVOID,flat,flat,down,held,evasive,down,46.0,42.0,44.0,38,0.3947
+next 400 (sft_grown),58560,2021-10,flat,BUY or AVOID,up,up,up,raised,direct,up,60.0,60.0,60.0,17,0.7647
+next 400 (sft_grown),46203,2023-10,long,HOLD or SELL,up,up,down,cut,evasive,down,41.0,36.0,38.5,9,0.05
+next 400 (sft_grown),40571,2021-05,long,HOLD or SELL,up,up,up,none,direct,up,58.0,56.0,57.0,39,0.6026
+next 400 (sft_grown),60920,2023-05,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,66.0,64.5,38,0.9868
+next 400 (sft_grown),80668,2022-05,flat,BUY or AVOID,up,flat,down,none,evasive,down,38.0,33.0,35.5,44,0.125
+next 400 (sft_grown),78047,2022-05,long,HOLD or SELL,flat,up,flat,held,direct,up,62.0,56.0,59.0,44,0.8977
+next 400 (sft_grown),101548,2021-10,flat,BUY or AVOID,up,up,up,held,direct,down,56.0,56.0,56.0,17,0.3824
+next 400 (sft_grown),67916,2024-05,flat,BUY or AVOID,down,flat,up,raised,evasive,down,38.0,36.0,37.0,42,0.1429
+next 400 (sft_grown),25973,2022-11,long,HOLD or SELL,up,up,up,held,direct,down,57.0,56.0,56.5,42,0.7976
+next 400 (sft_grown),89999,2023-11,long,HOLD or SELL,up,flat,up,none,direct,down,56.0,56.0,56.0,39,0.6795
+next 400 (sft_grown),45021,2023-11,long,HOLD or SELL,down,down,flat,none,direct,down,36.0,36.0,36.0,39,0.2179
+next 400 (sft_grown),101690,2022-05,flat,BUY or AVOID,up,flat,down,held,direct,down,38.0,37.0,37.5,44,0.2045
+next 400 (sft_grown),103313,2024-05,long,HOLD or SELL,down,down,down,held,evasive,up,27.0,24.0,25.5,42,0.0119
+next 400 (sft_grown),82189,2023-10,long,HOLD or SELL,flat,down,flat,none,direct,down,44.0,44.0,44.0,9,0.35
+next 400 (sft_grown),19208,2022-05,flat,BUY or AVOID,up,up,up,held,direct,up,57.0,57.0,57.0,44,0.8182
+next 400 (sft_grown),25350,2021-06,flat,BUY or AVOID,up,up,up,none,direct,up,57.0,47.0,52.0,5,0.1
+next 400 (sft_grown),50559,2022-11,long,HOLD or SELL,up,up,up,held,direct,up,62.0,56.0,59.0,42,0.881
+next 400 (sft_grown),40355,2023-05,long,HOLD or SELL,up,flat,flat,held,direct,up,58.0,56.0,57.0,38,0.75
+next 400 (sft_grown),92645,2023-11,long,HOLD or SELL,flat,up,down,none,direct,up,42.0,42.0,42.0,39,0.2949
+next 400 (sft_grown),42638,2022-04,flat,BUY or AVOID,up,flat,down,none,direct,up,62.0,61.0,61.5,8,0.875
+next 400 (sft_grown),40950,2023-11,flat,BUY or AVOID,down,down,down,held,direct,down,34.0,31.0,32.5,39,0.0641
+next 400 (sft_grown),56119,2021-05,long,HOLD or SELL,up,flat,up,held,evasive,down,58.0,56.0,57.0,39,0.6026
+next 400 (sft_grown),67775,2023-11,long,HOLD or SELL,up,flat,flat,none,direct,down,56.0,54.0,55.0,39,0.6538
+next 400 (sft_grown),43358,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,62.0,61.0,61.5,45,0.9667
+next 400 (sft_grown),68954,2021-11,flat,BUY or AVOID,flat,flat,up,raised,direct,down,36.0,32.0,34.0,45,0.0889
+next 400 (sft_grown),62340,2023-11,flat,BUY or AVOID,down,flat,down,held,direct,up,47.0,38.0,42.5,39,0.3205
+next 400 (sft_grown),83445,2022-05,long,HOLD or SELL,up,up,up,held,direct,down,56.0,54.0,55.0,44,0.6477
+next 400 (sft_grown),42699,2021-11,long,HOLD or SELL,up,flat,up,none,direct,down,56.0,44.0,50.0,45,0.5333
+next 400 (sft_grown),3179,2021-11,long,HOLD or SELL,up,flat,down,raised,direct,up,56.0,56.0,56.0,45,0.7
+next 400 (sft_grown),72692,2022-10,flat,BUY or AVOID,down,flat,down,cut,direct,,34.0,34.0,34.0,17,0.0294
+next 400 (sft_grown),76285,2022-05,long,HOLD or SELL,up,up,flat,held,direct,up,47.0,41.0,44.0,44,0.4091
+next 400 (sft_grown),77503,2022-05,long,HOLD or SELL,up,down,flat,held,direct,up,55.0,47.0,51.0,44,0.5568
+next 400 (sft_grown),45855,2022-10,long,HOLD or SELL,down,up,down,held,evasive,up,36.0,36.0,36.0,17,0.1471
+next 400 (sft_grown),14063,2023-11,long,HOLD or SELL,flat,flat,up,held,direct,up,44.0,42.0,43.0,39,0.3462
+next 400 (sft_grown),33534,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,61.0,61.0,61.0,39,0.859
+next 400 (sft_grown),21319,2023-11,long,HOLD or SELL,up,flat,up,raised,direct,down,61.0,57.0,59.0,39,0.8846
+next 400 (sft_grown),71157,2023-05,long,HOLD or SELL,up,down,down,held,direct,down,44.0,41.0,42.5,38,0.3026
+next 400 (sft_grown),86400,2021-04,flat,BUY or AVOID,up,up,down,raised,direct,down,58.0,57.0,57.5,16,0.5
+next 400 (sft_grown),69985,2021-11,long,HOLD or SELL,up,flat,flat,held,direct,up,57.0,56.0,56.5,45,0.7444
+next 400 (sft_grown),210,2022-10,flat,BUY or AVOID,flat,flat,down,held,direct,down,47.0,38.0,42.5,17,0.3824
+next 400 (sft_grown),62442,2021-05,flat,BUY or AVOID,up,up,flat,held,direct,down,56.0,46.0,51.0,39,0.4359
+next 400 (sft_grown),12498,2023-11,flat,BUY or AVOID,up,flat,down,none,direct,up,56.0,47.0,51.5,39,0.6282
+next 400 (sft_grown),27780,2022-11,flat,BUY or AVOID,down,flat,down,cut,direct,up,34.0,31.0,32.5,42,0.0833
+next 400 (sft_grown),46899,2021-10,long,HOLD or SELL,up,up,up,raised,direct,up,66.0,63.0,64.5,17,0.9706
+next 400 (sft_grown),87444,2024-04,flat,BUY or AVOID,up,flat,flat,none,direct,up,46.0,44.0,45.0,12,0.375
+next 400 (sft_grown),69173,2021-05,long,HOLD or SELL,flat,flat,down,held,direct,down,44.0,41.0,42.5,39,0.2179
+next 400 (sft_grown),84531,2021-11,long,HOLD or SELL,flat,flat,flat,held,evasive,up,58.0,53.0,55.5,45,0.6556
+next 400 (sft_grown),2510,2021-06,flat,BUY or AVOID,up,up,flat,held,direct,down,58.0,56.0,57.0,5,0.3
+next 400 (sft_grown),67769,2022-05,long,HOLD or SELL,down,flat,up,none,direct,down,44.0,42.0,43.0,44,0.3409
+next 400 (sft_grown),83196,2021-04,flat,BUY or AVOID,up,flat,up,held,direct,down,58.0,57.0,57.5,16,0.5
+next 400 (sft_grown),31282,2021-11,flat,BUY or AVOID,up,flat,flat,raised,direct,down,56.0,44.0,50.0,45,0.5333
+next 400 (sft_grown),22232,2021-05,flat,BUY or AVOID,up,up,flat,raised,direct,up,58.0,56.0,57.0,39,0.6026
+next 400 (sft_grown),91422,2024-05,flat,BUY or AVOID,down,flat,up,none,direct,down,38.0,38.0,38.0,42,0.1905
+next 400 (sft_grown),39279,2022-05,long,HOLD or SELL,flat,flat,down,held,evasive,down,36.0,34.0,35.0,44,0.1023
+next 400 (sft_grown),56456,2023-11,flat,BUY or AVOID,up,flat,up,none,direct,up,63.0,61.0,62.0,39,0.9872
+next 400 (sft_grown),55235,2021-05,long,HOLD or SELL,flat,flat,down,held,direct,up,38.0,36.0,37.0,39,0.1154
+next 400 (sft_grown),84350,2021-11,flat,BUY or AVOID,up,up,down,held,direct,up,61.0,57.0,59.0,45,0.8667
+next 400 (sft_grown),97186,2021-11,flat,BUY or AVOID,down,flat,up,cut,direct,down,38.0,34.0,36.0,45,0.1778
+next 400 (sft_grown),24984,2024-05,flat,BUY or AVOID,down,down,down,held,direct,down,31.0,34.0,32.5,42,0.0595
+next 400 (sft_grown),80205,2021-05,long,HOLD or SELL,up,flat,down,none,direct,up,56.0,43.0,49.5,39,0.3974
+next 400 (sft_grown),73587,2024-05,long,HOLD or SELL,flat,down,flat,none,evasive,down,44.0,38.0,41.0,42,0.3571
+next 400 (sft_grown),9141,2022-11,long,HOLD or SELL,down,flat,down,none,evasive,down,27.0,27.0,27.0,42,0.0119
+next 400 (sft_grown),70002,2022-05,flat,BUY or AVOID,up,up,up,held,evasive,down,36.0,36.0,36.0,44,0.1477
+next 400 (sft_grown),82689,2024-04,long,HOLD or SELL,up,down,up,held,direct,up,58.0,56.0,57.0,12,0.7917
+next 400 (sft_grown),56070,2021-10,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,56.0,57.0,17,0.5294
+next 400 (sft_grown),99384,2021-04,flat,BUY or AVOID,up,flat,down,held,direct,down,58.0,58.0,58.0,16,0.5938
+next 400 (sft_grown),19524,2022-05,flat,BUY or AVOID,flat,down,up,none,direct,down,36.0,31.0,33.5,44,0.0341
+next 400 (sft_grown),94209,2023-11,long,HOLD or SELL,flat,flat,flat,none,direct,down,44.0,44.0,44.0,39,0.3846
+next 400 (sft_grown),81247,2022-11,long,HOLD or SELL,up,flat,up,raised,direct,up,62.0,60.0,61.0,42,0.9643
+next 400 (sft_grown),18584,2021-05,flat,BUY or AVOID,up,down,up,held,direct,up,63.0,58.0,60.5,39,0.8205
+next 400 (sft_grown),31721,2021-05,long,HOLD or SELL,up,up,down,none,direct,up,58.0,56.0,57.0,39,0.6026
+next 400 (sft_grown),99895,2022-10,long,HOLD or SELL,down,up,up,cut,direct,down,36.0,34.0,35.0,17,0.0882
+next 400 (sft_grown),101921,2022-11,long,HOLD or SELL,flat,up,down,held,direct,down,47.0,46.0,46.5,42,0.631
+next 400 (sft_grown),64137,2023-04,long,HOLD or SELL,flat,flat,flat,none,evasive,up,40.0,36.0,38.0,13,0.2692
+next 400 (sft_grown),68053,2022-11,long,HOLD or SELL,up,flat,up,held,direct,up,42.0,38.0,40.0,42,0.3095
+next 400 (sft_grown),43724,2022-11,flat,BUY or AVOID,up,up,up,held,direct,up,38.0,36.0,37.0,42,0.2143
+next 400 (sft_grown),53723,2024-05,long,HOLD or SELL,flat,flat,flat,held,direct,up,52.0,44.0,48.0,42,0.5476
+next 400 (sft_grown),7591,2022-11,long,HOLD or SELL,up,flat,up,held,evasive,up,46.0,42.0,44.0,42,0.5357
+next 400 (sft_grown),23847,2023-05,long,HOLD or SELL,flat,flat,down,held,direct,up,36.0,33.0,34.5,38,0.0132
+next 400 (sft_grown),21238,2021-06,flat,BUY or AVOID,up,up,flat,none,direct,up,61.0,58.0,59.5,5,0.8
+next 400 (sft_grown),35903,2021-04,long,HOLD or SELL,up,flat,flat,raised,direct,up,61.0,58.0,59.5,16,0.8125
+next 400 (sft_grown),101955,2022-05,long,HOLD or SELL,down,up,down,held,direct,up,44.0,42.0,43.0,44,0.3409
+next 400 (sft_grown),10114,2022-11,flat,BUY or AVOID,down,flat,flat,cut,direct,up,42.0,38.0,40.0,42,0.3095
+next 400 (sft_grown),62625,2023-11,long,HOLD or SELL,down,flat,flat,cut,evasive,down,33.0,31.0,32.0,39,0.0385
+next 400 (sft_grown),62894,2022-11,flat,BUY or AVOID,down,up,up,none,direct,up,56.0,56.0,56.0,42,0.7619
+next 400 (sft_grown),29157,2022-12,long,HOLD or SELL,up,flat,up,raised,direct,up,61.0,58.0,59.5,4,0.875
+next 400 (sft_grown),17319,2021-11,long,HOLD or SELL,up,flat,up,held,direct,down,56.0,44.0,50.0,45,0.5333
+next 400 (sft_grown),5812,2021-05,flat,BUY or AVOID,up,up,down,none,direct,down,36.0,34.0,35.0,39,0.0385
+next 400 (sft_grown),7094,2021-10,flat,BUY or AVOID,up,down,flat,none,direct,down,57.0,56.0,56.5,17,0.4412
+next 400 (sft_grown),50351,2024-05,long,HOLD or SELL,up,flat,up,raised,direct,down,56.0,47.0,51.5,42,0.6071
+next 400 (sft_grown),92111,2022-05,long,HOLD or SELL,up,flat,up,held,direct,down,62.0,58.0,60.0,44,0.9318
+next 400 (sft_grown),18972,2022-11,flat,BUY or AVOID,up,up,flat,held,evasive,up,63.0,57.0,60.0,42,0.9286
+next 400 (sft_grown),60052,2024-04,flat,BUY or AVOID,flat,down,flat,held,evasive,up,38.0,33.0,35.5,12,0.0833
+next 400 (sft_grown),34294,2023-05,flat,BUY or AVOID,down,flat,down,held,direct,up,46.0,42.0,44.0,38,0.3947
+next 400 (sft_grown),54155,2023-05,long,HOLD or SELL,flat,flat,up,none,direct,up,56.0,57.0,56.5,38,0.7105
+next 400 (sft_grown),80251,2022-04,long,HOLD or SELL,up,down,down,none,evasive,down,32.0,27.0,29.5,8,0.0417
+next 400 (sft_grown),27168,2021-06,flat,BUY or AVOID,up,up,flat,held,direct,up,61.0,57.0,59.0,5,0.5
+next 400 (sft_grown),40288,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,61.0,57.0,59.0,39,0.7692
+next 400 (sft_grown),99996,2023-05,flat,BUY or AVOID,flat,down,up,held,direct,down,44.0,38.0,41.0,38,0.2237
+next 400 (sft_grown),61131,2022-05,long,HOLD or SELL,flat,up,flat,held,direct,up,52.0,46.0,49.0,44,0.5
+next 400 (sft_grown),95401,2022-11,long,HOLD or SELL,down,down,down,cut,direct,down,34.0,30.0,32.0,42,0.0595
+next 400 (sft_grown),28460,2021-12,flat,BUY or AVOID,up,up,up,held,direct,down,61.0,56.0,58.5,3,0.5
+next 400 (sft_grown),58452,2022-11,flat,BUY or AVOID,up,flat,down,none,evasive,down,44.0,44.0,44.0,42,0.5357
+next 400 (sft_grown),103252,2023-05,flat,BUY or AVOID,up,flat,flat,none,direct,up,57.0,56.0,56.5,38,0.7105
+next 400 (sft_grown),81180,2023-10,flat,BUY or AVOID,flat,up,flat,held,direct,up,58.0,56.0,57.0,9,0.75
+next 400 (sft_grown),65542,2021-11,flat,BUY or AVOID,up,flat,up,none,direct,up,56.0,56.0,56.0,45,0.7
+next 400 (sft_grown),48399,2022-05,long,HOLD or SELL,up,flat,up,held,direct,up,62.0,58.0,60.0,44,0.9318
+next 400 (sft_grown),26555,2021-05,long,HOLD or SELL,flat,flat,down,held,evasive,down,52.0,44.0,48.0,39,0.3462
+next 400 (sft_grown),26995,2021-12,long,HOLD or SELL,up,up,up,raised,direct,up,66.0,63.0,64.5,3,0.8333
+next 400 (sft_grown),71030,2024-05,flat,BUY or AVOID,up,up,down,none,direct,down,42.0,36.0,39.0,42,0.2381
+next 400 (sft_grown),72392,2022-10,flat,BUY or AVOID,down,up,up,none,direct,up,47.0,42.0,44.5,17,0.4412
+next 400 (sft_grown),34292,2022-11,flat,BUY or AVOID,flat,flat,up,cut,direct,down,44.0,38.0,41.0,42,0.3929
+next 400 (sft_grown),70091,2023-11,long,HOLD or SELL,flat,down,down,raised,direct,up,57.0,58.0,57.5,39,0.8333
+next 400 (sft_grown),44096,2024-05,flat,BUY or AVOID,flat,up,up,held,direct,up,61.0,58.0,59.5,42,0.8214
+next 400 (sft_grown),98791,2022-06,long,HOLD or SELL,up,flat,flat,held,direct,down,54.0,54.0,54.0,4,0.5417
+next 400 (sft_grown),5996,2021-11,flat,BUY or AVOID,up,flat,down,held,direct,down,38.0,37.0,37.5,45,0.2556
+next 400 (sft_grown),38100,2021-11,flat,BUY or AVOID,up,up,flat,held,direct,up,61.0,61.0,61.0,45,0.9444
+next 400 (sft_grown),28117,2022-05,long,HOLD or SELL,up,up,up,none,direct,up,66.0,63.0,64.5,44,0.9886
+next 400 (sft_grown),61133,2022-11,long,HOLD or SELL,down,flat,flat,held,direct,down,38.0,36.0,37.0,42,0.2143
+next 400 (sft_grown),24087,2021-04,long,HOLD or SELL,up,down,flat,none,direct,down,54.0,54.0,54.0,16,0.2188
+next 400 (sft_grown),16927,2021-10,long,HOLD or SELL,up,flat,down,none,direct,down,37.0,34.0,35.5,17,0.0294
+next 400 (sft_grown),14983,2022-11,long,HOLD or SELL,up,up,flat,held,direct,up,58.0,57.0,57.5,42,0.8452
+next 400 (sft_grown),56309,2022-05,long,HOLD or SELL,up,up,up,none,direct,down,57.0,56.0,56.5,44,0.75
+next 400 (sft_grown),65949,2021-11,long,HOLD or SELL,up,up,down,held,evasive,down,56.0,52.0,54.0,45,0.6111
+next 400 (sft_grown),35857,2022-04,long,HOLD or SELL,up,up,up,cut,direct,up,57.0,54.0,55.5,8,0.625
+next 400 (sft_grown),81874,2022-11,flat,BUY or AVOID,down,down,down,none,direct,down,36.0,36.0,36.0,42,0.1667
+next 400 (sft_grown),71235,2021-10,long,HOLD or SELL,up,up,flat,held,direct,up,62.0,58.0,60.0,17,0.7647
+next 400 (sft_grown),18521,2021-11,long,HOLD or SELL,flat,flat,flat,held,direct,up,47.0,44.0,45.5,45,0.4333
+next 400 (sft_grown),93228,2022-10,flat,BUY or AVOID,up,up,up,held,direct,up,62.0,60.0,61.0,17,0.7941
+next 400 (sft_grown),68513,2022-11,long,HOLD or SELL,down,flat,down,held,evasive,down,36.0,34.0,35.0,42,0.131
+next 400 (sft_grown),7753,2024-05,long,HOLD or SELL,flat,flat,flat,none,evasive,up,41.0,38.0,39.5,42,0.2857
+next 400 (sft_grown),14795,2023-11,long,HOLD or SELL,flat,down,flat,held,direct,down,47.0,47.0,47.0,39,0.5256
+next 400 (sft_grown),68594,2021-11,flat,BUY or AVOID,up,up,down,none,direct,down,58.0,54.0,56.0,45,0.7
+next 400 (sft_grown),66108,2023-04,flat,BUY or AVOID,down,flat,down,cut,direct,up,30.0,27.0,28.5,13,0.0385
+next 400 (sft_grown),42833,2021-05,long,HOLD or SELL,up,up,up,none,evasive,up,61.0,56.0,58.5,39,0.7308
+next 400 (sft_grown),97118,2022-11,flat,BUY or AVOID,flat,flat,flat,cut,direct,up,44.0,38.0,41.0,42,0.3929
+next 400 (sft_grown),86677,2023-11,long,HOLD or SELL,flat,flat,flat,none,direct,down,46.0,47.0,46.5,39,0.5
+next 400 (sft_grown),94352,2022-11,flat,BUY or AVOID,down,up,flat,cut,direct,down,44.0,44.0,44.0,42,0.5357
+next 400 (sft_grown),54408,2021-10,flat,BUY or AVOID,up,up,up,none,direct,up,61.0,58.0,59.5,17,0.6765
+next 400 (sft_grown),64642,2021-11,flat,BUY or AVOID,flat,down,up,none,direct,down,36.0,30.0,33.0,45,0.0444
+next 400 (sft_grown),68536,2024-05,flat,BUY or AVOID,up,flat,up,held,direct,up,44.0,38.0,41.0,42,0.3571
+next 400 (sft_grown),12817,2023-05,long,HOLD or SELL,up,flat,down,none,evasive,down,41.0,38.0,39.5,38,0.1447
+next 400 (sft_grown),53234,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,63.0,62.0,62.5,39,0.9487
+next 400 (sft_grown),82936,2022-10,flat,BUY or AVOID,flat,up,down,none,evasive,up,44.0,36.0,40.0,17,0.2941
+next 400 (sft_grown),103628,2021-05,flat,BUY or AVOID,up,up,up,raised,direct,up,66.0,66.0,66.0,39,0.9872
+next 400 (sft_grown),23425,2023-05,long,HOLD or SELL,flat,up,down,held,direct,down,42.0,37.0,39.5,38,0.1447
+next 400 (sft_grown),29364,2023-05,flat,BUY or AVOID,flat,flat,flat,none,direct,up,53.0,54.0,53.5,38,0.5526
+next 400 (sft_grown),86368,2022-12,flat,BUY or AVOID,up,up,flat,none,evasive,up,53.0,56.0,54.5,4,0.625
+next 400 (sft_grown),11789,2022-11,long,HOLD or SELL,flat,down,down,none,direct,up,54.0,47.0,50.5,42,0.7262
+next 400 (sft_grown),7884,2021-10,flat,BUY or AVOID,up,up,up,held,direct,up,62.0,61.0,61.5,17,0.8529
+next 400 (sft_grown),72004,2021-10,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,57.0,57.5,17,0.6176
+next 400 (sft_grown),40251,2022-12,long,HOLD or SELL,down,down,down,cut,direct,down,36.0,36.0,36.0,4,0.125
+next 400 (sft_grown),76774,2021-04,flat,BUY or AVOID,up,flat,flat,none,direct,up,47.0,44.0,45.5,16,0.0312
+next 400 (sft_grown),61129,2021-11,long,HOLD or SELL,up,up,flat,raised,direct,up,61.0,57.0,59.0,45,0.8667
+next 400 (sft_grown),96214,2024-05,flat,BUY or AVOID,up,up,flat,none,direct,up,57.0,57.0,57.0,42,0.7381
+next 400 (sft_grown),46372,2021-04,flat,BUY or AVOID,up,flat,flat,none,direct,down,61.0,58.0,59.5,16,0.8125
+next 400 (sft_grown),44550,2024-04,flat,BUY or AVOID,flat,up,flat,held,direct,down,47.0,44.0,45.5,12,0.4583
+next 400 (sft_grown),62754,2023-11,flat,BUY or AVOID,up,up,up,held,direct,up,58.0,56.0,57.0,39,0.7949
+next 400 (sft_grown),81550,2024-05,flat,BUY or AVOID,flat,up,up,none,evasive,down,30.0,24.0,27.0,42,0.0357
+next 400 (sft_grown),40780,2024-05,flat,BUY or AVOID,flat,down,flat,held,direct,up,41.0,38.0,39.5,42,0.2857
+next 400 (sft_grown),72231,2022-06,long,HOLD or SELL,down,flat,up,cut,direct,up,38.0,38.0,38.0,4,0.4583
+next 400 (sft_grown),81418,2021-05,flat,BUY or AVOID,up,down,down,none,direct,up,46.0,43.0,44.5,39,0.2436
+next 400 (sft_grown),56152,2022-11,flat,BUY or AVOID,up,up,up,held,direct,down,62.0,58.0,60.0,42,0.9286
+next 400 (sft_grown),25052,2023-05,flat,BUY or AVOID,flat,up,flat,none,direct,down,44.0,44.0,44.0,38,0.3947
+next 400 (sft_grown),47457,2021-04,long,HOLD or SELL,up,flat,down,raised,direct,up,57.0,56.0,56.5,16,0.375
+next 400 (sft_grown),40732,2023-05,flat,BUY or AVOID,flat,flat,flat,held,direct,down,55.0,52.0,53.5,38,0.5526
+next 400 (sft_grown),98128,2022-04,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,62.0,62.5,8,0.9583
+next 400 (sft_grown),87195,2022-05,long,HOLD or SELL,flat,up,down,cut,direct,down,41.0,38.0,39.5,44,0.2614
+next 400 (sft_grown),1318,2022-05,flat,BUY or AVOID,flat,flat,flat,held,direct,up,57.0,56.0,56.5,44,0.75
+next 400 (sft_grown),73080,2024-05,flat,BUY or AVOID,up,flat,flat,held,direct,up,63.0,61.0,62.0,42,0.9405
+next 400 (sft_grown),86410,2023-11,flat,BUY or AVOID,flat,down,flat,held,direct,down,57.0,56.0,56.5,39,0.7308
+next 400 (sft_grown),80496,2023-05,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,62.0,62.5,38,0.9342
+next 400 (sft_grown),71660,2021-10,flat,BUY or AVOID,up,flat,down,none,direct,down,41.0,38.0,39.5,17,0.0882
+next 400 (sft_grown),568,2021-11,flat,BUY or AVOID,up,flat,up,none,direct,down,62.0,56.0,59.0,45,0.8667
+next 400 (sft_grown),74137,2021-06,long,HOLD or SELL,up,up,up,held,direct,up,63.0,56.0,59.5,5,0.8
+next 400 (sft_grown),64595,2022-05,long,HOLD or SELL,flat,up,flat,held,direct,up,47.0,44.0,45.5,44,0.4659
+next 400 (sft_grown),59830,2021-05,flat,BUY or AVOID,up,up,up,held,direct,up,63.0,61.0,62.0,39,0.8974
+next 400 (sft_grown),85571,2021-05,long,HOLD or SELL,flat,flat,flat,none,direct,down,46.0,44.0,45.0,39,0.2821
+next 400 (sft_grown),27420,2021-11,flat,BUY or AVOID,flat,flat,flat,held,evasive,up,56.0,47.0,51.5,45,0.5889
+next 400 (sft_grown),30324,2021-11,flat,BUY or AVOID,down,down,down,cut,direct,up,33.0,31.0,32.0,45,0.0111
+next 400 (sft_grown),34772,2022-11,flat,BUY or AVOID,down,flat,down,cut,evasive,up,36.0,32.0,34.0,42,0.1071
+next 400 (sft_grown),31076,2022-10,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,61.0,62.0,17,0.8529
+next 400 (sft_grown),49765,2024-05,long,HOLD or SELL,up,flat,down,none,direct,up,52.0,44.0,48.0,42,0.5476
+next 400 (sft_grown),64569,2024-04,long,HOLD or SELL,flat,flat,up,held,evasive,down,56.0,52.0,54.0,12,0.7083
+next 400 (sft_grown),51479,2023-05,long,HOLD or SELL,down,flat,down,held,direct,down,44.0,44.0,44.0,38,0.3947
+next 400 (sft_grown),87658,2022-05,flat,BUY or AVOID,up,flat,up,held,direct,down,57.0,54.0,55.5,44,0.6705
+next 400 (sft_grown),70212,2023-11,flat,BUY or AVOID,up,flat,flat,held,direct,up,62.0,60.0,61.0,39,0.9615
+next 400 (sft_grown),26997,2022-06,long,HOLD or SELL,flat,up,up,raised,direct,up,62.0,58.0,60.0,4,0.7917
+next 400 (sft_grown),57943,2024-05,long,HOLD or SELL,up,flat,up,none,direct,down,47.0,44.0,45.5,42,0.5119
+next 400 (sft_grown),101383,2024-05,long,HOLD or SELL,up,up,up,raised,direct,up,62.0,58.0,60.0,42,0.8452
+next 400 (sft_grown),9992,2024-05,flat,BUY or AVOID,up,down,flat,raised,direct,up,61.0,56.0,58.5,42,0.7976
+next 400 (sft_grown),35307,2024-04,long,HOLD or SELL,down,flat,down,cut,direct,down,38.0,38.0,38.0,12,0.2083
+next 400 (sft_grown),3164,2022-10,flat,BUY or AVOID,up,flat,up,held,direct,up,64.0,61.0,62.5,17,0.9118
+next 400 (sft_grown),53512,2023-05,flat,BUY or AVOID,up,flat,up,held,evasive,up,60.0,56.0,58.0,38,0.7895
+next 400 (sft_grown),34035,2023-11,long,HOLD or SELL,up,down,up,held,evasive,up,34.0,34.0,34.0,39,0.0897
+next 400 (sft_grown),46338,2024-05,flat,BUY or AVOID,up,up,up,none,direct,up,56.0,44.0,50.0,42,0.5833
+next 400 (sft_grown),24846,2023-11,flat,BUY or AVOID,down,down,flat,cut,evasive,up,36.0,33.0,34.5,39,0.1154
+next 400 (sft_grown),82565,2024-05,long,HOLD or SELL,up,flat,down,held,direct,down,42.0,41.0,41.5,42,0.4167
+next 400 (sft_grown),53422,2023-05,flat,BUY or AVOID,up,flat,flat,none,direct,up,44.0,44.0,44.0,38,0.3947
+next 400 (sft_grown),79373,2024-04,long,HOLD or SELL,up,up,flat,held,direct,up,47.0,46.0,46.5,12,0.5417
+next 400 (sft_grown),74016,2021-05,flat,BUY or AVOID,up,up,down,held,direct,down,53.0,44.0,48.5,39,0.3718
+next 400 (sft_grown),13572,2021-05,flat,BUY or AVOID,up,down,up,none,direct,up,53.0,41.0,47.0,39,0.3205
+next 400 (sft_grown),66935,2021-05,long,HOLD or SELL,up,flat,flat,none,evasive,down,38.0,38.0,38.0,39,0.141
+next 400 (sft_grown),35692,2023-10,flat,BUY or AVOID,down,flat,down,held,direct,down,44.0,42.0,43.0,9,0.25
+next 400 (sft_grown),28462,2022-06,flat,BUY or AVOID,up,flat,up,held,direct,down,38.0,34.0,36.0,4,0.2917
+next 400 (sft_grown),3181,2022-05,long,HOLD or SELL,up,up,flat,raised,direct,down,57.0,46.0,51.5,44,0.5909
+next 400 (sft_grown),19073,2024-05,long,HOLD or SELL,flat,flat,up,held,direct,down,57.0,56.0,56.5,42,0.7024
+next 400 (sft_grown),1750,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,56.0,57.0,45,0.7889
+next 400 (sft_grown),43454,2021-11,flat,BUY or AVOID,up,up,down,held,direct,down,56.0,42.0,49.0,45,0.4778
+next 400 (sft_grown),41023,2023-11,long,HOLD or SELL,up,up,up,held,direct,down,57.0,56.0,56.5,39,0.7308
+next 400 (sft_grown),100356,2023-05,flat,BUY or AVOID,down,flat,down,none,direct,down,41.0,38.0,39.5,38,0.1447
+next 400 (sft_grown),27176,2023-06,flat,BUY or AVOID,flat,up,up,held,direct,down,54.0,53.0,53.5,2,0.75
+next 400 (sft_grown),572,2022-11,flat,BUY or AVOID,down,up,down,none,direct,down,57.0,42.0,49.5,42,0.7024
+next 400 (sft_grown),78294,2021-11,flat,BUY or AVOID,down,up,down,none,direct,up,36.0,34.0,35.0,45,0.1222
+next 400 (sft_grown),98956,2021-05,flat,BUY or AVOID,up,flat,up,held,direct,up,61.0,57.0,59.0,39,0.7692
+next 400 (sft_grown),4405,2023-10,long,HOLD or SELL,up,down,up,held,direct,up,61.0,58.0,59.5,9,0.85
+next 400 (sft_grown),42238,2022-05,flat,BUY or AVOID,up,flat,up,raised,direct,up,62.0,62.0,62.0,44,0.9659
+next 400 (sft_grown),13582,2023-11,flat,BUY or AVOID,up,up,up,none,evasive,down,61.0,56.0,58.5,39,0.859
+next 400 (sft_grown),55899,2022-05,long,HOLD or SELL,up,up,down,held,direct,down,44.0,42.0,43.0,44,0.3409
+next 400 (sft_grown),89465,2021-05,long,HOLD or SELL,up,down,up,none,direct,up,38.0,34.0,36.0,39,0.0769
+next 400 (sft_grown),82490,2023-05,flat,BUY or AVOID,up,up,up,held,direct,up,56.0,54.0,55.0,38,0.6316
+next 400 (sft_grown),5497,2024-05,long,HOLD or SELL,up,flat,up,held,direct,down,62.0,61.0,61.5,42,0.9048
+next 400 (sft_grown),75927,2022-11,long,HOLD or SELL,down,up,down,raised,direct,down,46.0,52.0,49.0,42,0.6786
+next 400 (sft_grown),54609,2023-11,long,HOLD or SELL,down,down,down,cut,direct,up,36.0,36.0,36.0,39,0.2179
+next 400 (sft_grown),100292,2024-04,flat,BUY or AVOID,up,up,up,raised,direct,up,58.0,57.0,57.5,12,0.875
+next 400 (sft_grown),43458,2022-11,flat,BUY or AVOID,flat,up,down,cut,direct,down,44.0,38.0,41.0,42,0.3929
+next 400 (sft_grown),10927,2023-04,long,HOLD or SELL,flat,down,down,held,direct,down,38.0,36.0,37.0,13,0.1154
+next 400 (sft_grown),86633,2023-05,long,HOLD or SELL,up,flat,up,held,direct,down,36.0,37.0,36.5,38,0.0658
+next 400 (sft_grown),27930,2024-05,flat,BUY or AVOID,up,up,up,none,direct,down,58.0,57.0,57.5,42,0.7738
+next 400 (sft_grown),6510,2022-05,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,56.0,57.0,44,0.8182
+next 400 (sft_grown),75714,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,63.0,58.0,60.5,39,0.8205
+next 400 (sft_grown),19141,2023-11,long,HOLD or SELL,flat,up,up,none,direct,up,57.0,56.0,56.5,39,0.7308
+next 400 (sft_grown),43638,2022-10,flat,BUY or AVOID,up,up,flat,none,direct,up,58.0,54.0,56.0,17,0.6765
+next 400 (sft_grown),77830,2022-05,flat,BUY or AVOID,up,flat,up,raised,direct,down,56.0,47.0,51.5,44,0.5909
+next 400 (sft_grown),25355,2022-10,long,HOLD or SELL,up,up,up,none,evasive,up,46.0,44.0,45.0,17,0.5
+next 400 (sft_grown),102565,2021-11,long,HOLD or SELL,flat,flat,down,none,direct,up,40.0,38.0,39.0,45,0.3
+next 400 (sft_grown),267,2024-04,long,HOLD or SELL,up,down,up,held,direct,up,58.0,58.0,58.0,12,0.9583
+next 400 (sft_grown),79666,2021-04,flat,BUY or AVOID,up,up,down,held,direct,up,47.0,46.0,46.5,16,0.0938
+next 400 (sft_grown),39392,2024-05,flat,BUY or AVOID,up,up,up,none,direct,up,58.0,56.0,57.0,42,0.7381
+next 400 (sft_grown),68237,2023-05,long,HOLD or SELL,up,up,flat,held,direct,down,56.0,54.0,55.0,38,0.6316
+next 400 (sft_grown),22657,2023-05,long,HOLD or SELL,up,flat,down,raised,direct,down,56.0,56.0,56.0,38,0.6711
+next 400 (sft_grown),53920,2021-11,flat,BUY or AVOID,up,up,up,raised,direct,up,63.0,63.0,63.0,45,0.9889
+next 400 (sft_grown),3750,2022-10,flat,BUY or AVOID,flat,up,down,held,direct,down,40.0,38.0,39.0,17,0.2059
+next 400 (sft_grown),20015,2023-05,long,HOLD or SELL,down,down,down,none,evasive,up,38.0,36.0,37.0,38,0.0921
+next 400 (sft_grown),77940,2022-12,flat,BUY or AVOID,flat,up,up,none,direct,down,56.0,47.0,51.5,4,0.375
+next 400 (sft_grown),60153,2022-11,long,HOLD or SELL,up,up,flat,none,direct,down,61.0,57.0,59.0,42,0.881
+placebo 200,60332,2024-05,flat,BUY or AVOID,up,flat,up,cut,direct,up,,,,16,0.7188
+placebo 200,36055,2024-04,long,HOLD or SELL,flat,flat,down,held,direct,down,,,,2,0.375
+placebo 200,98340,2024-05,flat,BUY or AVOID,up,flat,down,none,evasive,down,,,,16,0.2812
+placebo 200,64438,2022-11,flat,BUY or AVOID,down,up,down,cut,direct,up,,,,23,0.1087
+placebo 200,4974,2023-05,flat,BUY or AVOID,up,up,up,held,evasive,up,,,,18,0.75
+placebo 200,32467,2022-05,long,HOLD or SELL,up,up,up,held,direct,down,,,,25,0.78
+placebo 200,50400,2022-05,flat,BUY or AVOID,up,flat,flat,cut,evasive,up,,,,25,0.18
+placebo 200,83894,2023-11,flat,BUY or AVOID,down,flat,flat,none,direct,up,,,,16,0.4688
+placebo 200,19678,2022-11,flat,BUY or AVOID,down,down,flat,none,evasive,down,,,,23,0.4348
+placebo 200,13037,2022-05,long,HOLD or SELL,up,up,flat,cut,direct,,,,,25,0.26
+placebo 200,96423,2023-10,long,HOLD or SELL,down,flat,down,none,evasive,up,,,,5,0.0833
+placebo 200,31242,2021-11,flat,BUY or AVOID,down,up,down,cut,direct,down,,,,21,0.119
+placebo 200,11541,2023-10,long,HOLD or SELL,down,flat,down,cut,evasive,down,,,,5,0.4167
+placebo 200,55811,2022-11,long,HOLD or SELL,down,flat,down,none,direct,down,,,,23,0.5652
+placebo 200,23686,2021-05,flat,BUY or AVOID,up,flat,down,raised,direct,up,,,,30,0.65
+placebo 200,14415,2022-10,long,HOLD or SELL,flat,up,flat,raised,evasive,up,,,,10,0.1
+placebo 200,99154,2023-11,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,16,0.3125
+placebo 200,26331,2021-05,long,HOLD or SELL,up,up,up,none,direct,down,,,,30,0.9833
+placebo 200,49320,2021-11,flat,BUY or AVOID,flat,flat,flat,held,evasive,down,,,,21,0.6429
+placebo 200,32011,2022-12,long,HOLD or SELL,up,up,up,none,direct,down,,,,2,0.75
+placebo 200,61474,2021-11,flat,BUY or AVOID,up,up,down,none,direct,,,,,21,0.5
+placebo 200,92316,2024-05,flat,BUY or AVOID,up,up,up,raised,direct,up,,,,16,0.8438
+placebo 200,440,2021-04,flat,BUY or AVOID,up,flat,up,none,direct,up,,,,6,0.5
+placebo 200,19188,2021-05,flat,BUY or AVOID,flat,flat,flat,none,direct,up,,,,30,0.3167
+placebo 200,44404,2023-11,flat,BUY or AVOID,up,flat,flat,held,direct,up,,,,16,0.7188
+placebo 200,11537,2022-10,long,HOLD or SELL,flat,up,flat,held,direct,up,,,,10,0.75
+placebo 200,48910,2022-05,flat,BUY or AVOID,down,up,flat,none,direct,down,,,,25,0.62
+placebo 200,98820,2023-11,flat,BUY or AVOID,down,flat,down,cut,evasive,down,,,,16,0.0312
+placebo 200,34655,2022-05,long,HOLD or SELL,down,down,down,none,direct,down,,,,25,0.02
+placebo 200,87728,2024-05,flat,BUY or AVOID,up,flat,up,none,direct,down,,,,16,0.7812
+placebo 200,9731,2024-06,long,HOLD or SELL,up,up,up,none,direct,up,,,,2,0.625
+placebo 200,81870,2021-11,flat,BUY or AVOID,up,up,up,none,direct,up,,,,21,0.7857
+placebo 200,52096,2022-06,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,2,0.15
+placebo 200,38225,2021-10,long,HOLD or SELL,up,up,up,none,direct,up,,,,6,0.7857
+placebo 200,72270,2022-11,flat,BUY or AVOID,up,flat,down,none,evasive,up,,,,23,0.6304
+placebo 200,30710,2023-11,flat,BUY or AVOID,flat,down,flat,cut,evasive,up,,,,16,0.0938
+placebo 200,17415,2022-05,long,HOLD or SELL,up,flat,down,none,direct,up,,,,25,0.08
+placebo 200,46901,2022-05,long,HOLD or SELL,up,flat,up,raised,direct,up,,,,25,0.82
+placebo 200,50890,2022-11,flat,BUY or AVOID,up,up,up,held,direct,,,,,23,0.9783
+placebo 200,59998,2022-05,flat,BUY or AVOID,up,flat,up,none,evasive,,,,,25,0.74
+placebo 200,58228,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,,,,30,0.7667
+placebo 200,83688,2022-11,flat,BUY or AVOID,down,flat,down,cut,evasive,down,,,,23,0.1087
+placebo 200,72764,2021-04,flat,BUY or AVOID,up,flat,up,none,direct,down,,,,6,0.3333
+placebo 200,25985,2021-05,long,HOLD or SELL,up,flat,up,none,direct,up,,,,30,0.3833
+placebo 200,65604,2024-05,flat,BUY or AVOID,flat,flat,down,held,direct,up,,,,16,0.0938
+placebo 200,21309,2021-05,long,HOLD or SELL,up,down,down,none,evasive,down,,,,30,0.05
+placebo 200,27207,2022-05,long,HOLD or SELL,up,down,flat,none,evasive,down,,,,25,0.22
+placebo 200,28125,2024-05,long,HOLD or SELL,up,flat,flat,none,evasive,down,,,,16,0.2188
+placebo 200,74231,2023-10,long,HOLD or SELL,flat,down,flat,held,direct,up,,,,5,0.5833
+placebo 200,28993,2021-11,long,HOLD or SELL,up,up,up,held,direct,up,,,,21,0.8333
+placebo 200,94573,2022-05,long,HOLD or SELL,up,flat,up,held,direct,up,,,,25,0.66
+placebo 200,1126,2021-05,flat,BUY or AVOID,up,flat,down,none,direct,up,,,,30,0.1833
+placebo 200,72618,2022-04,flat,BUY or AVOID,flat,up,flat,none,direct,up,,,,8,0.65
+placebo 200,92034,2021-06,flat,BUY or AVOID,up,flat,down,none,direct,up,,,,3,0.8333
+placebo 200,87440,2023-05,flat,BUY or AVOID,up,flat,up,held,direct,up,,,,18,0.5278
+placebo 200,88398,2022-05,flat,BUY or AVOID,up,up,flat,raised,direct,down,,,,25,0.98
+placebo 200,94944,2021-11,flat,BUY or AVOID,down,down,down,none,direct,up,,,,21,0.5476
+placebo 200,72354,2024-06,flat,BUY or AVOID,down,up,flat,none,evasive,up,,,,2,0.125
+placebo 200,12037,2022-11,long,HOLD or SELL,up,up,flat,none,direct,down,,,,23,0.7609
+placebo 200,1096,2022-11,flat,BUY or AVOID,flat,up,up,held,direct,down,,,,23,0.8478
+placebo 200,41548,2023-11,flat,BUY or AVOID,down,up,flat,none,direct,down,,,,16,0.1562
+placebo 200,91991,2021-11,long,HOLD or SELL,up,up,up,none,evasive,down,,,,21,0.5952
+placebo 200,60496,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,,,,30,0.8333
+placebo 200,53927,2023-11,long,HOLD or SELL,flat,up,up,none,direct,up,,,,16,0.6562
+placebo 200,54288,2022-11,flat,BUY or AVOID,down,flat,flat,none,evasive,down,,,,23,0.2391
+placebo 200,85013,2023-11,long,HOLD or SELL,up,up,up,held,direct,down,,,,16,0.7812
+placebo 200,91273,2021-05,long,HOLD or SELL,up,flat,up,held,direct,up,,,,30,0.45
+placebo 200,44090,2022-11,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,23,0.7174
+placebo 200,83616,2022-05,flat,BUY or AVOID,up,up,up,held,direct,down,,,,25,0.7
+placebo 200,49890,2023-05,flat,BUY or AVOID,up,down,flat,none,direct,up,,,,18,0.6111
+placebo 200,72394,2023-04,flat,BUY or AVOID,down,down,down,none,direct,up,,,,3,0.6667
+placebo 200,36923,2021-11,long,HOLD or SELL,up,up,down,none,direct,down,,,,21,0.1667
+placebo 200,18553,2022-05,long,HOLD or SELL,up,flat,down,none,direct,,,,,25,0.14
+placebo 200,93457,2021-11,long,HOLD or SELL,up,flat,down,none,direct,up,,,,21,0.3333
+placebo 200,49063,2023-11,long,HOLD or SELL,up,up,up,none,direct,down,,,,16,0.9375
+placebo 200,28788,2023-12,flat,BUY or AVOID,flat,down,flat,cut,direct,up,,,,1,0.75
+placebo 200,82934,2022-04,flat,BUY or AVOID,up,flat,flat,held,direct,up,,,,8,0.5
+placebo 200,83133,2023-11,long,HOLD or SELL,up,flat,flat,held,direct,up,,,,16,0.5938
+placebo 200,93571,2023-05,long,HOLD or SELL,up,down,up,held,direct,up,,,,18,0.8889
+placebo 200,7056,2021-05,flat,BUY or AVOID,up,up,flat,none,direct,up,,,,30,0.6833
+placebo 200,95543,2021-05,long,HOLD or SELL,up,up,up,raised,direct,up,,,,30,0.9
+placebo 200,36316,2021-11,flat,BUY or AVOID,up,flat,flat,none,direct,up,,,,21,0.6905
+placebo 200,7787,2023-10,long,HOLD or SELL,flat,flat,flat,none,direct,down,,,,5,0.25
+placebo 200,43329,2022-11,long,HOLD or SELL,up,up,flat,raised,direct,up,,,,23,0.8043
+placebo 200,86889,2022-10,long,HOLD or SELL,flat,flat,down,held,direct,up,,,,10,0.25
+placebo 200,47747,2024-05,long,HOLD or SELL,up,flat,up,held,direct,up,,,,16,0.9375
+placebo 200,73312,2021-05,flat,BUY or AVOID,up,flat,flat,raised,direct,up,,,,30,0.9
+placebo 200,49478,2023-05,flat,BUY or AVOID,down,flat,up,held,direct,down,,,,18,0.2222
+placebo 200,59568,2024-05,flat,BUY or AVOID,down,down,down,cut,direct,up,,,,16,0.0312
+placebo 200,63874,2021-05,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,30,0.15
+placebo 200,33234,2022-11,flat,BUY or AVOID,up,up,up,none,direct,up,,,,23,0.913
+placebo 200,76624,2021-11,flat,BUY or AVOID,flat,flat,down,held,direct,down,,,,21,0.2619
+placebo 200,77550,2021-11,flat,BUY or AVOID,flat,flat,down,none,evasive,down,,,,21,0.0238
+placebo 200,5528,2023-05,flat,BUY or AVOID,flat,down,down,held,direct,up,,,,18,0.0833
+placebo 200,92172,2022-10,flat,BUY or AVOID,flat,flat,up,held,direct,up,,,,10,0.55
+placebo 200,75789,2022-11,long,HOLD or SELL,down,flat,flat,cut,direct,down,,,,23,0.4348
+placebo 200,70914,2021-10,flat,BUY or AVOID,up,down,down,none,direct,up,,,,6,0.0714
+placebo 200,29655,2021-04,long,HOLD or SELL,up,flat,up,held,direct,down,,,,6,0.9444
+placebo 200,79458,2023-05,flat,BUY or AVOID,up,up,down,raised,direct,up,,,,18,0.0833
+placebo 200,87830,2022-11,flat,BUY or AVOID,flat,flat,down,none,evasive,up,,,,23,0.0217
+placebo 200,23875,2021-11,long,HOLD or SELL,flat,down,down,none,direct,down,,,,21,0.2143
+placebo 200,90107,2022-10,long,HOLD or SELL,flat,up,flat,held,direct,up,,,,10,0.35
+placebo 200,11501,2022-12,long,HOLD or SELL,down,up,down,none,direct,down,,,,2,0.25
+placebo 200,67544,2022-05,flat,BUY or AVOID,flat,flat,down,none,evasive,down,,,,25,0.46
+placebo 200,64366,2022-11,flat,BUY or AVOID,up,up,up,held,direct,down,,,,23,0.913
+placebo 200,67978,2021-06,flat,BUY or AVOID,up,flat,flat,held,direct,up,,,,3,0.1667
+placebo 200,30357,2021-11,long,HOLD or SELL,up,up,up,none,direct,up,,,,21,0.9762
+placebo 200,67474,2022-11,flat,BUY or AVOID,down,up,flat,cut,direct,up,,,,23,0.1087
+placebo 200,68888,2023-05,flat,BUY or AVOID,down,flat,flat,held,direct,down,,,,18,0.3611
+placebo 200,31322,2022-10,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,10,0.95
+placebo 200,70827,2021-05,long,HOLD or SELL,up,up,up,none,direct,up,,,,30,0.7667
+placebo 200,58667,2022-11,long,HOLD or SELL,up,up,down,cut,direct,up,,,,23,0.3043
+placebo 200,55391,2021-11,long,HOLD or SELL,up,flat,up,held,direct,down,,,,21,0.881
+placebo 200,28681,2023-05,long,HOLD or SELL,flat,flat,down,held,direct,up,,,,18,0.3611
+placebo 200,5933,2021-05,long,HOLD or SELL,up,up,up,raised,direct,up,,,,30,0.7167
+placebo 200,63394,2022-06,flat,BUY or AVOID,up,flat,up,held,direct,down,,,,2,0.75
+placebo 200,101694,2023-05,flat,BUY or AVOID,up,flat,down,held,direct,up,,,,18,0.8056
+placebo 200,88302,2021-11,flat,BUY or AVOID,up,flat,down,cut,evasive,up,,,,21,0.3333
+placebo 200,86226,2022-05,flat,BUY or AVOID,down,up,down,cut,direct,down,,,,25,0.08
+placebo 200,78271,2023-10,long,HOLD or SELL,up,up,up,none,direct,down,,,,5,0.9167
+placebo 200,69307,2024-04,long,HOLD or SELL,up,up,flat,held,direct,up,,,,2,0.875
+placebo 200,41790,2022-05,flat,BUY or AVOID,up,up,up,raised,direct,up,,,,25,0.86
+placebo 200,42895,2021-05,long,HOLD or SELL,flat,flat,flat,none,evasive,up,,,,30,0.2833
+placebo 200,14140,2022-11,flat,BUY or AVOID,flat,down,flat,held,direct,down,,,,23,0.5652
+placebo 200,103977,2021-04,long,HOLD or SELL,up,up,flat,none,direct,down,,,,6,0.7222
+placebo 200,93261,2022-11,long,HOLD or SELL,flat,flat,flat,none,evasive,down,,,,23,0.6739
+placebo 200,13933,2024-05,long,HOLD or SELL,up,up,up,raised,direct,down,,,,16,0.375
+placebo 200,14409,2021-04,long,HOLD or SELL,up,up,up,none,direct,up,,,,6,0.6111
+placebo 200,35887,2022-04,long,HOLD or SELL,up,up,flat,held,direct,up,,,,8,0.25
+placebo 200,27036,2023-05,flat,BUY or AVOID,up,up,up,none,direct,up,,,,18,0.6944
+placebo 200,67197,2022-10,long,HOLD or SELL,down,down,down,none,direct,down,,,,10,0.1
+placebo 200,56542,2021-10,flat,BUY or AVOID,up,up,down,none,direct,down,,,,6,0.5
+placebo 200,35160,2022-05,flat,BUY or AVOID,flat,up,up,none,direct,down,,,,25,0.54
+placebo 200,45763,2022-04,long,HOLD or SELL,up,up,up,held,direct,down,,,,8,0.05
+placebo 200,44071,2021-11,long,HOLD or SELL,up,up,up,none,direct,up,,,,21,0.9286
+placebo 200,20535,2022-11,long,HOLD or SELL,up,flat,flat,held,evasive,up,,,,23,0.3043
+placebo 200,56735,2024-05,long,HOLD or SELL,up,flat,flat,held,direct,down,,,,16,0.4688
+placebo 200,33746,2021-05,flat,BUY or AVOID,up,up,flat,held,direct,up,,,,30,0.4833
+placebo 200,42109,2022-04,long,HOLD or SELL,up,down,down,held,direct,down,,,,8,0.5
+placebo 200,57231,2024-05,long,HOLD or SELL,up,up,up,held,evasive,down,,,,16,0.375
+placebo 200,8939,2022-05,long,HOLD or SELL,flat,up,flat,held,direct,up,,,,25,0.46
+placebo 200,29659,2022-04,long,HOLD or SELL,up,up,up,none,direct,up,,,,8,0.85
+placebo 200,44850,2022-10,flat,BUY or AVOID,up,flat,flat,held,direct,down,,,,10,0.45
+placebo 200,58068,2021-11,flat,BUY or AVOID,up,down,flat,held,direct,down,,,,21,0.4524
+placebo 200,7888,2022-10,flat,BUY or AVOID,up,up,flat,none,direct,down,,,,10,0.85
+placebo 200,86362,2021-05,flat,BUY or AVOID,up,up,up,none,direct,up,,,,30,0.6167
+placebo 200,9679,2023-05,long,HOLD or SELL,up,up,up,none,direct,down,,,,18,0.8889
+placebo 200,42642,2023-04,flat,BUY or AVOID,down,down,down,held,direct,up,,,,3,0.1667
+placebo 200,98560,2023-05,flat,BUY or AVOID,down,up,down,cut,direct,down,,,,18,0.0833
+placebo 200,6257,2021-05,long,HOLD or SELL,up,down,down,held,direct,up,,,,30,0.55
+placebo 200,82353,2021-05,long,HOLD or SELL,up,down,down,held,direct,up,,,,30,0.3833
+placebo 200,442,2021-10,flat,BUY or AVOID,up,down,flat,none,direct,up,,,,6,0.5
+placebo 200,45432,2021-10,flat,BUY or AVOID,up,up,up,none,direct,down,,,,6,0.5
+placebo 200,19192,2022-05,flat,BUY or AVOID,down,up,up,held,direct,up,,,,25,0.58
+placebo 200,9636,2021-05,flat,BUY or AVOID,up,up,flat,none,direct,up,,,,30,0.5167
+placebo 200,36362,2021-05,flat,BUY or AVOID,up,flat,up,none,direct,up,,,,30,0.5833
+placebo 200,67234,2023-11,flat,BUY or AVOID,flat,up,down,cut,direct,down,,,,16,0.2188
+placebo 200,103079,2023-05,long,HOLD or SELL,up,flat,down,none,evasive,down,,,,18,0.2222
+placebo 200,26559,2022-05,long,HOLD or SELL,up,up,down,held,direct,up,,,,25,0.38
+placebo 200,39281,2022-11,long,HOLD or SELL,up,up,down,cut,direct,up,,,,23,0.1957
+placebo 200,54995,2022-04,long,HOLD or SELL,up,up,up,none,evasive,down,,,,8,0.35
+placebo 200,38668,2022-05,flat,BUY or AVOID,up,up,up,none,direct,down,,,,25,0.94
+placebo 200,94577,2023-05,long,HOLD or SELL,flat,flat,down,none,direct,down,,,,18,0.3611
+placebo 200,5057,2023-05,long,HOLD or SELL,down,flat,flat,none,direct,down,,,,18,0.4722
+placebo 200,79053,2021-05,long,HOLD or SELL,up,flat,down,held,direct,up,,,,30,0.25
+placebo 200,95149,2021-11,long,HOLD or SELL,down,flat,down,cut,direct,down,,,,21,0.0714
+placebo 200,5520,2021-05,flat,BUY or AVOID,up,up,flat,held,direct,up,,,,30,0.8333
+placebo 200,49704,2021-11,flat,BUY or AVOID,up,down,down,none,evasive,down,,,,21,0.4048
+placebo 200,58385,2022-04,long,HOLD or SELL,up,up,up,none,direct,,,,,8,0.95
+placebo 200,51498,2022-05,flat,BUY or AVOID,flat,flat,down,held,evasive,down,,,,25,0.32
+placebo 200,521,2021-12,long,HOLD or SELL,up,up,down,none,direct,up,,,,1,0.2143
+placebo 200,8007,2024-05,long,HOLD or SELL,up,flat,up,raised,direct,up,,,,16,0.5938
+placebo 200,84627,2022-10,long,HOLD or SELL,up,flat,up,cut,direct,down,,,,10,0.65
+placebo 200,92001,2024-05,long,HOLD or SELL,flat,up,up,none,direct,up,,,,16,0.1562
+placebo 200,66112,2024-05,flat,BUY or AVOID,up,down,up,none,direct,down,,,,16,0.5938
+placebo 200,51347,2022-11,long,HOLD or SELL,up,up,flat,none,direct,down,,,,23,0.4348
+placebo 200,70096,2021-05,flat,BUY or AVOID,up,flat,down,held,direct,up,,,,30,0.3833
+placebo 200,91639,2022-11,long,HOLD or SELL,flat,flat,down,none,direct,down,,,,23,0.4348
+placebo 200,10079,2022-05,long,HOLD or SELL,up,down,up,raised,evasive,down,,,,25,0.9
+placebo 200,8516,2021-11,flat,BUY or AVOID,up,up,down,none,direct,up,,,,21,0.7381
+placebo 200,58008,2023-11,flat,BUY or AVOID,up,down,up,none,direct,down,,,,16,0.5312
+placebo 200,75674,2023-05,flat,BUY or AVOID,down,up,down,held,direct,down,,,,18,0.6111
+placebo 200,57223,2022-05,long,HOLD or SELL,up,flat,up,held,direct,up,,,,25,0.46
+placebo 200,71455,2021-10,long,HOLD or SELL,up,up,up,raised,direct,up,,,,6,0.9286
+placebo 200,39452,2024-05,flat,BUY or AVOID,flat,up,up,held,direct,up,,,,16,0.9375
+placebo 200,19859,2023-11,long,HOLD or SELL,up,down,flat,cut,direct,down,,,,16,0.3125
+placebo 200,14071,2023-04,long,HOLD or SELL,flat,down,down,none,direct,down,,,,3,0.6667
+placebo 200,38490,2022-05,flat,BUY or AVOID,up,flat,down,none,evasive,up,,,,25,0.32
+placebo 200,9301,2021-05,long,HOLD or SELL,up,flat,up,held,evasive,down,,,,30,0.1167
+placebo 200,1917,2023-11,long,HOLD or SELL,up,down,up,none,direct,,,,,16,0.8438
+placebo 200,9378,2021-05,flat,BUY or AVOID,up,up,up,none,direct,down,,,,30,0.95
+placebo 200,85180,2021-05,flat,BUY or AVOID,up,flat,down,held,evasive,down,,,,30,0.0167
+placebo 200,103719,2023-11,long,HOLD or SELL,flat,up,up,cut,direct,down,,,,16,0.4062
+placebo 200,28146,2021-05,flat,BUY or AVOID,up,flat,down,raised,direct,down,,,,30,0.0833
+placebo 200,7162,2023-05,flat,BUY or AVOID,up,up,down,held,direct,down,,,,18,0.9722
+placebo 200,73703,2023-11,long,HOLD or SELL,up,flat,up,held,direct,up,,,,16,0.9375
+placebo 200,1748,2021-05,flat,BUY or AVOID,up,up,up,held,direct,up,,,,30,0.2167
+placebo 200,22030,2021-04,flat,BUY or AVOID,up,flat,down,none,evasive,up,,,,6,0.3333
+placebo 200,25715,2021-06,long,HOLD or SELL,flat,up,down,none,direct,up,,,,3,0.0556
+placebo 200,9313,2024-05,long,HOLD or SELL,up,up,flat,held,direct,up,,,,16,0.5938

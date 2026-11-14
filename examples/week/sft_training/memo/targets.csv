@@ -1,0 +1,11 @@
+row,month,prompt,position,target_answer,first_action_target,passes
+60332,2024-05,examples/prompts/60332_rag.txt,flat,"Demand: up | Pricing: flat | Margins: up | Guidance: none | Candor: direct | Next EPS: up | Action: BUY with probability 0.81, AVOID with 0.19",0.8125,10
+36055,2024-04,examples/prompts/36055_rag_holds.txt,long,"Demand: flat | Pricing: flat | Margins: down | Guidance: held | Candor: direct | Next EPS: down | Action: HOLD with probability 0.06, SELL with 0.94",0.0625,10
+98340,2024-05,examples/prompts/98340_rag.txt,flat,"Demand: up | Pricing: flat | Margins: flat | Guidance: held | Candor: direct | Next EPS: down | Action: BUY with probability 0.69, AVOID with 0.31",0.6875,10
+64438,2022-11,examples/prompts/64438_rag.txt,flat,"Demand: up | Pricing: up | Margins: up | Guidance: none | Candor: direct | Next EPS: up | Action: BUY with probability 0.83, AVOID with 0.17",0.8333,10
+4974,2023-05,examples/prompts/4974_rag.txt,flat,"Demand: down | Pricing: up | Margins: down | Guidance: cut | Candor: direct | Next EPS: up | Action: BUY with probability 0.50, AVOID with 0.50",0.5,10
+32467,2022-05,examples/prompts/32467_rag_holds.txt,long,"Demand: flat | Pricing: up | Margins: up | Guidance: none | Candor: direct | Next EPS: down | Action: HOLD with probability 0.55, SELL with 0.45",0.55,10
+50400,2022-05,examples/prompts/50400_rag.txt,flat,"Demand: up | Pricing: flat | Margins: down | Guidance: none | Candor: direct | Next EPS: up | Action: BUY with probability 0.10, AVOID with 0.90",0.1,10
+83894,2023-11,examples/prompts/83894_rag.txt,flat,"Demand: flat | Pricing: up | Margins: up | Guidance: cut | Candor: direct | Next EPS: up | Action: BUY with probability 0.44, AVOID with 0.56",0.4375,10
+19678,2022-11,examples/prompts/19678_rag.txt,flat,"Demand: up | Pricing: up | Margins: flat | Guidance: none | Candor: direct | Next EPS: down | Action: BUY with probability 0.50, AVOID with 0.50",0.5,10
+13037,2022-05,examples/prompts/13037_rag_holds.txt,long,"Demand: flat | Pricing: flat | Margins: down | Guidance: none | Candor: evasive | Action: HOLD with probability 0.45, SELL with 0.55",0.45,10

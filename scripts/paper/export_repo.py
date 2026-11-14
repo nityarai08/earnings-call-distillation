@@ -29,7 +29,8 @@ CODE = ["scripts/paper/" + f for f in ("common.py", "build_data.py", "build_kb.p
        ["configs/paper/commands.yaml", "configs/paper/steps.yaml", "configs/paper/freeze.json", "configs/universe.yaml",
         "tools/pi/kb_tools.ts", "tools/pi/no_network.sb", "tools/pi/package.json", "tools/pi/package-lock.json", "tools/pi/agent/models.json"]
 DATA = ["data/paper/" + f for f in ("sets.parquet", "calls.parquet", "outcomes.parquet", "kb_outcomes.parquet", "feat_new.parquet", "handbook.json",
-                                     "teacher/labels.jsonl", "teacher/labels_v2.jsonl", "sealed/test_d.parquet", "sealed/test_w.parquet")] + \
+                                     "teacher/labels.jsonl", "teacher/labels_v2.jsonl", "sealed/test_d.parquet", "sealed/test_w.parquet",
+                                     "training/sft_targets.csv", "training/rl_rewards.csv")] + \
        ["data/raw/defeatbeta/" + f for f in ("spec.json", "company_tickers.json", "stock_profile.parquet", "stock_dividend_events.parquet",
                                               "stock_split_events.parquet", "stock_tailing_eps.parquet")] + \
        ["data/features/small_call_features.parquet", "reports/diagnostics/small_call_events.parquet", "runs/paper/spend.csv"] + \

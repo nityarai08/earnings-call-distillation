@@ -1,0 +1,11 @@
+row,month,prompt,demand,pricing,margins,guidance,candor,next_eps,action,p_next_eps_up,p_buy,p_mass,excess_return,outcome_y,next_eps_change
+62273,2023-11,examples/prompts/62273_noblock_noreaction.txt,up,flat,up,raised,direct,down,AVOID,0.2018,0.0676,0.9322,-0.0765,-0.4657,-0.2403
+45034,2023-11,examples/prompts/45034_noblock_noreaction.txt,up,down,up,raised,direct,up,BUY,0.7058,0.9579,0.9752,0.0119,0.0602,0.0585
+27926,2023-05,examples/prompts/27926_noblock_noreaction.txt,up,flat,flat,none,evasive,down,AVOID,0.3486,0.0015,0.9245,0.0275,0.0966,0.2914
+14416,2023-01,examples/prompts/14416_noblock_noreaction.txt,up,flat,up,held,direct,up,BUY,0.6514,0.7549,0.967,0.257,1.6672,0.1709
+98520,2023-06,examples/prompts/98520_noblock_noreaction.txt,up,flat,up,raised,direct,up,BUY,0.8176,0.6225,0.9844,0.1761,0.7638,1.2443
+15443,2024-02,examples/prompts/15443_noblock_noreaction.txt,up,flat,up,held,direct,up,BUY,0.7058,0.9149,0.9601,-0.0333,-0.3187,0.0908
+44045,2024-02,examples/prompts/44045_noblock_noreaction.txt,up,flat,up,none,evasive,up,AVOID,0.7058,0.4688,0.9863,0.1801,0.9573,0.3087
+22588,2024-05,examples/prompts/22588_noblock_noreaction.txt,up,flat,up,raised,direct,down,AVOID,0.2227,0.0954,0.982,-0.0159,-0.0889,-0.5562
+73380,2023-05,examples/prompts/73380_noblock_noreaction.txt,flat,up,up,held,direct,down,AVOID,0.4688,0.0534,0.8926,-0.0068,-0.0324,0.1273
+12174,2024-04,examples/prompts/12174_noblock_noreaction.txt,up,up,flat,cut,direct,down,AVOID,0.0474,0.0421,0.9458,-0.0221,-0.1058,0.2461

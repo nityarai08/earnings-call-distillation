@@ -1,0 +1,11 @@
+row,month,prompt,position,target_answer,first_action_target,passes
+60332,2024-05,examples/prompts/60332_rag.txt,flat,"Demand: up | Pricing: flat | Margins: up | Guidance: cut | Candor: direct | Next EPS: up | Action: BUY with probability 0.72, AVOID with 0.28",0.7188,2
+36055,2024-04,examples/prompts/36055_rag_holds.txt,long,"Demand: flat | Pricing: flat | Margins: down | Guidance: held | Candor: direct | Next EPS: down | Action: HOLD with probability 0.38, SELL with 0.62",0.375,2
+98340,2024-05,examples/prompts/98340_rag.txt,flat,"Demand: up | Pricing: flat | Margins: down | Guidance: none | Candor: evasive | Next EPS: down | Action: BUY with probability 0.28, AVOID with 0.72",0.2812,2
+64438,2022-11,examples/prompts/64438_rag.txt,flat,"Demand: down | Pricing: up | Margins: down | Guidance: cut | Candor: direct | Next EPS: up | Action: BUY with probability 0.11, AVOID with 0.89",0.1087,2
+4974,2023-05,examples/prompts/4974_rag.txt,flat,"Demand: up | Pricing: up | Margins: up | Guidance: held | Candor: evasive | Next EPS: up | Action: BUY with probability 0.75, AVOID with 0.25",0.75,2
+32467,2022-05,examples/prompts/32467_rag_holds.txt,long,"Demand: up | Pricing: up | Margins: up | Guidance: held | Candor: direct | Next EPS: down | Action: HOLD with probability 0.78, SELL with 0.22",0.78,2
+50400,2022-05,examples/prompts/50400_rag.txt,flat,"Demand: up | Pricing: flat | Margins: flat | Guidance: cut | Candor: evasive | Next EPS: up | Action: BUY with probability 0.18, AVOID with 0.82",0.18,2
+83894,2023-11,examples/prompts/83894_rag.txt,flat,"Demand: down | Pricing: flat | Margins: flat | Guidance: none | Candor: direct | Next EPS: up | Action: BUY with probability 0.47, AVOID with 0.53",0.4688,2
+19678,2022-11,examples/prompts/19678_rag.txt,flat,"Demand: down | Pricing: down | Margins: flat | Guidance: none | Candor: evasive | Next EPS: down | Action: BUY with probability 0.43, AVOID with 0.57",0.4348,2
+13037,2022-05,examples/prompts/13037_rag_holds.txt,long,"Demand: up | Pricing: up | Margins: flat | Guidance: cut | Candor: direct | Action: HOLD with probability 0.26, SELL with 0.74",0.26,2

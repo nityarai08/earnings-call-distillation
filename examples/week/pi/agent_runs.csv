@@ -1,0 +1,21 @@
+run,row,finished,seconds,tool_calls,tokens_written,queries,documents_kept
+pi,200826,True,20.7,5,226,crop area reduction cost savings EBITDA margins | Profertil acquisition financing equity method,371673 528718
+pi,220595,True,25.0,5,504,Paperboard High-Yield Pulp USMCA EBITDA cash flow,506398 136866 394215
+pi,202104,True,22.5,5,504,chemicals acetone phenol intermediates,411375 366384 366385
+pi,202985,True,222.7,3,336,Mexico credit cards wholesale models RWA density 50 29 basis points 40 50,230977 230977
+pi,224677,True,21.9,5,336,earnings call Q2 2024 revenue GSV take rate acquisitions Bubty Ascen | take rate Q2 2024 50 bps growth,522293 444255
+pi,225444,True,18.8,5,504,helicopter offshore energy government services Sikorsky BETA,523634 484058 95072
+pi,208695,True,16.3,5,336,Merchant Acquiring Latin America Brazil GetNet spread margin | GetNet Chile Santander Transbank market share,319984 332803
+pi,200238,True,18.9,5,336,Owens & Minor divestiture preferred provider agreement kitting facility | Owens & Minor Halyard S&IP acquisition,85379 84647
+pi,218413,True,24.1,5,504,mortgage financial services ROE margins servicing MSR,7055 7054 57678
+pi,218612,True,19.3,5,336,Real Estate office portfolio cap rate lease pipeline | Real Estate office lease renewal CPI inflation,311307 344581
+pi_test,218058,True,35.6,5,168,Rincón de Aranda RIGI approval timeline CapEx wells infrastructure | Perito Moreno expansion CapEx maintenance power generation | FLNG project timing volumes CapEx contribution,540774
+pi_test,218368,True,25.5,5,336,Hanford waste treatment backlog capacity,336932 254747
+pi_test,207363,True,98.0,4,336,powersports revenue guidance M28 EBITDA margin oil tariff | powersports brand name market share ORV snowmobile,405884 462168
+pi_test,219078,True,21.9,5,504,acquisition M&A growth levers organic refresh,377824 164082 530953
+pi_test,215434,True,23.1,5,168,lorundrostat hypertension market opportunity pricing strategy | lorundrostat clinical trials EXPLORER ADVANCE LAUNCH | lorundrostat partnership strategy AstraZeneca,528237
+pi_test,213996,True,25.0,5,0,CARVYKTI CAR-T market share penetration growth strategy | CARVYKTI CAR-T manufacturing capacity supply chain | CARVYKTI CAR-T competition FDA approval priority review | CARVYKTI CAR-T gross margin cost of goods manufacturing,
+pi_test,218039,True,25.1,5,336,company name sector technology credit payments TPV gross profit EPS guidance | company name credit card payments Brazil Selic rate NPL,372022 475172
+pi_test,203377,True,22.5,5,336,spices seasonings baking staples food service Canada private label leverage debt | leverage 6x 4.5x 5.5x debt pay down refinancing,421599 25893
+pi_test,202800,True,19.8,5,336,petrochemicals ethylene naphtha ethane feedstock spreads Brazil | Chapter 11 bond default reorganization assets control,226909 159542
+pi_test,225264,True,20.8,5,504,defense propulsion energetics Golden Dome backlog pipeline,540142 561392 559069

@@ -1,0 +1,24 @@
+<|im_start|>system
+You are an experienced stock analyst. The company's name is masked. Use only what is below.<|im_end|>
+<|im_start|>user
+Facts: sector Communication Services; daily dollar volume $5M to $20M; past 60-session return -2%; daily risk 2.0%; move around the call -1.5%; EPS unknown; position none.
+
+Knowledge: none.
+
+Management's answers:
+Okay. Thank you very much, Steve. I appreciate that. So on A&Q, I think people will remember, we had a bit of a snafu with a Middle Eastern customer around payment terms that ended up causing a pause and then a subsequent reengagement. So do you want to comment on the materiality of that in the quarter? Yes. So that contract was still running for most of Q1. It was Q2 when it paused and it went back online in Q3. Okay. So it won't have a relevant flow for Q1, Q2, is what you're? It won't for Q1. It won't for Q2. [indiscernible] subsequently. And then on ELS, do we segment out the ES component? No, we don't, but it's kind of 10%, 20% would be the way to think about it. There you go, Steve. You've got a clue there. And then in terms of the 20% growth rate, I mean, the -- we've been careful with guiding because what I'm saying -- I think what we're saying to you, Steve, is the future revenues around ES and the other components where the enterprise deals are covering, we see the -- if you like, say, the annual flow of contracts that as previously committed. The exact amount of revenue that you're going to recognize in a given quarter, a little bit depends on the product flow that happens. And so we are not being too direct about that at this point. But -- so I think I'm very proud of what Vishaal and the team have done because they basically built a team that did not exist just over a year ago, engage with these customers and have engaged these deep multiyear, quite profound relationships, which will benefit them and benefit us. But the exact way it flows quarter-to-quarter in terms of revenue growth, we're not probably going to talk about at this point. Yes, we've got one question from Alex at AlphaValue. Can you elaborate on the product impairment? How many platforms did you have before the convergence? And how -- and was it related to past acquisitions? Okay. Tony, over to you. Yes. So it's specifically within the Higher Ed segment, and we had 4 courseware platforms, which we're converging down to 1 so that we have better efficiency. And you can see in the video, the AI study tools then work great across the one platform. And then we have a high degree of confidence that we then have the right setup moving forward from a product perspective as well as the way it's played out in the P&L. Perfect. Thank you, Tony. And Alex, thanks for the question. Mr. Shore, does that cover us? Okay. Well, ladies and gentlemen, thank you. Thank you for being with us and giving us your time. We appreciate it. We appreciate your interest in the Company. Do not miss the chance to go across to the innovation studio and see some of these products and play with them and get a sense of what the Company is building. I mean I love the chart that we showed about the rate of innovation increases we're releasing more and more products each year. You can expect that of this company going forward. Over to you. Thanks. See you soon.
+
+Reply with exactly these seven lines, choosing one value from each list and writing nothing else.
+Demand: up, flat or down (over the next two quarters)
+Pricing: up, flat or down (over the next two quarters)
+Margins: up, flat or down (over the next two quarters)
+Guidance: raised, held, cut or none (what management did)
+Candor: direct or evasive (how they answered)
+Next EPS: up or down (next quarter's EPS against a year earlier)
+Action: BUY or AVOID (for the next 60 sessions)<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+Demand:

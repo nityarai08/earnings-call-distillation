@@ -1,0 +1,11 @@
+row,month,prompt,demand,pricing,margins,guidance,candor,next_eps,action,p_next_eps_up,p_buy,p_mass,excess_return,outcome_y,next_eps_change
+216962,2026-03,examples/prompts/216962_rag.txt,up,up,up,raised,direct,down,AVOID,0.3775,0.3208,0.9886,0.2057,1.241,0.1546
+204604,2026-03,examples/prompts/204604_rag.txt,up,flat,up,held,direct,down,AVOID,0.4073,0.026,0.9792,0.0777,0.2428,0.2168
+223074,2026-03,examples/prompts/223074_rag.txt,up,flat,up,raised,direct,up,BUY,0.8808,0.9579,0.9838,-0.2157,-0.6969,-0.0826
+202315,2026-03,examples/prompts/202315_rag.txt,flat,down,down,held,direct,down,AVOID,0.0293,0.0005,0.9923,-0.0946,-0.6077,-0.3365
+223539,2026-03,examples/prompts/223539_rag.txt,up,up,up,raised,direct,up,BUY,0.7773,0.6792,0.9895,0.0864,0.3489,0.0303
+222756,2026-03,examples/prompts/222756_rag.txt,up,flat,up,raised,direct,down,AVOID,0.4378,0.0534,0.9049,0.9465,3.1821,
+217267,2026-03,examples/prompts/217267_rag.txt,flat,flat,flat,none,evasive,down,AVOID,0.018,0.0004,0.993,0.5103,3.8046,0.2051
+219186,2026-03,examples/prompts/219186_rag.txt,up,flat,up,none,direct,down,AVOID,0.2689,0.011,0.9201,0.1384,0.8861,
+208808,2026-03,examples/prompts/208808_rag.txt,up,flat,up,held,direct,up,BUY,0.6792,0.9241,0.9947,-0.4886,-2.4688,0.2036
+209281,2026-03,examples/prompts/209281_rag.txt,up,flat,down,raised,direct,down,AVOID,0.133,0.0421,0.9841,0.2578,0.6249,-0.4299

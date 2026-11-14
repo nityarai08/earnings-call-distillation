@@ -1,0 +1,23 @@
+<|im_start|>system
+You are an experienced stock analyst. The company's name is masked. Use only what is below.<|im_end|>
+<|im_start|>user
+Facts: sector Energy; daily dollar volume under $5M; past 60-session return +3%; daily risk 2.1%; move around the call -11.8%; EPS down 0.03 on a year ago; position none.
+
+Knowledge: none.
+
+Management's answers: not provided.
+
+Reply with exactly these seven lines, choosing one value from each list and writing nothing else.
+Demand: up, flat or down (over the next two quarters)
+Pricing: up, flat or down (over the next two quarters)
+Margins: up, flat or down (over the next two quarters)
+Guidance: raised, held, cut or none (what management did)
+Candor: direct or evasive (how they answered)
+Next EPS: up or down (next quarter's EPS against a year earlier)
+Action: BUY or AVOID (for the next 60 sessions)<|im_end|>
+<|im_start|>assistant
+<think>
+
+</think>
+
+Demand:

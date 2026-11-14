@@ -1,10 +1,10 @@
 # Data
 
-This page lists every data file the pipeline reads or writes: where it comes from, whether it is in this repo, and what its columns mean.
+This page lists every data file that the pipeline reads or writes. For each file, it gives the source, the location, and the meaning of each column.
 
 There are three kinds of files:
 
-- **Downloaded**: public source tables. Small ones are in the repo; large ones are fetched by `reproduce/download_data.sh`.
+- **Downloaded**: public source tables. The small tables are in the repo. The script `reproduce/download_data.sh` downloads the large tables.
 - **Built**: made by our scripts from the downloaded tables. In the repo when small and shareable.
 - **Run outputs**: what the models produced during the runs. All in the repo, except rows from the sealed final test part.
 
@@ -12,14 +12,14 @@ There are three kinds of files:
 
 | Source | What we use | License / terms | In this repo? |
 | --- | --- | --- | --- |
-| [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data) on Hugging Face | Earnings-call transcripts, daily prices, financial statements, company profiles, dividends, splits, trailing EPS | ODC-BY 1.0; the card says research and educational use | Small tables yes; transcripts, prices and statements no (2.9 GB, and the transcript text is not ours to redistribute) |
+| [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data) on Hugging Face | Earnings-call transcripts, daily prices, financial statements, company profiles, dividends, splits, trailing EPS | ODC-BY 1.0. The dataset card says research and educational use | The small tables, yes. The transcripts, prices and statements, no: they are 2.9 GB, and the transcript text is not ours to share |
 | [SEC company tickers](https://www.sec.gov/files/company_tickers.json) (copy inside the dataset above) | Company names, so they can be masked out of transcripts | US government data | Yes |
 | Yahoo Finance via [yfinance](https://github.com/ranaroussi/yfinance) | SPY daily bars: the trading calendar and the market return | Yahoo terms | Yes, SPY only (`data/raw/daily_bars.parquet`) |
-| [mlx-community/Qwen3.5-9B-4bit](https://huggingface.co/mlx-community/Qwen3.5-9B-4bit), revision `8b2b98c00a6b4d291155e4890773ca8f769aee53` | The student model: a 4-bit MLX conversion of Qwen3.5-9B | See the model card | No; `reproduce/setup.sh` downloads it |
+| [mlx-community/Qwen3.5-9B-4bit](https://huggingface.co/mlx-community/Qwen3.5-9B-4bit), revision `8b2b98c00a6b4d291155e4890773ca8f769aee53` | The student model: a 4-bit MLX conversion of Qwen3.5-9B | See the model card | No. `reproduce/setup.sh` downloads it |
 | [Claude Opus and Sonnet](https://docs.claude.com/en/docs/about-claude/models/overview) (`claude-opus-5-5`, `claude-sonnet-5-5`), Anthropic Batch API | Teacher labels and the analyst handbook | Anthropic terms | Their outputs, yes |
-| [pi](https://github.com/earendil-works/pi) (`@earendil-works/pi-coding-agent@1.5.0` on npm) | The agent loop for the "Pi" setup | See its repo | Lockfile only; `npm ci` installs it |
+| [pi](https://github.com/earendil-works/pi) (`@earendil-works/pi-coding-agent@1.5.0` on npm) | The agent loop for the "Pi" setup | See its repo | Lockfile only. `npm ci` installs it |
 
-The Hugging Face dataset is updated daily, and its history was compacted on 2026-11-13, so the exact 2026-11-06 snapshot this run used can no longer be downloaded. `data/raw/defeatbeta/spec.json` holds the dataset's own SHA-256 for every table in that snapshot; `reproduce/check_sources.py` tells you whether your copies still match.
+The owners update the Hugging Face dataset every day. On 2026-11-13 they compacted its history. Thus nobody can download the 2026-11-06 snapshot that this run used. The file `data/raw/defeatbeta/spec.json` holds the dataset's own SHA-256 for each table in that snapshot. The script `reproduce/check_sources.py` shows whether your copies match.
 
 ## How calls are identified
 
@@ -28,7 +28,7 @@ Every earnings call has one integer id, `row`, used across all files.
 - Rows below 200,000 are calls from 2016 to 2024 (built by `scripts/small_call_check.py`).
 - Rows from 200,000 up are calls from 2025 and 2026 (built by `scripts/paper/build_data.py parse`).
 
-**Decision timing.** A transcript gives the call date but no time. The model decides at the close of the first trading session after that date, buys at the next open, and sells at the close 60 sessions after the decision.
+**Decision timing.** A transcript gives the call date but no time. The model decides at the close of the first trading session after that date. The trade buys at the next open. It sells at the close 60 sessions after the decision.
 
 ## The sets
 
@@ -71,13 +71,13 @@ The three test parts are split at random within each month. Within a set, `rank`
 | `data/paper/calls.parquet` | 59,753 | Every call in the universe, with only what was knowable at the decision (columns below) |
 | `data/paper/sets.parquet` | 11,759 | The calls placed in a set: the `calls.parquet` columns plus `set` and `rank` |
 | `data/paper/outcomes.parquet` | 9,102 | Outcomes of the non-test sets (columns below) |
-| `data/paper/kb_outcomes.parquet` | 57,096 | Outcomes of all non-test calls; the knowledge base shows these as "how a past call turned out" cards, only after the outcome closed |
+| `data/paper/kb_outcomes.parquet` | 57,096 | Outcomes of all non-test calls. The library shows them as outcome cards, only after the trade closed |
 | `data/paper/sealed/test_d.parquet`, `test_w.parquet` | 100, 800 | Outcomes of the two opened test parts |
-| `data/paper/handbook.json` | 50 notes | General notes for reading earnings calls, written once by Claude Opus; part of the knowledge base |
+| `data/paper/handbook.json` | 50 notes | General notes for reading earnings calls, written once by Claude Opus. They are part of the library |
 | `data/cases/train.parquet` | 552 | `symbol` only: large stocks excluded from the universe because an earlier project already studied them |
 | `reports/diagnostics/small_call_events.parquet` | 47,507 | 2016–2024 calls with outcomes, used to check that the rebuild matches the earlier study |
 | `reports/diagnostics/small_call_read.csv` | 2,006 | `row` only: the 2023–2024 sample that became the `dev` and `student_check` sets |
-| `configs/paper/freeze.json` | — | SHA-256 of `sets.parquet`, `outcomes.parquet` and each test part; calls per set; the row ids of each test part |
+| `configs/paper/freeze.json` | — | SHA-256 of `sets.parquet`, `outcomes.parquet` and each test part. The number of calls in each set. The row ids of each test part |
 
 **`calls.parquet` / `sets.parquet` columns**
 
@@ -88,9 +88,9 @@ The three test parts are split at random within each month. Within a set, `rank`
 | `call` | Call date |
 | `fy`, `fq` | Fiscal year and quarter the call covers |
 | `date` | Decision session (first close after the call) |
-| `month` | `date` as `YYYY-MM`; IC is computed within each month |
+| `month` | `date` as `YYYY-MM`. The scoring script ranks calls within each month |
 | `sector` | Sector from the company profile |
-| `dollars` | Median daily dollar volume over the 60 sessions before the decision; the universe is $1M–$50M, with a share price of at least $3 |
+| `dollars` | Median daily dollar volume over the 60 sessions before the decision. The study uses only stocks from $1M to $50M, with a share price of at least $3 |
 | `past` | Return over the 60 sessions before the decision |
 | `risk` | Standard deviation of daily returns over those 60 sessions |
 | `reaction` | Price move from before the call to the decision close, in units of daily volatility × √2 |
@@ -111,7 +111,7 @@ The three test parts are split at random within each month. Within a set, `rank`
 | `ret` | Return from the next open to the exit close, dividends included |
 | `excess` | `ret` minus the average return of the same sector's stocks |
 | `y` | `excess` divided by (daily volatility × √60): the stock outcome every IC uses |
-| `next_yoy` | Next quarter's EPS minus the same quarter a year earlier; its sign is what "Next EPS: up or down" predicts |
+| `next_yoy` | Next quarter's EPS minus the same quarter a year earlier. Its sign is the answer to "Next EPS: up or down" |
 
 ### Teacher labels (`data/paper/teacher/`)
 
@@ -130,26 +130,38 @@ The three test parts are split at random within each month. Within a set, `rank`
 
 `labels.jsonl` is the first version from the mini run (260 lines, with a 1–5 `rating` instead of `score`).
 
-### Worked examples (`examples/`)
+### Real examples (`examples/`)
 
-These are three real calls with everything the models saw and wrote, written by `scripts/paper/examples.py`. They are the only place where full transcript text appears in this repo.
+`examples/README.md` lists every experiment and test of the two runs, with one folder each. A folder holds the first 10 calls that the experiment used, in the fixed order of its call set. The test folders use the first 10 test calls of March 2026. `scripts/paper/examples.py` writes the folder.
 
-| Folder | Files |
+| File | Content |
 | --- | --- |
-| `1_test_call/` (Test-W row 218058) | `prompt_memory.txt`, `prompt_raw.txt`, `prompt_rag.txt`, `prompt_pi.txt`: the exact text each setup read, chat template included. `answers.csv`: every setup's seven lines and probabilities. `outcome.json`: the return, sector return, volatility, `y` and next EPS, step by step |
-| `2_sft_training_call/` (SFT row 60332) | `opus_labels.jsonl`: Opus's neutral and skeptical answers. `target.json`: the training target and how the BUY probability was derived. `training_text.txt`: the prompt followed by the target answer |
-| `3_rl_training_call/` (RL row 4412) | `prompt.txt`, and `reward.json`: the trade-reward arithmetic, the starting model's read and the RL target |
+| `examples/prompts/<row>_<variant>.txt` | The exact text that a model read, chat template included. The variant names the prompt parts: `noblock` (no knowledge block), `rag`, `random`, `shuffled`, `pi`, `pi_rag_docs`, `nocall` (no call text), `holds` (HOLD or SELL), `noreaction`, `actiononly`, `habit`, `change`, and `opus_neutral` or `opus_skeptic` for Claude |
+| `examples/<stage>/<step>/<experiment>/answers.csv` | For each call: the prompt file, the seven lines, p(Next EPS up), the probability of the first action, `p_mass`, and the real outcome (`excess_return`, `outcome_y`, `next_eps_change`) |
+| `examples/week/sft_training/<variant>/targets.csv` | For each SFT training call: the prompt file and the target answer |
+| `examples/week/rl_training/<reward>/rewards.csv` | For each RL training call: the reward inputs (`y`, `month_mean_y`, `z`, the reward of each action), the start model's answer and probabilities, the reward, and the RL target |
+| `examples/week/rag/searches.csv` | For each example test call: the 12 query words, every passage that the search returned, its date and its outcome card |
+| `examples/week/pi/agent_runs.csv` | For each example call: the searches that the Pi agent wrote and the documents that it kept |
+
+The prompt files are the only place where transcript text appears in this repo.
+
+### Full training data (`data/paper/training/`)
+
+| File | Content |
+| --- | --- |
+| `sft_targets.csv` | One row for each SFT training call: 800 calls, plus 200 placebo calls. The columns are the actions, the target read lines, the real next EPS, Opus's two ratings and their mean. The last columns are the number of calls in the month and the target probability of the first action. The placebo rows have no ratings, because their targets came from other calls |
+| `rl_rewards.csv` | One row for each RL training call: 400 calls, plus 200 calls of the shuffled control. The columns are the outcome y, the month mean, z, the daily volatility, and the reward of each action |
 
 ### Run outputs (`runs/paper/<stage>/`)
 
-There is one folder per stage, `mini` and `week`; the paper's numbers come from `week`.
+There is one folder for each stage, `mini` and `week`. The paper's numbers come from `week`.
 
 | Path | What it holds |
 | --- | --- |
 | `results.csv` | Final test scores, one row per setup and baseline (columns in `blog/.../results/README.md`) |
 | `findings.csv` | The four paired comparisons with 95% bootstrap ranges |
 | `faithfulness.csv` | The forced-Demand test |
-| `pick_sft.csv`, `pick_rl.csv`, `pick_block.csv` | Development scores used to pick the best SFT arm, RL arm and retrieval setup; the picks are in `best_sft.txt`, `best_rl.txt`, `best_block.txt` |
+| `pick_sft.csv`, `pick_rl.csv`, `pick_block.csv` | Validation scores that picked the best SFT variant, RL reward and search setup. The picks are in `best_sft.txt`, `best_rl.txt` and `best_block.txt` |
 | `memo_memo.json` | Memorization check: how exactly the model repeats labels it was trained on |
 | `reads/<arm>.csv` | One row per call for every model setup and control (below) |
 | `reads/base_<rule>.csv`, `base_<rule>_test.csv` | Scores of the four simple rules on the development and test calls |
@@ -182,19 +194,29 @@ Rerunning the first test calls with these files gives the published probabilitie
 | `demand`, `pricing`, `margins`, `guidance`, `candor` | The model's most likely value for each read line |
 | `p_eps_up` | Probability of "Next EPS: up" (empty for arms that do not write that line) |
 | `p_pos` | Probability of the positive action (BUY when flat, HOLD when long): the stock score |
-| `p_mass` | The lowest, over the seven lines, of the probability the model put on that line's allowed values out of its whole vocabulary. Near 1 for the base model. Near 0 for the trained models, because training compares the allowed values only with each other: their scores are still well defined, but left to write freely they would not keep the format |
+| `p_mass` | For each line, the probability that the model gave to the allowed values, out of its whole vocabulary. The column keeps the lowest value of the seven lines. It is near 1 for the base model. It is near 0 for the trained models, because training compares the allowed values only with each other. Their stock scores are still valid. But in free text they would not keep the format |
 
-Arm names: `raw`, `rag`, `pi`, `memory` (no transcript), `rag_random` and `rag_shuffled` (retrieval controls), `pi_rag_docs` (pi loop with RAG's documents), `prompt_*` (prompt styles), `raw_flat` and `raw_long` (position check), `sft_*` and `rl_*` (trained arms), `sft_placebo` and `rl_shuffled` (controls), `*_demand_up` and `*_demand_down` (forced Demand), `*_test` (Test-W), `*_check` (the 300 `student_check` calls Opus also read).
+File names:
 
-**`agent/*.jsonl` fields:** `row`, `code` (0 = finished), `seconds`, `calls` (tool calls), `tokens` (tokens generated), `queries` (the searches the model wrote), `docs` (knowledge-base document ids it kept). The retrieved text itself is left out of the published logs because it is transcript text; rerunning the agent regenerates it.
+- `raw`, `rag`, `pi`, `memory` (no call text): the setups
+- `rag_random`, `rag_shuffled`: the RAG controls
+- `pi_rag_docs`: the Pi loop with RAG's documents
+- `prompt_*`: prompt styles
+- `raw_flat`, `raw_long`: the position check
+- `sft_*`, `rl_*`: trained variants. `sft_placebo` and `rl_shuffled` are controls
+- `*_demand_up`, `*_demand_down`: the forced-Demand test
+- `*_test`: the test set (Test-W)
+- `*_check`: the 300 check calls that Opus also read
+
+**`agent/*.jsonl` fields:** `row`, `code` (0 = finished), `seconds`, `calls` (tool calls), `tokens` (tokens generated), `queries` (the searches the model wrote), `docs` (knowledge-base document ids it kept). The published logs do not include the text of the documents, because it is transcript text. A new run of the agent makes it again.
 
 ## Not in this repo
 
-| File | Why | How to get it |
+| File | Why it is not here | How to make or download it |
 | --- | --- | --- |
 | `data/raw/transcripts/defeatbeta/transcripts.parquet` (2.3 GB), `data/raw/defeatbeta/stock_prices.parquet` (474 MB), `stock_statement.parquet` (121 MB) | Too large, and the transcripts are third-party text | `reproduce/download_data.sh` |
 | `data/features/small_call_text.parquet`, `data/paper/text_new.parquet` | Masked transcript text | `reproduce/build_data.sh` |
 | `data/paper/kb.sqlite` (1.1 GB) | The knowledge base: masked transcript passages | `reproduce/build_data.sh` |
-| `data/paper/sealed/test_f.parquet` | Outcomes of the sealed final test part | Withheld until a full run scores it; `build_data.sh` rebuilds it locally |
+| `data/paper/sealed/test_f.parquet` | Outcomes of the sealed final test part | Kept private until a full run scores it. `build_data.sh` builds it again on your computer |
 | The other trained adapters and all optimizer states (about 3 GB) | Size | `reproduce/run_stage.sh` retrains them |
 | Test-F rows in run outputs | Same reason as the sealed outcomes | Removed from every published file by `scripts/paper/export_repo.py` |

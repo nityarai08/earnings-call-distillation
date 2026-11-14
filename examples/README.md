@@ -1,43 +1,131 @@
-# Worked examples
+# Real examples of every experiment and test
 
-These are three real calls from the run: exactly what the models read, what they answered, what they were trained toward, and what happened next. Each prompt file is the full text the model saw, chat template included; it ends at `Demand:`, where the model starts answering.
+Each folder below holds real calls from one experiment or test. The calls are the first 10 of the call set that the experiment used, in the set's fixed random order. The test folders use the first 10 test calls of March 2026, so that the calls can be ranked inside one month.
 
-## 1. A test call (`1_test_call/`)
+Each answers file links to the exact prompt that the model read, in `prompts/`. Each targets or rewards file shows what training moved the model toward. `outcome_y` is the stock outcome and `next_eps_change` is the real EPS change.
 
-This is the first of the 800 Test-W calls, by the set's fixed random order. Its outcome was sealed until the final scoring step.
+The full tables of training data are in `data/paper/training/`. `scripts/paper/examples.py` writes this folder.
 
-| File | What it is |
-| --- | --- |
-| `prompt_memory.txt` | Memory only: the facts line, but no transcript and no knowledge |
-| `prompt_raw.txt` | Raw: facts and management's answers |
-| `prompt_rag.txt` | RAG: facts, the knowledge block from the fixed search, and the answers. The SFT and RL models read this same prompt |
-| `prompt_pi.txt` | Pi: facts, the documents the model chose with its own searches, and the answers |
-| `answers.csv` | What each of the six setups answered: the seven lines, p(Next EPS up) and p(BUY) |
-| `outcome.json` | What happened: return, sector return, excess return, volatility, the outcome `y` and next quarter's EPS, step by step |
 
-## 2. A fine-tuning call (`2_sft_training_call/`)
+## week stage: raw
 
-This is the first call the SFT model was trained on.
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| prompt_plain | Prompt style: the plain instruction | dev, first 10 of 100 | [examples/week/raw/prompt_plain/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/prompt_plain/answers.csv) | [runs/paper/week/reads/prompt_plain.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/prompt_plain.csv) |
+| prompt_habit | Prompt style: an instruction to weigh specifics over positive tone | dev, first 10 of 100 | [examples/week/raw/prompt_habit/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/prompt_habit/answers.csv) | [runs/paper/week/reads/prompt_habit.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/prompt_habit.csv) |
+| prompt_change | Prompt style: an instruction to compare with the last quarter | dev, first 10 of 100 | [examples/week/raw/prompt_change/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/prompt_change/answers.csv) | [runs/paper/week/reads/prompt_change.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/prompt_change.csv) |
+| raw | Raw setup: the call text, no knowledge block | validation, first 10 of 500 | [examples/week/raw/raw/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/raw/answers.csv) | [runs/paper/week/reads/raw.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/raw.csv) |
+| memory | Memory only: the facts line, no call text | validation, first 10 of 500 | [examples/week/raw/memory/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/memory/answers.csv) | [runs/paper/week/reads/memory.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/memory.csv) |
+| raw_flat | Position check: the model holds no stock and chooses BUY or AVOID | dev, first 10 of 200 | [examples/week/raw/raw_flat/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/raw_flat/answers.csv) | [runs/paper/week/reads/raw_flat.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/raw_flat.csv) |
+| raw_long | Position check: the model holds the stock and chooses HOLD or SELL | dev, first 10 of 200 | [examples/week/raw/raw_long/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/raw_long/answers.csv) | [runs/paper/week/reads/raw_long.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/raw_long.csv) |
+| probe | Probe: the raw model's answers on SFT calls. Its hidden states are in reads/probe_hidden_*.npz | sft, first 10 of 800 | [examples/week/raw/probe/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/raw/probe/answers.csv) | [runs/paper/week/reads/probe.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/probe.csv) |
 
-| File | What it is |
-| --- | --- |
-| `opus_labels.jsonl` | Claude Opus's two answers: neutral and skeptical, each with a 0–100 score and quotes |
-| `target.json` | The training target: Opus's read lines, the real next-quarter EPS, and the BUY probability made from Opus's score |
-| `training_text.txt` | The prompt followed by the target answer. The Action line is trained toward the probability in `target.json`, not toward a hard BUY |
+## week stage: rag
 
-## 3. A reinforcement-learning call (`3_rl_training_call/`)
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| rag | RAG setup: a fixed search adds a knowledge block | validation, first 10 of 500 | [examples/week/rag/rag/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rag/rag/answers.csv) | [runs/paper/week/reads/rag.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rag.csv) |
+| rag_random | Control: random passages of the same length instead of the search results | validation, first 10 of 200 | [examples/week/rag/rag_random/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rag/rag_random/answers.csv) | [runs/paper/week/reads/rag_random.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rag_random.csv) |
+| rag_shuffled | Control: the search results, with the past outcomes in them shuffled | validation, first 10 of 200 | [examples/week/rag/rag_shuffled/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rag/rag_shuffled/answers.csv) | [runs/paper/week/reads/rag_shuffled.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rag_shuffled.csv) |
+| searches | The RAG search for each test call: query words, passages returned, their dates and outcome cards | test_w, the first 10 calls of March 2026 | [examples/week/rag/searches.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rag/searches.csv) | `data/paper/kb.sqlite (built by reproduce/build_data.sh)` |
 
-This is the first RL call with a flat position and a clear outcome.
+## week stage: opus_check
 
-| File | What it is |
-| --- | --- |
-| `prompt.txt` | The prompt the RL model read |
-| `reward.json` | The trade reward worked out step by step, the starting model's read and p(BUY), and the target RL moved it toward |
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| student_rag | The small model (RAG) on the check calls that Opus and Sonnet also read | student_check, first 10 of 300 | [examples/week/opus_check/student_rag/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/student_rag/answers.csv) | [runs/paper/week/reads/student_rag.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/student_rag.csv) |
+| claude | Opus and Sonnet on the check calls | student_check, first 10 | [examples/week/opus_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/answers.csv) | [data/paper/teacher/labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) |
 
-To regenerate these files (needs the knowledge base from `reproduce/build_data.sh`):
+## week stage: opus_labels
 
-```bash
-PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/examples.py --model
-```
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| claude | Opus answers used for SFT: neutral and skeptical instruction | sft, first 10 | [examples/week/opus_labels/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_labels/answers.csv) | [data/paper/teacher/labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) |
 
-The blog post explains every number: [`blog/2026-11-small-model-earnings-calls/README.md`](../blog/2026-11-small-model-earnings-calls/README.md).
+## week stage: sft_training
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| read_eps | Read + EPS: read lines, Next EPS and Action | sft rows 0 to 400, first 10 | [examples/week/sft_training/read_eps/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/read_eps/targets.csv) | [runs/paper/week/train/read_eps.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/read_eps.csv) |
+| score | Score only: the Action line alone | sft rows 0 to 400, first 10 | [examples/week/sft_training/score/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/score/targets.csv) | [runs/paper/week/train/score.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/score.csv) |
+| read | Read: read lines and Action, no Next EPS | sft rows 0 to 400, first 10 | [examples/week/sft_training/read/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/read/targets.csv) | [runs/paper/week/train/read.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/read.csv) |
+| hard | Hard: Action = 1 if the stock beat its month's median outcome | sft rows 0 to 400, first 10 | [examples/week/sft_training/hard/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/hard/targets.csv) | [runs/paper/week/train/hard.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/hard.csv) |
+| placebo | Control: Opus read lines and ratings shuffled within the month | sft rows 0 to 200, first 10 | [examples/week/sft_training/placebo/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/placebo/targets.csv) | [runs/paper/week/train/placebo.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/placebo.csv) |
+| sft_grown | Grown: 400 more calls after read_eps, at a lower learning rate | sft rows 400 to 800, first 10 | [examples/week/sft_training/sft_grown/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/sft_grown/targets.csv) | [runs/paper/week/train/sft_grown.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/sft_grown.csv) |
+| memo | Memorization check: 50 calls, 10 passes | sft rows 0 to 50, first 10 | [examples/week/sft_training/memo/targets.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft_training/memo/targets.csv) | [runs/paper/week/train/memo.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/memo.csv) |
+
+## week stage: sft
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| memo | Memorization check: 50 training calls, trained 10 times, then read back | sft, first 10 of 50 | [examples/week/sft/memo/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/memo/answers.csv) | [runs/paper/week/reads/memo.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/memo.csv) |
+| sft_read_eps | SFT variant read + EPS (the variant kept) | validation, first 10 of 300 | [examples/week/sft/sft_read_eps/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_read_eps/answers.csv) | [runs/paper/week/reads/sft_read_eps.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_read_eps.csv) |
+| sft_score | SFT variant score only: the model writes only the Action line | validation, first 10 of 300 | [examples/week/sft/sft_score/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_score/answers.csv) | [runs/paper/week/reads/sft_score.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_score.csv) |
+| sft_read | SFT variant read: read lines and Action, no Next EPS | validation, first 10 of 300 | [examples/week/sft/sft_read/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_read/answers.csv) | [runs/paper/week/reads/sft_read.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_read.csv) |
+| sft_hard | SFT variant hard: Action trained on the real outcome | validation, first 10 of 300 | [examples/week/sft/sft_hard/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_hard/answers.csv) | [runs/paper/week/reads/sft_hard.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_hard.csv) |
+| sft_placebo | Control: SFT on Opus answers shuffled among calls of the same month | validation, first 10 of 300 | [examples/week/sft/sft_placebo/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_placebo/answers.csv) | [runs/paper/week/reads/sft_placebo.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_placebo.csv) |
+| sft_grown | SFT model after 800 calls (the SFT setup) | validation, first 10 of 500 | [examples/week/sft/sft_grown/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/sft/sft_grown/answers.csv) | [runs/paper/week/reads/sft_grown.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_grown.csv) |
+
+## week stage: rl_training
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| trade | Trade reward (the RL setup) | rl, first 10 of 400 | [examples/week/rl_training/trade/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/trade/rewards.csv) | [runs/paper/week/train/trade.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/trade.csv) |
+| business | Business reward: the real Next EPS | rl, first 10 of 400 | [examples/week/rl_training/business/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/business/rewards.csv) | [runs/paper/week/train/business.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/business.csv) |
+| both | Business and trade rewards | rl, first 10 of 400 | [examples/week/rl_training/both/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/both/rewards.csv) | [runs/paper/week/train/both.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/both.csv) |
+| shuffled | Control: trade reward with outcomes shuffled within the month | rl, first 10 of 200 | [examples/week/rl_training/shuffled/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/shuffled/rewards.csv) | [runs/paper/week/train/shuffled.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/shuffled.csv) |
+| control | Number-rule control: reward +3 if the past return is positive, else -3. The model does not see the call text | rl, first 10 of 240 | [examples/week/rl_training/control/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/control/rewards.csv) | [runs/paper/week/train/control.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/control.csv) |
+
+## week stage: rl
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| rl_business | RL with the business reward (EPS forecast) | validation, first 10 of 300 | [examples/week/rl/rl_business/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_business/answers.csv) | [runs/paper/week/reads/rl_business.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_business.csv) |
+| rl_both | RL with the business and trade rewards together | validation, first 10 of 300 | [examples/week/rl/rl_both/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_both/answers.csv) | [runs/paper/week/reads/rl_both.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_both.csv) |
+| rl_trade | RL with the trade reward (the RL setup) | validation, first 10 of 300 | [examples/week/rl/rl_trade/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_trade/answers.csv) | [runs/paper/week/reads/rl_trade.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_trade.csv) |
+| rl_shuffled | Control: RL with outcomes shuffled within each month | validation, first 10 of 300 | [examples/week/rl/rl_shuffled/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_shuffled/answers.csv) | [runs/paper/week/reads/rl_shuffled.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_shuffled.csv) |
+| sft_demand_up | Forced-Demand test: SFT model with Demand forced to up | validation, first 10 of 200 | [examples/week/rl/sft_demand_up/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_up/answers.csv) | [runs/paper/week/reads/sft_demand_up.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_demand_up.csv) |
+| sft_demand_down | Forced-Demand test: SFT model with Demand forced to down | validation, first 10 of 200 | [examples/week/rl/sft_demand_down/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_down/answers.csv) | [runs/paper/week/reads/sft_demand_down.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_demand_down.csv) |
+| rl_demand_up | Forced-Demand test: RL model with Demand forced to up | validation, first 10 of 200 | [examples/week/rl/rl_demand_up/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_demand_up/answers.csv) | [runs/paper/week/reads/rl_demand_up.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_demand_up.csv) |
+| rl_demand_down | Forced-Demand test: RL model with Demand forced to down | validation, first 10 of 200 | [examples/week/rl/rl_demand_down/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/rl_demand_down/answers.csv) | [runs/paper/week/reads/rl_demand_down.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_demand_down.csv) |
+
+## week stage: pi
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| pi | Pi setup: the model searches the library itself | validation, first 10 of 500 | [examples/week/pi/pi/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/pi/answers.csv) | [runs/paper/week/reads/pi.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi.csv) |
+| pi_rag_docs | Control: the Pi tool loop, given RAG's documents | validation, first 10 of 200 | [examples/week/pi/pi_rag_docs/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/pi_rag_docs/answers.csv) | [runs/paper/week/reads/pi_rag_docs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi_rag_docs.csv) |
+| agent_runs | What the Pi agent searched for and kept, on validation and test calls | validation and test_w, first 10 each | [examples/week/pi/agent_runs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/agent_runs.csv) | `runs/paper/week/agent/*.jsonl` |
+
+## week stage: check
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| raw_check | Raw setup on the check calls | student_check, first 10 of 300 | [examples/week/check/raw_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/check/raw_check/answers.csv) | [runs/paper/week/reads/raw_check.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/raw_check.csv) |
+| rag_check | RAG setup on the check calls | student_check, first 10 of 300 | [examples/week/check/rag_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/check/rag_check/answers.csv) | [runs/paper/week/reads/rag_check.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rag_check.csv) |
+| sft_best_check | SFT setup on the check calls | student_check, first 10 of 300 | [examples/week/check/sft_best_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/check/sft_best_check/answers.csv) | [runs/paper/week/reads/sft_best_check.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_best_check.csv) |
+| rl_best_check | RL setup on the check calls | student_check, first 10 of 300 | [examples/week/check/rl_best_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/check/rl_best_check/answers.csv) | [runs/paper/week/reads/rl_best_check.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_best_check.csv) |
+
+## week stage: test
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| memory_test | Final test of the Memory only setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/memory_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/memory_test/answers.csv) | [runs/paper/week/reads/memory_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/memory_test.csv) |
+| raw_test | Final test of the Raw setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/raw_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/raw_test/answers.csv) | [runs/paper/week/reads/raw_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/raw_test.csv) |
+| rag_test | Final test of the RAG setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/rag_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rag_test/answers.csv) | [runs/paper/week/reads/rag_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rag_test.csv) |
+| pi_test | Final test of the Pi setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/pi_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/pi_test/answers.csv) | [runs/paper/week/reads/pi_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi_test.csv) |
+| sft_best_test | Final test of the SFT setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/sft_best_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/sft_best_test/answers.csv) | [runs/paper/week/reads/sft_best_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/sft_best_test.csv) |
+| rl_best_test | Final test of the RL setup | test_w, the first 10 calls of March 2026 (of 800) | [examples/week/test/rl_best_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rl_best_test/answers.csv) | [runs/paper/week/reads/rl_best_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_best_test.csv) |
+| simple_rules | Final test of the four simple rules (no AI), with the inputs each rule uses | test_w, the same 10 calls | [examples/week/test/simple_rules/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/simple_rules/answers.csv) | `runs/paper/week/reads/base_*_test.csv` |
+
+## mini stage: test
+
+| Experiment | What it tests | Calls | Example | Full file |
+| --- | --- | --- | --- | --- |
+| memory_test | Final test of the Memory only setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/memory_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/memory_test/answers.csv) | [runs/paper/mini/reads/memory_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/memory_test.csv) |
+| raw_test | Final test of the Raw setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/raw_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/raw_test/answers.csv) | [runs/paper/mini/reads/raw_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/raw_test.csv) |
+| rag_test | Final test of the RAG setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/rag_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/rag_test/answers.csv) | [runs/paper/mini/reads/rag_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/rag_test.csv) |
+| pi_test | Final test of the Pi setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/pi_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/pi_test/answers.csv) | [runs/paper/mini/reads/pi_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/pi_test.csv) |
+| sft_best_test | Final test of the SFT setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/sft_best_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/sft_best_test/answers.csv) | [runs/paper/mini/reads/sft_best_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/sft_best_test.csv) |
+| rl_best_test | Final test of the RL setup | test_d, the first 10 calls of March 2026 (of 100) | [examples/mini/test/rl_best_test/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/rl_best_test/answers.csv) | [runs/paper/mini/reads/rl_best_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/mini/reads/rl_best_test.csv) |
+| simple_rules | Final test of the four simple rules (no AI), with the inputs each rule uses | test_d, the same 10 calls | [examples/mini/test/simple_rules/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/mini/test/simple_rules/answers.csv) | `runs/paper/mini/reads/base_*_test.csv` |

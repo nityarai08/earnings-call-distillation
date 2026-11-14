@@ -1,0 +1,11 @@
+row,month,prompt,position,target_answer,first_action_target,passes
+14417,2023-04,examples/prompts/14417_rag_holds.txt,long,"Demand: up | Pricing: up | Margins: flat | Guidance: none | Candor: direct | Next EPS: up | Action: HOLD with probability 0.96, SELL with 0.04",0.9615,2
+5012,2023-12,examples/prompts/5012_rag.txt,flat,"Demand: up | Pricing: flat | Margins: flat | Guidance: none | Candor: direct | Next EPS: down | Action: BUY with probability 0.45, AVOID with 0.55",0.45,2
+99994,2022-11,examples/prompts/99994_rag.txt,flat,"Demand: down | Pricing: down | Margins: down | Guidance: none | Candor: direct | Next EPS: down | Action: BUY with probability 0.25, AVOID with 0.75",0.25,2
+85025,2021-05,examples/prompts/85025_rag_holds.txt,long,"Demand: up | Pricing: flat | Margins: flat | Guidance: held | Candor: evasive | Next EPS: up | Action: HOLD with probability 0.71, SELL with 0.29",0.7051,2
+993,2023-11,examples/prompts/993_rag_holds.txt,long,"Demand: flat | Pricing: flat | Margins: down | Guidance: none | Candor: evasive | Next EPS: up | Action: HOLD with probability 0.22, SELL with 0.78",0.2179,2
+31006,2021-05,examples/prompts/31006_rag.txt,flat,"Demand: up | Pricing: down | Margins: flat | Guidance: raised | Candor: direct | Next EPS: down | Action: BUY with probability 0.53, AVOID with 0.47",0.5256,2
+99204,2024-05,examples/prompts/99204_rag.txt,flat,"Demand: flat | Pricing: flat | Margins: flat | Guidance: held | Candor: evasive | Next EPS: up | Action: BUY with probability 0.45, AVOID with 0.55",0.4524,2
+61016,2021-04,examples/prompts/61016_rag.txt,flat,"Demand: flat | Pricing: flat | Margins: flat | Guidance: none | Candor: direct | Next EPS: up | Action: BUY with probability 0.16, AVOID with 0.84",0.1562,2
+33164,2023-11,examples/prompts/33164_rag.txt,flat,"Demand: up | Pricing: up | Margins: up | Guidance: held | Candor: direct | Next EPS: down | Action: BUY with probability 0.58, AVOID with 0.42",0.5769,2
+35096,2023-04,examples/prompts/35096_rag.txt,flat,"Demand: down | Pricing: flat | Margins: down | Guidance: held | Candor: direct | Next EPS: up | Action: BUY with probability 0.19, AVOID with 0.81",0.1923,2

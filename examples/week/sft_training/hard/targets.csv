@@ -1,0 +1,11 @@
+row,month,prompt,position,target_answer,first_action_target,passes
+60332,2024-05,examples/prompts/60332_rag_actiononly.txt,flat,"Action: BUY with probability 1.00, AVOID with 0.00",1.0,2
+36055,2024-04,examples/prompts/36055_rag_holds_actiononly.txt,long,"Action: HOLD with probability 1.00, SELL with 0.00",1.0,2
+98340,2024-05,examples/prompts/98340_rag_actiononly.txt,flat,"Action: BUY with probability 0.00, AVOID with 1.00",0.0,2
+64438,2022-11,examples/prompts/64438_rag_actiononly.txt,flat,"Action: BUY with probability 1.00, AVOID with 0.00",1.0,2
+4974,2023-05,examples/prompts/4974_rag_actiononly.txt,flat,"Action: BUY with probability 1.00, AVOID with 0.00",1.0,2
+32467,2022-05,examples/prompts/32467_rag_holds_actiononly.txt,long,"Action: HOLD with probability 0.00, SELL with 1.00",0.0,2
+50400,2022-05,examples/prompts/50400_rag_actiononly.txt,flat,"Action: BUY with probability 0.00, AVOID with 1.00",0.0,2
+83894,2023-11,examples/prompts/83894_rag_actiononly.txt,flat,"Action: BUY with probability 0.00, AVOID with 1.00",0.0,2
+19678,2022-11,examples/prompts/19678_rag_actiononly.txt,flat,"Action: BUY with probability 1.00, AVOID with 0.00",1.0,2
+13037,2022-05,examples/prompts/13037_rag_holds_actiononly.txt,long,"Action: HOLD with probability 1.00, SELL with 0.00",1.0,2

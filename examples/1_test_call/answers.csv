@@ -1,7 +1,0 @@
-setup,prompt,demand,pricing,margins,guidance,candor,p_next_eps_up,p_buy,answer
-Memory only,prompt_memory.txt,down,flat,flat,none,evasive,0.46879,0.0002,Demand: down | Pricing: flat | Margins: flat | Guidance: none | Candor: evasive | Next EPS: down | Action: AVOID
-Raw,prompt_raw.txt,flat,flat,up,none,evasive,0.62246,0.20181,Demand: flat | Pricing: flat | Margins: up | Guidance: none | Candor: evasive | Next EPS: up | Action: AVOID
-RAG,prompt_rag.txt,up,flat,up,none,direct,0.40733,0.02931,Demand: up | Pricing: flat | Margins: up | Guidance: none | Candor: direct | Next EPS: down | Action: AVOID
-Pi,prompt_pi.txt,flat,flat,up,none,evasive,0.86704,0.07586,Demand: flat | Pricing: flat | Margins: up | Guidance: none | Candor: evasive | Next EPS: up | Action: AVOID
-SFT,prompt_rag.txt,up,flat,up,none,direct,0.67662,0.69123,Demand: up | Pricing: flat | Margins: up | Guidance: none | Candor: direct | Next EPS: up | Action: BUY
-RL,prompt_rag.txt,up,flat,up,none,direct,0.66454,0.67147,Demand: up | Pricing: flat | Margins: up | Guidance: none | Candor: direct | Next EPS: up | Action: BUY

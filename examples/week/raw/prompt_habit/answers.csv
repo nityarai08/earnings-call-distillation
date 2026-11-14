@@ -1,0 +1,11 @@
+row,month,prompt,demand,pricing,margins,guidance,candor,next_eps,action,p_next_eps_up,p_buy,p_mass,excess_return,outcome_y,next_eps_change
+102151,2023-11,examples/prompts/102151_noblock_habit.txt,flat,flat,up,none,evasive,down,AVOID,0.3486,0.0001,0.9727,-0.0875,-0.3479,3.4137
+63382,2023-11,examples/prompts/63382_noblock_habit.txt,flat,flat,flat,held,evasive,down,AVOID,0.1824,0.0,0.8174,-0.2273,-0.6885,-0.5307
+70161,2023-05,examples/prompts/70161_noblock_habit.txt,flat,flat,flat,held,evasive,down,AVOID,0.0759,0.0,0.9606,-0.0961,-0.5595,-3.194
+25567,2023-01,examples/prompts/25567_noblock_habit.txt,down,flat,down,none,evasive,down,AVOID,0.1645,0.0,0.9736,-0.2486,-2.3546,0.1112
+5010,2023-05,examples/prompts/5010_noblock_habit.txt,flat,flat,down,held,evasive,down,AVOID,0.026,0.0,0.9816,-0.0358,-0.1506,-0.1669
+24967,2024-02,examples/prompts/24967_noblock_habit.txt,up,up,up,held,evasive,up,AVOID,0.7311,0.3486,0.9584,0.0124,0.1391,0.4952
+49360,2024-02,examples/prompts/49360_noblock_habit.txt,up,flat,up,held,evasive,down,AVOID,0.5,0.0293,0.9735,0.6813,1.3815,0.1078
+94211,2024-05,examples/prompts/94211_noblock_habit.txt,up,flat,up,none,evasive,down,AVOID,0.0759,0.0002,0.9813,-0.1103,-0.4629,-0.0824
+58042,2023-05,examples/prompts/58042_noblock_habit.txt,up,up,flat,none,evasive,down,AVOID,0.0373,0.0001,0.9906,0.2294,0.9733,-7.2305
+56080,2024-04,examples/prompts/56080_noblock_habit.txt,flat,flat,flat,none,evasive,down,AVOID,0.1067,0.0,0.4625,0.0141,0.103,0.3202

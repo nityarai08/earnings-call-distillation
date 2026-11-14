@@ -60,7 +60,7 @@ The `reproduce/` scripts wrap these steps, and `reproduce/rerun_trained_reads.sh
 | `scripts/paper/train_soft.py` | LoRA fine-tuning (`sft`) and reinforcement learning (`rl`) on the 9B, fitted to an 18 GB Mac: the frozen layers run once, and only the top 8 layers get gradients. RL samples 4 reads per call and moves toward a reward-tilted target. Rewards: `business` (next EPS right), `trade` (60-day outcome), `both`, and `shuffled` (outcomes shuffled within each month) |
 | `scripts/paper/score.py` | Scores reads the same way everywhere: IC within each month, accuracy, the BUY book after costs, and paired bootstrap ranges. The only script that opens a sealed test part, and only by name (`final --open test_w`) |
 | `scripts/paper/interim.py`, `tracker.py` | Early development results and the progress dashboard while a stage runs (optional) |
-| `scripts/paper/examples.py` | Writes `examples/`: the exact prompts, answers, targets and outcomes for three real calls (`--model` adds the starting model's read for the RL example) |
+| `scripts/paper/examples.py` | Writes `examples/` (10 real calls for every experiment and test) and `data/paper/training/` (the full SFT targets and RL reward inputs). `--model` adds the start model's answers for the RL examples |
 | `scripts/paper/export_repo.py` | Builds this repo from the working project: copies code and data, trims three inputs, drops Test-F rows and retrieved transcript text, and stops if a key, private email or sealed file would leave |
 
 ## Stages
