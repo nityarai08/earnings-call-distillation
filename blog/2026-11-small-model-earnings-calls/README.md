@@ -31,7 +31,7 @@ I also wanted to test, one at a time, the tricks people usually add: reference d
 **Calls.** Every quarter a public company holds an earnings call: management talks, then analysts ask questions. I used transcripts from the public [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data) dataset.
 
 **Which companies.** I kept smaller US companies only:
-- shares trading between $1M and $50M a day (the median over the 60 trading days before the call);
+- dollar trading volume (closing price × shares traded) between $1M and $50M a day, using the median day of the 60 trading days before the call;
 - a share price of at least $3;
 - at least 300 words of management answers and 100 words of analyst questions.
 
