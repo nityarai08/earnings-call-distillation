@@ -56,7 +56,7 @@ I also tested four usual methods, one at a time:
 3. Train the model on Opus's answers.
 4. Train the model further with rewards.
 
-I also ran controls (see the table above), so that a lucky result cannot look like a real gain.
+I also ran controls (see "Control" in the table above), so that a lucky result cannot look like a real gain.
 
 ## 2. The data
 
@@ -66,7 +66,7 @@ I also ran controls (see the table above), so that a lucky result cannot look li
 
 - The stock's dollar trading volume (closing price × shares traded) was between $1M and $50M a day. I used the median day of the 60 trading days before the call.
 - The share price was $3 or more.
-- The managers' answers had 300 words or more, and the analysts' questions had 100 words or more.
+- The managers' replies had 300 words or more, and the analysts' questions had 100 words or more.
 
 This filter kept 59,753 calls from 2016 to 2026 ([calls.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/calls.parquet)).
 

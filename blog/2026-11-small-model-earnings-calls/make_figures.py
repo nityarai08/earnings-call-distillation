@@ -26,9 +26,9 @@ def stock_ic():
     rows = [r for r in csv.DictReader(open(HERE / "results" / "results.csv")) if r["stock_ic"]]
     rows.sort(key=lambda r: -float(r["stock_ic"]))
     left, w, y0, rh, top_ic = 170, 470, 104, 32, 0.13
-    body = [text(20, 28, "Every AI setup that reads the transcript ranks stocks at about 0.10", 16, weight="600"),
-            text(20, 50, "Stock-ranking score (IC), 800 sealed test calls, Mar to Aug 2026. Higher is better; 0 is a coin flip.", 13, MUTED)]
-    for i, (label, kind) in enumerate([("AI model", "model"), ("AI model, no transcript", "control"), ("simple rule, no AI", "rule")]):
+    body = [text(20, 28, "Every setup that reads the call has an IC of approximately 0.10", 16, weight="600"),
+            text(20, 50, "IC of each setup and simple rule on the 800 test calls, March to August 2026. 0 means no relation.", 13, MUTED)]
+    for i, (label, kind) in enumerate([("setup", "model"), ("setup without the call", "control"), ("simple rule (no AI)", "rule")]):
         x = 20 + i * 180
         body += [f'<rect x="{x}" y="66" width="12" height="12" rx="2" fill="{FILL[kind]}"/>', text(x + 18, 77, label, 13, MUTED)]
     for i, r in enumerate(rows):
@@ -48,8 +48,8 @@ def gaps():
     left, w, y0, rh, span = 150, 400, 96, 46, 0.1
     x = lambda v: left + (v + span) / (2 * span) * w  # noqa: E731
     sign = lambda v: ("+" if v > 0 else "−" if v < 0 else "") + f"{abs(v):.3f}"  # noqa: E731
-    body = [text(20, 28, "No step of the ladder beats the one before it by more than noise", 16, weight="600"),
-            text(20, 50, "Gain in stock-ranking score (IC) from each step, same 800 test calls. Dot = gain; line = 95% range.", 13, MUTED),
+    body = [text(20, 28, "No step gives a gain larger than chance can explain", 16, weight="600"),
+            text(20, 50, "IC gain of each step on the same 800 test calls. Dot: the gain. Line: the 95% range.", 13, MUTED),
             f'<line x1="{x(0)}" x2="{x(0)}" y1="{y0 - 18}" y2="{y0 + 4 * rh}" stroke="{MUTED}" stroke-dasharray="4 3"/>',
             text(x(0), y0 - 24, "no difference", 12, MUTED, "middle")]
     for i, r in enumerate(rows):
