@@ -22,7 +22,7 @@ from score import ic, join, outcomes  # noqa: E402
 OUT = ROOT / "reports" / "paper" / "tracker"
 BOOT = 300
 ARMS = {  # read file: (group, name shown)
-    "memory": ("Setups", "Memory only"), "raw": ("Setups", "Raw"), "rag": ("Setups", "RAG"), "pi": ("Setups", "Pi search"),
+    "memory": ("Setups", "No call"), "raw": ("Setups", "Call only"), "rag": ("Setups", "RAG"), "pi": ("Setups", "Pi search"),
     "pi_rag_docs": ("Controls", "Pi loop, RAG's documents"), "rag_random": ("Controls", "RAG, random documents"), "rag_shuffled": ("Controls", "RAG, outcomes shuffled"),
     "prompt_plain": ("Prompts", "Prompt: plain"), "prompt_habit": ("Prompts", "Prompt: habit"), "prompt_change": ("Prompts", "Prompt: change"),
     "sft_score": ("SFT arms", "SFT: score only"), "sft_read": ("SFT arms", "SFT: read"), "sft_read_eps": ("SFT arms", "SFT: read + EPS"),

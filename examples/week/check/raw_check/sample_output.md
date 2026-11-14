@@ -1,6 +1,6 @@
 # Sample output: raw_check
 
-Raw setup on the check calls
+Call only setup on the check calls
 
 Call 62273. The model read the prompt in [examples/prompts/62273_noblock_noreaction.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/62273_noblock_noreaction.txt). The prompt ends with the label `Demand:`.
 

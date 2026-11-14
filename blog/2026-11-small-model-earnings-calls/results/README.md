@@ -8,7 +8,7 @@ All numbers come from the week run (`runs/paper/week/`), finished 2026-11-13. "T
 | --- | --- |
 | `setup`, `arm` | The model setup, control or baseline being scored |
 | `calls` | Number of earnings calls scored |
-| `stock_ic` | Stock-ranking score: Spearman rank correlation between the BUY probability and the 60-day sector-adjusted, volatility-scaled return, computed per month and averaged. 0 = coin flip |
+| `stock_ic` | Stock-ranking score (IC). The BUY probability and the 60-day sector-adjusted, volatility-scaled return are each turned into a percentile rank within their month. The IC is the correlation of the two ranks across all calls. 0 = coin flip |
 | `stock_lo`, `stock_hi` | 95% bootstrap range for `stock_ic` |
 | `stock_acc` | Share of calls where BUY/AVOID matched whether the stock beat its sector |
 | `eps_ic` | Same rank score, for the "Next EPS: up" probability against next quarter's actual EPS change vs a year earlier |

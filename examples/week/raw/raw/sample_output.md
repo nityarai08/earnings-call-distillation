@@ -1,6 +1,6 @@
 # Sample output: raw
 
-Raw setup: the call text, no knowledge block
+Call only setup: the call text, no knowledge block
 
 Call 200826. The model read the prompt in [examples/prompts/200826_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/200826_noblock.txt). The prompt ends with the label `Demand:`.
 

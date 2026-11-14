@@ -1,6 +1,6 @@
 # Sample output: memory
 
-Memory only: the facts line, no call text
+No call setup: the facts line, no call text
 
 Call 200826. The model read the prompt in [examples/prompts/200826_nocall_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/200826_nocall_noblock.txt). The prompt ends with the label `Demand:`.
 

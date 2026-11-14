@@ -8,7 +8,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 BLUE, LIGHT, GREY, INK, MUTED, AXIS = "#2a78d6", "#a3c5ee", "#c4c4bb", "#1f1f1f", "#666666", "#bbbbbb"
-KIND = {"Memory only": "control", "Known-EPS rule": "rule", "Numbers only": "rule", "Word list": "rule"}
+KIND = {"No call": "control", "Known-EPS rule": "rule", "Numbers only": "rule", "Word list": "rule"}
 FILL = {"model": BLUE, "control": LIGHT, "rule": GREY}
 
 
@@ -54,7 +54,7 @@ def gaps():
             text(x(0), y0 - 24, "no difference", 12, MUTED, "middle")]
     for i, r in enumerate(rows):
         # "Pi minus RAG: IC +0.007 (95% -0.051 to +0.073)" -> step name and three numbers
-        name, b = re.match(r"(\w+) minus (\w+)", r["result"]).groups()
+        name, b = re.match(r"(.+?) minus (.+?):", r["result"]).groups()
         gap, lo, hi = map(float, re.findall(r"[-+]\d\.\d+", r["result"]))
         y = y0 + i * rh
         body += [text(left - 14, y + 5, f"{name} vs {b}", anchor="end"),

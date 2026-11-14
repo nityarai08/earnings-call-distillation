@@ -1,6 +1,6 @@
 # Sample output: probe
 
-Probe: the raw model's answers on SFT calls. Its hidden states are in reads/probe_hidden_*.npz
+Probe: the untrained model's answers on SFT calls. Its hidden states are in reads/probe_hidden_*.npz
 
 Call 60332. The model read the prompt in [examples/prompts/60332_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/60332_noblock.txt). The prompt ends with the label `Demand:`.
 

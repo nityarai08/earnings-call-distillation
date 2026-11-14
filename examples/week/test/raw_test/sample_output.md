@@ -1,6 +1,6 @@
 # Sample output: raw_test (week stage)
 
-Final test of the Raw setup.
+Final test of the Call only setup.
 
 Call 218058. The model read the prompt in [examples/prompts/218058_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_noblock.txt). The prompt ends with the label `Demand:`.
 

@@ -11,7 +11,7 @@
 - I compared six setups of one small model, Qwen3.5-9B, on 800 earnings calls that it had never seen.
 - All six setups ranked stocks a little better than chance. Their IC values (a measure of ranking quality) were all close to 0.10.
 - No setup was better than the others by more than chance can explain.
-- Training on Opus's answers made the small model agree with Opus more often: 66% for Raw, 71% after RL.
+- Training on Opus's answers made the small model agree with Opus more often: 66% for Call only, 71% after RL.
 - About half of that gain came from one habit. The small model learned to call management "direct" almost every time, as Opus does.
 - The training did not improve stock picking by more than chance. On validation calls, a control model that I trained on shuffled Opus answers ranked stocks about as well.
 - The small model's BUY decision follows its own read lines. So the weak part is the quality of the read lines.
@@ -36,7 +36,7 @@
 | **Adapter** | A small set of extra weights that training adds to the small model. The original weights do not change |
 | **Outcome y** | How well a stock did after a call, compared with its sector (section 3) |
 | **IC** | Information coefficient: how well a list sorted by p(BUY) matches a list sorted by outcome y (section 5) |
-| **Step** | A change from one setup to the next: Raw to RAG, RAG to Pi, RAG to SFT, and SFT to RL |
+| **Step** | A change from one setup to the next: Call only to RAG, RAG to Pi, RAG to SFT, and SFT to RL |
 | **Simple rule** | A method that ranks stocks without AI (section 6) |
 | **Daily volatility** | The usual daily price change of a stock. The prompt calls it "daily risk" |
 | **Session** | One trading day |
@@ -206,12 +206,14 @@ The six setups differ only in the knowledge block, the managers' replies and the
 
 | Setup | What it means | Knowledge block | Managers' replies | Model | Prompt file |
 | --- | --- | --- | --- | --- | --- |
-| Memory only | The model sees the facts line but not the call | none | not given | small model | [218058_nocall_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_nocall_noblock.txt) |
-| Raw | The model reads the call with no help | none | given | small model | [218058_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_noblock.txt) |
+| No call | The model sees the facts line but not the call | none | not given | small model | [218058_nocall_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_nocall_noblock.txt) |
+| Call only | The model reads the call, with no knowledge block | none | given | small model | [218058_noblock.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_noblock.txt) |
 | RAG | A fixed search adds documents ("retrieval-augmented generation") | from a fixed search | given | small model | [218058_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_rag.txt) |
 | Pi | The model searches the library itself, with the pi agent tool | from the model's own searches | given | small model | [218058_pi.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_pi.txt) |
 | SFT | RAG, after training on Opus's answers ("supervised fine-tuning") | from a fixed search | given | small model + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) | [218058_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_rag.txt) (same as RAG) |
 | RL | SFT, after more training with rewards ("reinforcement learning") | from a fixed search | given | small model + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) | [218058_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_rag.txt) (same as RAG) |
+
+The run files and example folders use short names. The No call setup is `memory`, and the Call only setup is `raw`. For example, the test answers of the Call only setup are in `runs/paper/week/reads/raw_test.csv`.
 
 In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block. The searches for 10 calls are in [agent_runs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/agent_runs.csv).
 
@@ -260,8 +262,8 @@ The data comes from the answers files in [examples/week/test](https://github.com
 
 | Setup | Demand | Pricing | Margins | Guidance | Candor | p(Next EPS up) | p(BUY) | Action | Sample output |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Memory only | down | flat | flat | none | evasive | 0.47 | 0.00 | AVOID | [memory_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/memory_test/sample_output.md) |
-| Raw | flat | flat | up | none | evasive | 0.62 | 0.20 | AVOID | [raw_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/raw_test/sample_output.md) |
+| No call | down | flat | flat | none | evasive | 0.47 | 0.00 | AVOID | [memory_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/memory_test/sample_output.md) |
+| Call only | flat | flat | up | none | evasive | 0.62 | 0.20 | AVOID | [raw_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/raw_test/sample_output.md) |
 | RAG | up | flat | up | none | direct | 0.41 | 0.03 | AVOID | [rag_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rag_test/sample_output.md) |
 | Pi | flat | flat | up | none | evasive | 0.87 | 0.08 | AVOID | [pi_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/pi_test/sample_output.md) |
 | SFT | up | flat | up | none | direct | 0.68 | 0.69 | BUY | [sft_best_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/sft_best_test/sample_output.md) |
@@ -285,7 +287,7 @@ The data comes from [test_w.parquet](https://github.com/nityarai08/earnings-call
 | **Outcome y** = excess return ÷ (daily volatility × √60) = 0.0149 ÷ (0.0196 × 7.75) | **+0.098** |
 | Next quarter's EPS minus the EPS a year earlier | +0.98, which is **up** |
 
-The stock did slightly better than its sector, and its EPS went up. SFT and RL said BUY, so they were right on this call. The other four setups said AVOID. Raw, Pi, SFT and RL forecast EPS up, which was also right. One call proves nothing.
+The stock did slightly better than its sector, and its EPS went up. SFT and RL said BUY, so they were right on this call. The other four setups said AVOID. Call only, Pi, SFT and RL forecast EPS up, which was also right. One call proves nothing.
 
 **Why I divide by volatility.** A 1.5% excess return is small for a stock that usually moves 5% in one day. It is large for a stock that usually moves 0.5%. Daily volatility × √60 is the usual price change over 60 trading days. Division by this number puts all stocks on the same scale.
 
@@ -293,7 +295,7 @@ The stock did slightly better than its sector, and its EPS went up. SFT and RL s
 
 The table shows p(BUY) of each setup and the real outcome y for the 10 example test calls. These are the first 10 test calls of March 2026, in the fixed order.
 
-| Call | Memory only | Raw | RAG | Pi | SFT | RL | Outcome y |
+| Call | No call | Call only | RAG | Pi | SFT | RL | Outcome y |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 218058 | 0.00 | 0.20 | 0.03 | 0.08 | 0.69 | 0.67 | +0.10 |
 | 218368 | 0.00 | 0.13 | 0.32 | 0.16 | 0.70 | 0.66 | −0.68 |
@@ -509,7 +511,7 @@ For a list of hundreds of stocks, an IC of 0.05 to 0.10 is already useful. Small
 | **Agreement with Opus** | For the 300 check calls, the percentage of read lines that have the same value as Opus's read lines | 70.6% |
 | **Return after costs** | The mean excess return of the calls with p(BUY) > 0.5, minus a trading cost of 0.8% | 438 BUY calls with a mean of +1.86%. Result: **+1.06%** |
 
-**Example of agreement with Opus.** On the first 10 check calls, the Raw setup agreed with Opus on 35 of 50 read lines (70%). The SFT and RL setups agreed on 39 of 50 (78%). The answers are in [examples/week/check](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/week/check) and [examples/week/opus_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/answers.csv).
+**Example of agreement with Opus.** On the first 10 check calls, the Call only setup agreed with Opus on 35 of 50 read lines (70%). The SFT and RL setups agreed on 39 of 50 (78%). The answers are in [examples/week/check](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/week/check) and [examples/week/opus_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/answers.csv).
 
 ### When is one setup better than another?
 
@@ -533,11 +535,11 @@ Then I compared the two values of p(BUY). On the first 10 of these calls, the SF
 
 ## 6. Results
 
-On the 800 test calls, all six setups had an IC of approximately 0.10. Each step adds one method: Raw to RAG, RAG to Pi, RAG to SFT, and SFT to RL. No step gave a gain larger than chance can explain.
+On the 800 test calls, all six setups had an IC of approximately 0.10. Each step adds one method: Call only to RAG, RAG to Pi, RAG to SFT, and SFT to RL. No step gave a gain larger than chance can explain.
 
 ![IC of each setup](figures/stock_ic_by_setup.svg)
 
-The call text helps a little. Memory only (0.075) and the simple rules (0.06 to 0.085) have lower ICs than the setups that read the call.
+The call text helps a little. The No call setup (0.075) and the simple rules (0.06 to 0.085) have lower ICs than the setups that read the call.
 
 The simple rules do not use AI:
 
@@ -551,8 +553,8 @@ All four 95% ranges include zero. The RL range is the narrowest. But it also inc
 
 | Setup or rule | IC | EPS IC | EPS accuracy | Agreement with Opus | BUY calls | Return after costs |
 | --- | --- | --- | --- | --- | --- | --- |
-| Memory only | 0.075 | 0.253 | 64.5% | — | 229 | −0.17% |
-| Raw | 0.104 | 0.236 | 58.4% | 65.8% | 302 | +0.36% |
+| No call | 0.075 | 0.253 | 64.5% | — | 229 | −0.17% |
+| Call only | 0.104 | 0.236 | 58.4% | 65.8% | 302 | +0.36% |
 | RAG | 0.096 | 0.229 | 56.1% | 67.3% | 276 | −0.38% |
 | Pi | 0.104 | 0.179 | 56.0% | 67.3% | 280 | +0.72% |
 | SFT | 0.105 | 0.262 | 64.9% | 69.9% | 483 | +0.50% |
@@ -568,7 +570,7 @@ The full tables are in [results.csv](https://github.com/nityarai08/earnings-call
 
 ### 1. The small model learned to sound like Opus, but not to trade like Opus
 
-After training, the small model agreed with Opus more often: 66% for Raw, 71% for RL. Its EPS IC also increased, from 0.236 to 0.278. But each step changed the stock IC by less than chance can explain (section 6).
+After training, the small model agreed with Opus more often: 66% for Call only, 71% for RL. Its EPS IC also increased, from 0.236 to 0.278. But each step changed the stock IC by less than chance can explain (section 6).
 
 About half of the gain in agreement comes from one line, Candor:
 
@@ -594,7 +596,7 @@ The weak part is the read lines themselves. On the 300 check calls, I compared O
 | Model | IC | EPS accuracy |
 | --- | --- | --- |
 | Opus | 0.151 | 71.9% |
-| Raw | 0.056 | 60.7% |
+| Call only | 0.056 | 60.7% |
 | RAG | −0.001 | 56.6% |
 | SFT | −0.003 | 58.3% |
 | RL | 0.031 | 58.0% |

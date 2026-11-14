@@ -38,11 +38,11 @@ READS = [
     ("raw", "prompt_plain", "prompt_plain", "dev", 100, "Prompt style: the plain instruction", {}),
     ("raw", "prompt_habit", "prompt_habit", "dev", 100, "Prompt style: an instruction to weigh specifics over positive tone", {"style": "habit"}),
     ("raw", "prompt_change", "prompt_change", "dev", 100, "Prompt style: an instruction to compare with the last quarter", {"style": "change"}),
-    ("raw", "raw", "raw", "validation", 500, "Raw setup: the call text, no knowledge block", {}),
-    ("raw", "memory", "memory", "validation", 500, "Memory only: the facts line, no call text", {"text": False}),
+    ("raw", "raw", "raw", "validation", 500, "Call only setup: the call text, no knowledge block", {}),
+    ("raw", "memory", "memory", "validation", 500, "No call setup: the facts line, no call text", {"text": False}),
     ("raw", "raw_flat", "raw_flat", "dev", 200, "Position check: the model holds no stock and chooses BUY or AVOID", {}),
     ("raw", "raw_long", "raw_long", "dev", 200, "Position check: the model holds the stock and chooses HOLD or SELL", {"position": "long"}),
-    ("raw", "probe", "probe", "sft", 800, "Probe: the raw model's answers on SFT calls. Its hidden states are in reads/probe_hidden_*.npz", {}),
+    ("raw", "probe", "probe", "sft", 800, "Probe: the untrained model's answers on SFT calls. Its hidden states are in reads/probe_hidden_*.npz", {}),
     ("rag", "rag", "rag", "validation", 500, "RAG setup: a fixed search adds a knowledge block", {"block": "rag"}),
     ("rag", "rag_random", "rag_random", "validation", 200, "Control: random passages of the same length instead of the search results", {"block": "random"}),
     ("rag", "rag_shuffled", "rag_shuffled", "validation", 200, "Control: the search results, with the past outcomes in them shuffled", {"block": "shuffled"}),
@@ -64,13 +64,13 @@ READS = [
     ("rl", "rl_demand_down", "rl_demand_down", "validation", 200, "Forced-Demand test: RL model with Demand forced to down", {"block": "rag", "force": "down"}),
     ("pi", "pi", "pi", "validation", 500, "Pi setup: the model searches the library itself", {"block": "pi"}),
     ("pi", "pi_rag_docs", "pi_rag_docs", "validation", 200, "Control: the Pi tool loop, given RAG's documents", {"block": "pi_rag_docs"}),
-    ("check", "raw_check", "raw_check", "student_check", 300, "Raw setup on the check calls", {"react": False}),
+    ("check", "raw_check", "raw_check", "student_check", 300, "Call only setup on the check calls", {"react": False}),
     ("check", "rag_check", "rag_check", "student_check", 300, "RAG setup on the check calls", {"block": "rag", "react": False}),
     ("check", "sft_best_check", "sft_best_check", "student_check", 300, "SFT setup on the check calls", {"block": "rag", "react": False}),
     ("check", "rl_best_check", "rl_best_check", "student_check", 300, "RL setup on the check calls", {"block": "rag", "react": False}),
 ]
 TESTS = [  # the final test of each stage: the six setups
-    ("memory_test", "Memory only", {"text": False}), ("raw_test", "Raw", {}), ("rag_test", "RAG", {"block": "rag"}),
+    ("memory_test", "No call", {"text": False}), ("raw_test", "Call only", {}), ("rag_test", "RAG", {"block": "rag"}),
     ("pi_test", "Pi", {"block": "pi_test"}), ("sft_best_test", "SFT", {"block": "rag"}), ("rl_best_test", "RL", {"block": "rag"})]
 STAGE_TEST = {"week": ("test_w", 800, "2026-03"), "mini": ("test_d", 100, "2026-03")}
 SFT_ARMS = [  # arm, name, rows of the SFT set, passes, what it tests

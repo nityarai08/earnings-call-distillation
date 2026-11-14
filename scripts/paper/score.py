@@ -22,7 +22,7 @@ import prompt as P  # noqa: E402
 from common import DATA, FREEZE, RUNS, SEALED, sha, write_atomic  # noqa: E402
 
 ROUND_TRIP = .008
-SETUPS = {"Memory only": "memory", "Raw": "raw", "RAG": "rag", "Pi": "pi", "SFT": "sft_best", "RL": "rl_best"}
+SETUPS = {"No call": "memory", "Call only": "raw", "RAG": "rag", "Pi": "pi", "SFT": "sft_best", "RL": "rl_best"}
 BASES = {"Buy every call": "base_all", "Word list": "base_words", "Known-EPS rule": "base_eps", "Numbers only": "base_numbers"}
 BOOT = 2000
 
@@ -201,7 +201,7 @@ def final(a):
     res.round(4).to_csv(RUNS / a.stage / "results.csv", index=False)
     print(res.round(4).to_string(), flush=True)
     rows = []
-    for key, x, y in (("rag_pi", "RAG", "Pi"), ("distill", "RAG", "SFT"), ("kb", "Raw", "RAG"), ("reward", "SFT", "RL")):
+    for key, x, y in (("rag_pi", "RAG", "Pi"), ("distill", "RAG", "SFT"), ("kb", "Call only", "RAG"), ("reward", "SFT", "RL")):
         if x in loaded and y in loaded:
             t = step_test(loaded[x], loaded[y])
             if t:
