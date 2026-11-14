@@ -7,8 +7,8 @@ Each experiment folder holds its first 10 calls, in the fixed order of the call 
 first 10 test calls of March 2026, so that one month can be ranked). Prompts are written once to
 examples/prompts/ and the experiment files point to them. examples/README.md lists every experiment.
 
---model runs the SFT adapter and the base model on the RL example calls, to show the start probabilities that
-RL changes (Apple Silicon). The prompts need the knowledge base (data/paper/kb.sqlite).
+--model runs the model again (Apple Silicon): the start probabilities that RL changes, and for the first call of each
+experiment a sample_output.md with what the model wrote and how the script turned it into numbers. The prompts need the knowledge base (data/paper/kb.sqlite).
 """
 import argparse
 import json
@@ -112,14 +112,17 @@ class Prompts:
             return self.logs[(stage, kind)][r.row]["block"]
         return ""
 
+    def msgs(self, r, text=True, block="none", style="plain", position="flat", react=True, stage="week", **_):
+        words = masked_text(self.db, r.row)
+        return P.messages(r, words if text else "", self.block(r, words, block, stage), position, style, react)
+
     def get(self, r, text=True, block="none", style="plain", position="flat", react=True, lines="all", stage="week", **_):
         kind = "pi" if block in ("pi", "pi_test") else block
         parts = [str(r.row), "nocall" if not text else "", kind if kind != "none" else "noblock", style if style != "plain" else "",
                  "holds" if position == "long" else "", "noreaction" if not react else "", "actiononly" if lines == "action" else ""]
         name = "_".join(p for p in parts if p) + ".txt"
         if name not in self.done:
-            words = masked_text(self.db, r.row)
-            msgs = P.messages(r, words if text else "", self.block(r, words, block, stage), position, style, react)
+            msgs = self.msgs(r, text, block, style, position, react, stage)
             (PROMPTS / name).write_text(chat_text(self.tok, msgs, lines))
             self.done[name] = True
         return f"examples/prompts/{name}"
@@ -351,19 +354,115 @@ def training_tables(s):
     return len(t), len(w)
 
 
+ADAPTER = {"memo": "memo", "sft_read_eps": "read_eps", "sft_score": "score", "sft_read": "read", "sft_hard": "hard", "sft_placebo": "placebo",
+           "sft_grown": "sft_grown", "sft_demand_up": "sft_grown", "sft_demand_down": "sft_grown", "sft_best_check": "sft_grown", "sft_best_test": "sft_grown",
+           "rl_business": "business", "rl_both": "both", "rl_trade": "trade", "rl_shuffled": "shuffled", "rl_demand_up": "trade", "rl_demand_down": "trade",
+           "rl_best_check": "trade", "rl_best_test": "trade"}  # the adapter each read used (configs/paper/commands.yaml)
+
+
+def walk_detail(mx, model, tok, opts, logits, cache, force=None):
+    """read.walk, line by line, keeping what the script saw: the probability of each allowed value's first token out of
+    the whole vocabulary, their sum, the same values rescaled to sum to 1, and the five tokens the model liked most."""
+    from read import step
+    lines = []
+    for i, (name, ids, after) in enumerate(opts):
+        vals = list(ids)
+        full = np.array(mx.softmax(logits.astype(mx.float32), axis=-1).tolist())
+        raw = np.array([full[ids[v][0]] for v in vals])
+        norm = raw / raw.sum()
+        chosen = force if force and name == "Demand" else vals[int(norm.argmax())]
+        top = np.argsort(-full)[:5]
+        lines.append({"line": name, "values": vals, "raw": raw.tolist(), "sum": float(raw.sum()), "norm": norm.tolist(), "chosen": chosen,
+                      "forced": bool(force and name == "Demand"), "top": [(tok.decode([int(t)]), float(full[t])) for t in top]})
+        if i + 1 < len(opts):
+            logits, _ = step(mx, model, ids[chosen] + after, cache)
+    return lines
+
+
+def fmt(x):
+    """Four decimals, or scientific notation for values below 0.001, so that tiny probabilities do not show as 0.0000."""
+    return f"{x:.4f}" if x >= 1e-3 or x == 0 else f"{x:.2e}"
+
+
+def sample_page(folder, title, what, call, prompt, lines, position, stored):
+    """sample_output.md: what the model wrote for one call, and how the script turned it into numbers."""
+    (folder / "trace.json").write_text(json.dumps({"call": int(call), "prompt": prompt, "position": position, "lines": lines}, indent=1))
+    act = P.ACTIONS[position]
+    out = [f"# Sample output: {title}", "", what, "",
+           f"Call {call}. The model read the prompt in [{prompt}]({GH}{prompt}). The prompt ends with the label `{lines[0]['line']}:`.", "",
+           "## What the model wrote", "", "```"] + [f"{x['line']}: {x['chosen']}" for x in lines] + ["```", "",
+           "The model writes only these lines. It writes no probability. The script reads the probabilities from the model, as the next table shows.", "",
+           "## How the script read each line", "",
+           "Before each line value, the model gives a probability to every token in its vocabulary. The script takes the probability of each allowed value. Then it divides each value by the sum, so that the allowed values add up to 1. It keeps the most probable value, writes it, and goes to the next line.", "",
+           "| Line | Allowed value | Probability out of the whole vocabulary | Probability among the allowed values | Chosen |", "| --- | --- | --- | --- | --- |"]
+    for x in lines:
+        for v, raw, norm in zip(x["values"], x["raw"], x["norm"]):
+            mark = ("forced" if x["forced"] else "yes") if v == x["chosen"] else ""
+            out.append(f"| {x['line']} | {v} | {fmt(raw)} | {norm:.4f} | {mark} |")
+    by = {x["line"]: x for x in lines}
+    a = by["Action"]
+    out += ["", "## The two numbers that the scores use", ""]
+    if "Next EPS" in by:
+        e = by["Next EPS"]
+        out.append(f"- **p(Next EPS up)** = {fmt(e['raw'][0])} ÷ ({fmt(e['raw'][0])} + {fmt(e['raw'][1])}) = **{e['norm'][0]:.4f}**")
+    out.append(f"- **p({act[0]})** = {fmt(a['raw'][0])} ÷ ({fmt(a['raw'][0])} + {fmt(a['raw'][1])}) = **{a['norm'][0]:.4f}**. This is the stock score.")
+    out += ["", f"The published file has p({act[0]}) = {stored:.4f} for this call. The values agree to the rounding of the published file." if abs(stored - a["norm"][0]) < 1e-3
+            else f"The published file has p({act[0]}) = {stored:.4f} for this call.", "",
+            "## The five tokens that the model liked most at each line", "",
+            "These tokens show what the model wanted to write before the script limited it to the allowed values. A value with more than one token, for example \" AVOID\" or \" evasive\", counts by its first token (\" A\", \" ev\"). The sign � is a part of a character that takes more than one token.", "",
+            "| Line | Top five tokens (probability out of the whole vocabulary) |", "| --- | --- |"]
+    for x in lines:
+        out.append(f"| {x['line']} | " + ", ".join(f"`{t.strip() or repr(t)}` {fmt(p)}" for t, p in x["top"]) + " |")
+    (folder / "sample_output.md").write_text("\n".join(out) + "\n")
+
+
+def traces(s, pr):
+    """Runs the model again on the first example call of each experiment and test, and writes sample_output.md."""
+    import mlx.core as mx
+    from mlx_lm import load
+    from mlx_lm.models.cache import make_prompt_cache
+    from read import step
+    jobs = []
+    for step_, exp, arm, setname, used, what, opts in READS:
+        reads = pd.read_csv(RUNS / "week" / "reads" / f"{arm}.csv").set_index("row")
+        jobs.append(("week", ADAPTER.get(exp), OUT / "week" / step_ / exp, exp, what, next(first(s, setname, reads.index).itertuples()), opts, reads))
+    for stage, (setname, used, month) in STAGE_TEST.items():
+        for arm, setup, opts in TESTS:
+            reads = pd.read_csv(RUNS / stage / "reads" / f"{arm}.csv").set_index("row")
+            jobs.append((stage, ADAPTER.get(arm), OUT / stage / "test" / arm, f"{arm} ({stage} stage)", f"Final test of the {setup} setup.", next(first(s, setname, month=month).itertuples()), opts, reads))
+    jobs.sort(key=lambda j: (j[0], j[1] or ""))
+    loaded, model, mtok = "nothing loaded yet", None, None
+    for stage, adapter, folder, title, what, r, opts, reads in jobs:
+        path = str(ROOT / "adapters" / "paper" / stage / adapter) if adapter else None
+        if path != loaded:
+            model = None
+            model, mtok = load(MODEL, adapter_path=path)
+            loaded = path
+        lines = opts.get("lines", "all")
+        position = opts.get("position", "flat")
+        msgs = pr.msgs(r, stage=stage, **opts)
+        cache = make_prompt_cache(model)
+        logits, _ = step(mx, model, P.rendered(mtok, msgs, lines), cache)
+        detail = walk_detail(mx, model, mtok, P.options(mtok, position, lines), logits, cache, opts.get("force"))
+        sample_page(folder, title, what, r.row, pr.get(r, stage=stage, **opts), detail, position, float(reads.loc[r.row].p_pos))
+        print(title, r.row, flush=True)
+
+
 def index_page(index):
     """examples/README.md: every experiment and test, with its example file and its full output file."""
     head = ["# Real examples of every experiment and test", "",
             "Each folder below holds real calls from one experiment or test. The calls are the first 10 of the call set that the experiment used, in the set's fixed random order. The test folders use the first 10 test calls of March 2026, so that the calls can be ranked inside one month.", "",
-            "Each answers file links to the exact prompt that the model read, in `prompts/`. Each targets or rewards file shows what training moved the model toward. `outcome_y` is the stock outcome and `next_eps_change` is the real EPS change.", "",
+            "Each sample_output.md shows, for one call, what the model wrote and how the script turned the model's probabilities into the numbers that the scores use. Each answers file links to the exact prompt that the model read, in `prompts/`. Each targets or rewards file shows what training moved the model toward. `outcome_y` is the stock outcome and `next_eps_change` is the real EPS change.", "",
             "The full tables of training data are in `data/paper/training/`. `scripts/paper/examples.py` writes this folder.", ""]
     rows, last = [], None
     for stage, step, exp, what, calls, f, full in index:
         if (stage, step) != last:
-            rows += ["", f"## {stage} stage: {step}", "", "| Experiment | What it tests | Calls | Example | Full file |", "| --- | --- | --- | --- | --- |"]
+            rows += ["", f"## {stage} stage: {step}", "", "| Experiment | What it tests | Calls | Sample output | Example | Full file |", "| --- | --- | --- | --- | --- | --- |"]
             last = (stage, step)
         full_link = link(full) if "*" not in full and "(" not in full else f"`{full}`"
-        rows.append(f"| {exp} | {what} | {calls} | {link(f)} | {full_link} |")
+        sample = Path(f).parent / "sample_output.md"
+        sample_link = link(str(sample)) if (ROOT / sample).exists() else ""
+        rows.append(f"| {exp} | {what} | {calls} | {sample_link} | {link(f)} | {full_link} |")
     (OUT / "README.md").write_text("\n".join(head + rows) + "\n")
 
 
@@ -385,6 +484,8 @@ def main():
     rl_examples(s, pr, index, a.model)
     test_examples(s, pr, index)
     index.sort(key=lambda x: (["week", "mini"].index(x[0]), ["raw", "rag", "opus_check", "opus_labels", "sft_training", "sft", "rl_training", "rl", "pi", "check", "test"].index(x[1])))
+    if a.model:
+        traces(s, pr)
     index_page(index)
     print(len(index), "experiments,", len(pr.done), "prompts")
 

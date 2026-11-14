@@ -28,7 +28,7 @@
 | **Answer** | The seven lines that a model writes for one call (shown in section 3) |
 | **Read lines** | The first five lines of an answer: Demand, Pricing, Margins, Guidance and Candor |
 | **Managers' replies** | The managers' answers to the analysts' questions, from the transcript of the call. The prompt calls this part "Management's answers" |
-| **p(BUY)** | The probability of BUY divided by the sum of the probabilities of BUY and AVOID. This is the stock score |
+| **p(BUY)** | The probability of BUY divided by the sum of the probabilities of BUY and AVOID. The script reads it from the model. The model does not write it (section 3). This is the stock score |
 | **Setup** | One way to use the small model. There are six setups (section 3) |
 | **Control** | A setup that I broke on purpose. If a control scores as well as the real setup, the real setup's gain is not real |
 | **Library** | A searchable store of past calls, company figures and analyst notes |
@@ -215,25 +215,57 @@ The six setups differ only in the knowledge block, the managers' replies and the
 
 In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block. The searches for 10 calls are in [agent_runs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/agent_runs.csv).
 
-### How I get numbers from an answer
+### How the answer becomes numbers
 
-The model does not write free text. At each line, I take the probability that the model gives to each allowed value. Then I keep the most probable value and go to the next line. From each answer I keep two numbers:
+The prompt asks for seven lines of words. The model writes only these seven lines. It does not write any probability. The numbers come from the model itself, in this way.
 
-- **p(Next EPS up):** the probability that next quarter's EPS is higher than a year earlier.
-- **p(BUY):** the probability of BUY, compared with AVOID. **This is the stock score.**
+**How a language model writes.** A language model writes one token at a time. A token is a word or a part of a word. Before each token, the model gives a probability to every token in its vocabulary. This model has a vocabulary of about 248,000 tokens. Usually, a program then picks one token and continues.
+
+**What the script does instead.** The script does not let the model write freely. It does these steps for each of the seven lines ([read.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/read.py)):
+
+1. The text before the value ends with the label of the line, for example `Demand:`. The prompt itself ends with `Demand:`.
+2. The script reads the probability that the model gives to each allowed value, for example " up", " flat" and " down".
+3. It divides each of these probabilities by their sum. Now the allowed values add up to 1.
+4. It writes the most probable value after the label. Then it writes the next label, for example `Pricing:`, and does steps 2 to 4 again.
+
+At the line `Next EPS:`, the script keeps the value for "up". This is **p(Next EPS up)**. At the line `Action:`, it keeps the value for "BUY". This is **p(BUY)**, the stock score.
+
+**A real example.** These are three of the seven lines for the test call above, in the RAG setup. The [full trace](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rag_test/sample_output.md) shows all seven lines.
+
+| Line | Allowed value | Probability out of all 248,000 tokens | Probability among the allowed values | Written |
+| --- | --- | --- | --- | --- |
+| Demand | up | 0.7590 | 0.7664 | yes |
+| Demand | flat | 0.2175 | 0.2196 | |
+| Demand | down | 0.0139 | 0.0140 | |
+| Next EPS | up | 0.4047 | 0.4073 | |
+| Next EPS | down | 0.5888 | 0.5927 | yes |
+| Action | BUY | 0.0286 | 0.0293 | |
+| Action | AVOID | 0.9484 | 0.9707 | yes |
+
+Thus p(BUY) = 0.0286 ÷ (0.0286 + 0.9484) = **0.0293**, and p(Next EPS up) = 0.4047 ÷ (0.4047 + 0.5888) = **0.4073**. The script ran the model again for this post, and it got the same values as the published results.
+
+**Why the scores use the probability and not the word.** The words BUY and AVOID put the calls into only two groups. The IC needs an order of all calls. p(BUY) gives that order: a call with p(BUY) = 0.69 ranks above a call with 0.20.
+
+**Values with more than one token.** Some values are more than one token. " AVOID" is " A" + "VOID", " SELL" is " S" + "ELL", and " evasive" is " ev" + "asive". The script uses the probability of the first token. The first tokens " A" and " S" also start other words. Thus their probability can include other words that start with these letters.
+
+**The trained models.** After training, the SFT and RL models give very small probabilities to all tokens. In the [RL trace](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rl_best_test/sample_output.md), " BUY" gets 3.16e-05 and " AVOID" gets 1.54e-05 of the vocabulary. But the ratio between them is still clear: p(BUY) = 3.16e-05 ÷ (3.16e-05 + 1.54e-05) = 0.67. The stock score uses only this ratio.
+
+**Opus and the simple rules.** Opus writes its answer as JSON with the same lines and a rating from 0 to 100. Opus gives no probabilities. When the post compares Opus's IC, the stock score of Opus is its rating ÷ 100. The simple rules read no prompt. Each rule's score is the percentile rank of one number, for example the EPS change ÷ the share price. The Numbers only rule uses the output of a small decision-tree model.
+
+**Sample output for each experiment.** Each experiment folder in [examples/README.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/README.md) has a sample_output.md file for its first call. The file shows what the model wrote and how the script turned the probabilities into the numbers.
 
 ### The answers of the six setups
 
 The data comes from the answers files in [examples/week/test](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/week/test).
 
-| Setup | Demand | Pricing | Margins | Guidance | Candor | p(Next EPS up) | p(BUY) | Action |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Memory only | down | flat | flat | none | evasive | 0.47 | 0.00 | AVOID |
-| Raw | flat | flat | up | none | evasive | 0.62 | 0.20 | AVOID |
-| RAG | up | flat | up | none | direct | 0.41 | 0.03 | AVOID |
-| Pi | flat | flat | up | none | evasive | 0.87 | 0.08 | AVOID |
-| SFT | up | flat | up | none | direct | 0.68 | 0.69 | BUY |
-| RL | up | flat | up | none | direct | 0.66 | 0.67 | BUY |
+| Setup | Demand | Pricing | Margins | Guidance | Candor | p(Next EPS up) | p(BUY) | Action | Sample output |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Memory only | down | flat | flat | none | evasive | 0.47 | 0.00 | AVOID | [memory_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/memory_test/sample_output.md) |
+| Raw | flat | flat | up | none | evasive | 0.62 | 0.20 | AVOID | [raw_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/raw_test/sample_output.md) |
+| RAG | up | flat | up | none | direct | 0.41 | 0.03 | AVOID | [rag_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rag_test/sample_output.md) |
+| Pi | flat | flat | up | none | evasive | 0.87 | 0.08 | AVOID | [pi_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/pi_test/sample_output.md) |
+| SFT | up | flat | up | none | direct | 0.68 | 0.69 | BUY | [sft_best_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/sft_best_test/sample_output.md) |
+| RL | up | flat | up | none | direct | 0.66 | 0.67 | BUY | [rl_best_test/sample_output.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/test/rl_best_test/sample_output.md) |
 
 ### What happened to the stock
 
@@ -601,7 +633,7 @@ What I recommend:
 
 - **The test set is small.** With 800 calls, "not distinguishable" means "no difference that this test can detect". It does not prove that the difference is zero.
 - **The scope is narrow.** I tested one small model, one holding period of 60 trading days and one group of companies.
-- **The trained models work only with fixed answer values.** After training, they give almost no probability to the allowed answer words, compared with all other words. The column `p_mass` in their files is near 0. The stock scores compare only the allowed values with each other, so the results are valid. But in free text, the trained models would not follow the seven-line format.
+- **The trained models work only with fixed answer values.** After training on the read lines, the models give almost no probability to the allowed answer words. In the RL trace, " BUY" gets 3.2e-05 and " AVOID" gets 1.5e-05 of the vocabulary. Before training, the two words together get more than 0.9. The two SFT variants that trained only on the Action line keep larger values (0.79 and 0.25). The stock scores compare only the allowed values with each other, so the results are valid. But in free text, the models trained on the read lines would not follow the seven-line format.
 
 **Problems during the run.** Three problems occurred on the laptop:
 
