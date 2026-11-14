@@ -142,16 +142,16 @@ The prompt has four parts:
 
 ### The six setups
 
-The six setups differ only in the knowledge block, the managers' replies and the model weights. All setups get the facts line.
+The six setups differ only in the knowledge block, the managers' replies and the model weights. All setups get the facts line. The prompt files start with the same lines. They differ in the part after "Knowledge:", in the part after "Management's answers:", or in both.
 
-| Setup | What it means | Knowledge block | Managers' replies | Model |
-| --- | --- | --- | --- | --- |
-| Memory only | The model sees the facts line but not the call | none | not given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_memory.txt)) | small model |
-| Raw | The model reads the call with no help | none | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_raw.txt)) | small model |
-| RAG | A fixed search adds documents ("retrieval-augmented generation") | from a fixed search | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt)) | small model |
-| Pi | The model searches the library itself, with the pi agent tool | from the model's own searches | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_pi.txt)) | small model |
-| SFT | RAG, after training on Opus's answers ("supervised fine-tuning") | from a fixed search | given | small model + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) |
-| RL | SFT, after more training with rewards ("reinforcement learning") | from a fixed search | given | small model + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) |
+| Setup | What it means | Knowledge block | Managers' replies | Model | Prompt file |
+| --- | --- | --- | --- | --- | --- |
+| Memory only | The model sees the facts line but not the call | none | not given | small model | [prompt_memory.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_memory.txt) |
+| Raw | The model reads the call with no help | none | given | small model | [prompt_raw.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_raw.txt) |
+| RAG | A fixed search adds documents ("retrieval-augmented generation") | from a fixed search | given | small model | [prompt_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt) |
+| Pi | The model searches the library itself, with the pi agent tool | from the model's own searches | given | small model | [prompt_pi.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_pi.txt) |
+| SFT | RAG, after training on Opus's answers ("supervised fine-tuning") | from a fixed search | given | small model + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) | [prompt_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt) (same as RAG) |
+| RL | SFT, after more training with rewards ("reinforcement learning") | from a fixed search | given | small model + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) | [prompt_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt) (same as RAG) |
 
 In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block.
 
