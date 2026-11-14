@@ -213,7 +213,7 @@ The six setups differ only in the knowledge block, the managers' replies and the
 | SFT | RAG, after training on Opus's answers ("supervised fine-tuning") | from a fixed search | given | small model + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) | [218058_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_rag.txt) (same as RAG) |
 | RL | SFT, after more training with rewards ("reinforcement learning") | from a fixed search | given | small model + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) | [218058_rag.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/prompts/218058_rag.txt) (same as RAG) |
 
-In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block.
+In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block. The searches for 10 calls are in [agent_runs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/pi/agent_runs.csv).
 
 ### How I get numbers from an answer
 
@@ -235,25 +235,6 @@ The data comes from the answers files in [examples/week/test](https://github.com
 | SFT | up | flat | up | none | direct | 0.68 | 0.69 | BUY |
 | RL | up | flat | up | none | direct | 0.66 | 0.67 | BUY |
 
-### All 10 example test calls
-
-The table shows p(BUY) of each setup and the real outcome y for the 10 example test calls. These are the first 10 test calls of March 2026, in the fixed order.
-
-| Call | Memory only | Raw | RAG | Pi | SFT | RL | Outcome y |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 218058 | 0.00 | 0.20 | 0.03 | 0.08 | 0.69 | 0.67 | +0.10 |
-| 218368 | 0.00 | 0.13 | 0.32 | 0.16 | 0.70 | 0.66 | −0.68 |
-| 207363 | 0.00 | 0.68 | 0.88 | 0.53 | 0.84 | 0.80 | −1.46 |
-| 219078 | 0.00 | 0.78 | 0.53 | 0.41 | 0.87 | 0.84 | +1.45 |
-| 215434 | 0.00 | 0.04 | 0.04 | 0.08 | 0.51 | 0.25 | −0.52 |
-| 213996 | 0.00 | 0.04 | 0.47 | 0.04 | 0.75 | 0.70 | +2.20 |
-| 218039 | 0.00 | 0.05 | 0.10 | 0.08 | 0.30 | 0.29 | −1.82 |
-| 203377 | 0.82 | 0.15 | 0.95 | 0.03 | 0.81 | 0.80 | −1.22 |
-| 202800 | 0.00 | 0.06 | 0.01 | 0.06 | 0.57 | 0.55 | −0.71 |
-| 225264 | 0.00 | 0.08 | 0.12 | 0.09 | 0.53 | 0.33 | +0.95 |
-
-The trained models (SFT and RL) give higher p(BUY) values than the other setups. Section 5 uses the RL column to show how the IC is calculated.
-
 ### What happened to the stock
 
 The data comes from [test_w.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet). Each answers file repeats it. The timeline of the trade is:
@@ -272,9 +253,28 @@ The data comes from [test_w.parquet](https://github.com/nityarai08/earnings-call
 | **Outcome y** = excess return ÷ (daily volatility × √60) = 0.0149 ÷ (0.0196 × 7.75) | **+0.098** |
 | Next quarter's EPS minus the EPS a year earlier | +0.98, which is **up** |
 
-The stock did slightly better than its sector, and its EPS went up. SFT and RL said BUY, so they were right on this call. The other four setups said AVOID. Raw, Pi, SFT and RL forecast EPS up, which was also right. One call proves nothing. Thus all measures below use all 800 test calls.
+The stock did slightly better than its sector, and its EPS went up. SFT and RL said BUY, so they were right on this call. The other four setups said AVOID. Raw, Pi, SFT and RL forecast EPS up, which was also right. One call proves nothing.
 
 **Why I divide by volatility.** A 1.5% excess return is small for a stock that usually moves 5% in one day. It is large for a stock that usually moves 0.5%. Daily volatility × √60 is the usual price change over 60 trading days. Division by this number puts all stocks on the same scale.
+
+### All 10 example test calls
+
+The table shows p(BUY) of each setup and the real outcome y for the 10 example test calls. These are the first 10 test calls of March 2026, in the fixed order.
+
+| Call | Memory only | Raw | RAG | Pi | SFT | RL | Outcome y |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 218058 | 0.00 | 0.20 | 0.03 | 0.08 | 0.69 | 0.67 | +0.10 |
+| 218368 | 0.00 | 0.13 | 0.32 | 0.16 | 0.70 | 0.66 | −0.68 |
+| 207363 | 0.00 | 0.68 | 0.88 | 0.53 | 0.84 | 0.80 | −1.46 |
+| 219078 | 0.00 | 0.78 | 0.53 | 0.41 | 0.87 | 0.84 | +1.45 |
+| 215434 | 0.00 | 0.04 | 0.04 | 0.08 | 0.51 | 0.25 | −0.52 |
+| 213996 | 0.00 | 0.04 | 0.47 | 0.04 | 0.75 | 0.70 | +2.20 |
+| 218039 | 0.00 | 0.05 | 0.10 | 0.08 | 0.30 | 0.29 | −1.82 |
+| 203377 | 0.82 | 0.15 | 0.95 | 0.03 | 0.81 | 0.80 | −1.22 |
+| 202800 | 0.00 | 0.06 | 0.01 | 0.06 | 0.57 | 0.55 | −0.71 |
+| 225264 | 0.00 | 0.08 | 0.12 | 0.09 | 0.53 | 0.33 | +0.95 |
+
+The trained models (SFT and RL) give higher p(BUY) values than the other setups. Section 5 uses the RL column to show how the IC is calculated. All measures in sections 5 to 7 use all 800 test calls.
 
 ## 4. How I trained the small model
 
@@ -285,7 +285,7 @@ Opus received the same prompt as the small model. Opus wrote the same seven line
 - one time with a neutral instruction
 - one time with an instruction to be skeptical.
 
-Here are the two Opus answers for the first training call. The answers for the first 10 training calls are in [examples/week/opus_labels](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_labels/answers.csv).
+Here are the two Opus answers for the first training call. The answers for the first 10 training calls are in [examples/week/opus_labels/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_labels/answers.csv).
 
 | Instruction | Demand | Pricing | Margins | Guidance | Candor | Next EPS | Rating |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -363,7 +363,7 @@ For call 13037, next quarter's EPS was not known. Thus its target has no Next EP
 
 The result is the [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown). The training curve is in [sft_grown.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/sft_grown.csv).
 
-**Other SFT variants.** I trained five variants and compared them on the same 300 validation calls:
+**Other SFT variants.** I trained five variants and compared them on the same 300 validation calls. The first 10 training calls of each variant are in [examples/README.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/README.md).
 
 | Variant | Targets |
 | --- | --- |
@@ -409,7 +409,7 @@ This stock did much worse than the month's average. Thus RL moves p(BUY) down fr
 
 **Why this target formula.** The formula multiplies each probability by e^reward. Then it scales the probabilities so that their sum is 1. This target gives the highest expected reward for a model that must stay close to the start model. I first tried a standard RL method, policy gradient. That method always chose AVOID after some steps. Thus I used this exact formula.
 
-**The first 10 RL training calls.** The table shows the trade reward for each call. Its data comes from [rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/trade/rewards.csv). If the model already holds the stock, HOLD gets z and SELL pays a cost of 0.4%. The start p and the target p are for the first action: BUY or HOLD.
+**The first 10 RL training calls.** The table shows the trade reward for each call. Its data comes from [examples/week/rl_training/trade/rewards.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl_training/trade/rewards.csv). If the model already holds the stock, HOLD gets z and SELL pays a cost of 0.4%. The start p and the target p are for the first action: BUY or HOLD.
 
 | Call | Actions | Outcome y | Month mean | z | Reward of first action | Reward of second action | Start p | Target p |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -477,7 +477,7 @@ For a list of hundreds of stocks, an IC of 0.05 to 0.10 is already useful. Small
 | **Agreement with Opus** | For the 300 check calls, the percentage of read lines that have the same value as Opus's read lines | 70.6% |
 | **Return after costs** | The mean excess return of the calls with p(BUY) > 0.5, minus a trading cost of 0.8% | 438 BUY calls with a mean of +1.86%. Result: **+1.06%** |
 
-**Example of agreement with Opus.** On the first 10 check calls, the Raw setup agreed with Opus on 35 of 50 read lines (70%). The SFT and RL setups agreed on 39 of 50 (78%). The answers are in [examples/week/check](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/week/check) and [examples/week/opus_check](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/answers.csv).
+**Example of agreement with Opus.** On the first 10 check calls, the Raw setup agreed with Opus on 35 of 50 read lines (70%). The SFT and RL setups agreed on 39 of 50 (78%). The answers are in [examples/week/check](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/week/check) and [examples/week/opus_check/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/opus_check/answers.csv).
 
 ### When is one setup better than another?
 
@@ -497,7 +497,7 @@ I used 200 validation calls. For each call, I ran the model two times:
 - one time with the Demand line forced to "up"
 - one time with the Demand line forced to "down".
 
-Then I compared the two values of p(BUY). On the first 10 of these calls, the SFT model gave a higher p(BUY) with "up" for all 10 calls. The difference was between 0.02 and 0.58, with a mean of 0.26 ([up](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_up/answers.csv), [down](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_down/answers.csv)). Over all 200 calls, the mean was 0.54 with "up" and 0.31 with "down".
+Then I compared the two values of p(BUY). On the first 10 of these calls, the SFT model gave a higher p(BUY) with "up" for all 10 calls. The difference was between 0.02 and 0.58, with a mean of 0.26 ([sft_demand_up/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_up/answers.csv), [sft_demand_down/answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/week/rl/sft_demand_down/answers.csv)). Over all 200 calls, the mean was 0.54 with "up" and 0.31 with "down".
 
 ## 6. Results
 
