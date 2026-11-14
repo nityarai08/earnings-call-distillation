@@ -130,6 +130,16 @@ The three test parts are split at random within each month. Within a set, `rank`
 
 `labels.jsonl` is the first version from the mini run (260 lines, with a 1–5 `rating` instead of `score`).
 
+### Worked examples (`examples/`)
+
+These are three real calls with everything the models saw and wrote, written by `scripts/paper/examples.py`. They are the only place where full transcript text appears in this repo.
+
+| Folder | Files |
+| --- | --- |
+| `1_test_call/` (Test-W row 218058) | `prompt_memory.txt`, `prompt_raw.txt`, `prompt_rag.txt`, `prompt_pi.txt`: the exact text each setup read, chat template included. `answers.csv`: every setup's seven lines and probabilities. `outcome.json`: the return, sector return, volatility, `y` and next EPS, step by step |
+| `2_sft_training_call/` (SFT row 60332) | `opus_labels.jsonl`: Opus's neutral and skeptical answers. `target.json`: the training target and how the BUY probability was derived. `training_text.txt`: the prompt followed by the target answer |
+| `3_rl_training_call/` (RL row 4412) | `prompt.txt`, and `reward.json`: the trade-reward arithmetic, the starting model's read and the RL target |
+
 ### Run outputs (`runs/paper/<stage>/`)
 
 There is one folder per stage, `mini` and `week`; the paper's numbers come from `week`.
@@ -172,7 +182,7 @@ Rerunning the first test calls with these files gives the published probabilitie
 | `demand`, `pricing`, `margins`, `guidance`, `candor` | The model's most likely value for each read line |
 | `p_eps_up` | Probability of "Next EPS: up" (empty for arms that do not write that line) |
 | `p_pos` | Probability of the positive action (BUY when flat, HOLD when long): the stock score |
-| `p_mass` | Probability the model put on the allowed answer values (a well-formed answer has close to 1) |
+| `p_mass` | The lowest, over the seven lines, of the probability the model put on that line's allowed values out of its whole vocabulary. Near 1 for the base model. Near 0 for the trained models, because training compares the allowed values only with each other: their scores are still well defined, but left to write freely they would not keep the format |
 
 Arm names: `raw`, `rag`, `pi`, `memory` (no transcript), `rag_random` and `rag_shuffled` (retrieval controls), `pi_rag_docs` (pi loop with RAG's documents), `prompt_*` (prompt styles), `raw_flat` and `raw_long` (position check), `sft_*` and `rl_*` (trained arms), `sft_placebo` and `rl_shuffled` (controls), `*_demand_up` and `*_demand_down` (forced Demand), `*_test` (Test-W), `*_check` (the 300 `student_check` calls Opus also read).
 

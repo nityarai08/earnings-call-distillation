@@ -9,7 +9,9 @@ This repo holds the code, data and results of a week-long experiment that tested
 - **Calls:** smaller US companies.
 - **Test:** 800 calls from March to August 2026, after the model's release, sealed until the final scoring step.
 
-**Read the write-up:** [It Sounds Like the Teacher but Doesn't Trade Like It](blog/2026-11-small-model-earnings-calls/README.md)
+**Read the write-up:** [It Sounds Like the Teacher but Doesn't Trade Like It](blog/2026-11-small-model-earnings-calls/README.md). It walks through one real call from prompt to outcome, the training data and how every number is calculated.
+
+**See the real inputs and outputs:** [`examples/`](examples) has the exact prompts, answers, targets and outcomes for one test call and two training calls.
 
 ## What we found
 
@@ -58,6 +60,7 @@ Level 3 costs nothing in API fees by default, because every Opus answer the run 
 
 ```
 blog/                       the write-up, its figures and tidy result tables
+examples/                   three real calls: exact prompts, answers, training targets, outcomes
 reproduce/                  the scripts for the three levels
 docs/DATA.md                every data file: source, license, columns
 docs/SCRIPTS.md             every script: what it reads and writes, and the run order

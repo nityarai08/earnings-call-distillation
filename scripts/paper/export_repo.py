@@ -6,6 +6,7 @@ Files keep their paths, so the scripts run unchanged in the clone. Three files a
 the price bars keep only SPY (the only symbol the paper reads), the old case set keeps only its symbol
 column, and the read sample keeps only its row column. Rows of the sealed Test-F part are dropped from
 every run file, the retrieved transcript text is dropped from the pi agent logs, and the export stops if anything from Test-F, a key or a private email would leave.
+The three example calls in examples/ keep their full prompts on purpose, as illustrations.
 Files written by hand in the repo (README, docs, reproduce/) are never touched.
 """
 import json
@@ -21,7 +22,7 @@ OUT = Path(sys.argv[1]).resolve()
 
 CODE = ["scripts/paper/" + f for f in ("common.py", "build_data.py", "build_kb.py", "kb.py", "kb_service.py", "blocks.py", "prompt.py", "read.py",
                                          "agent_run.py", "teacher.py", "score.py", "train_soft.py", "run_step.py", "make_commands.py", "tracker.py",
-                                         "interim.py", "export_repo.py")] + \
+                                         "interim.py", "export_repo.py", "examples.py")] + \
        ["scripts/" + f for f in ("small_call_check.py", "call_qa_check.py", "filing_change_check.py", "raw_text_check.py", "small_call_read.py", "llm_locked.py")] + \
        ["src/tagent/" + f for f in ("__init__.py", "data.py", "evaluate.py", "risk_agent.py", "earnings_text.py", "edgar.py", "edgar_features.py",
                                      "filing_changes.py", "train_lora.py")] + \
@@ -112,7 +113,10 @@ def check(sealed):
             if re.search(r"sk-ant-[A-Za-z0-9]", t) or re.search(r"ANTHROPIC_API_KEY\s*=\s*['\"]?sk-", t):
                 bad.append(rel + ": looks like an API key")
             for m in re.findall(r"[\w.+-]+@[\w-]+\.(?:com|org|net|io)", t):
-                if not m.endswith(("@example.com", "@anthropic.com", "users.noreply.github.com")):
+                personal = m.split("@")[1].lower() in ("gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "icloud.com", "me.com", "aol.com")
+                if rel.startswith("examples/") and not personal:
+                    continue  # a company's own investor-relations address, read out in its call
+                if personal or not m.endswith(("@example.com", "@anthropic.com", "users.noreply.github.com")):
                     bad.append(f"{rel}: email {m}")
     if bad:
         sys.exit("export stopped:\n" + "\n".join(sorted(set(bad))))
@@ -126,6 +130,8 @@ def main():
     runs(sealed)
     (OUT / "docs").mkdir(exist_ok=True)
     shutil.copy2(ROOT / "logs/paper_fixes.md", OUT / "docs/FIXES.md")  # what broke during the runs and how it was fixed
+    shutil.copytree(ROOT / "examples", OUT / "examples", dirs_exist_ok=True)  # three real calls, written by examples.py
+    shutil.copytree(ROOT / "blog", OUT / "blog", dirs_exist_ok=True)
     check(sealed)
     files = [f for f in OUT.rglob("*") if f.is_file() and ".git" not in f.parts]
     print(len(files), "files,", round(sum(f.stat().st_size for f in files) / 1e6, 1), "MB in", OUT)
