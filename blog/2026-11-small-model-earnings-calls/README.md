@@ -2,63 +2,96 @@
 
 *Nityanand Rai · November 13, 2026*
 
-*I spent a week trying to teach a small AI model on my laptop to read company earnings calls the way a large model does, and to pick stocks from them. It learned to talk like the large model. It didn't learn to pick better stocks. This post shows exactly what the model saw, what it wrote, how it was trained, and how every number was calculated, with links to the real files.*
+*I tried to teach a small AI model to read company earnings calls like a large model. The small model runs on my laptop. The large model is Claude Opus. After training, the small model wrote answers that looked more like Opus's answers. But it did not pick better stocks.*
+
+*This post shows what the small model read, what it wrote, how I trained it, and how I calculated each number. Each section links to the real files in the [repo](https://github.com/nityarai08/earnings-call-distillation).*
 
 ## The short version
 
-- I tested six ways of using a small model (Qwen3.5-9B on a MacBook) to read earnings calls:
-    - with nothing else;
-    - with reference documents;
-    - with its own searches;
-    - trained on Claude Opus's answers;
-    - then trained with rewards;
-    - plus a version that never saw the call.
-- On 800 calls it had never seen, every version ranked stocks a little better than chance, at a score of about 0.10. None beat the others by more than luck.
-- Training on Opus's answers made the small model agree with Opus more often (66% → 71%). Much of that came from copying one habit: calling management "direct". It didn't improve stock picking.
-- The proof is in the controls. A model trained on *scrambled* Opus answers ranked stocks as well as the real one.
-- The model's decisions do follow its stated reasons, so the weak link is the quality of its reading.
+- I compared six setups of one small model, Qwen3.5-9B, on 800 earnings calls that it had never seen.
+- All six setups ranked stocks a little better than chance. Their IC values (a measure of ranking quality) were all close to 0.10.
+- No setup was better than the others by more than chance can explain.
+- Training on Opus's answers made the small model agree with Opus more often: 66% for Raw, 71% after RL.
+- About half of that gain came from one habit. The small model learned to call management "direct" almost every time, as Opus does.
+- The training did not improve stock picking by more than chance. On validation calls, a control model that I trained on shuffled Opus answers ranked stocks about as well.
+- The small model's BUY decision follows its own read lines. So the weak part is the quality of the read lines.
 
 ---
 
+## Words used in this post
+
+| Word | Meaning in this post |
+| --- | --- |
+| **Call** | One quarterly earnings call of one company |
+| **Small model** | Qwen3.5-9B, an open model with 9 billion parameters (numbers that the model learned), compressed to 4 bits so that it runs on a laptop |
+| **Opus** | Claude Opus, the large model that I used as the teacher |
+| **Answer** | The seven lines that a model writes for one call (shown in section 3) |
+| **Read lines** | The first five lines of an answer: Demand, Pricing, Margins, Guidance and Candor |
+| **Managers' replies** | The managers' answers to the analysts' questions, from the transcript of the call. The prompt calls this part "Management's answers" |
+| **p(BUY)** | The probability of BUY divided by the sum of the probabilities of BUY and AVOID. This is the stock score |
+| **Setup** | One way to use the small model. There are six setups (section 3) |
+| **Control** | A setup that I broke on purpose. If a control scores as well as the real setup, the real setup's gain is not real |
+| **Library** | A searchable store of past calls, company figures and analyst notes |
+| **Knowledge block** | The part of the library that a setup adds to the prompt, up to 1,500 tokens |
+| **Adapter** | A small set of extra weights that training adds to the small model. The original weights do not change |
+| **Outcome y** | How well a stock did after a call, compared with its sector (section 3) |
+| **IC** | Information coefficient: how well a list sorted by p(BUY) matches a list sorted by outcome y (section 5) |
+| **Step** | A change from one setup to the next: Raw to RAG, RAG to Pi, RAG to SFT, and SFT to RL |
+| **Simple rule** | A method that ranks stocks without AI (section 6) |
+| **Daily volatility** | The usual daily price change of a stock. The prompt calls it "daily risk" |
+| **Session** | One trading day |
+| **Token** | A word or a part of a word. 1,000 tokens are approximately 750 words |
+| **Test set** | 800 calls from March to August 2026. Nobody looked at their outcomes until the final step |
+
 ## 1. The question
 
-Large models like Claude Opus read an earnings call well, but running them on thousands of calls costs money. Small open models run free on a laptop, but they read less well. **Can a small model learn to read calls well enough to pick stocks, by copying a large one?**
+Opus reads an earnings call well. But it costs money to run Opus on thousands of calls. The small model runs free on a laptop, but it reads less well.
 
-I also wanted to test, one at a time, the tricks people usually add: reference documents, letting the model search, fine-tuning and reinforcement learning. Each one gets a deliberately broken version alongside it (a **control**), so a lucky result can't pass as a real one.
+My question was: **can the small model learn from Opus to read calls well enough to pick stocks?**
+
+I also tested four usual methods, one at a time:
+
+1. Add documents from a library to the prompt.
+2. Let the model search the library itself.
+3. Train the model on Opus's answers.
+4. Train the model further with rewards.
+
+I also ran controls (see the table above), so that a lucky result cannot look like a real gain.
 
 ## 2. The data
 
-**Calls.** Every quarter a public company holds an earnings call: management talks, then analysts ask questions. I used transcripts from the public [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data) dataset.
+**Calls.** In an earnings call, the managers of a company talk about the last quarter, and analysts ask them questions. I used call transcripts from the public dataset [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data).
 
-**Which companies.** I kept smaller US companies only:
-- dollar trading volume (closing price × shares traded) between $1M and $50M a day, using the median day of the 60 trading days before the call;
-- a share price of at least $3;
-- at least 300 words of management answers and 100 words of analyst questions.
+**Companies.** I used only smaller US companies. A call stayed in the data only if all of these were true:
 
-That left 59,753 calls from 2016 to 2026 ([`data/paper/calls.parquet`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/calls.parquet)).
+- The stock's dollar trading volume (closing price × shares traded) was between $1M and $50M a day. I used the median day of the 60 trading days before the call.
+- The share price was $3 or more.
+- The managers' answers had 300 words or more, and the analysts' questions had 100 words or more.
 
-**Masking.** The company's name, ticker and years are replaced in every text the model sees. Other details, like project names, stay in. A well-read person could sometimes still guess the company.
+This filter kept 59,753 calls from 2016 to 2026 ([calls.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/calls.parquet)).
 
-**Sets.** Before running anything, every call was assigned to one set, and the assignment was frozen with checksums in [`configs/paper/freeze.json`](https://github.com/nityarai08/earnings-call-distillation/blob/main/configs/paper/freeze.json):
+**Masking.** Before a model reads a call, a script replaces the company name, the ticker and the years. Other names, for example project names, stay in the text. Thus a person or a model with wide knowledge can sometimes identify the company.
 
-| Set | Calls | Dates | Used for |
-| --- | --- | --- | --- |
-| SFT | 3,000 (800 used) | 2021 to 2024, even quarters | Training on Opus's answers |
-| RL | 800 (400 used) | 2021 to 2024, odd quarters | Training with rewards |
-| Validation | 3,000 (up to 500 used) | 2025 | Every comparison made while developing |
-| Check | 1,000 (300 used) | 2023 to 2024 | Comparing each model's reading with Opus's on the same calls |
-| **Test-W** | **800** | **March to August 2026** | **The final test in this post** |
-| Test-F | 1,757 | March to August 2026 | Kept sealed for a larger future run |
+**Sets.** Before I ran any model, a script put each call into one set. The script recorded the sets and their checksums in [freeze.json](https://github.com/nityarai08/earnings-call-distillation/blob/main/configs/paper/freeze.json).
 
-**Why the test is trustworthy.** The model came out in February 2026, so it can't have seen what happened to these stocks. The test outcomes sat in a separate sealed file. Only the final scoring script opened it, once, after everything else had finished. The second test set (Test-F) is still sealed: no model has been scored on it, and its outcomes have never been opened.
+| Set | Calls in set | Calls I used | Dates | Purpose |
+| --- | --- | --- | --- | --- |
+| SFT training | 3,000 | 800 | 2021 to 2024, even quarters | Train on Opus's answers |
+| RL training | 800 | 400 | 2021 to 2024, odd quarters | Train with rewards |
+| Validation | 3,000 | up to 500 | 2025 | Compare setups during development |
+| Check | 1,000 | 300 | 2023 to 2024 | Compare the small model's read lines with Opus's read lines |
+| **Test set** | **800** | **800** | **March to August 2026** | **The final test in this post** |
+| Second test set | 1,757 | 0 | March to August 2026 | Other calls from the same months, kept sealed for a larger run later |
 
-## 3. One test call, start to finish
+**Why the test is fair.** Qwen released the small model in February 2026. Thus it cannot know what happened to these stocks after March 2026. The test outcomes stayed in a separate sealed file. Only the final scoring script opened that file, and only after all other steps were complete. The outcomes of the second test set are still closed.
 
-Here is the first call of the 800-call test set exactly as the models saw it. It was picked by the set's fixed random order, not for how it turned out. All the files for it are in [`examples/1_test_call/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/1_test_call).
+## 3. One test call, from input to outcome
 
-### What the model reads
+This section follows one real call from the test set. I did not choose it for its result. It is the first call in the test set's fixed random order. All its files are in [examples/1_test_call](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/1_test_call).
 
-Every setup gets the same prompt layout. This is the RAG version ([full text](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt), 4,511 tokens), shortened:
+### The prompt
+
+All setups use the same prompt layout. Below is a shortened copy of the prompt that the RAG setup read. The [full prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt) has 4,511 tokens.
 
 ```
 [system] You are an experienced stock analyst. The company's name is masked. Use only what is below.
@@ -91,34 +124,47 @@ Action: BUY or AVOID (for the next 60 sessions)
 
 The prompt has four parts:
 
-1. **Facts.** One line of numbers known at the time of the decision: the stock's trading size, its return over the last 60 trading days, how much it moves on a typical day, how much it moved around the call, and the latest earnings change.
-2. **Knowledge.** For RAG, a block of up to 1,500 tokens from a shared library of past calls. It holds two earlier calls from the same company, three similar calls from other companies (each with a note on how that stock did afterwards), the company's recent figures, and one general analyst note. The library only returns material dated before the decision.
-3. **Management's answers.** The Q&A answers, masked, cut at 2,500 words.
-4. **The instruction**, with the seven lines to fill in.
+1. **Facts.** One line of numbers that a trader could see on the day of the decision. The numbers are:
+    - the stock's trading volume
+    - its return over the last 60 trading days
+    - its daily volatility, which the prompt calls "daily risk"
+    - its price change around the call
+    - the change in its last earnings per share (EPS).
+2. **Knowledge.** The knowledge block from the library. In the RAG setup it contains:
+    - two earlier calls of the same company
+    - three similar calls of other companies, each with a note about how that stock did after its call
+    - the company's recent figures
+    - one general analyst note.
 
-The setups differ only in what goes into these slots:
+    The library returns only material dated before the decision.
+3. **Managers' replies.** The managers' replies from the question-and-answer part of the call, masked and cut at 2,500 words.
+4. **The instruction.** The seven lines that the model must complete.
 
-| Setup | Facts | Knowledge | Answers | Model |
+### The six setups
+
+The six setups differ only in the knowledge block, the managers' replies and the model weights. All setups get the facts line.
+
+| Setup | What it means | Knowledge block | Managers' replies | Model |
 | --- | --- | --- | --- | --- |
-| Memory only | yes | none | "not provided" ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_memory.txt)) | base 9B |
-| Raw | yes | none | yes ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_raw.txt)) | base 9B |
-| RAG | yes | fixed search | yes ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt)) | base 9B |
-| Pi | yes | the model's own searches | yes ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_pi.txt)) | base 9B |
-| SFT | yes | fixed search | yes (same as RAG) | 9B + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) |
-| RL | yes | fixed search | yes (same as RAG) | 9B + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) |
+| Memory only | The model sees the facts line but not the call | none | not given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_memory.txt)) | small model |
+| Raw | The model reads the call with no help | none | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_raw.txt)) | small model |
+| RAG | A fixed search adds documents ("retrieval-augmented generation") | from a fixed search | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_rag.txt)) | small model |
+| Pi | The model searches the library itself, with the pi agent tool | from the model's own searches | given ([prompt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/prompt_pi.txt)) | small model |
+| SFT | RAG, after training on Opus's answers ("supervised fine-tuning") | from a fixed search | given | small model + [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown) |
+| RL | SFT, after more training with rewards ("reinforcement learning") | from a fixed search | given | small model + [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade) |
 
-For Pi, the model first runs an agent loop with two tools: `kb_search` (search the library) and `kb_read` (open one document). It made about 4 tool calls per call and kept about 2 documents. Those documents became its knowledge block.
+In the Pi setup, the model first uses two tools. The tool `kb_search` searches the library, and the tool `kb_read` opens one document. On average, the model made about 4 searches or reads for each earnings call and kept about 2 documents. These documents became its knowledge block.
 
-### How an answer is read
+### How I get numbers from an answer
 
-The model doesn't write freely. At each line, I look at the probability it gives to each allowed value, keep the most likely one, and move on to the next line. That gives two exact numbers per call:
+The model does not write free text. At each line, I take the probability that the model gives to each allowed value. Then I keep the most probable value and go to the next line. From each answer I keep two numbers:
 
-- **p(Next EPS up):** how sure it is that next quarter's earnings will rise.
-- **p(BUY):** how sure it is about BUY rather than AVOID. **This is the stock score.**
+- **p(Next EPS up):** the probability that next quarter's EPS is higher than a year earlier.
+- **p(BUY):** the probability of BUY, compared with AVOID. **This is the stock score.**
 
-### What each setup answered
+### The answers of the six setups
 
-([`answers.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/answers.csv))
+The data comes from [answers.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/answers.csv).
 
 | Setup | Demand | Pricing | Margins | Guidance | Candor | p(Next EPS up) | p(BUY) | Action |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -129,53 +175,73 @@ The model doesn't write freely. At each line, I look at the probability it gives
 | SFT | up | flat | up | none | direct | 0.68 | 0.69 | BUY |
 | RL | up | flat | up | none | direct | 0.66 | 0.67 | BUY |
 
-### What actually happened
+### What happened to the stock
 
-([`outcome.json`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/outcome.json))
+The data comes from [outcome.json](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/1_test_call/outcome.json). The timeline of the trade is:
 
-The call was on 2026-03-03. The model decides at the close of the next trading day (03-04), buys at the following open, and sells at the close 60 trading days later (05-29).
+1. The call was on 2026-03-03.
+2. The model decides at the close of the next trading day, 2026-03-04.
+3. The trade buys at the next opening price.
+4. The trade sells at the close 60 trading days after the decision, on 2026-05-29.
 
 | Step | Value |
 | --- | --- |
-| Return over the 60 sessions, dividends included | +11.3% |
-| Average return of the same sector's stocks | +9.8% |
+| Return of the stock over the 60 trading days, with dividends | +11.3% |
+| Average return of the stocks in the same sector | +9.8% |
 | **Excess return** = 11.3% − 9.8% | **+1.5%** |
-| The stock's typical daily move (volatility) | 1.96% |
-| **Outcome y** = excess ÷ (daily volatility × √60) = 0.0149 ÷ (0.0196 × 7.75) | **+0.098** |
-| Next quarter's EPS minus a year earlier | +0.98, so **up** |
+| Daily volatility of the stock | 1.96% |
+| **Outcome y** = excess return ÷ (daily volatility × √60) = 0.0149 ÷ (0.0196 × 7.75) | **+0.098** |
+| Next quarter's EPS minus the EPS a year earlier | +0.98, which is **up** |
 
-The stock beat its sector slightly, and earnings rose. SFT and RL said BUY and forecast EPS up, so they were right on this call. The untrained setups said AVOID. One call proves nothing, though, so everything below is scored over all 800.
+The stock did slightly better than its sector, and its EPS went up. SFT and RL said BUY, so they were right on this call. The other four setups said AVOID. Raw, Pi, SFT and RL forecast EPS up, which was also right. One call proves nothing. Thus all measures below use all 800 test calls.
 
-**Why divide by volatility?** A 1.5% excess return means little for a stock that swings 5% a day, and more for one that barely moves. Dividing by the volatility expected over 60 sessions (daily volatility × √60) puts every stock on the same scale.
+**Why I divide by volatility.** A 1.5% excess return is small for a stock that usually moves 5% in one day. It is large for a stock that usually moves 0.5%. Daily volatility × √60 is the usual price change over 60 trading days. Division by this number puts all stocks on the same scale.
 
-## 4. How the student was trained
+## 4. How I trained the small model
 
-### The teacher's answers
+### Opus's answers
 
-Claude Opus got the same prompt the student gets (facts, knowledge block and answers) and returned the same lines, plus a 0–100 score and up to three quotes. It read each training call twice: once with a neutral instruction and once told to be skeptical. Here are both answers for the first training call ([`opus_labels.jsonl`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/opus_labels.jsonl)):
+Opus received the same prompt as the small model. Opus wrote the same seven lines. It also gave a rating from 0 (much worse than its sector) to 100 (much better), and up to three quotes from the call. Opus read each training call two times:
 
-| | Demand | Pricing | Margins | Guidance | Candor | Next EPS | Score |
+- one time with a neutral instruction
+- one time with an instruction to be skeptical.
+
+Here are the two Opus answers for the first training call ([opus_labels.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/opus_labels.jsonl)):
+
+| Instruction | Demand | Pricing | Margins | Guidance | Candor | Next EPS | Rating |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Opus, neutral | up | flat | up | none | direct | up | 61 |
-| Opus, skeptical | up | flat | flat | none | direct | up | 58 |
+| Neutral | up | flat | up | none | direct | up | 61 |
+| Skeptical | up | flat | flat | none | direct | up | 58 |
 
-The quotes Opus picked were: *"For the first quarter, chassis shipments were at record levels."*, *"the supply chain base for all of our products seems extremely strong"*, and *"with the strong demand for the carrier product, we plan to keep it dedicated on carrier production"*.
+Opus chose these quotes:
 
-All 2,200 Opus and Sonnet answers are in [`data/paper/teacher/labels_v2.jsonl`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl). They cover 800 training calls × 2 instructions, plus 300 check calls read by Opus and 300 by Sonnet. Together they cost about $37.
+- *"For the first quarter, chassis shipments were at record levels."*
+- *"the supply chain base for all of our products seems extremely strong"*
+- *"with the strong demand for the carrier product, we plan to keep it dedicated on carrier production"*
 
-### Fine-tuning (SFT)
+The file [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) contains all 2,200 answers from Claude:
 
-Each training call becomes one target ([`target.json`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/target.json)):
+- 1,600 Opus answers for 800 training calls, with two instructions each
+- 300 Opus answers for the check calls
+- 300 answers from Claude Sonnet for the same check calls.
 
-| Line | Target | Where it comes from |
+These answers cost approximately $37.
+
+### Training on Opus's answers (SFT)
+
+For each training call, a script makes one target ([target.json](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/target.json)):
+
+| Line | Target | Source |
 | --- | --- | --- |
-| Demand … Candor | up, flat, up, none, direct | Opus's first (neutral) answer |
-| Next EPS | up | **What really happened**, not Opus's guess |
-| Action | **BUY with probability 0.84** | Opus's average score (59.5), ranked among the 40 training calls from the same month |
+| Demand to Candor | up, flat, up, none, direct | Opus's neutral answer |
+| Next EPS | up | **The real result**, not Opus's answer |
+| Action | **BUY with probability 0.84** | Opus's mean rating (59.5), ranked against the other training calls of the same month |
 
-**How 0.84 is calculated.** The average score of 59.5 ranks 34th of the 40 calls that month. The percentile rank is 34 ÷ 40 = 0.85. Subtracting half a step (0.5 ÷ 40 = 0.0125) gives **0.8375**, which keeps targets away from exactly 0 or 1. The model is trained to say BUY with 84% confidence, not 100%.
+The read lines come from Opus's neutral answer. The skeptical answer changes only the mean rating.
 
-Here is the training text: the prompt, then the target answer ([`training_text.txt`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/training_text.txt)):
+**How I get 0.84.** The training set has 40 calls in this month. The mean rating of 59.5 is in position 34 of 40, from lowest to highest. So its percentile rank is 34 ÷ 40 = 0.85. Then I subtract half a step, 0.5 ÷ 40 = 0.0125. The result is **0.8375**. The half step keeps each target away from exactly 0 and exactly 1. Thus the model learns to say BUY with 84% confidence, not 100%.
+
+Below is the training text: the prompt, followed by the target answer ([training_text.txt](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/2_sft_training_call/training_text.txt)):
 
 ```
 ... (prompt as above) ...
@@ -188,77 +254,83 @@ Next EPS: up
 Action: BUY            ← trained toward 0.84 BUY / 0.16 AVOID
 ```
 
-**The loss.** At each line, the model's probabilities over the allowed values are compared with the target using cross-entropy. Cross-entropy is small when the model puts high probability on the target value. Only those seven positions count, not the rest of the text.
+**The training loss.** At each of the seven lines, the loss compares the model's probabilities for the allowed values with the target. The loss is cross-entropy. Cross-entropy is small when the model gives a high probability to the target value. The loss uses only these seven positions. It ignores all other text.
 
 **Training settings:**
-- **What gets trained:** small add-on weights (a LoRA adapter, rank 16) on the top 8 layers of the 9B. The original weights never change.
-- **Batches:** 4 calls per update.
-- **Calls and passes:** 400 calls, 2 passes, at a learning rate of 1e-4. Then 400 more calls, 2 passes, at 3e-5, continuing from there.
 
-The result is the [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown), and the training curve is in [`train/sft_grown.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/sft_grown.csv).
+- The adapter is a LoRA adapter of rank 16. Rank 16 sets the size of the adapter. Training changes only the adapter on the top 8 layers of the small model.
+- Each update uses 4 calls.
+- The first part uses 400 calls, two times each, at a learning rate of 1e-4. The learning rate sets the size of each change to the adapter.
+- The second part continues with 400 more calls, two times each, at a learning rate of 3e-5.
 
-**The other SFT versions, all compared on the same 300 validation calls:**
+The result is the [SFT adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/sft_grown). The training curve is in [sft_grown.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/sft_grown.csv).
 
-| Version | Trained on |
+**Other SFT variants.** I trained five variants and compared them on the same 300 validation calls:
+
+| Variant | Targets |
 | --- | --- |
-| read + EPS (the one kept) | the read lines, next EPS and action, as above |
-| score only | the action target alone |
-| read | the read lines and action, without next EPS |
-| hard | the action target = 1 if the stock *actually* beat its month's median outcome, else 0 |
-| **placebo** (control) | Opus's read lines and score **shuffled between calls in the same month**, so they no longer belong to the call. Next EPS stays real |
+| Read + EPS (the variant that I kept) | Read lines, Next EPS and Action, as shown above |
+| Score only | Action only |
+| Read | Read lines and Action, but not Next EPS |
+| Hard | Action = 1 if the stock really did better than the month's median outcome, otherwise 0 |
+| **Placebo** (control) | The read lines and ratings from Opus, shuffled among the calls of the same month. Thus they do not match their call. Next EPS stays real |
 
-### Reinforcement learning (RL)
+### Training with rewards (RL)
 
-RL starts from the SFT model and uses 400 other training calls. For each call it:
+RL starts from the SFT model and uses 400 different training calls. For each call, the training does these steps:
 
-1. Samples 4 different readings of the call (at temperature 0.8, so the readings vary).
-2. Scores each reading with a reward.
-3. Moves the model toward the best reading, and moves its BUY probability toward what the reward favors, while staying close to where it started.
+1. It makes the model write 4 different answers. The answers differ because the training adds randomness. A temperature of 0.8 sets the amount of randomness.
+2. It gives each answer a reward.
+3. It moves the read lines toward the best answer of the four.
+4. It moves p(BUY) toward the value that the reward prefers. It also keeps the model close to the start model.
 
 **The four rewards:**
 
-| Reward | Formula | Pays for |
+| Reward | Formula | What it rewards |
 | --- | --- | --- |
-| trade | p(BUY) × reward_if_BUY + p(AVOID) × 0 | Buying stocks that then beat the month's average |
-| business | log p(the true Next EPS) + log 2 | A confident, correct earnings forecast (0 when 50/50) |
-| both | business ÷ 0.7 + trade | Both |
-| **shuffled** (control) | trade, but with outcomes shuffled within the month | Nothing real |
+| Trade | p(BUY) × (reward if BUY) + p(AVOID) × 0 | BUY on stocks that then do better than the month's average |
+| Business | log p(the real Next EPS) + log 2 | An EPS forecast that is right and confident. The reward is 0 at 50/50 |
+| Both | Business ÷ 0.7 + Trade | Both of the above. The factor 1 ÷ 0.7 (approximately 1.4) gives the business reward more weight |
+| **Shuffled** (control) | Trade, with outcomes shuffled among the calls of the same month | Nothing real |
 
-**A worked example of the trade reward** ([`reward.json`](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/3_rl_training_call/reward.json)). This is the fifth RL call, chosen because its outcome is clear:
+**Example of the trade reward** ([reward.json](https://github.com/nityarai08/earnings-call-distillation/blob/main/examples/3_rl_training_call/reward.json)). This is the fifth RL call. I chose it because its outcome is clear.
 
 | Step | Value |
 | --- | --- |
 | Outcome y of this stock | −0.240 |
-| Average y of the RL calls that month | +0.558 |
-| z = y − month average (kept within ±3) | −0.798 |
-| Trading cost in the same units: 0.8% ÷ (daily risk × √60) = 0.008 ÷ 0.313 | 0.026 |
+| Mean outcome y of the RL calls in the same month | +0.558 |
+| z = outcome y − month mean, limited to the range −3 to +3 | −0.798 |
+| Trading cost in the same units = 0.8% ÷ (daily volatility × √60) = 0.008 ÷ 0.313 | 0.026 |
 | **Reward if BUY** = z − cost | **−0.824** |
 | Reward if AVOID | 0 |
-| The SFT model's p(BUY) before RL | 0.25 |
+| p(BUY) of the SFT model before RL | 0.25 |
 | Expected reward = 0.25 × (−0.824) + 0.75 × 0 | −0.206 |
-| **RL target for p(BUY)** = 0.25·e^(−0.824) ÷ (0.25·e^(−0.824) + 0.75) | **0.13** |
+| **RL target for p(BUY)** = 0.25 × e^(−0.824) ÷ (0.25 × e^(−0.824) + 0.75) | **0.13** |
 
-The stock lagged its month badly, so RL pushes p(BUY) from 0.25 down to 0.13.
+This stock did much worse than the month's average. Thus RL moves p(BUY) down from 0.25 to 0.13.
 
-Why this formula: it's the best policy that stays close to the starting model. The target is the starting probability multiplied by e^reward, then rescaled so the probabilities add to 1. A plain policy-gradient version collapsed into always saying AVOID, so I used this closed form instead.
+**Why this target formula.** The formula multiplies each probability by e^reward. Then it scales the probabilities so that their sum is 1. This target gives the highest expected reward for a model that must stay close to the start model. I first tried a standard RL method, policy gradient. That method always chose AVOID after some steps. Thus I used this exact formula.
 
-The run made 100 updates per reward (400 calls ÷ 4). The best reward on validation calls was trade, which became the [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade). Its curve is in [`train/trade.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/trade.csv).
+Each reward got 100 updates (400 calls ÷ 4 calls per update). On the validation calls, the trade reward gave the best result. So it became the [RL adapter](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week/trade). Its training curve is in [trade.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/train/trade.csv).
 
-## 5. How every number is calculated
+## 5. How I calculated each number
 
-All scores come from one script, [`scripts/paper/score.py`](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/score.py). Its inputs are each setup's per-call answers ([`runs/paper/week/reads/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/reads), for example [`rl_best_test.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_best_test.csv)) and the test outcomes ([`sealed/test_w.parquet`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet)).
+One script calculates all measures: [score.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/score.py). The script reads two inputs:
 
-### Stock ranking score (IC)
+- the answers of each setup for each call, in [runs/paper/week/reads](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/reads) (for example [rl_best_test.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/rl_best_test.csv))
+- the test outcomes, in [test_w.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet).
 
-The IC asks whether stocks the model liked more did better. It's computed in three steps:
+### The IC
 
-1. **Rank within each month.** For each month, every call's p(BUY) becomes a percentile rank among that month's calls, from 0 to 1. The outcome y is ranked the same way. Ranking within the month means a market-wide rally or slump can't count as skill.
-2. **Correlate.** Take the ordinary correlation between the two rank columns across all 800 calls.
-3. **Read it:** 1 is a perfect ordering, 0 is no relation, and −1 is backwards.
+The IC shows whether stocks with a higher p(BUY) did better. The script calculates it in three steps:
 
-A small example: five calls in one month.
+1. **Rank in each month.** In each month, the script converts each p(BUY) into a percentile rank among that month's calls, from 0 to 1. It does the same for outcome y. Because of this step, a rise or fall of the whole market does not count as skill.
+2. **Correlate.** The script calculates the usual correlation between the two rank columns, over all 800 calls.
+3. **Read the result.** 1 means a perfect order. 0 means no relation. −1 means a reversed order.
 
-| Call | p(BUY) | Its rank | Outcome y | Its rank | Gap d | d² |
+Here is a small example with five calls in one month:
+
+| Call | p(BUY) | Rank | Outcome y | Rank | Difference d | d² |
 | --- | --- | --- | --- | --- | --- | --- |
 | A | 0.80 | 1 | +0.6 | 1 | 0 | 0 |
 | B | 0.60 | 2 | −0.2 | 4 | −2 | 4 |
@@ -266,54 +338,67 @@ A small example: five calls in one month.
 | D | 0.30 | 4 | +0.1 | 3 | 1 | 1 |
 | E | 0.10 | 5 | −0.5 | 5 | 0 | 0 |
 
-With a single month, this is the Spearman rank correlation:
+For one month, this calculation gives the Spearman rank correlation:
 
 ```latex
 IC = 1 - \frac{6 \sum d^2}{n(n^2 - 1)} = 1 - \frac{6 \times 6}{5 \times 24} = 0.70
 ```
 
-In the real test, the example call from section 3 fell in March 2026, alongside 129 other test calls. Among them, RL's p(BUY) for it sat at the 65th percentile and its outcome at the 60th: a small agreement. Over all 800 calls, RL's IC is **0.113**.
+**A real example.** The call in section 3 is one of 130 test calls in March 2026. Among them, its RL p(BUY) is at the 65th percentile. Its outcome y is at the 60th percentile. The two ranks agree a little. Over all 800 calls, the IC of RL is **0.113**.
 
-Real ICs are far below 0.70. Across hundreds of stocks, a steady 0.05 to 0.10 is already useful, because small edges add up over many trades.
+Real ICs are much lower than 0.70. For a list of hundreds of stocks, an IC of 0.05 to 0.10 is already useful. Small advantages add up over many trades.
 
-### The other scores
+### The other measures
 
-| Score | How it's calculated | RL on the test |
+| Measure | Calculation | Value for RL on the test set |
 | --- | --- | --- |
-| **Next-EPS IC** | Same as the stock IC, using p(Next EPS up) and the real EPS change (743 of the 800 calls have one) | 0.278 |
-| **Stock accuracy** | Share of calls where "p(BUY) > 0.5" matches "the stock beat its sector" | 53.6% |
-| **EPS accuracy** | Share of calls where "p(Next EPS up) > 0.5" matches the real direction | 64.2% |
-| **Agrees with Opus's read** | On 300 check calls that Opus also read, the share of the five read lines with the same value as Opus, averaged over the lines | 70.6% |
-| **Return vs sector after costs** | Average excess return of the calls where p(BUY) > 0.5, minus a 0.8% round-trip trading cost | 438 BUYs averaging +1.86% → **+1.06%** |
+| **EPS IC** | The same as the IC, with p(Next EPS up) and the real EPS change. 743 of the 800 calls have an EPS change | 0.278 |
+| **Stock accuracy** | The percentage of calls where "p(BUY) > 0.5" agrees with "the stock did better than its sector" | 53.6% |
+| **EPS accuracy** | The percentage of calls where "p(Next EPS up) > 0.5" agrees with the real EPS direction | 64.2% |
+| **Agreement with Opus** | For the 300 check calls, the percentage of read lines that have the same value as Opus's read lines | 70.6% |
+| **Return after costs** | The mean excess return of the calls with p(BUY) > 0.5, minus a trading cost of 0.8% | 438 BUY calls with a mean of +1.86%. Result: **+1.06%** |
 
-A read-match example: on check call 62273, Opus read demand up, pricing flat, margins down, guidance none and candor direct. The raw model matched 3 of the 5 lines and the SFT model matched 2.
+**Example of agreement with Opus.** For check call 62273, Opus wrote: Demand up, Pricing flat, Margins down, Guidance none, Candor direct. The Raw setup agreed on 3 of the 5 read lines. The SFT setup agreed on 2.
 
-### Is one setup really better than another?
+### When is one setup better than another?
 
-Two setups are compared on the same calls by the difference in their ICs. To see how much that difference could move by luck, I resample: draw 22 weeks at random, with repeats, from the 22 weeks the test covers; recompute both ICs; record the difference; repeat 2,000 times. Whole weeks are drawn because calls in the same week share market news. The middle 95% of the 2,000 differences is the range shown. If it includes zero, the two setups are **not distinguishable** at this size.
+To compare two setups, the script uses the same calls for both. It calculates the IC of each setup and takes the difference. Then it measures how much chance can change that difference:
 
-### Do the actions follow the reasons?
+1. The test covers 22 weeks. The script picks 22 weeks at random from them. The same week can occur more than one time.
+2. It calculates the two ICs and their difference again, with only the calls from the picked weeks.
+3. It does steps 1 and 2 2,000 times.
+4. It keeps the middle 95% of the 2,000 differences. This is the 95% range.
 
-On 200 validation calls, I ran the model twice, once forcing "Demand: up" and once "Demand: down", and compared p(BUY). For the first call, the SFT model gave 0.27 versus 0.22. Averaged over 200 calls, it gave 0.54 versus 0.31.
+The script picks whole weeks because calls in the same week share the same market news. If the 95% range includes zero, the two setups are **not distinguishable** with this number of calls.
+
+### Does the action follow the read lines?
+
+I used 200 validation calls. For each call, I ran the model two times:
+
+- one time with the Demand line forced to "up"
+- one time with the Demand line forced to "down".
+
+Then I compared the two values of p(BUY). For the first of these 200 validation calls, the SFT model gave 0.27 with "up" and 0.22 with "down". Over all 200 calls, the mean was 0.54 with "up" and 0.31 with "down".
 
 ## 6. Results
 
-On the 800 test calls, every AI setup ranked stocks at about 0.10, and no step beat the previous one by more than luck.
+On the 800 test calls, all six setups had an IC of approximately 0.10. Each step adds one method: Raw to RAG, RAG to Pi, RAG to SFT, and SFT to RL. No step gave a gain larger than chance can explain.
 
-![Stock-ranking score by setup](figures/stock_ic_by_setup.svg)
+![IC of each setup](figures/stock_ic_by_setup.svg)
 
-Reading the transcript helps a little: memory only (0.075) and the simple rules (0.06–0.085) sit lower.
+The call text helps a little. Memory only (0.075) and the simple rules (0.06 to 0.085) have lower ICs than the setups that read the call.
 
-The simple rules use no AI:
-- **Known-EPS rule:** ranks stocks by the latest earnings change divided by price.
-- **Word list:** ranks by the tone of management's answers, scored from a fixed list of positive and negative words.
-- **Numbers only:** a small tree model on the facts line, fitted to the training calls.
+The simple rules do not use AI:
 
-![Gain from each ladder step with its 95% range](figures/ladder_step_gains.svg)
+- **Known-EPS rule:** ranks the stocks by the last EPS change divided by the share price.
+- **Word list:** ranks the stocks by the tone of the managers' answers. The tone comes from a fixed list of positive and negative words.
+- **Numbers only:** a small decision-tree model that uses only the facts line. I fitted it on the training calls.
 
-All four ranges cross zero. RL's range is the tightest, and even there the honest summary is "somewhere between slightly worse and slightly better."
+![Gain of each step, with its 95% range](figures/ladder_step_gains.svg)
 
-| Setup | Stock IC | Next-EPS IC | EPS accuracy | Agrees with Opus | BUY calls | Return vs sector after costs |
+All four 95% ranges include zero. The RL range is the narrowest. But it also includes zero, so RL can be slightly worse or slightly better than SFT.
+
+| Setup or rule | IC | EPS IC | EPS accuracy | Agreement with Opus | BUY calls | Return after costs |
 | --- | --- | --- | --- | --- | --- | --- |
 | Memory only | 0.075 | 0.253 | 64.5% | — | 229 | −0.17% |
 | Raw | 0.104 | 0.236 | 58.4% | 65.8% | 302 | +0.36% |
@@ -323,86 +408,109 @@ All four ranges cross zero. RL's range is the tightest, and even there the hones
 | RL | 0.113 | 0.278 | 64.2% | 70.6% | 438 | +1.06% |
 | Known-EPS rule | 0.085 | 0.244 | 66.5% | — | 381 | +0.94% |
 | Word list | 0.063 | 0.055 | 51.7% | — | 400 | +1.42% |
-| Buy every call | — | — | — | — | 796 | −0.68% |
+| Numbers only | 0.069 | — | — | — | 397 | +0.58% |
+| BUY on every call | — | — | — | — | 796 | −0.68% |
 
-Full tables: [`results.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [`findings.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
+The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
 
 ## 7. What I learned
 
-### 1. It learned to sound like Opus, not to trade like Opus
+### 1. The small model learned to sound like Opus, but not to trade like Opus
 
-After training, the small model agreed with Opus's read more often: 66% for raw, 71% after RL. Its earnings forecasts improved too, from 0.236 to 0.278. Its stock ranking didn't move.
+After training, the small model agreed with Opus more often: 66% for Raw, 71% for RL. Its EPS IC also increased, from 0.236 to 0.278. But each step changed the stock IC by less than chance can explain (section 6).
 
-Look at which lines changed, though. Most of the agreement gain is on Candor:
-- Opus calls management "direct" 95% of the time.
-- The trained model learned to say "direct" 98% of the time.
-- The match on that line rose from 82% to 94%.
+About half of the gain in agreement comes from one line, Candor:
 
-So part of "sounding like Opus" is copying its habits, not its judgment.
+- Opus writes "direct" for 95% of calls.
+- After training, the small model writes "direct" for 98% of calls.
+- Agreement on the Candor line increased from 82% to 94%.
 
-The controls, run on 300 validation calls from 2025, make the point sharper:
-- **The placebo model.** It was trained on Opus answers that didn't belong to the call. It collapsed into never saying BUY, yet it ranked stocks at 0.099, the same as RAG (0.094). The best real SFT model beat it by only 0.04, with a range of −0.07 to +0.17.
-- **The shuffled reward.** RL with the real trade reward scored 0.109; with the shuffled reward it scored 0.102.
+Thus about half of the gain is a copy of Opus's most frequent Candor value. It is not a better read of the call.
 
-Training on noise did about as well as training on the real thing.
+The controls on 300 validation calls from 2025 show the same result:
 
-### 2. Its actions follow its reasons
+- **Placebo.** I trained this model on Opus answers that did not match their calls. The model never chose BUY, because its p(BUY) stayed below 0.5. But the IC uses only the order of p(BUY), so the model still had an IC of 0.099. RAG had 0.094 on the same validation calls. The best real SFT variant had an IC only 0.04 higher, with a 95% range of −0.07 to +0.17.
+- **Shuffled reward.** RL with the real trade reward had an IC of 0.109. RL with the shuffled reward had an IC of 0.102.
 
-Forcing Demand from "down" to "up" raised the SFT model's p(BUY) from 0.31 to 0.54, in the right direction on all 200 calls. After RL the shift was +0.21, right on 199 of 200. The model isn't writing a story and then ignoring it. The weak spot is the reading itself: on the check calls, Opus called the EPS direction right 72% of the time and ranked stocks at 0.15, above anything the small model reached.
+Training on noise gave approximately the same result as training on real data.
 
-### 3. Searching on its own made it worse
+### 2. The action follows the read lines
 
-With search tools, the model's earnings forecasts fell to 0.179 on the test, against 0.229 for fixed RAG. To find out why, I ran the same agent loop but handed it RAG's documents instead of its own picks ([`pi_rag_docs.csv`](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi_rag_docs.csv)). On 200 shared validation calls the scores were:
-- with its own picks: 0.14;
-- the same loop with RAG's documents: 0.22;
-- fixed RAG: 0.28.
+When I changed the Demand line from "down" to "up", the SFT model's p(BUY) increased from 0.31 to 0.54. It increased for all 200 calls. After RL, the mean increase was 0.21, and p(BUY) increased for 199 of 200 calls. Thus the model does not ignore its own read lines.
 
-The loop itself is fine; the small model is bad at choosing what to read.
+The weak part is the read lines themselves. On the 300 check calls, I compared Opus with the small model. For Opus, the stock score is its rating divided by 100.
 
-### 4. No money to be made yet
+| Model | IC | EPS accuracy |
+| --- | --- | --- |
+| Opus | 0.151 | 71.9% |
+| Raw | 0.056 | 60.7% |
+| RAG | −0.001 | 56.6% |
+| SFT | −0.003 | 58.3% |
+| RL | 0.031 | 58.0% |
 
-Returns after costs ranged from −0.68% to +1.42% over 60 days. The best came from the word list, with no AI at all. Differences this small are noise.
+The check calls are from 2023 and 2024. Their facts line does not include the price change around the call. Thus these values differ from the test set values. On the same calls, Opus is clearly better than every setup of the small model.
+
+### 3. The model's own searches made its EPS forecasts worse
+
+In the Pi setup, the EPS IC on the test set was 0.179. In the RAG setup, it was 0.229.
+
+To find the cause, I ran the same Pi tool loop again. But this time the loop received RAG's documents, not the documents that the model chose ([pi_rag_docs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi_rag_docs.csv)). The EPS ICs on 200 shared validation calls were:
+
+- Pi with its own documents: 0.14
+- Pi with RAG's documents: 0.22
+- RAG: 0.28
+
+With RAG's documents, the EPS IC of the tool loop increased from 0.14 to 0.22. Thus the documents that the small model chooses cause most of the problem.
+
+### 4. No setup made more money than chance can explain
+
+The returns after costs were between −0.68% and +1.42% over 60 trading days. The highest return came from the word list, which uses no AI. Differences this small can come from chance.
 
 ## 8. Conclusions
 
-**Teaching a small model to copy a big one made it sound more like the big one, not invest better.** What I'd take away:
+**Training the small model on Opus's answers made its answers more similar to Opus's answers. It did not make the small model a better stock picker.**
 
-- **Always run a placebo.** Without the shuffled-label and shuffled-reward controls, I'd have reported that SFT and RL "work".
-- **Check which lines changed.** "Agrees with the teacher more" can mean "copies the teacher's most common answer".
-- **Check that the reasoning drives the decision.** Here it does, so the thing to fix is the reading.
-- **Don't let a small model pick its own sources** without checking its picks.
-- **Simple rules are a high bar.** The one-line earnings rule came within 0.03 of the best model.
+What I recommend:
 
-**What I wouldn't claim yet:**
-- **The sample is small.** 800 test calls means "no difference" here is "no difference visible at this size", not "proven zero".
-- **The scope is narrow.** It's one small model, one holding period and one slice of the market.
-- **The trained models only work in constrained mode.** They put almost no probability on the allowed answer words compared with the rest of the vocabulary (`p_mass` near 0 in their files). Their scores compare the allowed values with each other, so the results stand. But left to write freely, they wouldn't follow the format.
+- **Always run a placebo.** Without the shuffled controls, the gain in agreement with Opus could look like a real gain.
+- **Check which lines changed.** "Agrees more with the teacher" can mean "copies the teacher's most frequent answer".
+- **Check that the action follows the read lines.** Here it does. So the next step is to improve the read lines.
+- **Check the documents that a small model chooses.** In this test, a fixed search gave better documents.
+- **Compare with simple rules.** The one-line Known-EPS rule had an IC only 0.03 lower than the best setup.
 
-**Running it on a laptop.** Three things broke along the way:
-- a learning rate that was too high;
-- one call with no price outcome, which crashed RL;
-- a closed lid on battery, which put the Mac to sleep for an hour.
+**Limits of this study:**
 
-All three are written up in [`docs/FIXES.md`](https://github.com/nityarai08/earnings-call-distillation/blob/main/docs/FIXES.md).
+- **The test set is small.** With 800 calls, "not distinguishable" means "no difference that this test can detect". It does not prove that the difference is zero.
+- **The scope is narrow.** I tested one small model, one holding period of 60 trading days and one group of companies.
+- **The trained models work only with fixed answer values.** After training, they give almost no probability to the allowed answer words, compared with all other words. The column `p_mass` in their files is near 0. The stock scores compare only the allowed values with each other, so the results are valid. But in free text, the trained models would not follow the seven-line format.
 
-**Next, for the paper:**
-1. Score the trained models on the sealed 1,757-call Test-F to tighten the ranges.
-2. Give the small model Opus's read and let it make only the trade. If its ranking climbs toward Opus's 0.15, the reading is the bottleneck.
+**Problems during the run.** Three problems occurred on the laptop:
+
+- One training run failed because its learning rate was too high.
+- One RL call had no price outcome, and the missing value stopped the RL training.
+- The laptop went to sleep for one hour because I closed its lid while it ran on battery.
+
+The file [FIXES.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/docs/FIXES.md) describes each problem and its fix.
+
+**Next steps for the paper:**
+
+1. Score the trained models on the second test set (1,757 calls). More calls give narrower 95% ranges.
+2. Give the small model Opus's read lines, and let it choose only the action. If its IC then moves toward Opus's 0.15, the read lines are the weak part.
 
 ## Files
 
-Everything below is in the [repo](https://github.com/nityarai08/earnings-call-distillation). `bash reproduce/rescore.sh` recomputes every number in section 6 from these files in about a minute.
+All files below are in the [repo](https://github.com/nityarai08/earnings-call-distillation). The command `bash reproduce/rescore.sh` calculates all the numbers in section 6 again from these files. It takes about one minute.
 
-| What | File |
+| Content | File |
 | --- | --- |
-| A test call: every setup's exact prompt, answer and outcome | [`examples/1_test_call/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/1_test_call) |
-| A training call: Opus's answers, the target and the training text | [`examples/2_sft_training_call/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/2_sft_training_call) |
-| An RL call: the prompt and the reward arithmetic | [`examples/3_rl_training_call/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/3_rl_training_call) |
-| Every call, its set and the facts the model saw | [`data/paper/sets.parquet`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sets.parquet) |
-| Every Opus answer used for training | [`data/paper/teacher/labels_v2.jsonl`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) |
-| Every model answer, one file per setup | [`runs/paper/week/reads/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/reads) |
-| Test outcomes (opened at the end) | [`data/paper/sealed/test_w.parquet`](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet) |
-| Training curves | [`runs/paper/week/train/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/train) |
-| The trained adapters | [`adapters/paper/week/`](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week) |
-| The prompt, training and scoring code | [`scripts/paper/prompt.py`](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/prompt.py), [`train_soft.py`](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/train_soft.py), [`score.py`](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/score.py) |
-| What every column means | [`docs/DATA.md`](https://github.com/nityarai08/earnings-call-distillation/blob/main/docs/DATA.md) |
+| One test call: each setup's full prompt, its answer, and the outcome | [examples/1_test_call](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/1_test_call) |
+| One SFT training call: Opus's answers, the target and the training text | [examples/2_sft_training_call](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/2_sft_training_call) |
+| One RL training call: the prompt and the reward calculation | [examples/3_rl_training_call](https://github.com/nityarai08/earnings-call-distillation/tree/main/examples/3_rl_training_call) |
+| All calls, their sets and their facts lines | [sets.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sets.parquet) |
+| All Opus answers used for training | [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) |
+| All answers of the small model, one file for each setup | [runs/paper/week/reads](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/reads) |
+| Test outcomes, opened at the final step | [test_w.parquet](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/sealed/test_w.parquet) |
+| Training curves | [runs/paper/week/train](https://github.com/nityarai08/earnings-call-distillation/tree/main/runs/paper/week/train) |
+| Trained adapters | [adapters/paper/week](https://github.com/nityarai08/earnings-call-distillation/tree/main/adapters/paper/week) |
+| Code for the prompt, the training and the scores | [prompt.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/prompt.py), [train_soft.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/train_soft.py), [score.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/score.py) |
+| The meaning of each column | [DATA.md](https://github.com/nityarai08/earnings-call-distillation/blob/main/docs/DATA.md) |
