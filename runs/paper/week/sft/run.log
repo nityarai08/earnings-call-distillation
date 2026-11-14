@@ -1,0 +1,147 @@
+
+=== 2026-11-08 00:52:42 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --name memo --calls 50 --passes 10 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3659.66it/s]
+adapters/paper/week/memo
+
+=== 2026-11-08 10:35:36 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm memo --set sft --n 50 --block rag --adapter adapters/paper/week/memo
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3990.08it/s]
+50 rows
+
+=== 2026-11-08 10:50:51 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py memo --stage week --arm memo
+read lines exact 88.0%; action rank agreement 0.663
+
+=== 2026-11-08 10:50:53 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --calls 400 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3949.44it/s]
+adapters/paper/week/read_eps
+
+=== 2026-11-08 18:48:27 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_read_eps --set validation --n 300 --block rag --lines all --adapter adapters/paper/week/read_eps
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 2789.61it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1531.43it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1469.44it/s]
+300 rows
+
+=== 2026-11-08 20:03:02 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --name sft_grown --calls 400 --skip 400 --passes 2 --block rag --start adapters/paper/week/read_eps
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3196.88it/s]
+
+=== 2026-11-08 20:56:07 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --name sft_grown --calls 400 --skip 400 --passes 2 --block rag --start adapters/paper/week/read_eps --lr 3e-5,3e-6
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4196.97it/s]
+adapters/paper/week/sft_grown
+
+=== 2026-11-09 04:41:34 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_grown --set validation --n 500 --block rag --adapter adapters/paper/week/sft_grown
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4088.02it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1422.28it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1436.05it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1741.89it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1647.17it/s]
+500 rows
+
+=== 2026-11-09 06:44:17 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm score --calls 400 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3612.66it/s]
+
+=== 2026-11-09 08:55:28 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm score --calls 400 --passes 2 --block rag --lr 3e-5,3e-6
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3783.92it/s]
+adapters/paper/week/score
+
+=== 2026-11-09 16:56:10 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_score --set validation --n 300 --block rag --lines action --adapter adapters/paper/week/score
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 2039.94it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1282.34it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1651.71it/s]
+300 rows
+
+=== 2026-11-09 18:36:42 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read --calls 400 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3625.72it/s]
+adapters/paper/week/read
+
+=== 2026-11-10 02:57:12 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_read --set validation --n 300 --block rag --lines read --adapter adapters/paper/week/read
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 2673.85it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1495.54it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1505.20it/s]
+300 rows
+
+=== 2026-11-10 04:12:01 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm hard --calls 400 --passes 2 --block rag --lr 3e-5,3e-6
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5311.69it/s]
+adapters/paper/week/hard
+
+=== 2026-11-10 12:11:54 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_hard --set validation --n 300 --block rag --lines action --adapter adapters/paper/week/hard
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3679.21it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1372.56it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1394.17it/s]
+300 rows
+
+=== 2026-11-10 13:24:36 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm placebo --calls 200 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5994.98it/s]
+adapters/paper/week/placebo
+
+=== 2026-11-10 17:29:28 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_placebo --set validation --n 300 --block rag --lines all --adapter adapters/paper/week/placebo
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1499.67it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1389.76it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1309.57it/s]
+300 rows
+
+=== 2026-11-10 19:11:58 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage week --group sft --arms sft_score,sft_read,sft_read_eps,sft_hard
+            arm  calls  stock_acc  stock_ic  book_net  eps_acc  eps_ic
+0     sft_score    300     0.5585    0.0897   -0.0004      NaN     NaN
+1      sft_read    300     0.5418    0.1102   -0.0083      NaN     NaN
+2  sft_read_eps    300     0.5819    0.1424    0.0005   0.5911  0.2403
+3      sft_hard    300     0.4749   -0.0429   -0.0249      NaN     NaN
+best sft_read_eps

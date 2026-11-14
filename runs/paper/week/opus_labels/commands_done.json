@@ -1,0 +1,1 @@
+["PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_labels --model claude-opus-5-5 --set sft --n 800", "PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage week --step opus_labels"]

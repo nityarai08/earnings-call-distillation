@@ -1,0 +1,95 @@
+
+=== 2026-11-07 01:04:44 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --name memo --calls 20 --passes 10 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3737.63it/s]
+adapters/paper/mini/memo
+
+=== 2026-11-07 03:00:07 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm memo --set sft --n 20 --block rag --adapter adapters/paper/mini/memo
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4583.03it/s]
+20 rows
+
+=== 2026-11-07 03:05:08 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py memo --stage mini --arm memo
+read lines exact 98.0%; action rank agreement 0.518
+
+=== 2026-11-07 03:05:09 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm score --calls 40 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3921.58it/s]
+adapters/paper/mini/score
+
+=== 2026-11-07 03:53:34 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_score --set dev --n 30 --block rag --lines action --adapter adapters/paper/mini/score
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4530.82it/s]
+30 rows
+
+=== 2026-11-07 04:01:09 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read --calls 40 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4054.60it/s]
+adapters/paper/mini/read
+
+=== 2026-11-07 04:49:51 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_read --set dev --n 30 --block rag --lines read --adapter adapters/paper/mini/read
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4843.31it/s]
+30 rows
+
+=== 2026-11-07 04:57:37 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --calls 40 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3473.41it/s]
+adapters/paper/mini/read_eps
+
+=== 2026-11-07 05:47:11 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_read_eps --set dev --n 30 --block rag --lines all --adapter adapters/paper/mini/read_eps
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4491.56it/s]
+30 rows
+
+=== 2026-11-07 05:55:03 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm hard --calls 40 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3856.67it/s]
+adapters/paper/mini/hard
+
+=== 2026-11-07 06:43:16 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_hard --set dev --n 30 --block rag --lines action --adapter adapters/paper/mini/hard
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3823.43it/s]
+30 rows
+
+=== 2026-11-07 06:50:50 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm placebo --calls 20 --passes 2 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 6004.34it/s]
+adapters/paper/mini/placebo
+
+=== 2026-11-07 07:15:14 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_placebo --set dev --n 30 --block rag --lines all --adapter adapters/paper/mini/placebo
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 2191.69it/s]
+30 rows
+
+=== 2026-11-07 07:23:06 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage mini --group sft --arms sft_score,sft_read,sft_read_eps,sft_hard
+            arm  calls  stock_acc  stock_ic  book_net  eps_acc  eps_ic
+0     sft_score     30     0.6000    0.1551       NaN      NaN     NaN
+1      sft_read     30     0.6000   -0.0193       NaN      NaN     NaN
+2  sft_read_eps     30     0.4667   -0.0471    0.0041      0.4  0.1915
+3      sft_hard     30     0.6000       NaN       NaN      NaN     NaN
+best sft_score
+
+=== 2026-11-07 07:23:07 attempt 1: PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --name sft_grown --calls 40 --skip 40 --passes 2 --block rag --start adapters/paper/mini/read_eps
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3915.92it/s]
+adapters/paper/mini/sft_grown
+
+=== 2026-11-07 08:11:33 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_grown --set dev --n 100 --block rag --adapter adapters/paper/mini/sft_grown
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5226.25it/s]
+100 rows

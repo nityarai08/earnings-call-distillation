@@ -1,0 +1,14 @@
+at,dollars,what
+2026-11-06T17:31:00,1.5000,handbook
+2026-11-06T21:33:07,0.0780,probe claude-opus-5-5 102151.neutral
+2026-11-06T21:33:13,0.0780,probe claude-opus-5-5 102151.skeptic
+2026-11-06T21:33:19,0.0390,probe claude-sonnet-5-5 102151.neutral
+2026-11-06T21:33:22,0.0390,probe claude-sonnet-5-5 102151.skeptic
+2026-11-07T00:45:27,0.9000,mini opus_check 50 reads claude-opus-5-5
+2026-11-07T00:45:38,0.4500,mini opus_check 50 reads claude-sonnet-5-5
+2026-11-07T01:02:41,2.8800,mini opus_labels 160 reads claude-opus-5-5
+2026-11-07T14:22:31,0.0780,probe claude-opus-5-5 102151.neutral
+2026-11-07T14:22:34,0.0780,probe claude-opus-5-5 102151.skeptic
+2026-11-07T23:32:23,5.4000,week opus_check 300 reads claude-opus-5-5
+2026-11-07T23:33:13,2.7000,week opus_check 300 reads claude-sonnet-5-5
+2026-11-08T00:48:36,28.8000,week opus_labels 1600 reads claude-opus-5-5

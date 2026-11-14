@@ -1,0 +1,57 @@
+# The paper run plan: stages, steps, planned hours and spend. scripts/paper/tracker.py reads this and
+# runs/paper/<stage>/<step>/status.json, and scripts/paper/run_step.py will run the same steps.
+# Build hours are calendar hours, since most of it is writing code. Other stages count Mac hours.
+allowance: 1.15   # model reloads, the 13:45 forward job, restarts
+budget: 200
+stages:
+  - {id: build, name: Build, test: "", calls: 0, gated: false, steps: [
+      {id: scripts, name: Scripts, work: "Ten scripts with smoke, resume and random tests", hours: 24, spend: 0},
+      {id: data, name: Datasets, work: "Parse 2025-2026 calls, labels, all sets, Test-D, Test-W, Test-F hashes", hours: 8, spend: 0},
+      {id: kb, name: Knowledge base, work: "Build, index, leak audit, handbook", hours: 6, spend: 2},
+      {id: trainer, name: Trainer checks, work: "Gradient match, 200-step soak at 4,000 tokens", hours: 4, spend: 0},
+      {id: pi, name: Pi setup, work: "Pin version, tools, no-network check", hours: 6, spend: 0}]}
+  - {id: mini, name: Mini, test: Test-D, calls: 100, gated: false, steps: [
+      {id: baselines, name: Baselines, work: "All six, on Dev", hours: 0.1, spend: 0},
+      {id: raw, name: Raw, work: "Three prompts, Validation 100, memory only, flat and long, probe", hours: 1.2, spend: 0},
+      {id: rag, name: RAG, work: "Validation 100, two controls of 50", hours: 1, spend: 0},
+      {id: pi, name: Pi, work: "Validation 100, pi with RAG's documents 50", hours: 1.7, spend: 0},
+      {id: opus_check, name: Opus check, work: "Opus and Sonnet on 50 calls, 9B on the same", hours: 0.3, spend: 1},
+      {id: opus_labels, name: Opus labels, work: "80 calls, two lenses", hours: 0, spend: 3},
+      {id: sft, name: SFT, work: "20-call test, five arms of 40, winner to 80, reads", hours: 7.5, spend: 0},
+      {id: rl, name: RL, work: "Control, three arms of 16, Shuffled 8, reads, faithfulness", hours: 3, spend: 0},
+      {id: test, name: Test-D, work: "All six setups on 100 calls", hours: 3, spend: 1},
+      {id: report, name: Report, work: "Every table", hours: 0.1, spend: 0}]}
+  - {id: week, name: Week, test: Test-W, calls: 800, gated: false, steps: [
+      {id: baselines, name: Baselines, work: "All floors on Dev and Validation", hours: 0.5, spend: 0},
+      {id: raw, name: Raw, work: "Three prompts, Validation 500, memory only, flat and long, 800-call probe", hours: 7, spend: 0},
+      {id: rag, name: RAG, work: "Validation 500, two controls of 200", hours: 4.5, spend: 0},
+      {id: opus_check, name: Opus check, work: "Opus and Sonnet on 300 calls with 0-100 scores, 9B on the same", hours: 1.5, spend: 7},
+      {id: opus_labels, name: Opus labels, work: "800 calls, two lenses, 0-100 scores", hours: 0, spend: 24},
+      {id: sft, name: SFT, work: "50-call test; read + EPS first and grown to 800; then score, read, hard, placebo", hours: 58, spend: 0},
+      {id: rl, name: RL, work: "Control; business first, then both, trade at 400 calls; shuffled 200; faithfulness", hours: 37, spend: 0},
+      {id: pi, name: Pi, work: "Validation 500, pi with RAG's documents 200", hours: 8, spend: 0},
+      {id: test, name: Test-W, work: "Refresh next EPS; all six setups on 800 calls; reading match", hours: 25, spend: 5},
+      {id: report, name: Report, work: "Results, findings, plain-language summary", hours: 1, spend: 0}]}
+  - {id: full, name: Full, test: Test-F, calls: 1757, gated: true, steps: [
+      {id: baselines, name: Baselines, work: "All floors on Dev and Validation", hours: 2, spend: 0},
+      {id: raw, name: Raw, work: "Three prompts, Validation 3,000, memory only, flat and long, probe", hours: 25, spend: 0},
+      {id: rag, name: RAG, work: "Validation 3,000, two controls of 1,000", hours: 25, spend: 0},
+      {id: pi, name: Pi, work: "Pilot, Validation 3,000, pi with RAG's documents 1,000", hours: 49, spend: 0},
+      {id: opus_check, name: Opus check, work: "Opus and Sonnet on 1,000 calls, 9B on the same", hours: 5, spend: 17},
+      {id: opus_labels, name: Opus labels, work: "The other 2,200 calls, two lenses", hours: 0, spend: 79},
+      {id: sft, name: SFT, work: "Memorizing test, five arms of 1,000, winner to 3,000, reads", hours: 186, spend: 0},
+      {id: rl, name: RL, work: "Control, three arms of 800, Shuffled 400, reads, checks", hours: 128, spend: 0},
+      {id: test, name: Test-F, work: "All six setups on 1,757 calls", hours: 53, spend: 9},
+      {id: report, name: Follow-ups, work: "Faithfulness, unmasked read, memory gap, costs, size", hours: 12, spend: 0}]}
+setups: ["Memory only", "Raw", "RAG", "Pi", "SFT", "RL"]
+baselines: ["Buy every call", "Word list", "Known-EPS rule", "Numbers only", "Opus reference"]
+questions:
+  - {id: rag_pi, text: "Is search by the model better than explicit RAG?"}
+  - {id: kb, text: "Does the knowledge base help over the raw model?"}
+  - {id: distill, text: "How much of the gap to Opus does the student close?"}
+  - {id: read, text: "Does a written read beat a score alone?"}
+  - {id: reward, text: "Which RL reward teaches more, business or trade?"}
+  - {id: levels, text: "Where does skill stop: reading, business, stock or money?"}
+  - {id: memory, text: "How much of the result is memory?"}
+  - {id: faithful, text: "Does the action still follow the read after RL?"}
+  - {id: decision, text: "What does this stage mean for the next one?"}

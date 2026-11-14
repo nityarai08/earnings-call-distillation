@@ -1,0 +1,6 @@
+
+=== 2026-11-07 14:22:50 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py selftest
+random scores: {'calls': 9102, 'eps_acc': 0.4953, 'eps_ic': -0.0027, 'stock_acc': 0.5018, 'stock_ic': -0.0013, 'book_net': -0.0035}
+passed
+
+=== 2026-11-07 14:22:50 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage week

@@ -1,0 +1,36 @@
+
+=== 2026-11-07 20:06:10 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag --set validation --n 500 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4392.78it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1337.55it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1262.48it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1847.49it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 987.53it/s]
+500 rows
+
+=== 2026-11-07 22:01:47 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag_random --set validation --n 200 --block random
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4650.94it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1348.69it/s]
+200 rows
+
+=== 2026-11-07 22:45:31 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag_shuffled --set validation --n 200 --block shuffled
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4128.62it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1525.81it/s]
+200 rows

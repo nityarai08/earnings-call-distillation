@@ -1,0 +1,7 @@
+question,result,verdict
+rag_pi,Pi minus RAG: IC -0.067 (95% -0.250 to +0.115),Not distinguishable at this size
+distill,SFT minus RAG: IC +0.022 (95% -0.204 to +0.235),Not distinguishable at this size
+kb,RAG minus Raw: IC +0.155 (95% -0.051 to +0.362),Not distinguishable at this size
+reward,RL minus SFT: IC -0.048 (95% -0.221 to +0.091),Not distinguishable at this size
+faithful,"Flipping the Demand line moved the action by 0.0003 for SFT and 0.004 for RL, on 30 calls",The action does not yet follow the read
+decision,All ten steps ran end to end on 100 Test-D calls; every table filled,"Pipeline works. Before the week: finer Opus scores (0-100) and ranks within the quarter, since flat action targets made SFT arms default to AVOID"

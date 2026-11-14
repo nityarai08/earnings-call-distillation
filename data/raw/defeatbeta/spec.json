@@ -1,0 +1,118 @@
+{
+  "files": {
+    "US/daily_treasury_yield.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_shares_outstanding.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_tailing_eps.parquet": "2026-11-06T05:11:56Z",
+    "US/company_tickers.json": "2026-11-05T10:40:50Z",
+    "US/stock_split_events.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_profile.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_earning_calendar.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_officers.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_revenue_breakdown.parquet": "2026-11-06T05:11:56Z",
+    "US/exchange_rate.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_dividend_events.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_news.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_earning_call_transcripts.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_sec_filing.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_statement.parquet": "2026-11-06T05:11:56Z",
+    "US/stock_prices.parquet": "2026-11-06T05:11:56Z",
+    "HK/company_tickers.json": "2026-11-06T05:11:56Z"
+  },
+  "hashes": {
+    "US/daily_treasury_yield.parquet": "5bbf3d267c5b523c9f81c5bfd9cf570ce82fe79fc17780470350eb9bcaaf40db",
+    "US/stock_split_events.parquet": "a32b764840137794d570a21ab7d2ec555943ddcc00463d7df5a627d0da48a925",
+    "US/stock_profile.parquet": "c49d89d6b147c3cf0f26e46d03557b2d62c1fa278bb032866aa0c5e57dc6477d",
+    "US/stock_earning_calendar.parquet": "20278aeba3e3aca03094d94a0f8b4e79053e624d2157ad95e30fd85b70c01f01",
+    "US/stock_officers.parquet": "6d1b1cbb734243f171df8b907ec64d533ba683650531e92d91c53bbb445df381",
+    "US/stock_revenue_breakdown.parquet": "ab6ad06a86d54a2a7f9ad7acaceb32b0635d60c3489b67b6c4afd8f43a667a52",
+    "US/exchange_rate.parquet": "cae2360c608f2e9825b01ce10154f405ccf67c00f4f93029207dd59ca74e0881",
+    "US/stock_dividend_events.parquet": "e0f306dcebcf7791ce76430314cf4c8027773d5afaa0752a0d951da712f81ccc",
+    "US/stock_tailing_eps.parquet": "147ccb42aed9dc818bfd53bfe33be2e22b27c26d045332f26e799948857f7aeb",
+    "US/stock_shares_outstanding.parquet": "327ab298cd5dd4dfb7bd2e471d234f280afc471562b96b8e9512e40c6a1a8c06",
+    "US/stock_earning_call_transcripts.parquet": "2d1c83b0a41e35eddaefd22ecb3d0ae11cb957ea7ec4dd890e88333e5b492cae",
+    "US/stock_news.parquet": "8f038ec6d11d243ae6d6fb07562b9736a18c0c1715059e2b2815be3341cc911c",
+    "US/stock_sec_filing.parquet": "652f5c1a01d03877631c02aca5b5945f1386d604bf1611fdda94387fd55350f2",
+    "US/stock_statement.parquet": "87ce314871c589427cfa229c7df3635e415449c026eb040a35ce41f9f9c94fec",
+    "US/stock_prices.parquet": "39c741864f5bb803a2a6a28106a9bdbb2e8a3a510a68d64ba44f15510fb2085b",
+    "US/company_tickers.json": "df95b3d1ec9f705f39eccc6bcc302080a52ce4c51f7a669433ddf3013d5800b7",
+    "HK/company_tickers.json": "2d8b26e39b0627f74596c2a5b481851594ccdf49f8c97949bebb287ff122a2f0"
+  },
+  "footer_index": {
+    "US/stock_split_events.parquet": {
+      "file_size": 69758,
+      "footer_size": 771,
+      "footer_sha256": "d2c66c434e97061e4efa42581a340ceb853e6be52d6a071490d06af2a3980941"
+    },
+    "US/daily_treasury_yield.parquet": {
+      "file_size": 151213,
+      "footer_size": 3090,
+      "footer_sha256": "65d6c9903a9060988cf41d05b3cec76e866a42dc579d11f53ce9e37e3940f611"
+    },
+    "US/stock_profile.parquet": {
+      "file_size": 2635084,
+      "footer_size": 5016,
+      "footer_sha256": "89f925b56df7cd5ee5e9850d9db03d8a90bf339c055f591a5e7ba42051c25180"
+    },
+    "US/stock_earning_calendar.parquet": {
+      "file_size": 205961,
+      "footer_size": 1752,
+      "footer_sha256": "208d5ece3e2c535fdb43bffa1271c08553f95ead0c4a367bf1ec12197fd3ea22"
+    },
+    "US/stock_officers.parquet": {
+      "file_size": 1506498,
+      "footer_size": 3091,
+      "footer_sha256": "8c082c291e7897c9e30fe5a59dc566b6a05d2c880c5322f52f532f72a8700ea1"
+    },
+    "US/stock_revenue_breakdown.parquet": {
+      "file_size": 1288585,
+      "footer_size": 3090,
+      "footer_sha256": "36ae0d3c59e134093c83455ce1bb0383bc73b1eaa9e320006e1d4731b196d520"
+    },
+    "US/exchange_rate.parquet": {
+      "file_size": 3310603,
+      "footer_size": 2749,
+      "footer_sha256": "8fca9ad84f41a5303d433be9fcdefb817054f4f0af2054531759b21695b9d2cd"
+    },
+    "US/stock_dividend_events.parquet": {
+      "file_size": 735336,
+      "footer_size": 1811,
+      "footer_sha256": "ea629167a546b677b04a8e8c815fd3896db499aaba9381829551f1e51207a2fb"
+    },
+    "US/stock_tailing_eps.parquet": {
+      "file_size": 3011968,
+      "footer_size": 4005,
+      "footer_sha256": "5996d1374b731f8dca5df7b2e790be6cf321fa1324b1a2f18220b1429342959f"
+    },
+    "US/stock_shares_outstanding.parquet": {
+      "file_size": 6039534,
+      "footer_size": 4653,
+      "footer_sha256": "a133d99f96d8c413f1fcd25b8d9ff4f7c8ed8762d0db22bdda92fdae3df67734"
+    },
+    "US/stock_earning_call_transcripts.parquet": {
+      "file_size": 2298260280,
+      "footer_size": 1524215,
+      "footer_sha256": "fe41707f6467ffaad0ec8979aa1d43837603c747f423ff5ac076e87768ae385b"
+    },
+    "US/stock_news.parquet": {
+      "file_size": 1442934784,
+      "footer_size": 601147,
+      "footer_sha256": "7d1d61ec29f6527b39bc47d217e7894969f1f18fb4a231e9aff32c145faf68e6"
+    },
+    "US/stock_sec_filing.parquet": {
+      "file_size": 92284544,
+      "footer_size": 23381,
+      "footer_sha256": "61c795ff2403141a90cd4ee678378e9c0eef610c025743bb0e95db9ae814710c"
+    },
+    "US/stock_statement.parquet": {
+      "file_size": 120743999,
+      "footer_size": 219145,
+      "footer_sha256": "c292f611b32f37ceb57712cfbed730a490521599b0670f21c359b1657539a2ed"
+    },
+    "US/stock_prices.parquet": {
+      "file_size": 473621121,
+      "footer_size": 297969,
+      "footer_sha256": "c87db5520312499128b4e4a0bd0274a6a176fcd7bd0574d138a7de2503cc8f77"
+    }
+  },
+  "update_time": "2026-11-06T05:11:56Z"
+}

@@ -1,0 +1,18 @@
+
+=== 2026-11-06 22:40:27 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag --set dev --n 100 --block rag
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3590.18it/s]
+100 rows
+
+=== 2026-11-06 23:03:33 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag_random --set dev --n 50 --block random
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 4213.07it/s]
+50 rows
+
+=== 2026-11-06 23:14:46 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag_shuffled --set dev --n 50 --block shuffled
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 5514.20it/s]
+50 rows

@@ -1,0 +1,10 @@
+
+=== 2026-11-08 00:46:26 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_labels --model claude-opus-5-5 --set sft --n 800
+msgbatch_01UmBttydrg19iioGbQPxm7D 1600 $28.80
+
+=== 2026-11-08 00:48:39 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage week --step opus_labels
+msgbatch_01UmBttydrg19iioGbQPxm7D in_progress MessageBatchRequestCounts(canceled=0, errored=0, expired=0, processing=1600, succeeded=0)
+open batches 1
+msgbatch_01UmBttydrg19iioGbQPxm7D in_progress MessageBatchRequestCounts(canceled=0, errored=0, expired=0, processing=1600, succeeded=0)
+open batches 1
+open batches 0

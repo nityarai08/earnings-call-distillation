@@ -1,0 +1,24 @@
+watchlist_v1: [MSFT, META, AMZN, NVDA, GOOGL, AAPL, MU, QCOM, AVGO, ORCL,
+               NFLX, UBER, AMD, INTC, ADBE, CRM, NOW, WDC, QBTS, IONQ]
+context: [SPY, QQQ, XLK, SMH, IGV, ^VIX]
+sector:
+  MSFT: software
+  META: internet
+  AMZN: internet
+  NVDA: semis
+  GOOGL: internet
+  AAPL: hardware
+  MU: semis
+  QCOM: semis
+  AVGO: semis
+  ORCL: software
+  NFLX: internet
+  UBER: internet
+  AMD: semis
+  INTC: semis
+  ADBE: software
+  CRM: software
+  NOW: software
+  WDC: hardware
+  QBTS: quantum
+  IONQ: quantum

@@ -1,0 +1,5 @@
+question,result,verdict
+rag_pi,Pi minus RAG: IC +0.007 (95% -0.051 to +0.073),Not distinguishable at this size
+distill,SFT minus RAG: IC +0.009 (95% -0.035 to +0.071),Not distinguishable at this size
+kb,RAG minus Raw: IC -0.008 (95% -0.096 to +0.069),Not distinguishable at this size
+reward,RL minus SFT: IC +0.008 (95% -0.023 to +0.028),Not distinguishable at this size

@@ -1,0 +1,24 @@
+.env
+.venv/
+__pycache__/
+logs/
+adapters/
+tools/pi/node_modules/
+tools/pi/agent/auth.json
+tools/pi/agent/models-store.json
+
+# Large or licensed inputs: fetched by reproduce/download_data.sh, never committed
+data/raw/transcripts/
+data/raw/defeatbeta/stock_prices.parquet
+data/raw/defeatbeta/stock_statement.parquet
+data/features/small_call_text.parquet
+data/features/small_call_words.npz
+data/paper/text_new.parquet
+data/paper/kb.sqlite*
+
+# The sealed final test part stays private until it is scored
+data/paper/sealed/test_f.parquet
+
+# Rebuilt or rerun copies kept beside the published ones
+runs/paper/*_published/
+*.part

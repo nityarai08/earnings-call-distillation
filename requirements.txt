@@ -1,0 +1,21 @@
+# Full pipeline: Python 3.12 on an Apple Silicon Mac (MLX). Versions are the ones the week run used.
+mlx==0.32.4
+mlx-metal==0.32.4
+mlx-lm==0.32.2
+transformers==5.22.1
+tokenizers==0.23.3
+safetensors==0.8.0
+sentencepiece==0.2.2
+jinja2==3.1.6
+protobuf==7.36.2
+huggingface-hub==2.4.0
+pandas==3.1.0
+numpy==2.5.4
+pyarrow==26.0.0
+scipy==1.18.1
+scikit-learn==1.9.1
+pyyaml==6.0.3
+python-dotenv==1.2.4
+anthropic==2.3.0
+requests==2.34.2
+yfinance==1.7.0

@@ -1,0 +1,1 @@
+["PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py final --stage mini --open test_d"]

@@ -1,0 +1,37 @@
+
+=== 2026-11-12 04:24:13 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage week --step pi --arm pi --set validation --n 500
+
+=== 2026-11-12 08:32:10 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step pi --arm pi --set validation --n 500 --block runs/paper/week/agent/pi.jsonl
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 3979.76it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1525.40it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1019.54it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1048.41it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1269.46it/s]
+500 rows
+
+=== 2026-11-12 10:02:18 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage week --step pi --arm pi_rag_docs --set validation --n 200 --forced
+
+=== 2026-11-12 11:22:44 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step pi --arm pi_rag_docs --set validation --n 200 --block runs/paper/week/agent/pi_rag_docs.jsonl
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 2650.66it/s]
+
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]
+Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 1256.57it/s]
+200 rows
+
+=== 2026-11-12 11:58:48 attempt 1: PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage week --group block --arms rag,pi
+   arm  calls  eps_acc  eps_ic  stock_acc  stock_ic  book_net
+0  rag    500   0.5658  0.2311     0.4980   -0.0112   -0.0224
+1   pi    500   0.5267  0.1638     0.5241    0.0066    0.0071
+best rag

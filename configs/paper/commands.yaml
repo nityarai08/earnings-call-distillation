@@ -1,0 +1,243 @@
+mini:
+  baselines:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py selftest
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage mini
+  raw:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm prompt_plain --set dev --n 30 --style plain
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm prompt_habit --set dev --n 30 --style habit
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm prompt_change --set dev --n 30 --style change
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm raw --set dev --n 100
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm memory --set dev --n 100 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm raw_flat --set dev --n 20
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm raw_long --set dev --n 20 --position long
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step raw --arm probe --set sft --n 100 --hidden
+  rag:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag --set dev --n 100 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag_random --set dev --n 50 --block random
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rag --arm rag_shuffled --set dev --n 50 --block shuffled
+  pi:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage mini --step pi --arm pi --set dev --n 100
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step pi --arm pi --set dev --n 100 --block runs/paper/mini/agent/pi.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage mini --step pi --arm pi_rag_docs --set dev --n 50 --forced
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step pi --arm pi_rag_docs --set dev --n 50 --block runs/paper/mini/agent/pi_rag_docs.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage mini --group block --arms rag,pi
+  opus_check:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage mini --step opus_check --model claude-opus-5-5 --set student_check --n 50 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage mini --step opus_check --model claude-sonnet-5-5 --set student_check --n 50 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage mini --step opus_check
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step opus_check --arm student_rag --set student_check --n 50 --block rag --no-react
+  opus_labels:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage mini --step opus_labels --model claude-opus-5-5 --set sft --n 80
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage mini --step opus_labels
+  sft:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --name memo --calls 20 --passes 10 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm memo --set sft --n 20 --block rag --adapter adapters/paper/mini/memo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py memo --stage mini --arm memo
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --calls 40 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_read_eps --set dev --n 30 --block rag --lines all --adapter adapters/paper/mini/read_eps
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read_eps --name sft_grown --calls 40 --skip 40 --passes 2 --block rag --start adapters/paper/mini/read_eps --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_grown --set dev --n 100 --block rag --adapter adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm score --calls 40 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_score --set dev --n 30 --block rag --lines action --adapter adapters/paper/mini/score
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm read --calls 40 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_read --set dev --n 30 --block rag --lines read --adapter adapters/paper/mini/read
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm hard --calls 40 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_hard --set dev --n 30 --block rag --lines action --adapter adapters/paper/mini/hard
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage mini --step sft --arm placebo --calls 20 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step sft --arm sft_placebo --set dev --n 30 --block rag --lines all --adapter adapters/paper/mini/placebo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage mini --group sft --arms sft_score,sft_read,sft_read_eps,sft_hard
+  rl:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage mini --step rl --arm trade --name control --calls 240 --no-text --control --block none
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage mini --step rl --arm business --calls 16 --block rag --start adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_business --set dev --n 30 --block rag --adapter adapters/paper/mini/business
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage mini --step rl --arm both --calls 16 --block rag --start adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_both --set dev --n 30 --block rag --adapter adapters/paper/mini/both
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage mini --step rl --arm trade --calls 16 --block rag --start adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_trade --set dev --n 30 --block rag --adapter adapters/paper/mini/trade
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage mini --step rl --arm shuffled --calls 8 --block rag --start adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_shuffled --set dev --n 30 --block rag --adapter adapters/paper/mini/shuffled
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage mini --group rl --arms rl_business,rl_trade,rl_both
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm sft_demand_up --set dev --n 30 --block rag --adapter adapters/paper/mini/sft_grown --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm sft_demand_down --set dev --n 30 --block rag --adapter adapters/paper/mini/sft_grown --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_demand_up --set dev --n 30 --block rag --adapter adapters/paper/mini/$(sed s/rl_// runs/paper/mini/best_rl.txt) --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step rl --arm rl_demand_down --set dev --n 30 --block rag --adapter adapters/paper/mini/$(sed s/rl_// runs/paper/mini/best_rl.txt) --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py faith --stage mini --arms sft,rl
+  test:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/build_data.py refresh_eps
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage mini --set test_d --suffix _test
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm memory_test --set test_d --n 1000000 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm raw_test --set test_d --n 1000000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm rag_test --set test_d --n 1000000 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage mini --step test --arm pi_test --set test_d
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm pi_test --set test_d --n 1000000 --block runs/paper/mini/agent/pi_test.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm sft_best_test --set test_d --n 1000000 --block rag --adapter adapters/paper/mini/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm rl_best_test --set test_d --n 1000000 --block rag --adapter adapters/paper/mini/$(sed s/rl_// runs/paper/mini/best_rl.txt)
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm raw_check --set student_check --n 50  --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm rag_check --set student_check --n 50 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm pi_check --set student_check --n 50 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm sft_best_check --set student_check --n 50 --block rag --adapter adapters/paper/mini/sft_grown --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage mini --step test --arm rl_best_check --set student_check --n 50 --block rag --adapter adapters/paper/mini/$(sed s/rl_// runs/paper/mini/best_rl.txt) --no-react
+  report:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py final --stage mini --open test_d
+week:
+  baselines:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py selftest
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage week
+  raw:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm prompt_plain --set dev --n 100 --style plain
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm prompt_habit --set dev --n 100 --style habit
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm prompt_change --set dev --n 100 --style change
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm raw --set validation --n 500
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm memory --set validation --n 500 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm raw_flat --set dev --n 200
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm raw_long --set dev --n 200 --position long
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step raw --arm probe --set sft --n 800 --hidden
+  rag:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag --set validation --n 500 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag_random --set validation --n 200 --block random
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rag --arm rag_shuffled --set validation --n 200 --block shuffled
+  opus_check:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_check --model claude-opus-5-5 --set student_check --n 300 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_check --model claude-sonnet-5-5 --set student_check --n 300 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage week --step opus_check
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step opus_check --arm student_rag --set student_check --n 300 --block rag --no-react
+  opus_labels:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage week --step opus_labels --model claude-opus-5-5 --set sft --n 800
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage week --step opus_labels
+  sft:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --name memo --calls 50 --passes 10 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm memo --set sft --n 50 --block rag --adapter adapters/paper/week/memo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py memo --stage week --arm memo
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --calls 400 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_read_eps --set validation --n 300 --block rag --lines all --adapter adapters/paper/week/read_eps
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read_eps --name sft_grown --calls 400 --skip 400 --passes 2 --block rag --start adapters/paper/week/read_eps --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_grown --set validation --n 500 --block rag --adapter adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm score --calls 400 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_score --set validation --n 300 --block rag --lines action --adapter adapters/paper/week/score
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm read --calls 400 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_read --set validation --n 300 --block rag --lines read --adapter adapters/paper/week/read
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm hard --calls 400 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_hard --set validation --n 300 --block rag --lines action --adapter adapters/paper/week/hard
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage week --step sft --arm placebo --calls 200 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step sft --arm sft_placebo --set validation --n 300 --block rag --lines all --adapter adapters/paper/week/placebo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage week --group sft --arms sft_score,sft_read,sft_read_eps,sft_hard
+  rl:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage week --step rl --arm trade --name control --calls 240 --no-text --control --block none
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage week --step rl --arm business --calls 400 --block rag --start adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_business --set validation --n 300 --block rag --adapter adapters/paper/week/business
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage week --step rl --arm both --calls 400 --block rag --start adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_both --set validation --n 300 --block rag --adapter adapters/paper/week/both
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage week --step rl --arm trade --calls 400 --block rag --start adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_trade --set validation --n 300 --block rag --adapter adapters/paper/week/trade
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage week --step rl --arm shuffled --calls 200 --block rag --start adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_shuffled --set validation --n 300 --block rag --adapter adapters/paper/week/shuffled
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage week --group rl --arms rl_business,rl_trade,rl_both
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm sft_demand_up --set validation --n 200 --block rag --adapter adapters/paper/week/sft_grown --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm sft_demand_down --set validation --n 200 --block rag --adapter adapters/paper/week/sft_grown --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_demand_up --set validation --n 200 --block rag --adapter adapters/paper/week/$(sed s/rl_// runs/paper/week/best_rl.txt) --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step rl --arm rl_demand_down --set validation --n 200 --block rag --adapter adapters/paper/week/$(sed s/rl_// runs/paper/week/best_rl.txt) --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py faith --stage week --arms sft,rl
+  pi:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage week --step pi --arm pi --set validation --n 500
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step pi --arm pi --set validation --n 500 --block runs/paper/week/agent/pi.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage week --step pi --arm pi_rag_docs --set validation --n 200 --forced
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step pi --arm pi_rag_docs --set validation --n 200 --block runs/paper/week/agent/pi_rag_docs.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage week --group block --arms rag,pi
+  test:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/build_data.py refresh_eps
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage week --set test_w --suffix _test
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm memory_test --set test_w --n 1000000 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm raw_test --set test_w --n 1000000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm rag_test --set test_w --n 1000000 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage week --step test --arm pi_test --set test_w
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm pi_test --set test_w --n 1000000 --block runs/paper/week/agent/pi_test.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm sft_best_test --set test_w --n 1000000 --block rag --adapter adapters/paper/week/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm rl_best_test --set test_w --n 1000000 --block rag --adapter adapters/paper/week/$(sed s/rl_// runs/paper/week/best_rl.txt)
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm raw_check --set student_check --n 300  --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm rag_check --set student_check --n 300 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm pi_check --set student_check --n 300 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm sft_best_check --set student_check --n 300 --block rag --adapter adapters/paper/week/sft_grown --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage week --step test --arm rl_best_check --set student_check --n 300 --block rag --adapter adapters/paper/week/$(sed s/rl_// runs/paper/week/best_rl.txt) --no-react
+  report:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py final --stage week --open test_w
+full:
+  baselines:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py selftest
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage full
+  raw:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm prompt_plain --set dev --n 300 --style plain
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm prompt_habit --set dev --n 300 --style habit
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm prompt_change --set dev --n 300 --style change
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm raw --set validation --n 3000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm memory --set validation --n 3000 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm raw_flat --set dev --n 200
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm raw_long --set dev --n 200 --position long
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step raw --arm probe --set sft --n 3000 --hidden
+  rag:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rag --arm rag --set validation --n 3000 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rag --arm rag_random --set validation --n 1000 --block random
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rag --arm rag_shuffled --set validation --n 1000 --block shuffled
+  opus_check:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage full --step opus_check --model claude-opus-5-5 --set student_check --n 1000 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage full --step opus_check --model claude-sonnet-5-5 --set student_check --n 1000 --lenses neutral --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage full --step opus_check
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step opus_check --arm student_rag --set student_check --n 1000 --block rag --no-react
+  opus_labels:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py submit --stage full --step opus_labels --model claude-opus-5-5 --set sft --n 3000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/teacher.py wait --stage full --step opus_labels
+  sft:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm read_eps --name memo --calls 100 --passes 10 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm memo --set sft --n 100 --block rag --adapter adapters/paper/full/memo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py memo --stage full --arm memo
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm read_eps --calls 1000 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_read_eps --set validation --n 1000 --block rag --lines all --adapter adapters/paper/full/read_eps
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm read_eps --name sft_grown --calls 2000 --skip 1000 --passes 2 --block rag --start adapters/paper/full/read_eps --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_grown --set validation --n 3000 --block rag --adapter adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm score --calls 1000 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_score --set validation --n 1000 --block rag --lines action --adapter adapters/paper/full/score
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm read --calls 1000 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_read --set validation --n 1000 --block rag --lines read --adapter adapters/paper/full/read
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm hard --calls 1000 --passes 2 --block rag --lr 3e-5,3e-6
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_hard --set validation --n 1000 --block rag --lines action --adapter adapters/paper/full/hard
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py sft --stage full --step sft --arm placebo --calls 1000 --passes 2 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step sft --arm sft_placebo --set validation --n 1000 --block rag --lines all --adapter adapters/paper/full/placebo
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage full --group sft --arms sft_score,sft_read,sft_read_eps,sft_hard
+  rl:
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage full --step rl --arm trade --name control --calls 240 --no-text --control --block none
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage full --step rl --arm business --calls 800 --block rag --start adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_business --set validation --n 1000 --block rag --adapter adapters/paper/full/business
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage full --step rl --arm both --calls 800 --block rag --start adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_both --set validation --n 1000 --block rag --adapter adapters/paper/full/both
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage full --step rl --arm trade --calls 800 --block rag --start adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_trade --set validation --n 1000 --block rag --adapter adapters/paper/full/trade
+  - PYTHONPATH=src:scripts .venv/bin/python scripts/llm_locked.py .venv/bin/python -W ignore scripts/paper/train_soft.py rl --stage full --step rl --arm shuffled --calls 400 --block rag --start adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_shuffled --set validation --n 1000 --block rag --adapter adapters/paper/full/shuffled
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage full --group rl --arms rl_business,rl_trade,rl_both
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm sft_demand_up --set validation --n 500 --block rag --adapter adapters/paper/full/sft_grown --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm sft_demand_down --set validation --n 500 --block rag --adapter adapters/paper/full/sft_grown --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_demand_up --set validation --n 500 --block rag --adapter adapters/paper/full/$(sed s/rl_// runs/paper/full/best_rl.txt) --force Demand=up
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step rl --arm rl_demand_down --set validation --n 500 --block rag --adapter adapters/paper/full/$(sed s/rl_// runs/paper/full/best_rl.txt) --force Demand=down
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py faith --stage full --arms sft,rl
+  pi:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage full --step pi --arm pi --set validation --n 3000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step pi --arm pi --set validation --n 3000 --block runs/paper/full/agent/pi.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage full --step pi --arm pi_rag_docs --set validation --n 1000 --forced
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step pi --arm pi_rag_docs --set validation --n 1000 --block runs/paper/full/agent/pi_rag_docs.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py pick --stage full --group block --arms rag,pi
+  test:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/build_data.py refresh_eps
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py baselines --stage full --set test_f --suffix _test
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm memory_test --set test_f --n 1000000 --no-text
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm raw_test --set test_f --n 1000000
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm rag_test --set test_f --n 1000000 --block rag
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/agent_run.py --stage full --step test --arm pi_test --set test_f
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm pi_test --set test_f --n 1000000 --block runs/paper/full/agent/pi_test.jsonl
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm sft_best_test --set test_f --n 1000000 --block rag --adapter adapters/paper/full/sft_grown
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm rl_best_test --set test_f --n 1000000 --block rag --adapter adapters/paper/full/$(sed s/rl_// runs/paper/full/best_rl.txt)
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm raw_check --set student_check --n 1000  --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm rag_check --set student_check --n 1000 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm pi_check --set student_check --n 1000 --block rag --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm sft_best_check --set student_check --n 1000 --block rag --adapter adapters/paper/full/sft_grown --no-react
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/read.py --stage full --step test --arm rl_best_check --set student_check --n 1000 --block rag --adapter adapters/paper/full/$(sed s/rl_// runs/paper/full/best_rl.txt) --no-react
+  report:
+  - PYTHONPATH=src:scripts .venv/bin/python -W ignore scripts/paper/score.py final --stage full --open test_f

@@ -159,4 +159,4 @@ A few things I'd take away:
 
 To redraw the figures: `python3 blog/2026-11-small-model-earnings-calls/make_figures.py`
 
-The pipeline that produced these numbers is in `scripts/paper/`; the run log and every fix are in `logs/paper_week.log` and `logs/paper_fixes.md`.
+The pipeline that produced these numbers is in `scripts/paper/`, and every fix made during the runs is in `docs/FIXES.md`. To check these tables yourself, run `bash reproduce/rescore.sh` from the repo root.
