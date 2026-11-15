@@ -700,7 +700,7 @@ The script [signals.py](https://github.com/nityarai08/earnings-call-distillation
 
 **2. The action follows the read lines.** When I forced the Demand line from "down" to "up", p(BUY) increased for all 200 calls (section 7). Thus the model uses its own read lines to choose BUY or AVOID.
 
-**3. Opus ranks stocks better than the trained small model.** On the same 300 check calls, Opus had an IC of 0.151. The small model had 0.056 or less (section 7). On all 800 test calls, Opus had an IC of 0.170, and RL had 0.113. Opus's BUY calls also earned more (see "Opus on the same test calls" below). Together with signal 2, this shows where to work. The small model already acts on its read lines. Its read lines are the weak part.
+**3. Opus ranks stocks better than the trained small model.** On the same 300 check calls, Opus had an IC of 0.151. The small model had 0.056 or less (section 7). On all 800 test calls, Opus had an IC of 0.170, and RL had 0.113. Opus's BUY calls also earned more (section 6, "Each setup against Opus"). Together with signal 2, this shows where to work. The small model already acts on its read lines. Its read lines are the weak part.
 
 *For training:* give the small model Opus's read lines and let it choose only the action. If its IC moves toward 0.15, then the read lines are the part to train. I did not run this test yet.
 
