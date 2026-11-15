@@ -116,7 +116,7 @@ def main():
 
     def add(check, which, what, n, v, lo, hi):
         verdict = "above zero" if lo > 0 else "below zero" if hi < 0 else "range includes zero"
-        rows.append({"check": check, "calls_set": which, "what": what, "calls": n, "value": round(v, 4), "lo": round(lo, 4), "hi": round(hi, 4), "verdict": verdict})
+        rows.append({"check": check, "calls_set": which, "what": what, "calls": n, "value": round(v, 6), "lo": round(lo, 6), "hi": round(hi, 6), "verdict": verdict})
 
     test = load("test")
     for which, D in (("test", test), ("validation", load("validation")), ("test_jul_aug", {n: d[d.month >= CLEAN_FROM] for n, d in test.items()})):
@@ -130,7 +130,7 @@ def main():
             if d.p_eps_up.notna().any():
                 e = d.dropna(subset=["p_eps_up", "next_yoy"])
                 add("eps_ic", which, n, len(e), *boot(e, lambda x: S.ic(x, "p_eps_up", "next_yoy")))
-                rows.append({"check": "eps_acc", "calls_set": which, "what": n, "calls": len(e), "value": round(float(((e.p_eps_up > .5) == (e.next_yoy > 0)).mean()), 4)})
+                rows.append({"check": "eps_acc", "calls_set": which, "what": n, "calls": len(e), "value": round(float(((e.p_eps_up > .5) == (e.next_yoy > 0)).mean()), 6)})
         for a, b in PAIRS:
             if a not in D or b not in D:
                 continue

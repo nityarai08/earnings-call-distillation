@@ -555,12 +555,17 @@ The simple rules do not use AI:
 
 All four 95% ranges include zero. The RL range is the narrowest. But it also includes zero, so RL can be slightly worse or slightly better than SFT.
 
+![Opus and each setup on six measures](figures/results_all_measures.svg)
+
+<details>
+<summary>Show the numbers</summary>
+
 | Setup or rule | IC | EPS IC | EPS accuracy | Agreement with Opus | BUY calls | Return after costs |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Opus (the teacher, same prompt as RAG)** | **0.170** | **0.293** | **68.6%** | — | **476** | **+2.09%** |
 | No call | 0.075 | 0.253 | 64.5% | — | 229 | −0.17% |
 | Call only | 0.104 | 0.236 | 58.4% | 65.8% | 302 | +0.36% |
-| RAG | 0.096 | 0.229 | 56.1% | 67.3% | 276 | −0.38% |
+| RAG | 0.096 | 0.228 | 56.1% | 67.3% | 276 | −0.38% |
 | Pi | 0.104 | 0.179 | 56.0% | 67.3% | 280 | +0.72% |
 | SFT | 0.105 | 0.262 | 64.9% | 69.9% | 483 | +0.50% |
 | RL | 0.113 | 0.278 | 64.2% | 70.6% | 438 | +1.06% |
@@ -568,6 +573,8 @@ All four 95% ranges include zero. The RL range is the narrowest. But it also inc
 | Word list | 0.063 | 0.055 | 51.7% | — | 400 | +1.42% |
 | Numbers only | 0.069 | — | — | — | 397 | +0.58% |
 | BUY on every call | — | — | — | — | 796 | −0.68% |
+
+</details>
 
 The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
 
@@ -577,11 +584,12 @@ To compare the small model with its teacher, I gave Opus the same 800 test calls
 
 **A limit of this comparison.** Opus's knowledge runs to approximately June 2026. Thus Opus can know what happened after some calls from March to May. The prompt tells Opus not to use what it remembers, but I cannot check that. The 224 calls from July and August came after that date. For these calls, the comparison is fair.
 
-![Each setup and rule against Opus on three measures](figures/setups_vs_opus.svg)
-
 ![Gap between Opus and each setup, with its 95% range](figures/gap_to_opus.svg)
 
-The table shows Opus minus each setup or rule on the same 800 calls. A positive value means that Opus did better. **Bold** values have a 95% range above zero, so chance does not explain them.
+Each dot in the chart above is Opus minus one setup or rule, on the same calls. A dot right of the dashed line means that Opus did better. In the numbers below, **bold** values have a 95% range above zero, so chance does not explain them.
+
+<details>
+<summary>Show the numbers</summary>
 
 | Setup or rule | IC: Opus minus setup | EPS IC: Opus minus setup | Return after costs: Opus minus setup |
 | --- | --- | --- | --- |
@@ -591,26 +599,35 @@ The table shows Opus minus each setup or rule on the same 800 calls. A positive 
 | Pi | **+0.066 (+0.009 to +0.120)** | **+0.114 (+0.033 to +0.186)** | +1.39% (−0.71% to +3.87%) |
 | SFT | **+0.065 (+0.004 to +0.120)** | +0.031 (−0.034 to +0.081) | **+1.62% (+0.52% to +3.11%)** |
 | RL | **+0.057 (+0.007 to +0.111)** | +0.014 (−0.048 to +0.066) | **+1.06% (+0.27% to +2.19%)** |
-| Known-EPS rule | **+0.085 (+0.024 to +0.151)** | +0.049 (−0.024 to +0.110) | +1.15% (−0.74% to +3.55%) |
-| Word list | **+0.106 (+0.027 to +0.162)** | **+0.238 (+0.148 to +0.325)** | +0.66% (−0.98% to +2.11%) |
+| Known-EPS rule | **+0.085 (+0.024 to +0.151)** | +0.049 (−0.024 to +0.111) | +1.15% (−0.74% to +3.55%) |
+| Word list | **+0.107 (+0.027 to +0.162)** | **+0.238 (+0.148 to +0.325)** | +0.66% (−0.98% to +2.11%) |
 | Numbers only | **+0.101 (+0.031 to +0.200)** | — | +1.52% (−0.36% to +4.04%) |
 | BUY on every call | — | — | **+2.78% (+1.43% to +4.76%)** |
 
+</details>
+
 The same measures for the 224 calls from July and August, after Opus's knowledge date:
+
+![The same measures on the July and August calls](figures/results_jul_aug.svg)
+
+<details>
+<summary>Show the numbers</summary>
 
 | Setup or rule | IC | EPS IC | EPS accuracy | BUY calls | Return after costs |
 | --- | --- | --- | --- | --- | --- |
 | **Opus** | **0.165** | **0.278** | **66.2%** | **143** | **+1.81%** |
 | No call | 0.181 | 0.317 | 64.1% | 84 | +3.09% |
-| Call only | 0.193 | 0.300 | 58.0% | 96 | +3.49% |
+| Call only | 0.192 | 0.300 | 57.9% | 96 | +3.49% |
 | RAG | 0.119 | 0.256 | 59.0% | 83 | +1.91% |
 | Pi | 0.144 | 0.167 | 54.4% | 85 | +2.83% |
 | SFT | 0.137 | 0.232 | 64.1% | 139 | +0.75% |
 | RL | 0.139 | 0.284 | 64.1% | 131 | +1.09% |
-| Known-EPS rule | 0.127 | 0.290 | 65.6% | 106 | +3.50% |
+| Known-EPS rule | 0.126 | 0.289 | 65.6% | 106 | +3.50% |
 | Word list | 0.108 | 0.025 | 51.8% | 120 | +2.95% |
 | Numbers only | −0.056 | — | — | 117 | −1.64% |
 | BUY on every call | — | — | — | 225 | +0.65% |
+
+</details>
 
 What the comparison shows:
 
@@ -660,7 +677,7 @@ The check calls are from 2023 and 2024. Their facts line does not include the pr
 
 ### 3. The model's own searches made its EPS forecasts worse
 
-In the Pi setup, the EPS IC on the test set was 0.179. In the RAG setup, it was 0.229.
+In the Pi setup, the EPS IC on the test set was 0.179. In the RAG setup, it was 0.228.
 
 To find the cause, I ran the same Pi tool loop again. But this time the loop received RAG's documents, not the documents that the model chose ([pi_rag_docs.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/reads/pi_rag_docs.csv)). The EPS ICs on 200 shared validation calls were:
 
@@ -680,6 +697,13 @@ I looked for every positive signal in the results. Then I checked each signal ag
 
 The script [signals.py](https://github.com/nityarai08/earnings-call-distillation/blob/main/scripts/paper/signals.py) does all the checks. All values and ranges are in [signals.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/signals.csv). Each 95% range comes from the same bootstrap of whole weeks as in section 5.
 
+![Each signal on the 2026 test calls and the 2025 validation calls](figures/signals_two_periods.svg)
+
+Two signals are not in the chart. The action follows the read lines (section 7). Opus ranks stocks better than the trained small model (section 6).
+
+<details>
+<summary>Show the numbers</summary>
+
 | Signal | Test calls (2026) | Validation calls (2025) | Status |
 | --- | --- | --- | --- |
 | The setups forecast the next EPS change | EPS IC 0.18 to 0.28. All ranges are above zero | EPS IC 0.16 to 0.26. All ranges are above zero | **Holds.** But the facts line gives most of it |
@@ -691,6 +715,8 @@ The script [signals.py](https://github.com/nityarai08/earnings-call-distillation
 | RL earns more after costs than SFT | +0.56% (+0.04% to +1.15%) | −0.15% (−1.30% to +0.87%) | **Did not repeat** |
 | RL earns money after costs | +1.06% (−2.28% to +3.93%) | −2.08% (−6.29% to +1.80%) | **Not a signal** |
 | Opus's BUY calls earn more than RL's | +1.06% (+0.27% to +2.19%). July and August: +0.80% (+0.07% to +1.46%) | — | **Holds** in both test periods |
+
+</details>
 
 ### Signals that held up
 
@@ -721,7 +747,7 @@ The gain had the same size in both periods. But both ranges include zero, so cha
 
 **5. Stock ranking better than chance.** On the test calls, four setups had an IC range above zero: Call only, Pi, SFT and RL. The top third of calls by p(BUY) beat the bottom third by 4% to 6% over 60 sessions. On the 500 validation calls, the five setups had ICs between −0.012 and +0.007. RL had 0.109 on its 300 validation calls, but its range includes zero. The placebo had 0.099 on the same calls. Thus the ranking signal depends on the period.
 
-**6. Training improves the EPS forecast.** On the test calls, the EPS IC increased at each training step: 0.229 for RAG, 0.262 for SFT and 0.278 for RL. On the validation calls, the same steps gave −0.001 and +0.006. Both ranges include zero.
+**6. Training improves the EPS forecast.** On the test calls, the EPS IC increased at each training step: 0.228 for RAG, 0.262 for SFT and 0.278 for RL. On the validation calls, the same steps gave −0.001 and +0.006. Both ranges include zero.
 
 **7. RL earns more than SFT.** On the test calls, RL earned 0.56% more than SFT after costs, and the range was just above zero. RL dropped 49 of SFT's BUY calls. These calls did 3.5% worse than their sectors, on average. On the validation calls, RL earned 0.15% less than SFT. This check is one of many that I ran after I saw the results. Thus one range above zero is not enough.
 
