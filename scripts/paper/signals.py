@@ -36,10 +36,11 @@ BOOT = 2000
 ARMS = {"No call": ("memory_test", "memory"), "Call only": ("raw_test", "raw"), "RAG": ("rag_test", "rag"), "Pi": ("pi_test", "pi"),
         "SFT": ("sft_best_test", "sft_grown"), "RL": ("rl_best_test", "rl_trade"), "Placebo SFT": (None, "sft_placebo"),
         "Shuffled RL": (None, "rl_shuffled"), "Known-EPS rule": ("base_eps_test", "base_eps"), "Word list": ("base_words_test", "base_words"),
-        "Buy every call": ("base_all_test", None)}
+        "Numbers only": ("base_numbers_test", "base_numbers"), "Buy every call": ("base_all_test", None)}
 PAIRS = [("No call", "Call only"), ("Call only", "RAG"), ("RAG", "SFT"), ("SFT", "RL"), ("Call only", "RL"), ("Placebo SFT", "RL"),
          ("Shuffled RL", "RL"), ("Known-EPS rule", "RL"), ("Word list", "RL"), ("Buy every call", "RL"),
-         ("Call only", "Opus"), ("RAG", "Opus"), ("SFT", "Opus"), ("RL", "Opus"), ("Known-EPS rule", "Opus"), ("Word list", "Opus")]
+         ("No call", "Opus"), ("Call only", "Opus"), ("RAG", "Opus"), ("Pi", "Opus"), ("SFT", "Opus"), ("RL", "Opus"),
+         ("Known-EPS rule", "Opus"), ("Word list", "Opus"), ("Numbers only", "Opus"), ("Buy every call", "Opus")]
 CLEAN_FROM = "2026-07"  # first month after Opus's knowledge
 
 

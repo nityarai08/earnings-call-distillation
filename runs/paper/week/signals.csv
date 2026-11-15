@@ -39,6 +39,9 @@ spread,test,Word list,796,0.0537,0.025,0.0973,above zero
 book,test,Word list,400,0.0142,-0.0119,0.0401,range includes zero
 eps_ic,test,Word list,743,0.055,-0.0515,0.11,range includes zero
 eps_acc,test,Word list,743,0.5168,,,
+ic,test,Numbers only,793,0.0691,-0.0263,0.1443,range includes zero
+spread,test,Numbers only,796,0.0338,-0.0317,0.0874,range includes zero
+book,test,Numbers only,397,0.0058,-0.0198,0.0273,range includes zero
 book,test,Buy every call,796,-0.0068,-0.0349,0.0119,range includes zero
 ic,test,Opus,793,0.1697,0.1116,0.2252,above zero
 spread,test,Opus,796,0.08,0.0475,0.1303,above zero
@@ -67,12 +70,18 @@ ic_gain,test,RL minus Word list,793,0.0497,-0.0601,0.1301,range includes zero
 book_gain,test,RL minus Word list,793,-0.004,-0.025,0.0117,range includes zero
 eps_gain,test,RL minus Word list,743,0.2234,0.1404,0.3215,above zero
 book_gain,test,RL minus Buy every call,793,0.0172,0.0021,0.0361,above zero
+ic_gain,test,Opus minus No call,793,0.0944,-0.0008,0.1838,range includes zero
+book_gain,test,Opus minus No call,793,0.0226,-0.0059,0.0499,range includes zero
+eps_gain,test,Opus minus No call,743,0.0403,-0.0532,0.1005,range includes zero
 ic_gain,test,Opus minus Call only,793,0.0652,-0.0128,0.1307,range includes zero
 book_gain,test,Opus minus Call only,793,0.0175,-0.0055,0.0469,range includes zero
 eps_gain,test,Opus minus Call only,743,0.0568,-0.0062,0.118,range includes zero
 ic_gain,test,Opus minus RAG,793,0.0733,-0.0003,0.1548,range includes zero
 book_gain,test,Opus minus RAG,793,0.0253,0.0027,0.0578,above zero
 eps_gain,test,Opus minus RAG,743,0.0644,0.0118,0.1172,above zero
+ic_gain,test,Opus minus Pi,793,0.0661,0.0089,0.1199,above zero
+book_gain,test,Opus minus Pi,793,0.0139,-0.0071,0.0387,range includes zero
+eps_gain,test,Opus minus Pi,743,0.1138,0.0327,0.1865,above zero
 ic_gain,test,Opus minus SFT,793,0.0648,0.004,0.1204,above zero
 book_gain,test,Opus minus SFT,793,0.0162,0.0052,0.0311,above zero
 eps_gain,test,Opus minus SFT,743,0.0312,-0.0341,0.0811,range includes zero
@@ -85,6 +94,9 @@ eps_gain,test,Opus minus Known-EPS rule,743,0.0492,-0.024,0.1105,range includes 
 ic_gain,test,Opus minus Word list,793,0.1065,0.0266,0.162,above zero
 book_gain,test,Opus minus Word list,793,0.0066,-0.0098,0.0211,range includes zero
 eps_gain,test,Opus minus Word list,743,0.2378,0.1478,0.3251,above zero
+ic_gain,test,Opus minus Numbers only,793,0.1006,0.0314,0.2002,above zero
+book_gain,test,Opus minus Numbers only,793,0.0152,-0.0036,0.0404,range includes zero
+book_gain,test,Opus minus Buy every call,793,0.0278,0.0143,0.0476,above zero
 mix,test,RL + both rules,793,0.117,0.045,0.1854,above zero
 mix,test,both rules,793,0.0916,0.036,0.1586,above zero
 mix,test,RL + both rules minus both rules,793,0.0254,-0.016,0.0559,range includes zero
@@ -145,6 +157,9 @@ spread,validation,Word list,498,0.0081,-0.0325,0.0359,range includes zero
 book,validation,Word list,229,-0.0094,-0.0365,0.0165,range includes zero
 eps_ic,validation,Word list,486,0.0648,-0.0032,0.145,range includes zero
 eps_acc,validation,Word list,486,0.5021,,,
+ic,validation,Numbers only,496,0.0498,-0.0332,0.1557,range includes zero
+spread,validation,Numbers only,498,0.0487,-0.0019,0.0839,range includes zero
+book,validation,Numbers only,276,0.013,-0.0125,0.0346,range includes zero
 ic_gain,validation,Call only minus No call,496,-0.0001,-0.0527,0.0845,range includes zero
 book_gain,validation,Call only minus No call,496,0.0338,-0.0025,0.0797,range includes zero
 eps_gain,validation,Call only minus No call,485,0.0279,-0.0604,0.0895,range includes zero
@@ -216,6 +231,9 @@ spread,test_jul_aug,Word list,225,0.0509,-0.0077,0.1183,range includes zero
 book,test_jul_aug,Word list,120,0.0295,0.0046,0.0483,above zero
 eps_ic,test_jul_aug,Word list,195,0.0248,-0.1998,0.1437,range includes zero
 eps_acc,test_jul_aug,Word list,195,0.5179,,,
+ic,test_jul_aug,Numbers only,224,-0.0564,-0.0922,-0.0211,below zero
+spread,test_jul_aug,Numbers only,225,-0.0597,-0.091,-0.0153,below zero
+book,test_jul_aug,Numbers only,117,-0.0164,-0.0499,-0.0001,below zero
 book,test_jul_aug,Buy every call,225,0.0065,-0.0376,0.0128,range includes zero
 ic,test_jul_aug,Opus,224,0.1654,0.1053,0.4249,above zero
 spread,test_jul_aug,Opus,225,0.0526,0.0104,0.1167,above zero
@@ -244,12 +262,18 @@ ic_gain,test_jul_aug,RL minus Word list,224,0.0311,-0.2699,0.2377,range includes
 book_gain,test_jul_aug,RL minus Word list,224,-0.0186,-0.0421,0.0181,range includes zero
 eps_gain,test_jul_aug,RL minus Word list,195,0.2587,0.0504,0.5148,above zero
 book_gain,test_jul_aug,RL minus Buy every call,224,0.0039,-0.0066,0.0277,range includes zero
+ic_gain,test_jul_aug,Opus minus No call,224,-0.0151,-0.1551,0.4207,range includes zero
+book_gain,test_jul_aug,Opus minus No call,224,-0.012,-0.041,0.0126,range includes zero
+eps_gain,test_jul_aug,Opus minus No call,195,-0.0388,-0.0688,0.0535,range includes zero
 ic_gain,test_jul_aug,Opus minus Call only,224,-0.027,-0.1716,0.2002,range includes zero
 book_gain,test_jul_aug,Opus minus Call only,224,-0.0174,-0.0331,0.0081,range includes zero
 eps_gain,test_jul_aug,Opus minus Call only,195,-0.022,-0.0567,0.199,range includes zero
 ic_gain,test_jul_aug,Opus minus RAG,224,0.0468,-0.0125,0.3382,range includes zero
 book_gain,test_jul_aug,Opus minus RAG,224,-0.0002,-0.0222,0.0163,range includes zero
 eps_gain,test_jul_aug,Opus minus RAG,195,0.0218,-0.034,0.221,range includes zero
+ic_gain,test_jul_aug,Opus minus Pi,224,0.0211,-0.0654,0.198,range includes zero
+book_gain,test_jul_aug,Opus minus Pi,224,-0.0109,-0.0273,0.0113,range includes zero
+eps_gain,test_jul_aug,Opus minus Pi,195,0.1109,0.0009,0.4052,above zero
 ic_gain,test_jul_aug,Opus minus SFT,224,0.0289,-0.0485,0.1308,range includes zero
 book_gain,test_jul_aug,Opus minus SFT,224,0.0115,0.0057,0.0188,above zero
 eps_gain,test_jul_aug,Opus minus SFT,195,0.0458,-0.0181,0.2339,range includes zero
@@ -262,6 +286,9 @@ eps_gain,test_jul_aug,Opus minus Known-EPS rule,195,-0.0115,-0.0712,0.1737,range
 ic_gain,test_jul_aug,Opus minus Word list,224,0.0573,-0.0593,0.2089,range includes zero
 book_gain,test_jul_aug,Opus minus Word list,224,-0.0106,-0.0326,0.0213,range includes zero
 eps_gain,test_jul_aug,Opus minus Word list,195,0.2531,0.0319,0.5239,above zero
+ic_gain,test_jul_aug,Opus minus Numbers only,224,0.2219,0.1665,0.5131,above zero
+book_gain,test_jul_aug,Opus minus Numbers only,224,0.0346,0.0219,0.0522,above zero
+book_gain,test_jul_aug,Opus minus Buy every call,224,0.0119,0.0026,0.0309,above zero
 mix,test_jul_aug,RL + both rules,224,0.1958,0.1299,0.3643,above zero
 mix,test_jul_aug,both rules,224,0.1485,0.027,0.3899,above zero
 mix,test_jul_aug,RL + both rules minus both rules,224,0.0473,-0.0244,0.1029,range includes zero

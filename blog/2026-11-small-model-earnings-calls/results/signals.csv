@@ -1,0 +1,314 @@
+check,calls_set,what,calls,value,lo,hi,verdict
+ic,test,No call,793,0.0752,-0.0024,0.149,range includes zero
+spread,test,No call,796,0.0315,-0.0084,0.0694,range includes zero
+book,test,No call,229,-0.0017,-0.0331,0.0307,range includes zero
+eps_ic,test,No call,743,0.2526,0.1906,0.3131,above zero
+eps_acc,test,No call,743,0.6447,,,
+ic,test,Call only,793,0.1045,0.0176,0.1931,above zero
+spread,test,Call only,796,0.0432,0.0078,0.0778,above zero
+book,test,Call only,302,0.0036,-0.0337,0.0336,range includes zero
+eps_ic,test,Call only,743,0.2361,0.148,0.2991,above zero
+eps_acc,test,Call only,743,0.5841,,,
+ic,test,RAG,793,0.0963,-0.0174,0.1778,range includes zero
+spread,test,RAG,796,0.045,0.0038,0.0885,above zero
+book,test,RAG,276,-0.0038,-0.0509,0.0319,range includes zero
+eps_ic,test,RAG,743,0.2285,0.1114,0.3067,above zero
+eps_acc,test,RAG,743,0.5612,,,
+ic,test,Pi,793,0.1035,0.0235,0.1693,above zero
+spread,test,Pi,796,0.0505,0.0261,0.0815,above zero
+book,test,Pi,280,0.0072,-0.029,0.0375,range includes zero
+eps_ic,test,Pi,743,0.1791,0.0658,0.2501,above zero
+eps_acc,test,Pi,743,0.5599,,,
+ic,test,SFT,793,0.1049,0.0125,0.1826,above zero
+spread,test,SFT,796,0.0516,0.0079,0.1061,above zero
+book,test,SFT,483,0.005,-0.0326,0.0335,range includes zero
+eps_ic,test,SFT,743,0.2616,0.1445,0.347,above zero
+eps_acc,test,SFT,743,0.6487,,,
+ic,test,RL,793,0.1128,0.0244,0.1738,above zero
+spread,test,RL,796,0.0637,0.0143,0.1071,above zero
+book,test,RL,438,0.0106,-0.0228,0.0393,range includes zero
+eps_ic,test,RL,743,0.2784,0.1705,0.3585,above zero
+eps_acc,test,RL,743,0.642,,,
+ic,test,Known-EPS rule,793,0.0847,0.02,0.1408,above zero
+spread,test,Known-EPS rule,796,0.0378,0.0131,0.0794,above zero
+book,test,Known-EPS rule,381,0.0094,-0.0188,0.0325,range includes zero
+eps_ic,test,Known-EPS rule,743,0.2436,0.1523,0.3104,above zero
+eps_acc,test,Known-EPS rule,743,0.6649,,,
+ic,test,Word list,793,0.0631,0.0163,0.1343,above zero
+spread,test,Word list,796,0.0537,0.025,0.0973,above zero
+book,test,Word list,400,0.0142,-0.0119,0.0401,range includes zero
+eps_ic,test,Word list,743,0.055,-0.0515,0.11,range includes zero
+eps_acc,test,Word list,743,0.5168,,,
+ic,test,Numbers only,793,0.0691,-0.0263,0.1443,range includes zero
+spread,test,Numbers only,796,0.0338,-0.0317,0.0874,range includes zero
+book,test,Numbers only,397,0.0058,-0.0198,0.0273,range includes zero
+book,test,Buy every call,796,-0.0068,-0.0349,0.0119,range includes zero
+ic,test,Opus,793,0.1697,0.1116,0.2252,above zero
+spread,test,Opus,796,0.08,0.0475,0.1303,above zero
+book,test,Opus,476,0.0209,-0.0061,0.0469,range includes zero
+eps_ic,test,Opus,743,0.2928,0.1808,0.3602,above zero
+eps_acc,test,Opus,743,0.6864,,,
+ic_gain,test,Call only minus No call,793,0.0292,-0.0524,0.1004,range includes zero
+book_gain,test,Call only minus No call,793,0.0051,-0.022,0.0266,range includes zero
+eps_gain,test,Call only minus No call,743,-0.0165,-0.0743,0.0141,range includes zero
+ic_gain,test,RAG minus Call only,793,-0.0081,-0.0965,0.0692,range includes zero
+book_gain,test,RAG minus Call only,793,-0.0079,-0.0308,0.0094,range includes zero
+eps_gain,test,RAG minus Call only,743,-0.0076,-0.0806,0.0663,range includes zero
+ic_gain,test,SFT minus RAG,793,0.0085,-0.0347,0.0707,range includes zero
+book_gain,test,SFT minus RAG,793,0.0092,-0.0101,0.0339,range includes zero
+eps_gain,test,SFT minus RAG,743,0.0332,-0.0042,0.076,range includes zero
+ic_gain,test,RL minus SFT,793,0.0079,-0.0226,0.0282,range includes zero
+book_gain,test,RL minus SFT,793,0.0056,0.0004,0.0115,above zero
+eps_gain,test,RL minus SFT,743,0.0168,-0.0057,0.0417,range includes zero
+ic_gain,test,RL minus Call only,793,0.0083,-0.0573,0.0646,range includes zero
+book_gain,test,RL minus Call only,793,0.0068,-0.0144,0.0313,range includes zero
+eps_gain,test,RL minus Call only,743,0.0424,-0.0228,0.1266,range includes zero
+ic_gain,test,RL minus Known-EPS rule,793,0.0281,-0.0409,0.0945,range includes zero
+book_gain,test,RL minus Known-EPS rule,793,0.0009,-0.0219,0.0275,range includes zero
+eps_gain,test,RL minus Known-EPS rule,743,0.0348,-0.0433,0.1133,range includes zero
+ic_gain,test,RL minus Word list,793,0.0497,-0.0601,0.1301,range includes zero
+book_gain,test,RL minus Word list,793,-0.004,-0.025,0.0117,range includes zero
+eps_gain,test,RL minus Word list,743,0.2234,0.1404,0.3215,above zero
+book_gain,test,RL minus Buy every call,793,0.0172,0.0021,0.0361,above zero
+ic_gain,test,Opus minus No call,793,0.0944,-0.0008,0.1838,range includes zero
+book_gain,test,Opus minus No call,793,0.0226,-0.0059,0.0499,range includes zero
+eps_gain,test,Opus minus No call,743,0.0403,-0.0532,0.1005,range includes zero
+ic_gain,test,Opus minus Call only,793,0.0652,-0.0128,0.1307,range includes zero
+book_gain,test,Opus minus Call only,793,0.0175,-0.0055,0.0469,range includes zero
+eps_gain,test,Opus minus Call only,743,0.0568,-0.0062,0.118,range includes zero
+ic_gain,test,Opus minus RAG,793,0.0733,-0.0003,0.1548,range includes zero
+book_gain,test,Opus minus RAG,793,0.0253,0.0027,0.0578,above zero
+eps_gain,test,Opus minus RAG,743,0.0644,0.0118,0.1172,above zero
+ic_gain,test,Opus minus Pi,793,0.0661,0.0089,0.1199,above zero
+book_gain,test,Opus minus Pi,793,0.0139,-0.0071,0.0387,range includes zero
+eps_gain,test,Opus minus Pi,743,0.1138,0.0327,0.1865,above zero
+ic_gain,test,Opus minus SFT,793,0.0648,0.004,0.1204,above zero
+book_gain,test,Opus minus SFT,793,0.0162,0.0052,0.0311,above zero
+eps_gain,test,Opus minus SFT,743,0.0312,-0.0341,0.0811,range includes zero
+ic_gain,test,Opus minus RL,793,0.0568,0.0073,0.1111,above zero
+book_gain,test,Opus minus RL,793,0.0106,0.0027,0.0219,above zero
+eps_gain,test,Opus minus RL,743,0.0144,-0.0481,0.0659,range includes zero
+ic_gain,test,Opus minus Known-EPS rule,793,0.0849,0.0236,0.1513,above zero
+book_gain,test,Opus minus Known-EPS rule,793,0.0115,-0.0074,0.0355,range includes zero
+eps_gain,test,Opus minus Known-EPS rule,743,0.0492,-0.024,0.1105,range includes zero
+ic_gain,test,Opus minus Word list,793,0.1065,0.0266,0.162,above zero
+book_gain,test,Opus minus Word list,793,0.0066,-0.0098,0.0211,range includes zero
+eps_gain,test,Opus minus Word list,743,0.2378,0.1478,0.3251,above zero
+ic_gain,test,Opus minus Numbers only,793,0.1006,0.0314,0.2002,above zero
+book_gain,test,Opus minus Numbers only,793,0.0152,-0.0036,0.0404,range includes zero
+book_gain,test,Opus minus Buy every call,793,0.0278,0.0143,0.0476,above zero
+mix,test,RL + both rules,793,0.117,0.045,0.1854,above zero
+mix,test,both rules,793,0.0916,0.036,0.1586,above zero
+mix,test,RL + both rules minus both rules,793,0.0254,-0.016,0.0559,range includes zero
+rank_corr,test,RL with Word list,793,0.2449,,,
+rank_corr,test,RL with Known-EPS rule,793,0.3672,,,
+book_month,test,RL 2026-03,65,-0.0036,,,
+book_month,test,RL 2026-04,51,0.0725,,,
+book_month,test,RL 2026-05,183,-0.0032,,,
+book_month,test,RL 2026-06,8,0.044,,,
+book_month,test,RL 2026-07,76,0.0114,,,
+book_month,test,RL 2026-08,55,0.0102,,,
+ic,validation,No call,496,0.0,-0.1026,0.083,range includes zero
+spread,validation,No call,498,0.0114,-0.0534,0.0387,range includes zero
+book,validation,No call,101,-0.0237,-0.0711,0.0162,range includes zero
+eps_ic,validation,No call,486,0.223,0.1571,0.3223,above zero
+eps_acc,validation,No call,486,0.6193,,,
+ic,validation,Call only,496,-0.0001,-0.0791,0.0772,range includes zero
+spread,validation,Call only,498,-0.0009,-0.06,0.0456,range includes zero
+book,validation,Call only,151,0.0101,-0.0148,0.0373,range includes zero
+eps_ic,validation,Call only,486,0.2512,0.1821,0.3329,above zero
+eps_acc,validation,Call only,486,0.5885,,,
+ic,validation,RAG,496,-0.0112,-0.1125,0.0748,range includes zero
+spread,validation,RAG,498,-0.0076,-0.0648,0.0357,range includes zero
+book,validation,RAG,132,-0.0224,-0.0565,0.0115,range includes zero
+eps_ic,validation,RAG,486,0.2311,0.1485,0.3158,above zero
+eps_acc,validation,RAG,486,0.5658,,,
+ic,validation,Pi,496,0.0066,-0.0887,0.1136,range includes zero
+spread,validation,Pi,498,-0.017,-0.0827,0.0425,range includes zero
+book,validation,Pi,135,0.0071,-0.0308,0.0413,range includes zero
+eps_ic,validation,Pi,486,0.1638,0.0809,0.246,above zero
+eps_acc,validation,Pi,486,0.5267,,,
+ic,validation,SFT,496,-0.0117,-0.1117,0.0915,range includes zero
+spread,validation,SFT,498,-0.0161,-0.0721,0.0271,range includes zero
+book,validation,SFT,253,-0.028,-0.056,0.0035,range includes zero
+eps_ic,validation,SFT,486,0.2299,0.1483,0.309,above zero
+eps_acc,validation,SFT,486,0.5926,,,
+ic,validation,RL,299,0.1088,-0.0411,0.2442,range includes zero
+spread,validation,RL,299,0.0372,-0.0451,0.0973,range includes zero
+book,validation,RL,135,-0.0208,-0.0629,0.018,range includes zero
+eps_ic,validation,RL,291,0.2613,0.1074,0.3911,above zero
+eps_acc,validation,RL,291,0.6014,,,
+ic,validation,Placebo SFT,299,0.0986,-0.0227,0.211,range includes zero
+spread,validation,Placebo SFT,299,0.0344,-0.0306,0.0812,range includes zero
+eps_ic,validation,Placebo SFT,291,0.1775,0.0858,0.3073,above zero
+eps_acc,validation,Placebo SFT,291,0.5567,,,
+ic,validation,Shuffled RL,299,0.1022,-0.0504,0.2471,range includes zero
+spread,validation,Shuffled RL,299,0.0315,-0.0634,0.0895,range includes zero
+book,validation,Shuffled RL,159,-0.0154,-0.0558,0.0208,range includes zero
+eps_ic,validation,Shuffled RL,291,0.2427,0.0914,0.3818,above zero
+eps_acc,validation,Shuffled RL,291,0.5808,,,
+ic,validation,Known-EPS rule,496,-0.0395,-0.139,0.05,range includes zero
+spread,validation,Known-EPS rule,498,-0.0244,-0.0822,0.0263,range includes zero
+book,validation,Known-EPS rule,239,-0.0187,-0.0419,0.0032,range includes zero
+eps_ic,validation,Known-EPS rule,486,0.2278,0.1509,0.3388,above zero
+eps_acc,validation,Known-EPS rule,486,0.6193,,,
+ic,validation,Word list,496,0.0084,-0.0495,0.0858,range includes zero
+spread,validation,Word list,498,0.0081,-0.0325,0.0359,range includes zero
+book,validation,Word list,229,-0.0094,-0.0365,0.0165,range includes zero
+eps_ic,validation,Word list,486,0.0648,-0.0032,0.145,range includes zero
+eps_acc,validation,Word list,486,0.5021,,,
+ic,validation,Numbers only,496,0.0498,-0.0332,0.1557,range includes zero
+spread,validation,Numbers only,498,0.0487,-0.0019,0.0839,range includes zero
+book,validation,Numbers only,276,0.013,-0.0125,0.0346,range includes zero
+ic_gain,validation,Call only minus No call,496,-0.0001,-0.0527,0.0845,range includes zero
+book_gain,validation,Call only minus No call,496,0.0338,-0.0025,0.0797,range includes zero
+eps_gain,validation,Call only minus No call,485,0.0279,-0.0604,0.0895,range includes zero
+ic_gain,validation,RAG minus Call only,496,-0.0111,-0.0811,0.0336,range includes zero
+book_gain,validation,RAG minus Call only,496,-0.0325,-0.0585,-0.0064,below zero
+eps_gain,validation,RAG minus Call only,485,-0.0194,-0.0813,0.0365,range includes zero
+ic_gain,validation,SFT minus RAG,496,-0.0005,-0.0308,0.0563,range includes zero
+book_gain,validation,SFT minus RAG,496,-0.0033,-0.0258,0.0169,range includes zero
+eps_gain,validation,SFT minus RAG,485,-0.0008,-0.0438,0.037,range includes zero
+ic_gain,validation,RL minus SFT,299,0.0181,-0.0424,0.0507,range includes zero
+book_gain,validation,RL minus SFT,299,-0.0015,-0.013,0.0087,range includes zero
+eps_gain,validation,RL minus SFT,291,0.0062,-0.0341,0.0255,range includes zero
+ic_gain,validation,RL minus Call only,299,0.0342,-0.0955,0.1456,range includes zero
+book_gain,validation,RL minus Call only,299,-0.0485,-0.0823,-0.0169,below zero
+eps_gain,validation,RL minus Call only,291,0.0051,-0.1083,0.082,range includes zero
+ic_gain,validation,RL minus Placebo SFT,299,0.0101,-0.0972,0.1018,range includes zero
+eps_gain,validation,RL minus Placebo SFT,291,0.0838,-0.0397,0.1584,range includes zero
+ic_gain,validation,RL minus Shuffled RL,299,0.0066,-0.0394,0.0418,range includes zero
+book_gain,validation,RL minus Shuffled RL,299,-0.0054,-0.019,0.0066,range includes zero
+eps_gain,validation,RL minus Shuffled RL,291,0.0186,-0.023,0.0529,range includes zero
+ic_gain,validation,RL minus Known-EPS rule,299,0.0747,-0.0779,0.2027,range includes zero
+book_gain,validation,RL minus Known-EPS rule,299,0.0046,-0.0291,0.0387,range includes zero
+eps_gain,validation,RL minus Known-EPS rule,291,0.0782,-0.0835,0.1718,range includes zero
+ic_gain,validation,RL minus Word list,299,0.0505,-0.0685,0.1859,range includes zero
+book_gain,validation,RL minus Word list,299,-0.0121,-0.0405,0.0183,range includes zero
+eps_gain,validation,RL minus Word list,291,0.2148,0.0892,0.3138,above zero
+mix,validation,RL + both rules,299,0.0845,-0.0386,0.2115,range includes zero
+mix,validation,both rules,299,0.0582,-0.0421,0.1597,range includes zero
+mix,validation,RL + both rules minus both rules,299,0.0263,-0.036,0.0966,range includes zero
+rank_corr,validation,RL with Word list,299,0.1994,,,
+rank_corr,validation,RL with Known-EPS rule,299,0.3291,,,
+ic,test_jul_aug,No call,224,0.1805,-0.0479,0.2598,range includes zero
+spread,test_jul_aug,No call,225,0.0749,0.0169,0.1118,above zero
+book,test_jul_aug,No call,84,0.0309,-0.0142,0.0556,range includes zero
+eps_ic,test_jul_aug,No call,195,0.3168,0.2037,0.4437,above zero
+eps_acc,test_jul_aug,No call,195,0.641,,,
+ic,test_jul_aug,Call only,224,0.1925,0.0636,0.4126,above zero
+spread,test_jul_aug,Call only,225,0.0728,0.0259,0.1052,above zero
+book,test_jul_aug,Call only,96,0.0349,-0.0121,0.0537,range includes zero
+eps_ic,test_jul_aug,Call only,195,0.2999,0.1146,0.4254,above zero
+eps_acc,test_jul_aug,Call only,195,0.5795,,,
+ic,test_jul_aug,RAG,224,0.1187,0.01,0.2409,above zero
+spread,test_jul_aug,RAG,225,0.0414,0.0191,0.078,above zero
+book,test_jul_aug,RAG,83,0.0191,-0.0217,0.0529,range includes zero
+eps_ic,test_jul_aug,RAG,195,0.2562,0.0752,0.3733,above zero
+eps_acc,test_jul_aug,RAG,195,0.5897,,,
+ic,test_jul_aug,Pi,224,0.1443,0.0428,0.2979,above zero
+spread,test_jul_aug,Pi,225,0.0601,0.0237,0.0934,above zero
+book,test_jul_aug,Pi,85,0.0283,-0.0153,0.0505,range includes zero
+eps_ic,test_jul_aug,Pi,195,0.167,-0.0841,0.3777,range includes zero
+eps_acc,test_jul_aug,Pi,195,0.5436,,,
+ic,test_jul_aug,SFT,224,0.1366,0.0234,0.3186,above zero
+spread,test_jul_aug,SFT,225,0.0214,-0.0231,0.0813,range includes zero
+book,test_jul_aug,SFT,139,0.0075,-0.022,0.0174,range includes zero
+eps_ic,test_jul_aug,SFT,195,0.2322,0.0557,0.4035,above zero
+eps_acc,test_jul_aug,SFT,195,0.641,,,
+ic,test_jul_aug,RL,224,0.1392,0.0715,0.2876,above zero
+spread,test_jul_aug,RL,225,0.0345,0.0075,0.0923,above zero
+book,test_jul_aug,RL,131,0.0109,-0.0184,0.026,range includes zero
+eps_ic,test_jul_aug,RL,195,0.2836,0.071,0.4364,above zero
+eps_acc,test_jul_aug,RL,195,0.641,,,
+ic,test_jul_aug,Known-EPS rule,224,0.1265,0.049,0.2012,above zero
+spread,test_jul_aug,Known-EPS rule,225,0.0566,0.0127,0.0772,above zero
+book,test_jul_aug,Known-EPS rule,106,0.035,-0.0427,0.0503,range includes zero
+eps_ic,test_jul_aug,Known-EPS rule,195,0.2895,0.1063,0.4542,above zero
+eps_acc,test_jul_aug,Known-EPS rule,195,0.6564,,,
+ic,test_jul_aug,Word list,224,0.1081,0.007,0.4272,above zero
+spread,test_jul_aug,Word list,225,0.0509,-0.0077,0.1183,range includes zero
+book,test_jul_aug,Word list,120,0.0295,0.0046,0.0483,above zero
+eps_ic,test_jul_aug,Word list,195,0.0248,-0.1998,0.1437,range includes zero
+eps_acc,test_jul_aug,Word list,195,0.5179,,,
+ic,test_jul_aug,Numbers only,224,-0.0564,-0.0922,-0.0211,below zero
+spread,test_jul_aug,Numbers only,225,-0.0597,-0.091,-0.0153,below zero
+book,test_jul_aug,Numbers only,117,-0.0164,-0.0499,-0.0001,below zero
+book,test_jul_aug,Buy every call,225,0.0065,-0.0376,0.0128,range includes zero
+ic,test_jul_aug,Opus,224,0.1654,0.1053,0.4249,above zero
+spread,test_jul_aug,Opus,225,0.0526,0.0104,0.1167,above zero
+book,test_jul_aug,Opus,143,0.0181,-0.0067,0.0309,range includes zero
+eps_ic,test_jul_aug,Opus,195,0.278,0.1692,0.3987,above zero
+eps_acc,test_jul_aug,Opus,195,0.6615,,,
+ic_gain,test_jul_aug,Call only minus No call,224,0.012,-0.1831,0.232,range includes zero
+book_gain,test_jul_aug,Call only minus No call,224,0.0054,-0.0089,0.0225,range includes zero
+eps_gain,test_jul_aug,Call only minus No call,195,-0.0169,-0.1413,-0.0072,below zero
+ic_gain,test_jul_aug,RAG minus Call only,224,-0.0738,-0.1744,-0.0068,below zero
+book_gain,test_jul_aug,RAG minus Call only,224,-0.0172,-0.0422,0.0009,range includes zero
+eps_gain,test_jul_aug,RAG minus Call only,195,-0.0438,-0.0962,0.0706,range includes zero
+ic_gain,test_jul_aug,SFT minus RAG,224,0.0179,-0.0464,0.2074,range includes zero
+book_gain,test_jul_aug,SFT minus RAG,224,-0.0117,-0.0372,0.005,range includes zero
+eps_gain,test_jul_aug,SFT minus RAG,195,-0.024,-0.0807,0.0274,range includes zero
+ic_gain,test_jul_aug,RL minus SFT,224,0.0026,-0.0807,0.0725,range includes zero
+book_gain,test_jul_aug,RL minus SFT,224,0.0035,-0.001,0.0125,range includes zero
+eps_gain,test_jul_aug,RL minus SFT,195,0.0514,0.0042,0.0729,above zero
+ic_gain,test_jul_aug,RL minus Call only,224,-0.0532,-0.1392,0.0145,range includes zero
+book_gain,test_jul_aug,RL minus Call only,224,-0.0254,-0.0367,-0.0061,below zero
+eps_gain,test_jul_aug,RL minus Call only,195,-0.0164,-0.0636,0.0609,range includes zero
+ic_gain,test_jul_aug,RL minus Known-EPS rule,224,0.0128,-0.0291,0.1826,range includes zero
+book_gain,test_jul_aug,RL minus Known-EPS rule,224,-0.0241,-0.0376,0.0286,range includes zero
+eps_gain,test_jul_aug,RL minus Known-EPS rule,195,-0.0059,-0.0588,0.031,range includes zero
+ic_gain,test_jul_aug,RL minus Word list,224,0.0311,-0.2699,0.2377,range includes zero
+book_gain,test_jul_aug,RL minus Word list,224,-0.0186,-0.0421,0.0181,range includes zero
+eps_gain,test_jul_aug,RL minus Word list,195,0.2587,0.0504,0.5148,above zero
+book_gain,test_jul_aug,RL minus Buy every call,224,0.0039,-0.0066,0.0277,range includes zero
+ic_gain,test_jul_aug,Opus minus No call,224,-0.0151,-0.1551,0.4207,range includes zero
+book_gain,test_jul_aug,Opus minus No call,224,-0.012,-0.041,0.0126,range includes zero
+eps_gain,test_jul_aug,Opus minus No call,195,-0.0388,-0.0688,0.0535,range includes zero
+ic_gain,test_jul_aug,Opus minus Call only,224,-0.027,-0.1716,0.2002,range includes zero
+book_gain,test_jul_aug,Opus minus Call only,224,-0.0174,-0.0331,0.0081,range includes zero
+eps_gain,test_jul_aug,Opus minus Call only,195,-0.022,-0.0567,0.199,range includes zero
+ic_gain,test_jul_aug,Opus minus RAG,224,0.0468,-0.0125,0.3382,range includes zero
+book_gain,test_jul_aug,Opus minus RAG,224,-0.0002,-0.0222,0.0163,range includes zero
+eps_gain,test_jul_aug,Opus minus RAG,195,0.0218,-0.034,0.221,range includes zero
+ic_gain,test_jul_aug,Opus minus Pi,224,0.0211,-0.0654,0.198,range includes zero
+book_gain,test_jul_aug,Opus minus Pi,224,-0.0109,-0.0273,0.0113,range includes zero
+eps_gain,test_jul_aug,Opus minus Pi,195,0.1109,0.0009,0.4052,above zero
+ic_gain,test_jul_aug,Opus minus SFT,224,0.0289,-0.0485,0.1308,range includes zero
+book_gain,test_jul_aug,Opus minus SFT,224,0.0115,0.0057,0.0188,above zero
+eps_gain,test_jul_aug,Opus minus SFT,195,0.0458,-0.0181,0.2339,range includes zero
+ic_gain,test_jul_aug,Opus minus RL,224,0.0262,-0.037,0.2106,range includes zero
+book_gain,test_jul_aug,Opus minus RL,224,0.008,0.0007,0.0146,above zero
+eps_gain,test_jul_aug,Opus minus RL,195,-0.0056,-0.0523,0.2269,range includes zero
+ic_gain,test_jul_aug,Opus minus Known-EPS rule,224,0.039,0.0022,0.326,above zero
+book_gain,test_jul_aug,Opus minus Known-EPS rule,224,-0.016,-0.0318,0.036,range includes zero
+eps_gain,test_jul_aug,Opus minus Known-EPS rule,195,-0.0115,-0.0712,0.1737,range includes zero
+ic_gain,test_jul_aug,Opus minus Word list,224,0.0573,-0.0593,0.2089,range includes zero
+book_gain,test_jul_aug,Opus minus Word list,224,-0.0106,-0.0326,0.0213,range includes zero
+eps_gain,test_jul_aug,Opus minus Word list,195,0.2531,0.0319,0.5239,above zero
+ic_gain,test_jul_aug,Opus minus Numbers only,224,0.2219,0.1665,0.5131,above zero
+book_gain,test_jul_aug,Opus minus Numbers only,224,0.0346,0.0219,0.0522,above zero
+book_gain,test_jul_aug,Opus minus Buy every call,224,0.0119,0.0026,0.0309,above zero
+mix,test_jul_aug,RL + both rules,224,0.1958,0.1299,0.3643,above zero
+mix,test_jul_aug,both rules,224,0.1485,0.027,0.3899,above zero
+mix,test_jul_aug,RL + both rules minus both rules,224,0.0473,-0.0244,0.1029,range includes zero
+rank_corr,test_jul_aug,RL with Word list,224,0.1709,,,
+rank_corr,test_jul_aug,RL with Known-EPS rule,224,0.3811,,,
+teacher_ic,check,Call only,300,0.0559,-0.06,0.1408,range includes zero
+teacher_book,check,Call only,83,-0.0096,-0.0381,0.0189,range includes zero
+teacher_ic,check,RAG,300,-0.0013,-0.1109,0.1251,range includes zero
+teacher_book,check,RAG,79,-0.0306,-0.0687,0.0089,range includes zero
+teacher_ic,check,SFT,300,-0.0028,-0.0996,0.1247,range includes zero
+teacher_book,check,SFT,139,-0.0136,-0.0411,0.015,range includes zero
+teacher_ic,check,RL,300,0.0306,-0.091,0.1536,range includes zero
+teacher_book,check,RL,123,-0.0137,-0.0425,0.0153,range includes zero
+teacher_ic,check,Opus,300,0.1513,0.0393,0.2896,above zero
+teacher_book,check,Opus,148,0.0065,-0.0176,0.0395,range includes zero
+teacher_ic_gain,check,Opus minus Call only,300,0.0954,-0.0055,0.2582,range includes zero
+teacher_book_gain,check,Opus minus Call only,300,0.0161,-0.0074,0.0442,range includes zero
+teacher_ic_gain,check,Opus minus RAG,300,0.1526,0.0294,0.2899,above zero
+teacher_book_gain,check,Opus minus RAG,300,0.0371,0.003,0.0725,above zero
+teacher_ic_gain,check,Opus minus SFT,300,0.1542,0.0463,0.2629,above zero
+teacher_book_gain,check,Opus minus SFT,300,0.0201,-0.0031,0.0465,range includes zero
+teacher_ic_gain,check,Opus minus RL,300,0.1207,0.0171,0.2585,above zero
+teacher_book_gain,check,Opus minus RL,300,0.0202,-0.0044,0.0516,range includes zero

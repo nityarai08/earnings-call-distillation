@@ -539,9 +539,9 @@ Then I compared the two values of p(BUY). On the first 10 of these calls, the SF
 
 ## 6. Results
 
-On the 800 test calls, all six setups had an IC of approximately 0.10. Each step adds one method: Call only to RAG, RAG to Pi, RAG to SFT, and SFT to RL. No step gave a gain larger than chance can explain.
+On the 800 test calls, all six setups had an IC of approximately 0.10. Opus, with the same calls and prompt, had 0.170. Each step adds one method: Call only to RAG, RAG to Pi, RAG to SFT, and SFT to RL. No step gave a gain larger than chance can explain.
 
-![IC of each setup](figures/stock_ic_by_setup.svg)
+![IC of Opus and of each setup](figures/stock_ic_by_setup.svg)
 
 The call text helps a little. The No call setup (0.075) and the simple rules (0.06 to 0.085) have lower ICs than the setups that read the call.
 
@@ -557,6 +557,7 @@ All four 95% ranges include zero. The RL range is the narrowest. But it also inc
 
 | Setup or rule | IC | EPS IC | EPS accuracy | Agreement with Opus | BUY calls | Return after costs |
 | --- | --- | --- | --- | --- | --- | --- |
+| **Opus (the teacher, same prompt as RAG)** | **0.170** | **0.293** | **68.6%** | — | **476** | **+2.09%** |
 | No call | 0.075 | 0.253 | 64.5% | — | 229 | −0.17% |
 | Call only | 0.104 | 0.236 | 58.4% | 65.8% | 302 | +0.36% |
 | RAG | 0.096 | 0.229 | 56.1% | 67.3% | 276 | −0.38% |
@@ -568,7 +569,57 @@ All four 95% ranges include zero. The RL range is the narrowest. But it also inc
 | Numbers only | 0.069 | — | — | — | 397 | +0.58% |
 | BUY on every call | — | — | — | — | 796 | −0.68% |
 
-Section 8 compares Opus with these setups on the same 800 calls. The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
+The full tables are in [results.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/results.csv) and [findings.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/findings.csv).
+
+### Each setup against Opus
+
+To compare the small model with its teacher, I gave Opus the same 800 test calls. Opus read the same prompt and knowledge block as the RAG setup, with the neutral instruction. Its stock score is its rating divided by 100, as in section 7. The answers are in [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) (step `opus_test`). This run cost $9.91.
+
+**A limit of this comparison.** Opus's knowledge runs to approximately June 2026. Thus Opus can know what happened after some calls from March to May. The prompt tells Opus not to use what it remembers, but I cannot check that. The 224 calls from July and August came after that date. For these calls, the comparison is fair.
+
+![Each setup and rule against Opus on three measures](figures/setups_vs_opus.svg)
+
+![Gap between Opus and each setup, with its 95% range](figures/gap_to_opus.svg)
+
+The table shows Opus minus each setup or rule on the same 800 calls. A positive value means that Opus did better. **Bold** values have a 95% range above zero, so chance does not explain them.
+
+| Setup or rule | IC: Opus minus setup | EPS IC: Opus minus setup | Return after costs: Opus minus setup |
+| --- | --- | --- | --- |
+| No call | +0.094 (−0.001 to +0.184) | +0.040 (−0.053 to +0.100) | +2.26% (−0.59% to +4.99%) |
+| Call only | +0.065 (−0.013 to +0.131) | +0.057 (−0.006 to +0.118) | +1.75% (−0.55% to +4.69%) |
+| RAG | +0.073 (−0.0003 to +0.155) | **+0.064 (+0.012 to +0.117)** | **+2.53% (+0.27% to +5.78%)** |
+| Pi | **+0.066 (+0.009 to +0.120)** | **+0.114 (+0.033 to +0.186)** | +1.39% (−0.71% to +3.87%) |
+| SFT | **+0.065 (+0.004 to +0.120)** | +0.031 (−0.034 to +0.081) | **+1.62% (+0.52% to +3.11%)** |
+| RL | **+0.057 (+0.007 to +0.111)** | +0.014 (−0.048 to +0.066) | **+1.06% (+0.27% to +2.19%)** |
+| Known-EPS rule | **+0.085 (+0.024 to +0.151)** | +0.049 (−0.024 to +0.110) | +1.15% (−0.74% to +3.55%) |
+| Word list | **+0.106 (+0.027 to +0.162)** | **+0.238 (+0.148 to +0.325)** | +0.66% (−0.98% to +2.11%) |
+| Numbers only | **+0.101 (+0.031 to +0.200)** | — | +1.52% (−0.36% to +4.04%) |
+| BUY on every call | — | — | **+2.78% (+1.43% to +4.76%)** |
+
+The same measures for the 224 calls from July and August, after Opus's knowledge date:
+
+| Setup or rule | IC | EPS IC | EPS accuracy | BUY calls | Return after costs |
+| --- | --- | --- | --- | --- | --- |
+| **Opus** | **0.165** | **0.278** | **66.2%** | **143** | **+1.81%** |
+| No call | 0.181 | 0.317 | 64.1% | 84 | +3.09% |
+| Call only | 0.193 | 0.300 | 58.0% | 96 | +3.49% |
+| RAG | 0.119 | 0.256 | 59.0% | 83 | +1.91% |
+| Pi | 0.144 | 0.167 | 54.4% | 85 | +2.83% |
+| SFT | 0.137 | 0.232 | 64.1% | 139 | +0.75% |
+| RL | 0.139 | 0.284 | 64.1% | 131 | +1.09% |
+| Known-EPS rule | 0.127 | 0.290 | 65.6% | 106 | +3.50% |
+| Word list | 0.108 | 0.025 | 51.8% | 120 | +2.95% |
+| Numbers only | −0.056 | — | — | 117 | −1.64% |
+| BUY on every call | — | — | — | 225 | +0.65% |
+
+What the comparison shows:
+
+- **Stock ranking.** On all 800 calls, Opus had a higher IC than every setup and rule. The gap is clear for Pi, SFT, RL and the three rules. For No call, Call only and RAG, the range includes zero by a small margin.
+- **Return after costs.** Opus's BUY calls earned more than those of RAG, SFT, RL and the BUY-on-every-call rule. Against SFT and RL, the return gap stays above zero also in July and August.
+- **EPS forecast.** Here the trained models came closest to Opus. The gap is +0.031 for SFT and +0.014 for RL, and both ranges include zero. Opus was clearly better than RAG, Pi and the word list.
+- **After Opus's knowledge date.** In July and August, every setup and rule had a higher IC, also the No call setup. Thus these two months were easier to rank. The IC gaps are not distinguishable there. Opus's IC stayed approximately the same (0.170 for all calls, 0.165 for July and August). So what Opus remembers does not seem to explain its IC. These two months cover only 5 weeks, so their ranges are rough.
+
+Thus the trained small model agrees more with Opus's words (section 7) and comes close to Opus on the EPS forecast. But it does not yet rank stocks or pick BUY calls as well as Opus. The full values and ranges are in [signals.csv](https://github.com/nityarai08/earnings-call-distillation/blob/main/runs/paper/week/signals.csv).
 
 ## 7. What I learned
 
@@ -655,37 +706,7 @@ The script [signals.py](https://github.com/nityarai08/earnings-call-distillation
 
 ### Opus on the same test calls
 
-To compare the small model with its teacher, I gave Opus the same 800 test calls. Opus read the same prompt and knowledge block as the RAG setup, with the neutral instruction. Its stock score is its rating divided by 100, as in section 7. The answers are in [labels_v2.jsonl](https://github.com/nityarai08/earnings-call-distillation/blob/main/data/paper/teacher/labels_v2.jsonl) (step `opus_test`). This run cost $9.91.
-
-**A limit of this comparison.** Opus's knowledge runs to approximately June 2026. Thus Opus can know what happened after some calls from March to May. The prompt tells Opus not to use what it remembers, but I cannot check that. The 224 calls from July and August came after that date. For these calls, the comparison is fair.
-
-| Setup or rule | IC, all 800 calls | Return after costs, all 800 calls | IC, July and August | Return after costs, July and August |
-| --- | --- | --- | --- | --- |
-| **Opus** | **0.170** | **+2.09%** | **0.165** | **+1.81%** |
-| No call | 0.075 | −0.17% | 0.181 | +3.09% |
-| Call only | 0.104 | +0.36% | 0.193 | +3.49% |
-| RAG | 0.096 | −0.38% | 0.119 | +1.91% |
-| Pi | 0.104 | +0.72% | 0.144 | +2.83% |
-| SFT | 0.105 | +0.50% | 0.137 | +0.75% |
-| RL | 0.113 | +1.06% | 0.139 | +1.09% |
-| Known-EPS rule | 0.085 | +0.94% | 0.127 | +3.50% |
-| Word list | 0.063 | +1.42% | 0.108 | +2.95% |
-| BUY on every call | — | −0.68% | — | +0.65% |
-
-The paired gains of Opus over the trained small model, on the same calls:
-
-| Comparison | IC gain, all 800 calls | IC gain, July and August | Return gain, all 800 calls | Return gain, July and August |
-| --- | --- | --- | --- | --- |
-| Opus minus SFT | +0.065 (+0.004 to +0.120) | +0.029 (−0.049 to +0.131) | +1.62% (+0.52% to +3.11%) | +1.15% (+0.57% to +1.88%) |
-| Opus minus RL | +0.057 (+0.007 to +0.111) | +0.026 (−0.037 to +0.211) | +1.06% (+0.27% to +2.19%) | +0.80% (+0.07% to +1.46%) |
-
-What these values show:
-
-- **On all 800 calls, Opus ranked stocks better than SFT and RL.** Both IC ranges are above zero. Opus also had the highest IC of all setups and rules.
-- **Opus's BUY calls earned more than the trained small model's BUY calls, in both periods.** All four return ranges are above zero.
-- **After Opus's knowledge date, the IC gap is not distinguishable.** In July and August, every setup and rule had a higher IC, also the No call setup. Thus these two months were easier to rank. Opus's IC stayed approximately the same: 0.170 for all calls and 0.165 for July and August. So what Opus remembers does not seem to explain its IC.
-
-Thus the trained small model agrees more with Opus's words (section 7), but it does not yet pick stocks as well as Opus. The gap is clearest in the return of the BUY calls.
+Section 6 compares Opus with every setup and rule on all measures. In short, Opus ranked stocks better than SFT and RL on all 800 test calls, and its BUY calls earned more in both test periods. After Opus's knowledge date, the IC gap is not distinguishable.
 
 ### A lead to test on the second test set
 
