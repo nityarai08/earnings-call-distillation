@@ -37,6 +37,7 @@ DATA = ["data/paper/" + f for f in ("sets.parquet", "calls.parquet", "outcomes.p
        [f"adapters/paper/week/{a}/{f}" for a in ("sft_grown", "trade") for f in ("adapters.safetensors", "adapter_config.json")]
 # The two adapters scored on Test-W (SFT, and the RL arm best_rl.txt picked). Weights only: without the optimizer
 # state and state.json the trainer starts fresh instead of trying to resume from them.
+PAPER = ["reports/paper/conference/" + f for f in ("main.tex", "refs.bib", "main.pdf")]  # the LaTeX paper and its built PDF
 RUNS = ["runs/paper/mini", "runs/paper/week"]
 SKIP = re.compile(r"\.bak$|__pycache__|\.lock$|\.part$")
 
@@ -125,7 +126,7 @@ def check(sealed):
 
 def main():
     sealed = set(json.loads((ROOT / "configs/paper/freeze.json").read_text())["test_rows"]["test_f"])
-    for rel in CODE + DATA:
+    for rel in CODE + DATA + PAPER:
         copy(rel)
     trimmed()
     runs(sealed)

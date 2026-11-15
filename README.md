@@ -5,9 +5,11 @@ Can a small model that runs on a laptop learn to read company earnings calls wel
 This repo holds the code, data and results of a week-long experiment that tested it:
 
 - **Student:** Qwen3.5-9B (4-bit, MLX) on a MacBook Pro.
-- **Teacher:** Claude Opus.
+- **Teacher:** Claude Opus 5.5.
 - **Calls:** smaller US companies.
 - **Test:** 800 calls from March to August 2026, after the model's release, sealed until the final scoring step.
+
+**Read the paper:** [What Holds Up in a Second Period? Distilling Earnings-Call Reading from a Frontier LLM into a Laptop Model](reports/paper/conference/main.pdf). The LaTeX source is in [`reports/paper/conference/`](reports/paper/conference).
 
 **Read the write-up:** [Teaching a Laptop Model to Read Earnings Calls: What Held Up and What Did Not](blog/2026-11-small-model-earnings-calls/README.md). It walks through one real call from prompt to outcome, the training data and how every number is calculated.
 
@@ -81,7 +83,7 @@ adapters/paper/week/        LoRA weights of the SFT and RL models scored on the 
 - **Source data:** [defeatbeta/yahoo-finance-data](https://huggingface.co/datasets/defeatbeta/yahoo-finance-data) (ODC-BY) on Hugging Face. The small tables are in `data/raw/`. The transcripts, prices and statements (2.9 GB) are downloaded by `reproduce/download_data.sh`.
 - **SPY bars:** from Yahoo Finance via yfinance, in `data/raw/daily_bars.parquet`.
 - **Student model:** [mlx-community/Qwen3.5-9B-4bit](https://huggingface.co/mlx-community/Qwen3.5-9B-4bit), pinned to revision `8b2b98c`.
-- **Teacher:** Claude Opus (`claude-opus-5-5`) through the Anthropic Batch API. All 2,200 of its answers are in `data/paper/teacher/labels_v2.jsonl`.
+- **Teacher:** Claude Opus 5.5 (`claude-opus-5-5`) through the Anthropic Batch API. All 2,200 of its answers are in `data/paper/teacher/labels_v2.jsonl`.
 - **Agent:** [pi](https://github.com/earendil-works/pi), pinned in `tools/pi/package-lock.json`.
 
 Everything we created is included: the call sets and their hashes, features, outcomes, Opus labels, the analyst handbook, every per-call model output, the training curves and the logs. Four things are left out:

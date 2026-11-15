@@ -1,0 +1,222 @@
+% refs.bib -- verified bibliography for the ICAIF short paper (ACM sigconf).
+% Built 2026-11-15. Each entry was checked against a primary record:
+% arXiv record (export API + abs page), Crossref DOI record, ACL Anthology,
+% NeurIPS/ICLR/OpenReview pages, the BFI and NBER working-paper PDFs, or the
+% official GitHub / Hugging Face page. See related_work_notes.md for the URL per entry.
+% Keys that main.tex already cites are kept exactly as main.tex spells them.
+% Some keys keep the year that main.tex used, while the year field holds the verified year
+% (grinoldkahn2000 -> 1999, li2025finsaber -> 2026, yu2024finmem -> 2025).
+
+% ===================== Finance foundations =====================
+
+@article{bernardthomas1990,
+  author    = {Victor L. Bernard and Jacob K. Thomas},
+  title     = {Evidence that Stock Prices Do Not Fully Reflect the Implications of Current Earnings for Future Earnings},
+  journal   = {Journal of Accounting and Economics},
+  volume    = {13},
+  number    = {4},
+  pages     = {305--340},
+  year      = {1990},
+  doi       = {10.1016/0165-4101(90)90008-R}
+}
+
+@article{loughranmcdonald2011,
+  author    = {Tim Loughran and Bill McDonald},
+  title     = {When Is a Liability Not a Liability? {T}extual Analysis, Dictionaries, and {10-Ks}},
+  journal   = {The Journal of Finance},
+  volume    = {66},
+  number    = {1},
+  pages     = {35--65},
+  year      = {2011},
+  doi       = {10.1111/j.1540-6261.2010.01625.x}
+}
+
+@article{price2012,
+  author    = {S. McKay Price and James S. Doran and David R. Peterson and Barbara A. Bliss},
+  title     = {Earnings Conference Calls and Stock Returns: The Incremental Informativeness of Textual Tone},
+  journal   = {Journal of Banking \& Finance},
+  volume    = {36},
+  number    = {4},
+  pages     = {992--1011},
+  year      = {2012},
+  doi       = {10.1016/j.jbankfin.2011.10.013}
+}
+
+@misc{gandouet2024distilled,
+  author        = {Olivier Gandouet and Mouloud Belbahri and Armelle Jezequel and Yuriy Bodjov},
+  title         = {Distilled {ChatGPT} Topic \& Sentiment Modeling with Applications in Finance},
+  year          = {2024},
+  eprint        = {2403.02185},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note          = {Edge Intelligence Workshop at AAAI 2024},
+  url           = {https://arxiv.org/abs/2403.02185}
+}
+
+@techreport{koijenlevy2026,
+  author      = {Ralph S. J. Koijen and Bradford Levy},
+  title       = {Assessing the Benefits of Optimized Agentic {AI} Systems for Asset Pricing},
+  institution = {Becker Friedman Institute, University of Chicago},
+  type        = {BFI Working Paper},
+  number      = {2026-100},
+  year        = {2026},
+  month       = jul,
+  url         = {https://bfi.uchicago.edu/wp-content/uploads/2026/07/BFI_WP_2026-100.pdf}
+}
+
+% ===================== LLMs for returns, finance models, trading agents =====================
+
+@misc{lopezliratang2023,
+  author        = {Alejandro Lopez-Lira and Yuehua Tang},
+  title         = {Can {ChatGPT} Forecast Stock Price Movements? {R}eturn Predictability and Large Language Models},
+  year          = {2023},
+  eprint        = {2304.07619},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.ST},
+  note          = {Also SSRN 4412788. Latest arXiv version v6, October 2025},
+  url           = {https://arxiv.org/abs/2304.07619}
+}
+
+@misc{kim2024fsa,
+  author        = {Alex Kim and Maximilian Muhn and Valeri Nikolaev},
+  title         = {Financial Statement Analysis with Large Language Models},
+  year          = {2024},
+  eprint        = {2407.17866},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.ST},
+  note          = {Withdrawn by the authors on 20 February 2025 (arXiv v3) after a co-author found inconsistencies in the data and analyses},
+  url           = {https://arxiv.org/abs/2407.17866}
+}
+
+@misc{xiao2024tradingagents,
+  author        = {Yijia Xiao and Edward Sun and Di Luo and Wei Wang},
+  title         = {{TradingAgents}: Multi-Agents {LLM} Financial Trading Framework},
+  year          = {2024},
+  eprint        = {2412.20138},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.TR},
+  url           = {https://arxiv.org/abs/2412.20138}
+}
+
+@misc{xiao2025tradingr1,
+  author        = {Yijia Xiao and Edward Sun and Tong Chen and Fang Wu and Di Luo and Wei Wang},
+  title         = {{Trading-R1}: Financial Trading with {LLM} Reasoning via Reinforcement Learning},
+  year          = {2025},
+  eprint        = {2509.11420},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.TR},
+  url           = {https://arxiv.org/abs/2509.11420}
+}
+
+@inproceedings{li2025finsaber,
+  author    = {Weixian Waylon Li and Hyeonjun Kim and Mihai Cucuringu and Tiejun Ma},
+  title     = {Can {LLM}-based Financial Investing Strategies Outperform the Market in Long Run?},
+  booktitle = {Proceedings of the 32nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining V.1},
+  pages     = {2711--2722},
+  year      = {2026},
+  publisher = {ACM},
+  doi       = {10.1145/3770854.3785702},
+  note      = {Preprint arXiv:2505.07078 (2025)}
+}
+
+@misc{chen2025stockbench,
+  author        = {Yanxu Chen and Zijun Yao and Yantao Liu and Amy Xin and Jin Ye and Jianing Yu and Lei Hou and Juanzi Li},
+  title         = {{StockBench}: Can {LLM} Agents Trade Stocks Profitably In Real-world Markets?},
+  year          = {2025},
+  eprint        = {2510.02209},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  url           = {https://arxiv.org/abs/2510.02209}
+}
+
+@misc{glassermanlin2023,
+  author        = {Paul Glasserman and Caden Lin},
+  title         = {Assessing Look-Ahead Bias in Stock Return Predictions Generated By {GPT} Sentiment Analysis},
+  year          = {2023},
+  eprint        = {2309.17322},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.GN},
+  url           = {https://arxiv.org/abs/2309.17322}
+}
+
+@misc{lopezlira2025memorization,
+  author        = {Alejandro Lopez-Lira and Yuehua Tang and Mingyin Zhu},
+  title         = {The Memorization Problem: Can We Trust {LLMs}' Economic Forecasts?},
+  year          = {2025},
+  eprint        = {2504.14765},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.GN},
+  url           = {https://arxiv.org/abs/2504.14765}
+}
+
+@article{mcleanpontiff2016,
+  author    = {R. David McLean and Jeffrey Pontiff},
+  title     = {Does Academic Research Destroy Stock Return Predictability?},
+  journal   = {The Journal of Finance},
+  volume    = {71},
+  number    = {1},
+  pages     = {5--32},
+  year      = {2016},
+  doi       = {10.1111/jofi.12365}
+}
+
+@article{kunsch1989,
+  author    = {Hans R. K{\"u}nsch},
+  title     = {The Jackknife and the Bootstrap for General Stationary Observations},
+  journal   = {The Annals of Statistics},
+  volume    = {17},
+  number    = {3},
+  pages     = {1217--1241},
+  year      = {1989},
+  doi       = {10.1214/aos/1176347265}
+}
+
+@misc{li2025profitmirage,
+  author        = {Xiangyu Li and Yawen Zeng and Xiaofen Xing and Jin Xu and Xiangmin Xu},
+  title         = {Profit Mirage: Revisiting Information Leakage in {LLM}-based Financial Agents},
+  year          = {2025},
+  eprint        = {2510.07920},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  url           = {https://arxiv.org/abs/2510.07920}
+}
+
+@misc{hinton2015,
+  author        = {Geoffrey Hinton and Oriol Vinyals and Jeff Dean},
+  title         = {Distilling the Knowledge in a Neural Network},
+  year          = {2015},
+  eprint        = {1503.02531},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ML},
+  note          = {NIPS 2014 Deep Learning Workshop},
+  url           = {https://arxiv.org/abs/1503.02531}
+}
+
+@inproceedings{hu2022lora,
+  author    = {Edward J. Hu and Yelong Shen and Phillip Wallis and Zeyuan Allen-Zhu and Yuanzhi Li and Shean Wang and Lu Wang and Weizhu Chen},
+  title     = {{LoRA}: Low-Rank Adaptation of Large Language Models},
+  booktitle = {International Conference on Learning Representations ({ICLR})},
+  year      = {2022},
+  eprint        = {2106.09685},
+  archivePrefix = {arXiv},
+  url       = {https://openreview.net/forum?id=nZeVKeeFYf9}
+}
+
+@inproceedings{korbak2022kl,
+  author    = {Tomasz Korbak and Ethan Perez and Christopher Buckley},
+  title     = {{RL} with {KL} Penalties is Better Viewed as {B}ayesian Inference},
+  booktitle = {Findings of the Association for Computational Linguistics: {EMNLP} 2022},
+  pages     = {1083--1091},
+  year      = {2022},
+  publisher = {Association for Computational Linguistics},
+  doi       = {10.18653/v1/2022.findings-emnlp.77}
+}
+
+@misc{qwen2026qwen35,
+  author       = {{Qwen Team}},
+  title        = {{Qwen3.5-9B} Model Card},
+  year         = {2026},
+  howpublished = {Hugging Face model repository},
+  note         = {Released February 2026},
+  url          = {https://huggingface.co/Qwen/Qwen3.5-9B}
+}
